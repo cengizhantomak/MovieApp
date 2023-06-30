@@ -33,11 +33,9 @@ final class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        interactor?.fetchTopRatedMovies()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        interactor?.fetchNowPlaying()
+        setupTableView()
     }
     
     // MARK: Setup
@@ -53,6 +51,11 @@ final class MoviesViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
@@ -72,5 +75,10 @@ extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell()
         cell.textLabel?.text = displayedMovies[indexPath.row].title
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMovieId = displayedMovies[indexPath.row].id
+        router?.routeToMovieDetails(with: selectedMovieId)
     }
 }

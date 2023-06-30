@@ -20,17 +20,16 @@ final class MoviesPresenter: MoviesPresentationLogic {
         var displayedMovies: [MoviesModels.FetchMovies.ViewModel.DisplayedMovie] = []
         
         response.movies.forEach {
-            displayedMovies.append(MoviesModels.FetchMovies.ViewModel.DisplayedMovie(title: $0.title))
+            displayedMovies.append(MoviesModels.FetchMovies.ViewModel.DisplayedMovie(
+                title: $0.title,
+                id: $0.id
+            )
+            )
         }
         
-//        for movie in response.movies {
-//            let displayedMovie = MoviesModels.FetchMovies.ViewModel.DisplayedMovie(title: movie.title)
-//            displayedMovies.append(displayedMovie)
-//        }
         let viewModel = MoviesModels.FetchMovies.ViewModel(displayedMovies: displayedMovies)
         DispatchQueue.main.async {
             self.viewController?.displayFetchedMovies(viewModel: viewModel)
         }
-//        viewController?.displayFetchedMovies(viewModel: .init(displayedMovies: displayedMovies))
     }
 }

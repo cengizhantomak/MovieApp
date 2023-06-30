@@ -8,30 +8,78 @@
 import Foundation
 
 public struct MoviesResponse {
-    public struct Movie: Codable {
-        let title: String
-        let releaseDate: String
-        let posterPath: String
-        let overview: String
-        let id: Int
+    public struct MovieNowPlaying: Codable {
+        public struct NowPlaying: Codable {
+            let page: Int
+            let totalPages: Int
+            let totalResults: Int
+            public let results: [Movie]
+            
+            enum CodingKeys: String, CodingKey {
+                case page, results
+                case totalPages = "total_pages"
+                case totalResults = "total_results"
+            }
+        }
         
-        enum CodingKeys: String, CodingKey {
-            case title, overview, id
-            case releaseDate = "release_date"
-            case posterPath = "poster_path"
+        public struct Movie: Codable {
+            let title: String
+            let releaseDate: String
+            let posterPath: String
+            let overview: String
+            let id: Int
+            
+            enum CodingKeys: String, CodingKey {
+                case title, overview, id
+                case releaseDate = "release_date"
+                case posterPath = "poster_path"
+            }
         }
     }
     
-    public struct TopRated: Codable {
-        let page: Int
-        let totalPages: Int
-        let totalResults: Int
-        public let results: [Movie]
+    public struct MovieDetail: Codable {
+        public struct Movie: Codable {
+            let title: String
+            let releaseDate: String
+            let posterPath: String
+            let overview: String
+            let id: Int
+            let runtime: Int
+            let vote: Float
+            public let genres: [Genres]
+            
+            enum CodingKeys: String, CodingKey {
+                case title, overview, id, runtime, genres
+                case releaseDate = "release_date"
+                case posterPath = "poster_path"
+                case vote = "vote_average"
+            }
+        }
         
-        enum CodingKeys: String, CodingKey {
-            case page, results
-            case totalPages = "total_pages"
-            case totalResults = "total_results"
+        public struct Genres: Codable {
+            public let genresName: String
+            
+            enum CodingKeys: String, CodingKey {
+                case genresName = "name"
+            }
         }
     }
+    
+    public struct MovieCredits: Codable {
+        public struct Credits: Codable {
+            public let cast: [Cast]
+        }
+        
+        public struct Cast: Codable {
+            let profilePath: String?
+            let name: String?
+            let character: String?
+            
+            enum CodingKeys: String, CodingKey {
+                case name, character
+                case profilePath = "profile_path"
+            }
+        }
+    }
+    
 }

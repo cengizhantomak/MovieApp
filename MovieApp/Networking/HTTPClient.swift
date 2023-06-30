@@ -24,6 +24,8 @@ public extension HTTPClient {
             return completion(.failure(.invalidUrl))
         }
         
+        print("Sending request to: \(url)")
+        
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header

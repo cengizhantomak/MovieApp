@@ -17,7 +17,7 @@ enum MoviesModels {
         }
         
         struct Response {
-            var movies: [MoviesResponse.Movie]
+            var movies: [MoviesResponse.MovieNowPlaying.Movie]
         }
         
         struct ViewModel {
@@ -25,6 +25,7 @@ enum MoviesModels {
             
             struct DisplayedMovie {
                 let title: String
+                let id: Int
             }
         }
         

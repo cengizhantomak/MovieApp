@@ -8,32 +8,42 @@
 import Foundation
 
 public enum MoviesEndpoint {
+    case nowPlaying
+    case popular
     case topRated
+    case upcoming
     case moviesDetail(id: Int)
+    case credits(id: Int)
 }
 
 extension MoviesEndpoint: Endpoint {
     public var queryItems: [URLQueryItem]? {
         switch self {
-        case .topRated:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_):
             return [URLQueryItem(name: "api_key", value: "ee3a8f4fad83f7af9b46376ca2d6104b")]
-        case .moviesDetail(_):
-            return nil
         }
     }
     
     public var path: String {
         switch self {
-        case .topRated:
+        case .nowPlaying:
             return "/3/movie/now_playing"
+        case .popular:
+            return "/3/movie/popular"
+        case .topRated:
+            return "/3/movie/top_rated"
+        case .upcoming:
+            return "/3/movie/upcoming"
         case .moviesDetail(let id):
             return "/3/movie/\(id)"
+        case .credits(let id):
+            return "/3/movie/\(id)/credits"
         }
     }
     
     public var method: RequestMethod {
         switch self {
-        case .topRated, .moviesDetail:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits:
             return .get
         }
     }
@@ -41,7 +51,7 @@ extension MoviesEndpoint: Endpoint {
     public var header: [String : String]? {
         // TODO: Singleton Keychain Manager
         switch self {
-        case .topRated, .moviesDetail:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits:
             return [
                 //                "Authorization": "Bearer \(accessToken)"
                 "Content-Type": "application/json;charset=utf-8"

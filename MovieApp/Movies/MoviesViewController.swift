@@ -33,7 +33,8 @@ final class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Movie"
         interactor?.fetchNowPlaying()
         setupTableView()
     }

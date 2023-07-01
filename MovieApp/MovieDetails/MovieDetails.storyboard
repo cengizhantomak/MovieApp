@@ -50,7 +50,7 @@
                                             <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xZb-RF-fmy">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xZb-RF-fmy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
                                             <color key="backgroundColor" systemColor="systemRedColor"/>
                                             <constraints>
@@ -59,11 +59,11 @@
                                             </constraints>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dzL-EO-Y81">
-                                            <rect key="frame" x="105.66666666666669" y="85" width="164" height="250"/>
+                                            <rect key="frame" x="104" y="85" width="167" height="250"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="AAv-wK-vcg"/>
-                                                <constraint firstAttribute="width" constant="164" id="zBA-uo-cN8"/>
+                                                <constraint firstAttribute="width" constant="167" id="zBA-uo-cN8"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0b-vX-NqN">
@@ -173,6 +173,7 @@
                                         <constraint firstItem="6Km-u3-4ap" firstAttribute="centerX" secondItem="Qk6-HW-wOG" secondAttribute="centerX" id="njT-Pj-nOY"/>
                                     </constraints>
                                 </view>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CUq-l0-ZoY"/>
@@ -186,10 +187,12 @@
                     </view>
                     <size key="freeformSize" width="375" height="1351"/>
                     <connections>
+                        <outlet property="backMovieDetailImage" destination="xZb-RF-fmy" id="nRO-r4-3f3"/>
                         <outlet property="footerView" destination="Qk6-HW-wOG" id="UwQ-qq-HNg"/>
                         <outlet property="genresLabel" destination="ADN-UH-flo" id="Kno-Yw-O7e"/>
                         <outlet property="headerLabel" destination="S77-0a-bvl" id="jHM-x9-kF0"/>
                         <outlet property="headerView" destination="ga1-CU-3Pq" id="gfD-Z7-rgC"/>
+                        <outlet property="movieDetailImage" destination="dzL-EO-Y81" id="NY4-Za-haW"/>
                         <outlet property="runtimeLabel" destination="eJR-Ex-rDb" id="PjP-1u-pqm"/>
                         <outlet property="tableView" destination="PR8-oV-M7a" id="vI8-92-yNP"/>
                         <outlet property="voteLabel" destination="NfS-sf-vxk" id="lbQ-Ds-cMs"/>

@@ -30,6 +30,7 @@ enum MovieDetailsModels {
             struct DisplayedCast {
                 let name: String
                 let character: String
+                let profilePath: String
             }
         }
         
@@ -42,6 +43,7 @@ enum MovieDetailsModels {
                 let genres: String
             let runtime: Int
                 let vote: Float
+            let posterPath: String
 //            }
         }
         

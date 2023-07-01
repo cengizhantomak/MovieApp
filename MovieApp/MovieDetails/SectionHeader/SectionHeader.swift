@@ -30,7 +30,7 @@ class SectionHeader: UITableViewHeaderFooterView {
         contentView.addSubview(button)
         
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 5),
+            title.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0),
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             button.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: 0),
@@ -38,6 +38,12 @@ class SectionHeader: UITableViewHeaderFooterView {
             button.widthAnchor.constraint(equalToConstant: 54),
             button.heightAnchor.constraint(equalToConstant: 18)
         ])
+        
+        button.setTitle("View All", for: .normal)
+        button.setTitleColor(UIColor(cgColor: .init(red: 0.28, green: 0.81, blue: 1, alpha: 1)), for: .normal)
+        let customFont = UIFont(name: "SFProText-Medium", size: 14) // Özel font adını ve boyutunu belirtin
+        button.titleLabel?.font = customFont
+        
     }
 
 }

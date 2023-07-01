@@ -21,7 +21,7 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         var displayedNames: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
         
         response.names.forEach {
-            displayedNames.append(MovieDetailsModels.FetchNames.ViewModel.DisplayedCast(name: $0.name ?? "", character: $0.character ?? ""))
+            displayedNames.append(MovieDetailsModels.FetchNames.ViewModel.DisplayedCast(name: $0.name ?? "", character: $0.character ?? "", profilePath: $0.profilePath ?? ""))
         }
         let viewModel = MovieDetailsModels.FetchNames.ViewModel(displayedCast: displayedNames)
         DispatchQueue.main.async {
@@ -37,12 +37,13 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         let overview = response.details.overview
         let runtime = response.details.runtime
         let vote = response.details.vote
+        let posterPath = response.details.posterPath
         let genres = response.details.genres.map { $0.genresName }.joined(separator: ", ")
         
 //        let displayedDetail = MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails(title: title, overview: overview, genres: genres)//, genres: genres)
 //        displayedDetails.append(displayedDetail)
 
-        let viewModel = MovieDetailsModels.FetchNames.ViewModel2(title: title, overview: overview, genres: genres, runtime: runtime, vote: vote)
+        let viewModel = MovieDetailsModels.FetchNames.ViewModel2(title: title, overview: overview, genres: genres, runtime: runtime, vote: vote, posterPath: posterPath)
         DispatchQueue.main.async {
             self.viewController?.displayFetchedDetails(viewModel: viewModel)
         }

@@ -17,6 +17,8 @@ final class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var movieDetailImage: UIImageView!
+    @IBOutlet weak var backMovieDetailImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
@@ -52,8 +54,6 @@ final class MovieDetailsViewController: UIViewController {
         super.init(coder: aDecoder)
         setup()
     }
-    
-
     
     // MARK: Setup
     
@@ -101,6 +101,13 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         runtimeLabel.text = "\(viewModel.runtime) min."
         genresLabel.text = viewModel.genres
         voteLabel.text = "\(viewModel.vote)"
+        
+        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
+            movieDetailImage.load(url: posterUrl)
+            backMovieDetailImage.load(url: posterUrl)
+            backMovieDetailImage.addBlurEffect()
+        }
+        
         tableView.reloadData()
     }
     
@@ -144,6 +151,14 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "SynopsisTableViewCell", for: indexPath) as? SynopsisTableViewCell
             cell?.setCell(viewModel: displayedDetails ?? "")
             return cell ?? UITableViewCell()
+//            let cell = UITableViewCell()
+//            cell.textLabel?.textColor = UIColor.red
+//                    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+//            cell.textLabel?.text = displayedDetails
+//            cell.textLabel?.numberOfLines = 0
+//                    cell.textLabel?.lineBreakMode = .byWordWrapping
+//                    cell.textLabel?.sizeToFit()
+//            return cell
         case .Cast:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailsTableViewCell", for: indexPath) as? MovieDetailsTableViewCell
             let model = displayedNames[indexPath.row]
@@ -167,10 +182,6 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         case .Cast:
             let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
             sectionHeader?.title.text = section.title
-            sectionHeader?.button.setTitle("View All", for: .normal)
-            sectionHeader?.button.setTitleColor(UIColor(cgColor: .init(red: 0.28, green: 0.81, blue: 1, alpha: 1)), for: .normal)
-            let customFont = UIFont(name: "SFProText-Medium", size: 14) // Özel font adını ve boyutunu belirtin
-            sectionHeader?.button.titleLabel?.font = customFont
             sectionHeader?.button.isHidden = false
             sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
             return sectionHeader

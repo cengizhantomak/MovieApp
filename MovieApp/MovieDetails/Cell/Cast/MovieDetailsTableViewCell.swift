@@ -27,6 +27,10 @@ class MovieDetailsTableViewCell: UITableViewCell {
     func setCell(viewModel: MovieDetailsModels.FetchNames.ViewModel.DisplayedCast) {
         creditsNameLabel.text = viewModel.name
         creditsCharNameLabel.text = viewModel.character.uppercased()
+        
+        if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.profilePath) {
+            creditsImage.load(url: profileUrl)
+        }
     }
     
 }

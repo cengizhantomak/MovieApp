@@ -9,11 +9,12 @@ import UIKit
 
 class SynopsisTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var synopsisTextView: UITextView!
+//    @IBOutlet weak var synopsisTextView: UITextView!
+    @IBOutlet weak var synopsisLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,7 +24,8 @@ class SynopsisTableViewCell: UITableViewCell {
     }
     
     func setCell(viewModel: String) {
-        synopsisTextView.text = viewModel
+//        synopsisTextView.text = viewModel
+        synopsisLabel.text = viewModel
     }
     
 }

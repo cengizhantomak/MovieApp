@@ -8,16 +8,12 @@
 import Foundation
 import UIKit
 
-
 extension UIView {
     func addBlurEffect() {
-        // Blur efekti oluşturuluyor
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
-        
-        // Autoresizing mask ayarlanıyor
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0.9
         
         self.addSubview(blurEffectView)
     }

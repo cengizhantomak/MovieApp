@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable nesting
 enum MovieDetailsModels {
     
     enum FetchNames {
@@ -35,19 +34,18 @@ enum MovieDetailsModels {
         }
         
         struct ViewModel2 {
-//            var displayedDetails: DisplayedDetails
-//
-//            struct DisplayedDetails {
+            var displayedDetails: DisplayedDetails
+            
+            struct DisplayedDetails {
                 let title: String
                 let overview: String
                 let genres: String
-            let runtime: Int
+                let runtime: Int
                 let vote: Float
-            let posterPath: String
-//            }
+                let posterPath: String
+            }
         }
         
     }
     
 }
-// swiftlint:enable nesting

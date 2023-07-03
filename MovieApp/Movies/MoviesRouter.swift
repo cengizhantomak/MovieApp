@@ -22,28 +22,13 @@ final class MoviesRouter: MoviesRoutingLogic, MoviesDataPassing {
     var dataStore: MoviesDataStore?
     
     func routeToMovieDetails(with movieID: Int) {
-        
-//        let storyboard = UIStoryboard(name: "MovieDetails", bundle: nil)
-//        if let movieDetailsVC = storyboard.instantiateInitialViewController() as? MovieDetailsViewController {
-//            print("route: \(movieID)")
-//            movieDetailsVC.loadViewIfNeeded()
-//            movieDetailsVC.router?.dataStore?.movieID = movieID
-//            viewController?.navigationController?.pushViewController(movieDetailsVC, animated: true)
-//        }
-        
-//        if let movieDetailVC = UIStoryboard(name: "MovieDetails", bundle: .main).instantiateInitialViewController() as? MovieDetailsViewController {
-//            movieDetailVC.loadViewIfNeeded()
-//            movieDetailVC.router?.dataStore?.movieID = movieID
-//            viewController?.navigationController?.pushViewController(movieDetailVC, animated: true)
-//        }
-        
         let storyboard = UIStoryboard(name: "MovieDetails", bundle: nil)
-//        let destinationVC: MovieDetailsViewController = storyboard.instantiateViewController(identifier: "MovieDetailsViewController")
         
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController,
+              let sourceVC = viewController else { return }
         
-        destinationVC.router?.dataStore?.movieID = movieID
+        destinationVC.router?.dataStore?.selectedMovieID = movieID
         destinationVC.loadViewIfNeeded()
-        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }

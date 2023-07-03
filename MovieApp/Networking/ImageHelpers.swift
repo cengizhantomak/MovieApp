@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - UIImageView Extension
+
 extension UIImageView {
     func load(url: URL) {
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -23,6 +24,7 @@ extension UIImageView {
 }
 
 // MARK: - ImageUrlHelper
+
 struct ImageUrlHelper {
     static let baseImageUrl = "https://image.tmdb.org/t/p/"
 

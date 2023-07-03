@@ -13,12 +13,20 @@ protocol CastCrewDisplayLogic: AnyObject {
 
 final class CastCrewViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - VIP Properties
     
     var interactor: CastCrewBusinessLogic?
     var router: (CastCrewRoutingLogic & CastCrewDataPassing)?
+    
+    // MARK: - Outlet
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Property
+    
     var allCast: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
-    // MARK: Object lifecycle
+    
+    // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -30,13 +38,15 @@ final class CastCrewViewController: UIViewController {
         setup()
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Cast & Crew"
         setupTableView()
     }
     
-    // MARK: Setup
+    // MARK: -  Setup
     
     private func setup() {
         let viewController = self
@@ -63,6 +73,8 @@ extension CastCrewViewController: CastCrewDisplayLogic {
         tableView.reloadData()
     }
 }
+
+// MARK: - UITableView
 
 extension CastCrewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

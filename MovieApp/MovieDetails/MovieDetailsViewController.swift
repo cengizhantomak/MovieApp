@@ -9,25 +9,33 @@ import UIKit
 
 protocol MovieDetailsDisplayLogic: AnyObject {
     func displayFetchedNames(viewModel: MovieDetailsModels.FetchNames.ViewModel)
-    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2)
+    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails)
 }
 
 final class MovieDetailsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var footerView: UIView!
-    @IBOutlet weak var movieDetailImage: UIImageView!
-    @IBOutlet weak var backMovieDetailImage: UIImageView!
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var genresLabel: UILabel!
-    @IBOutlet weak var voteLabel: UILabel!
-    @IBOutlet weak var runtimeLabel: UILabel!
+    // MARK: - VIP Properties
     
     var interactor: MovieDetailsBusinessLogic?
     var router: (MovieDetailsRoutingLogic & MovieDetailsDataPassing)?
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var detailsTableView: UITableView!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var starRatingStackView: UIStackView!
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    // MARK: - Properties
+    
     var displayedNames: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
-    var displayedDetails: String?
+    var displayedDetails: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails?
     
     enum Section: Int, CaseIterable {
         case Synopsis
@@ -43,7 +51,7 @@ final class MovieDetailsViewController: UIViewController {
         }
     }
     
-    // MARK: Object lifecycle
+    // MARK: -  Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -55,7 +63,16 @@ final class MovieDetailsViewController: UIViewController {
         setup()
     }
     
-    // MARK: Setup
+    // MARK: - View Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupTableView()
+        interactor?.fetchMovieNames()
+    }
+    
+    // MARK: - Setup
     
     private func setup() {
         let viewController = self
@@ -70,53 +87,77 @@ final class MovieDetailsViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTableView()
-        interactor?.fetchMovieNames()
-    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        interactor?.fetchMovieNames()
-//    }
-    
     private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableHeaderView = headerView
-        tableView.tableFooterView = footerView
-        tableView.register(UINib(nibName: "MovieDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieDetailsTableViewCell")
-        tableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
-        tableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
+        detailsTableView.delegate = self
+        detailsTableView.dataSource = self
+        detailsTableView.tableHeaderView = headerView
+        detailsTableView.tableFooterView = footerView
+        detailsTableView.register(UINib(nibName: "MovieDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieDetailsTableViewCell")
+        detailsTableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
+        detailsTableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
     }
 }
-
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
-    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2) {
-        displayedDetails = viewModel.overview
-        headerLabel.text = viewModel.title
-        runtimeLabel.text = "\(viewModel.runtime) min."
-        genresLabel.text = viewModel.genres
-        voteLabel.text = "\(viewModel.vote)"
-        
-        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
-            movieDetailImage.load(url: posterUrl)
-            backMovieDetailImage.load(url: posterUrl)
-            backMovieDetailImage.addBlurEffect()
-        }
-        
-        tableView.reloadData()
-    }
-    
     func displayFetchedNames(viewModel: MovieDetailsModels.FetchNames.ViewModel) {
         displayedNames = viewModel.displayedCast
-        tableView.reloadData()
+        detailsTableView.reloadData()
     }
     
+    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails) {
+        displayedDetails = viewModel
+        
+        titleLabel.text = viewModel.title
+        
+        let totalMinutes = viewModel.runtime
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        let formattedString = "\(hours)hr \(minutes)m"
+        durationLabel.text = formattedString
+        
+        genreLabel.text = viewModel.genres
+        
+        let vote = viewModel.vote / 2
+        let formattedVote = String(format: "%.1f", vote) + "/5"
+        ratingLabel.text = formattedVote
+        
+        let fullStars = Int(vote)
+        let halfStar = vote - Float(fullStars)
+        var starImages: [UIImage] = []
+        let fullStarImage = UIImage(systemName: "star.fill")
+        let halfStarImage = UIImage(systemName: "star.leadinghalf.filled")
+        let emptyStarImage = UIImage(systemName: "star")
+        for i in 0..<5 {
+            if i < fullStars {
+                starImages.append(fullStarImage!)
+            } else if i == fullStars && halfStar >= 0.5 {
+                starImages.append(halfStarImage!)
+            } else {
+                starImages.append(emptyStarImage!)
+            }
+        }
+        
+        starRatingStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        
+        for image in starImages {
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            starRatingStackView.addArrangedSubview(imageView)
+        }
+        
+        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
+            posterImageView.load(url: posterUrl)
+            backgroundImageView.load(url: posterUrl)
+//            backgroundImageView.addBlurEffect()
+//            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
+//                backgroundImageView.image = blurredImage
+//            }
+        }
+        detailsTableView.reloadData()
+    }
 }
+
+// MARK: - UITableView
 
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -124,41 +165,24 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let section = Section(rawValue: section) else { return 0 }
         
-//        return min(displayedNames.count, 4)
-        
-        guard let section = Section(rawValue: section) else { return 1 }
         switch section {
         case .Synopsis:
-            return min(displayedDetails?.count ?? 0, 1)
+            return displayedDetails != nil ? 1 : 0
         case .Cast:
             return min(displayedNames.count, 4)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailsTableViewCell", for: indexPath) as? MovieDetailsTableViewCell
-//        else {
-//            return UITableViewCell()
-//        }
-//        let model = displayedNames[indexPath.row]
-//        cell.setCell(viewModel: model)
-//        return cell
-        
         guard let section = Section(rawValue: indexPath.section) else { return UITableViewCell() }
+        
         switch section {
         case .Synopsis:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SynopsisTableViewCell", for: indexPath) as? SynopsisTableViewCell
-            cell?.setCell(viewModel: displayedDetails ?? "")
+            cell?.setCell(viewModel: displayedDetails?.overview ?? "")
             return cell ?? UITableViewCell()
-//            let cell = UITableViewCell()
-//            cell.textLabel?.textColor = UIColor.red
-//                    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-//            cell.textLabel?.text = displayedDetails
-//            cell.textLabel?.numberOfLines = 0
-//                    cell.textLabel?.lineBreakMode = .byWordWrapping
-//                    cell.textLabel?.sizeToFit()
-//            return cell
         case .Cast:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailsTableViewCell", for: indexPath) as? MovieDetailsTableViewCell
             let model = displayedNames[indexPath.row]
@@ -173,29 +197,16 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let section = Section(rawValue: section) else { return UIView() }
-        switch section {
-        case .Synopsis:
-            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-            sectionHeader?.title.text = section.title
-            sectionHeader?.button.isHidden = true
-            return sectionHeader
-        case .Cast:
-            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-            sectionHeader?.title.text = section.title
-            sectionHeader?.button.isHidden = false
-            sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
-            return sectionHeader
-        }
+        
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+        sectionHeader?.title.text = section.title
+        sectionHeader?.button.isHidden = section == .Synopsis
+        sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
+        return sectionHeader
     }
     
     @objc func selectButton() {
-        print("tapped")
-        let storyboard = UIStoryboard(name: "CastCrew", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CastCrewViewController") as? CastCrewViewController else { return }
-        
-        destinationVC.allCast = displayedNames
-        destinationVC.loadViewIfNeeded()
-        navigationController?.pushViewController(destinationVC, animated: true)
+        guard let router = router else { return }
+        router.routeToCastCrew()
     }
 }

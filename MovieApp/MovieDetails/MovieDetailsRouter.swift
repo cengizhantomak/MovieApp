@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MovieDetailsRoutingLogic: AnyObject {
-    
+    func routeToCastCrew()
 }
 
 protocol MovieDetailsDataPassing: AnyObject {
@@ -19,5 +20,17 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     
     weak var viewController: MovieDetailsViewController?
     var dataStore: MovieDetailsDataStore?
- 
+    
+    func routeToCastCrew() {
+        let storyboard = UIStoryboard(name: "CastCrew", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CastCrewViewController") as? CastCrewViewController,
+              let sourceVC = viewController else {
+            return
+        }
+        
+        destinationVC.allCast = sourceVC.displayedNames
+        destinationVC.loadViewIfNeeded()
+        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
+    }
 }

@@ -13,13 +13,20 @@ protocol MoviesDisplayLogic: AnyObject {
 
 final class MoviesViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - VIP Properties
     
     var interactor: MoviesBusinessLogic?
     var router: (MoviesRoutingLogic & MoviesDataPassing)?
+    
+    // MARK: - Outlet
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Property
+    
     var displayedMovies: [MoviesModels.FetchMovies.ViewModel.DisplayedMovie] = []
     
-    // MARK: Object lifecycle
+    // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -31,15 +38,17 @@ final class MoviesViewController: UIViewController {
         setup()
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.largeTitleDisplayMode = .always
+        
         navigationItem.title = "Movie"
         interactor?.fetchNowPlaying()
         setupTableView()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     private func setup() {
         let viewController = self
@@ -66,6 +75,8 @@ extension MoviesViewController: MoviesDisplayLogic {
         tableView.reloadData()
     }
 }
+
+// MARK: - UITableView
 
 extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

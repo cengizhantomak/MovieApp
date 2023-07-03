@@ -12,7 +12,7 @@ protocol MovieDetailsBusinessLogic: AnyObject {
 }
 
 protocol MovieDetailsDataStore: AnyObject {
-    var movieID: Int? { get set }
+    var selectedMovieID: Int? { get set }
 }
 
 final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
@@ -20,13 +20,14 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     var presenter: MovieDetailsPresentationLogic?
     var worker: MovieDetailsWorkingLogic = MovieDetailsWorker()
     
-    var movieID: Int?
+    var selectedMovieID: Int?
+    
     func fetchMovieNames() {
-        
-        guard let id = movieID else { return }
+        guard let id = selectedMovieID else { return }
         
         worker.getMovieCredits(id: id) { [weak self] result in
             guard let self else { return }
+            
             switch result {
             case .success(let credits):
                 let response = MovieDetailsModels.FetchNames.Response(names: credits.cast)
@@ -38,6 +39,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         
         worker.getMovieDetails(id: id) { [weak self] result in
             guard let self else { return }
+            
             switch result {
             case .success(let details):
                 let response = MovieDetailsModels.FetchNames.Response2(details: details)
@@ -46,7 +48,5 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
                 print(error.localizedDescription)
             }
         }
-        
     }
-    
 }

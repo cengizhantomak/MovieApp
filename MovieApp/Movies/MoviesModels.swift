@@ -7,7 +7,6 @@
 
 import Foundation
 
-// swiftlint:disable nesting
 enum MoviesModels {
     
     enum FetchMovies {
@@ -25,11 +24,11 @@ enum MoviesModels {
             
             struct DisplayedMovie {
                 let title: String
+                let releaseDate: String
+                let posterPath: String
+                let vote: Float
                 let id: Int
             }
         }
-        
     }
-    
 }
-// swiftlint:enable nesting

@@ -20,6 +20,7 @@ final class MoviesViewController: UIViewController {
     
     // MARK: - Outlet
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Property
@@ -45,7 +46,8 @@ final class MoviesViewController: UIViewController {
         
         navigationItem.title = "Movie"
         interactor?.fetchNowPlaying()
-        setupTableView()
+//        setupTableView()
+        setupCollectionView()
     }
     
     // MARK: - Setup
@@ -63,34 +65,59 @@ final class MoviesViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+//    private func setupTableView() {
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//    }
+    
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(.init(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MovieCollectionViewCell")
     }
 }
 
 extension MoviesViewController: MoviesDisplayLogic {
     func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel) {
         displayedMovies = viewModel.displayedMovies
-        tableView.reloadData()
+//        tableView.reloadData()
+        collectionView.reloadData()
     }
 }
 
 // MARK: - UITableView
 
-extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//extension MoviesViewController: UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return displayedMovies.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell()
+//        cell.textLabel?.text = displayedMovies[indexPath.row].title
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedMovieId = displayedMovies[indexPath.row].id
+//        router?.routeToMovieDetails(with: selectedMovieId)
+//    }
+//}
+
+// MARK: - CollecionView
+
+extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedMovies.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = displayedMovies[indexPath.row].title
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
+        
+        let model = displayedMovies[indexPath.item]
+        cell.setCell(viewModel: model)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedMovieId = displayedMovies[indexPath.row].id
-        router?.routeToMovieDetails(with: selectedMovieId)
-    }
+    
 }

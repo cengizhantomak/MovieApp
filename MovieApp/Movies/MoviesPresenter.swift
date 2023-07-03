@@ -22,6 +22,9 @@ final class MoviesPresenter: MoviesPresentationLogic {
         response.movies.forEach {
             displayedMovies.append(MoviesModels.FetchMovies.ViewModel.DisplayedMovie(
                 title: $0.title,
+                releaseDate: $0.releaseDate,
+                posterPath: $0.posterPath,
+                vote: $0.vote,
                 id: $0.id
             )
             )

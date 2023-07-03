@@ -33,19 +33,19 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S77-0a-bvl">
-                                            <rect key="frame" x="20" y="367" width="335" height="28"/>
+                                            <rect key="frame" x="20" y="367" width="335" height="28.666666666666686"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
                                             <color key="textColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJR-Ex-rDb">
-                                            <rect key="frame" x="168" y="411" width="39.333333333333343" height="18.666666666666686"/>
+                                            <rect key="frame" x="167" y="411.66666666666669" width="41" height="19.333333333333314"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                             <color key="textColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genres" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADN-UH-flo">
-                                            <rect key="frame" x="20" y="437.66666666666669" width="335" height="18.666666666666686"/>
+                                            <rect key="frame" x="20" y="439" width="335" height="19.333333333333314"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                             <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -79,13 +79,14 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfS-sf-vxk">
-                                            <rect key="frame" x="20" y="486.33333333333331" width="142" height="34.999999999999943"/>
+                                            <rect key="frame" x="20" y="488.33333333333331" width="142" height="35.999999999999943"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="30"/>
                                             <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSk-qv-AYB">
-                                            <rect key="frame" x="170" y="494.33333333333331" width="116" height="18.999999999999943"/>
+                                            <rect key="frame" x="170" y="496.33333333333331" width="116" height="19.999999999999943"/>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.76862745099999996" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" red="0.97254901960784312" green="0.76862745098039209" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="116" id="IOZ-2M-cpm"/>

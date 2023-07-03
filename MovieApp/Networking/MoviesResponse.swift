@@ -27,12 +27,14 @@ public struct MoviesResponse {
             let releaseDate: String
             let posterPath: String
             let overview: String
+            let vote: Float
             let id: Int
             
             enum CodingKeys: String, CodingKey {
                 case title, overview, id
                 case releaseDate = "release_date"
                 case posterPath = "poster_path"
+                case vote = "vote_average"
             }
         }
     }

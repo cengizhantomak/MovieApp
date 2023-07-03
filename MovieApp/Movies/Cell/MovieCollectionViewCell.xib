@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="327"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="166" height="327"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig1-Be-cok">
+                        <rect key="frame" x="0.0" y="0.0" width="166" height="327"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K19-qa-O12">
+                                <rect key="frame" x="0.0" y="266" width="78" height="14"/>
+                                <color key="tintColor" red="0.97254901959999995" green="0.76862745099999996" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="CJ9-Kq-IrV"/>
+                                    <constraint firstAttribute="height" constant="14" id="tFz-2l-o6i"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFz-HY-LUc">
+                                <rect key="frame" x="0.0" y="287" width="31" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <color key="textColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="releaseDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCv-qQ-h1R">
+                                <rect key="frame" x="0.0" y="312" width="69.333333333333329" height="15"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                                <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZw-fa-EWf">
+                                <rect key="frame" x="0.0" y="0.0" width="166" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="gDN-rB-lxq"/>
+                                    <constraint firstAttribute="width" constant="166" id="jED-jn-aOQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dZw-fa-EWf" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="0uk-SC-QlK"/>
+                            <constraint firstItem="dCv-qQ-h1R" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="9BL-d5-Jxf"/>
+                            <constraint firstItem="K19-qa-O12" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="9Q7-pS-D8c"/>
+                            <constraint firstAttribute="trailing" secondItem="dZw-fa-EWf" secondAttribute="trailing" id="ENn-Pn-NCT"/>
+                            <constraint firstItem="K19-qa-O12" firstAttribute="top" secondItem="dZw-fa-EWf" secondAttribute="bottom" constant="16" id="JAL-0t-cjq"/>
+                            <constraint firstItem="vFz-HY-LUc" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="Kw9-v4-SB8"/>
+                            <constraint firstAttribute="trailing" secondItem="K19-qa-O12" secondAttribute="trailing" constant="88" id="WIx-KB-aiH"/>
+                            <constraint firstItem="vFz-HY-LUc" firstAttribute="top" secondItem="K19-qa-O12" secondAttribute="bottom" constant="7" id="ieA-kQ-Bza"/>
+                            <constraint firstItem="dZw-fa-EWf" firstAttribute="top" secondItem="Ig1-Be-cok" secondAttribute="top" id="z6l-rT-8ZJ"/>
+                            <constraint firstAttribute="bottom" secondItem="dCv-qQ-h1R" secondAttribute="bottom" id="zOx-1n-yQi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Ig1-Be-cok" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1Ia-f2-V9X"/>
+                <constraint firstItem="Ig1-Be-cok" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CcY-G7-2zP"/>
+                <constraint firstAttribute="bottom" secondItem="Ig1-Be-cok" secondAttribute="bottom" id="Dg8-R2-ztr"/>
+                <constraint firstAttribute="trailing" secondItem="Ig1-Be-cok" secondAttribute="trailing" id="zfi-Zf-sch"/>
+            </constraints>
+            <connections>
+                <outlet property="posterImage" destination="dZw-fa-EWf" id="FvO-ab-soS"/>
+                <outlet property="releaseDateLabel" destination="dCv-qQ-h1R" id="4xu-ZG-7Aj"/>
+                <outlet property="starRatingStackView" destination="K19-qa-O12" id="0fn-9v-729"/>
+                <outlet property="titleLabel" destination="vFz-HY-LUc" id="sNo-fY-x6U"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="-11.619718309859156"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

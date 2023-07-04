@@ -19,6 +19,10 @@ enum MoviesModels {
             var movies: [MoviesResponse.MovieNowPlaying.Movie]
         }
         
+        struct Response2 {
+            var details: MoviesResponse.MovieDetail.Movie
+        }
+        
         struct ViewModel {
             var displayedMovies: [DisplayedMovie]
             
@@ -28,6 +32,14 @@ enum MoviesModels {
                 let posterPath: String
                 let vote: Float
                 let id: Int
+            }
+        }
+        
+        struct ViewModel2 {
+            var displayedDetails: DisplayedDetails
+            
+            struct DisplayedDetails {
+                let runtime: Int
             }
         }
     }

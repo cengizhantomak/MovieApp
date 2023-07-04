@@ -12,7 +12,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var starRatingStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -59,6 +61,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         titleLabel.text = viewModel.title
         releaseDateLabel.text = viewModel.releaseDate
+        idLabel.text = "\(viewModel.id)"
+    }
+    
+    func setCell2(viewModel: MoviesModels.FetchMovies.ViewModel2.DisplayedDetails) {
+        durationLabel.text = "\(viewModel.runtime)"
     }
 
 }

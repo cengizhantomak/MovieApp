@@ -14,12 +14,13 @@ public enum MoviesEndpoint {
     case upcoming
     case moviesDetail(id: Int)
     case credits(id: Int)
+    case images(id: Int)
 }
 
 extension MoviesEndpoint: Endpoint {
     public var queryItems: [URLQueryItem]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_):
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_):
             return [URLQueryItem(name: "api_key", value: "ee3a8f4fad83f7af9b46376ca2d6104b")]
         }
     }
@@ -38,12 +39,14 @@ extension MoviesEndpoint: Endpoint {
             return "/3/movie/\(id)"
         case .credits(let id):
             return "/3/movie/\(id)/credits"
+        case .images(let id):
+            return "/3/movie/\(id)/images"
         }
     }
     
     public var method: RequestMethod {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images:
             return .get
         }
     }
@@ -51,7 +54,7 @@ extension MoviesEndpoint: Endpoint {
     public var header: [String : String]? {
         // TODO: Singleton Keychain Manager
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images:
             return [
                 //                "Authorization": "Bearer \(accessToken)"
                 "Content-Type": "application/json;charset=utf-8"

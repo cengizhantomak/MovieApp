@@ -122,11 +122,11 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            
+        
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionReusableView", for: indexPath) as? CollectionReusableView else { return UICollectionReusableView() }
-            
+        
         return headerView
-        }
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

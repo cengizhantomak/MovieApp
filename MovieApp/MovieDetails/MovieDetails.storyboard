@@ -120,40 +120,48 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Qk6-HW-wOG">
-                                    <rect key="frame" x="0.0" y="545" width="375" height="292"/>
+                                    <rect key="frame" x="0.0" y="545" width="375" height="220"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-u3-4ap">
-                                            <rect key="frame" x="17.666666666666657" y="178" width="340" height="48"/>
+                                            <rect key="frame" x="20" y="106" width="335" height="48"/>
                                             <color key="backgroundColor" red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="Hcs-AZ-02G"/>
-                                                <constraint firstAttribute="width" constant="340" id="fLd-VZ-Nj2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Get Ticket"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VS-sY-GeI">
-                                            <rect key="frame" x="17.666666666666657" y="242" width="340" height="48"/>
+                                            <rect key="frame" x="20" y="170" width="335" height="48"/>
                                             <color key="backgroundColor" red="0.8980392157" green="0.098039215690000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="4vh-dH-glB"/>
-                                                <constraint firstAttribute="width" constant="340" id="YKO-hE-jRQ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Add Watchlist"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </button>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eu-nX-fB8">
-                                            <rect key="frame" x="0.0" y="5" width="375" height="106"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eu-nX-fB8">
+                                            <rect key="frame" x="0.0" y="5" width="375" height="71"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="106" id="Fzm-Rb-UUf"/>
                                             </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EKL-55-ISU">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EKL-55-ISU">
                                                 <size key="itemSize" width="128" height="128"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -161,30 +169,41 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="77g-tw-1ng">
-                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="72"/>
+                                                    <rect key="frame" x="0.0" y="-28.666666666666668" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5il-uH-dtR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="72"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </collectionViewCellContentView>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                    <size key="customSize" width="108" height="72"/>
                                                 </collectionViewCell>
                                             </cells>
+                                            <connections>
+                                                <outlet property="dataSource" destination="nxe-uw-h5I" id="Ibo-5b-LFf"/>
+                                                <outlet property="delegate" destination="nxe-uw-h5I" id="Aju-RV-oIw"/>
+                                            </connections>
                                         </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstItem="6Km-u3-4ap" firstAttribute="top" secondItem="8eu-nX-fB8" secondAttribute="bottom" constant="30" id="2y9-bh-foY"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Km-u3-4ap" secondAttribute="trailing" constant="20" id="4DD-Dg-Ff0"/>
                                         <constraint firstItem="6VS-sY-GeI" firstAttribute="centerX" secondItem="Qk6-HW-wOG" secondAttribute="centerX" id="Ao9-la-CMB"/>
                                         <constraint firstItem="8eu-nX-fB8" firstAttribute="leading" secondItem="Qk6-HW-wOG" secondAttribute="leading" id="HVe-hg-nbF"/>
                                         <constraint firstAttribute="bottom" secondItem="6VS-sY-GeI" secondAttribute="bottom" constant="2" id="Klf-r0-F62"/>
                                         <constraint firstAttribute="trailing" secondItem="8eu-nX-fB8" secondAttribute="trailing" id="MYu-yG-g4q"/>
+                                        <constraint firstItem="8eu-nX-fB8" firstAttribute="top" secondItem="Qk6-HW-wOG" secondAttribute="top" constant="5" id="SRJ-lE-CTy"/>
                                         <constraint firstItem="6VS-sY-GeI" firstAttribute="top" secondItem="6Km-u3-4ap" secondAttribute="bottom" constant="16" id="a03-dN-fAN"/>
-                                        <constraint firstItem="8eu-nX-fB8" firstAttribute="top" secondItem="Qk6-HW-wOG" secondAttribute="top" constant="5" id="kyn-BW-593"/>
+                                        <constraint firstItem="6VS-sY-GeI" firstAttribute="leading" secondItem="Qk6-HW-wOG" secondAttribute="leading" constant="20" id="nNt-1V-682"/>
                                         <constraint firstItem="6Km-u3-4ap" firstAttribute="centerX" secondItem="Qk6-HW-wOG" secondAttribute="centerX" id="njT-Pj-nOY"/>
+                                        <constraint firstItem="6Km-u3-4ap" firstAttribute="leading" secondItem="Qk6-HW-wOG" secondAttribute="leading" constant="20" id="r26-N9-Zwt"/>
+                                        <constraint firstAttribute="trailing" secondItem="6VS-sY-GeI" secondAttribute="trailing" constant="20" id="yEa-RD-297"/>
                                     </constraints>
                                 </view>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nxe-uw-h5I" id="AJZ-ic-JPb"/>
+                                    <outlet property="delegate" destination="nxe-uw-h5I" id="aHs-la-BDa"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CUq-l0-ZoY"/>
@@ -199,6 +218,7 @@
                     <size key="freeformSize" width="375" height="1351"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="xZb-RF-fmy" id="nRO-r4-3f3"/>
+                        <outlet property="collectionView" destination="8eu-nX-fB8" id="RQo-z8-gaF"/>
                         <outlet property="detailsTableView" destination="PR8-oV-M7a" id="vI8-92-yNP"/>
                         <outlet property="durationLabel" destination="eJR-Ex-rDb" id="PjP-1u-pqm"/>
                         <outlet property="footerView" destination="Qk6-HW-wOG" id="UwQ-qq-HNg"/>
@@ -219,9 +239,6 @@
         <image name="play" width="56" height="56"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

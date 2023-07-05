@@ -10,6 +10,7 @@ import UIKit
 protocol MovieDetailsDisplayLogic: AnyObject {
     func displayFetchedNames(viewModel: MovieDetailsModels.FetchNames.ViewModel)
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails)
+    func displayFetchedImages(viewModel: MovieDetailsModels.FetchNames.ViewModel3)
 }
 
 final class MovieDetailsViewController: UIViewController {
@@ -22,6 +23,7 @@ final class MovieDetailsViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var detailsTableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -36,10 +38,12 @@ final class MovieDetailsViewController: UIViewController {
     
     var displayedNames: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
     var displayedDetails: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails?
+    var displayedImages: [MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages] = []
     
     enum Section: Int, CaseIterable {
         case Synopsis
         case Cast
+        case Photos
         
         var title: String {
             switch self {
@@ -47,6 +51,8 @@ final class MovieDetailsViewController: UIViewController {
                 return "Synopsis"
             case .Cast:
                 return "Cast & Crew"
+            case .Photos:
+                return "Photos"
             }
         }
     }
@@ -68,7 +74,7 @@ final class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        setupTableCollectionView()
         interactor?.fetchMovieNames()
     }
     
@@ -87,7 +93,7 @@ final class MovieDetailsViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    private func setupTableView() {
+    private func setupTableCollectionView() {
         detailsTableView.delegate = self
         detailsTableView.dataSource = self
         detailsTableView.tableHeaderView = headerView
@@ -95,6 +101,10 @@ final class MovieDetailsViewController: UIViewController {
         detailsTableView.register(UINib(nibName: "MovieDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieDetailsTableViewCell")
         detailsTableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
         detailsTableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(.init(nibName: "CollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "CollectionViewCell")
     }
 }
 
@@ -148,12 +158,17 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
             posterImageView.load(url: posterUrl)
             backgroundImageView.load(url: posterUrl)
-//            backgroundImageView.addBlurEffect()
-//            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
-//                backgroundImageView.image = blurredImage
-//            }
+            //            backgroundImageView.addBlurEffect()
+            //            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
+            //                backgroundImageView.image = blurredImage
+            //            }
         }
         detailsTableView.reloadData()
+    }
+    
+    func displayFetchedImages(viewModel: MovieDetailsModels.FetchNames.ViewModel3) {
+        displayedImages = viewModel.displayedImages
+        collectionView.reloadData()
     }
 }
 
@@ -172,6 +187,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return displayedDetails != nil ? 1 : 0
         case .Cast:
             return min(displayedNames.count, 4)
+        case .Photos:
+            return 0
         }
     }
     
@@ -188,6 +205,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             let model = displayedNames[indexPath.row]
             cell?.setCell(viewModel: model)
             return cell ?? UITableViewCell()
+        case .Photos:
+            return UITableViewCell()
         }
     }
     
@@ -196,17 +215,74 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let section = Section(rawValue: section) else { return UIView() }
+//        guard let section = Section(rawValue: section) else { return UIView() }
+//
+//        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+//        sectionHeader?.title.text = section.title
+//        sectionHeader?.button.isHidden = section == .Synopsis
+//        sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
+//        return sectionHeader
         
-        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-        sectionHeader?.title.text = section.title
-        sectionHeader?.button.isHidden = section == .Synopsis
-        sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
-        return sectionHeader
+        guard let section = Section(rawValue: section) else { return UIView() }
+        switch section {
+        case .Synopsis:
+            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+            sectionHeader?.title.text = section.title
+            sectionHeader?.button.isHidden = true
+            return sectionHeader
+        case .Cast:
+            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+            sectionHeader?.title.text = section.title
+            sectionHeader?.button.isHidden = false
+            sectionHeader?.button.addTarget(self, action: #selector(selectButtonCast), for: .touchUpInside)
+            return sectionHeader
+        case .Photos:
+            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+            sectionHeader?.title.text = section.title
+            sectionHeader?.button.isHidden = false
+            sectionHeader?.button.addTarget(self, action: #selector(selectButtonPhotos), for: .touchUpInside)
+            return sectionHeader
+        }
     }
     
-    @objc func selectButton() {
+    @objc func selectButtonCast() {
         guard let router = router else { return }
         router.routeToCastCrew()
+    }
+    
+    @objc func selectButtonPhotos() {
+        print("tapped")
+        guard let router = router else { return }
+        router.routeToPhotos()
+    }
+}
+
+// MARK: - CollectionView
+
+extension MovieDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        
+        let model = displayedImages[indexPath.item]
+        cell.setCell(viewModel: model)
+        return cell
+    }
+}
+
+extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.frame.width - 50) / 3, height: (collectionView.frame.height))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(5)
     }
 }

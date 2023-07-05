@@ -10,6 +10,7 @@ import Foundation
 protocol MovieDetailsWorkingLogic: AnyObject {
     func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieCredits.Credits, RequestError>) -> Void)
     func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieDetail.Movie, RequestError>) -> Void)
+    func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieImages.Backdrops, RequestError>) -> Void)
 }
 
 final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
@@ -20,4 +21,9 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
     func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieDetail.Movie, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.moviesDetail(id: id), responseModel: MoviesResponse.MovieDetail.Movie.self, completion: completion)
     }
+    
+    func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieImages.Backdrops, RequestError>) -> Void) {
+        sendRequest(endpoint: MoviesEndpoint.images(id: id), responseModel: MoviesResponse.MovieImages.Backdrops.self, completion: completion)
+    }
+    
 }

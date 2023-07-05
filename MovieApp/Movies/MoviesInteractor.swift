@@ -9,6 +9,7 @@ import Foundation
 
 protocol MoviesBusinessLogic: AnyObject {
     func fetchNowPlaying()
+//    func fetchMovieNames(id: Int)
 }
 
 protocol MoviesDataStore: AnyObject {
@@ -34,4 +35,20 @@ final class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
             }
         }
     }
+    
+//    func fetchMovieNames(id: Int) {
+////        guard let id = selectedMovieID else { return }
+//
+//        worker.getMovieDetails(id: id) { [weak self] result in
+//            guard let self else { return }
+//
+//            switch result {
+//            case .success(let details):
+//                let response = MovieDetailsModels.FetchNames.Response2(details: details)
+//                self.presenter?.presentDetails(response: response)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
 }

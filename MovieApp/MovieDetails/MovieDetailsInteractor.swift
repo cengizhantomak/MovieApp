@@ -48,5 +48,17 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
                 print(error.localizedDescription)
             }
         }
+        
+        worker.getMovieImages(id: id) { [weak self] result in
+            guard let self else { return }
+            
+            switch result {
+            case .success(let images):
+                let response = MovieDetailsModels.FetchNames.Response3(images: images.backdrops)
+                self.presenter?.presentImages(response: response)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

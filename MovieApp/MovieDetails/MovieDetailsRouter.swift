@@ -10,6 +10,7 @@ import UIKit
 
 protocol MovieDetailsRoutingLogic: AnyObject {
     func routeToCastCrew()
+    func routeToPhotos()
 }
 
 protocol MovieDetailsDataPassing: AnyObject {
@@ -30,6 +31,19 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         }
         
         destinationVC.allCast = sourceVC.displayedNames
+        destinationVC.loadViewIfNeeded()
+        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToPhotos() {
+        let storyboard = UIStoryboard(name: "Photos", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController,
+              let sourceVC = viewController else {
+            return
+        }
+        
+        destinationVC.displayedPhotos = sourceVC.displayedImages
         destinationVC.loadViewIfNeeded()
         sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
     }

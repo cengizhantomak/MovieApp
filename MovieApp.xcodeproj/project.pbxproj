@@ -71,6 +71,15 @@
 		47D8B30E2A497A28003CFE2D /* MovieDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D8B30C2A497A28003CFE2D /* MovieDetailsTableViewCell.swift */; };
 		47D8B30F2A497A28003CFE2D /* MovieDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47D8B30D2A497A28003CFE2D /* MovieDetailsTableViewCell.xib */; };
 		47E6120F2A55404E00E85A11 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E6120E2A55404E00E85A11 /* SectionHeaderCollectionReusableView.swift */; };
+		47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47E612202A5556FD00E85A11 /* Photos.storyboard */; };
+		47E612282A5556FD00E85A11 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612212A5556FD00E85A11 /* PhotosViewController.swift */; };
+		47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612222A5556FD00E85A11 /* PhotosPresenter.swift */; };
+		47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612232A5556FD00E85A11 /* PhotosInteractor.swift */; };
+		47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612242A5556FD00E85A11 /* PhotosModels.swift */; };
+		47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612252A5556FD00E85A11 /* PhotosWorker.swift */; };
+		47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612262A5556FD00E85A11 /* PhotosRouter.swift */; };
+		47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */; };
+		47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +149,15 @@
 		47D8B30C2A497A28003CFE2D /* MovieDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		47D8B30D2A497A28003CFE2D /* MovieDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		47E6120E2A55404E00E85A11 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		47E612202A5556FD00E85A11 /* Photos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Photos.storyboard; sourceTree = "<group>"; };
+		47E612212A5556FD00E85A11 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		47E612222A5556FD00E85A11 /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
+		47E612232A5556FD00E85A11 /* PhotosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosInteractor.swift; sourceTree = "<group>"; };
+		47E612242A5556FD00E85A11 /* PhotosModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModels.swift; sourceTree = "<group>"; };
+		47E612252A5556FD00E85A11 /* PhotosWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWorker.swift; sourceTree = "<group>"; };
+		47E612262A5556FD00E85A11 /* PhotosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRouter.swift; sourceTree = "<group>"; };
+		47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +286,7 @@
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				47D8B2FC2A497888003CFE2D /* MovieDetails */,
 				4722671B2A4EC0E500784729 /* AllCast */,
+				47E6121F2A5556E300E85A11 /* Photos */,
 				4798A4222A3F5B6C00F0C19D /* Font */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
@@ -341,6 +360,30 @@
 				47396F132A54B909005B8301 /* Photos */,
 				474E4C3A2A4B086B00697B7D /* Synopsis */,
 				474E4C392A4B084200697B7D /* Cast */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		47E6121F2A5556E300E85A11 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				47E6122E2A55575D00E85A11 /* Cell */,
+				47E612202A5556FD00E85A11 /* Photos.storyboard */,
+				47E612212A5556FD00E85A11 /* PhotosViewController.swift */,
+				47E612222A5556FD00E85A11 /* PhotosPresenter.swift */,
+				47E612232A5556FD00E85A11 /* PhotosInteractor.swift */,
+				47E612242A5556FD00E85A11 /* PhotosModels.swift */,
+				47E612252A5556FD00E85A11 /* PhotosWorker.swift */,
+				47E612262A5556FD00E85A11 /* PhotosRouter.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		47E6122E2A55575D00E85A11 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */,
+				47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -422,8 +465,10 @@
 				4798A4392A3F5B8A00F0C19D /* SF-Pro-Text-Thin.otf in Resources */,
 				47D1BC2F2A3F40BA001A2622 /* Main.storyboard in Resources */,
 				4798A43D2A3F5B8A00F0C19D /* SF-Pro-Text-Ultralight.otf in Resources */,
+				47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */,
 				4798A4362A3F5B8A00F0C19D /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				4798A4432A3F5B8A00F0C19D /* SF-Pro-Text-Heavy.otf in Resources */,
+				47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */,
 				4798A43C2A3F5B8A00F0C19D /* SF-Pro-Text-BlackItalic.otf in Resources */,
 				472267232A4EC13700784729 /* CastCrew.storyboard in Resources */,
 				4798A4382A3F5B8A00F0C19D /* SF-Pro-Text-Semibold.otf in Resources */,
@@ -441,15 +486,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D8B3082A4978C0003CFE2D /* MovieDetailsModels.swift in Sources */,
+				47E612282A5556FD00E85A11 /* PhotosViewController.swift in Sources */,
 				47D8B3052A4978C0003CFE2D /* MovieDetailsViewController.swift in Sources */,
 				47396F162A54BECF005B8301 /* CollectionViewCell.swift in Sources */,
 				47D8B2E82A4969E0003CFE2D /* RequestError.swift in Sources */,
+				47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */,
 				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
 				47D8B3092A4978C0003CFE2D /* MovieDetailsWorker.swift in Sources */,
 				47D8B2FB2A496C8F003CFE2D /* MoviesResponse.swift in Sources */,
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
+				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
+				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
+				47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */,
 				472267292A4EC13700784729 /* CastCrewRouter.swift in Sources */,
 				47D8B2EA2A4969E0003CFE2D /* MoviesEndpoint.swift in Sources */,
 				472267252A4EC13700784729 /* CastCrewPresenter.swift in Sources */,
@@ -474,6 +524,8 @@
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
 				47D8B2E72A4969E0003CFE2D /* RequestMethod.swift in Sources */,
 				47D8B2E62A4969E0003CFE2D /* Endpoint.swift in Sources */,
+				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
+				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,
 				47E6120F2A55404E00E85A11 /* SectionHeaderCollectionReusableView.swift in Sources */,

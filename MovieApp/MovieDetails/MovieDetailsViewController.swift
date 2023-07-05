@@ -252,6 +252,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc func selectButtonPhotos() {
         print("tapped")
+        guard let router = router else { return }
+        router.routeToPhotos()
     }
 }
 

@@ -10,6 +10,7 @@ import Foundation
 protocol MovieDetailsPresentationLogic: AnyObject {
     func presentNames(response: MovieDetailsModels.FetchNames.Response)
     func presentDetails(response: MovieDetailsModels.FetchNames.Response2)
+    func presentImages(response: MovieDetailsModels.FetchNames.Response3)
 }
 
 final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
@@ -21,7 +22,7 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
             MovieDetailsModels.FetchNames.ViewModel.DisplayedCast(
                 name: $0.name ?? "",
                 character: $0.character ?? "",
-                profilePath: $0.profilePath ?? ""
+                profilePath: $0.profilePhoto ?? ""
             )
         }
         let viewModel = MovieDetailsModels.FetchNames.ViewModel(displayedCast: displayedCast)
@@ -43,6 +44,18 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         
         DispatchQueue.main.async {
             self.viewController?.displayFetchedDetails(viewModel: displayedDetails)
+        }
+    }
+    
+    func presentImages(response: MovieDetailsModels.FetchNames.Response3) {
+        let displayedImages = response.images.map {
+            MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages(
+                images: $0.images
+            )
+        }
+        let viewModel = MovieDetailsModels.FetchNames.ViewModel3(displayedImages: displayedImages)
+        DispatchQueue.main.async {
+            self.viewController?.displayFetchedImages(viewModel: viewModel)
         }
     }
 }

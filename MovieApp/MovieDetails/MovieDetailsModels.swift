@@ -23,6 +23,10 @@ enum MovieDetailsModels {
             var details: MoviesResponse.MovieDetail.Movie
         }
         
+        struct Response3 {
+            var images: [MoviesResponse.MovieImages.Images]
+        }
+        
         struct ViewModel {
             var displayedCast: [DisplayedCast]
             
@@ -46,6 +50,13 @@ enum MovieDetailsModels {
             }
         }
         
+        struct ViewModel3 {
+            var displayedImages: [DisplayedImages]
+            
+            struct DisplayedImages {
+                let images: String
+            }
+        }
     }
     
 }

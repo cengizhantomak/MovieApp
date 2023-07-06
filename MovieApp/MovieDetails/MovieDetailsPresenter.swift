@@ -8,38 +8,26 @@
 import Foundation
 
 protocol MovieDetailsPresentationLogic: AnyObject {
-    func presentNames(response: MovieDetailsModels.FetchNames.Response)
-    func presentDetails(response: MovieDetailsModels.FetchNames.Response2)
-    func presentImages(response: MovieDetailsModels.FetchNames.Response3)
+    func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
+    func presentCast(names: [MoviesResponse.MovieCredits.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]
+    func presentImages(images: [MoviesResponse.MovieImages.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]
+    func presentAllCast()
+    func presentAllPhotos()
 }
 
 final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     
     weak var viewController: MovieDetailsDisplayLogic?
     
-    func presentNames(response: MovieDetailsModels.FetchNames.Response) {
-        let displayedCast = response.names.map {
-            MovieDetailsModels.FetchNames.ViewModel.DisplayedCast(
-                name: $0.name ?? "",
-                character: $0.character ?? "",
-                profilePath: $0.profilePhoto ?? ""
-            )
-        }
-        let viewModel = MovieDetailsModels.FetchNames.ViewModel(displayedCast: displayedCast)
-        
-        DispatchQueue.main.async {
-            self.viewController?.displayFetchedNames(viewModel: viewModel)
-        }
-    }
-    
-    func presentDetails(response: MovieDetailsModels.FetchNames.Response2) {
-        let displayedDetails = MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails(
+    func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response) {
+        let displayedDetails = MovieDetailsModels.FetchMovieDetails.ViewModel(
+            displayedCast: presentCast(names: response.cast), displayedImages: presentImages(images: response.images),
             title: response.details.title,
             overview: response.details.overview,
             genres: response.details.genres.map { $0.genresName }.joined(separator: ", "),
             runtime: response.details.runtime,
             vote: response.details.vote,
-            posterPath: response.details.posterPath
+            posterPhotoPath: response.details.posterPath
         )
         
         DispatchQueue.main.async {
@@ -47,15 +35,29 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         }
     }
     
-    func presentImages(response: MovieDetailsModels.FetchNames.Response3) {
-        let displayedImages = response.images.map {
-            MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages(
+    func presentCast(names: [MoviesResponse.MovieCredits.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] {
+        return names.map {
+            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast(
+                name: $0.name ?? "",
+                character: $0.character ?? "",
+                profilePhotoPath: $0.profilePhoto ?? ""
+            )
+        }
+    }
+    
+    func presentImages(images: [MoviesResponse.MovieImages.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] {
+        return images.map {
+            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages(
                 images: $0.images
             )
         }
-        let viewModel = MovieDetailsModels.FetchNames.ViewModel3(displayedImages: displayedImages)
-        DispatchQueue.main.async {
-            self.viewController?.displayFetchedImages(viewModel: viewModel)
-        }
+    }
+    
+    func presentAllCast() {
+        viewController?.displayCast()
+    }
+    
+    func presentAllPhotos() {
+        viewController?.displayPhotos()
     }
 }

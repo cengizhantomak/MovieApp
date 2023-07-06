@@ -1,5 +1,5 @@
 //
-//  CollectionReusableView.swift
+//  MovieCollectionReusableView.swift
 //  MovieApp
 //
 //  Created by Kerem Tuna Tomak on 4.07.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionReusableView: UICollectionReusableView {
+class MovieCollectionReusableView: UICollectionReusableView {
     
     var title = UILabel()
     var image = UIImageView()

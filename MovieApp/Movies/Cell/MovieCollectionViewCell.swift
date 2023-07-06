@@ -16,7 +16,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,14 +35,21 @@ class MovieCollectionViewCell: UICollectionViewCell {
         let fullStarImage = UIImage(systemName: "star.fill")
         let halfStarImage = UIImage(systemName: "star.leadinghalf.filled")
         let emptyStarImage = UIImage(systemName: "star")
+        
+        starImages.reserveCapacity(5)
+        
         for i in 0..<5 {
+            let starImage: UIImage
+            
             if i < fullStars {
-                starImages.append(fullStarImage!)
+                starImage = fullStarImage!
             } else if i == fullStars && halfStar >= 0.5 {
-                starImages.append(halfStarImage!)
+                starImage = halfStarImage!
             } else {
-                starImages.append(emptyStarImage!)
+                starImage = emptyStarImage!
             }
+            
+            starImages.append(starImage)
         }
         
         starRatingStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -53,10 +60,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
             starRatingStackView.addArrangedSubview(imageView)
             starRatingStackView.spacing = 2
             imageView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    imageView.heightAnchor.constraint(equalToConstant: 14),
-                    imageView.widthAnchor.constraint(equalToConstant: 14)
-                ])
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: 14),
+                imageView.widthAnchor.constraint(equalToConstant: 14)
+            ])
         }
         
         titleLabel.text = viewModel.title
@@ -67,5 +74,4 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func setCell2(viewModel: MoviesModels.FetchMovies.ViewModel2.DisplayedDetails) {
         durationLabel.text = "\(viewModel.runtime)"
     }
-
 }

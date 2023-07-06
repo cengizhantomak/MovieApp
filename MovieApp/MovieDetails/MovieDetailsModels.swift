@@ -9,54 +9,38 @@ import Foundation
 
 enum MovieDetailsModels {
     
-    enum FetchNames {
+    enum FetchMovieDetails {
         
         struct Request {
             
         }
         
         struct Response {
-            var names: [MoviesResponse.MovieCredits.Cast]
-        }
-        
-        struct Response2 {
+            var cast: [MoviesResponse.MovieCredits.Cast]
             var details: MoviesResponse.MovieDetail.Movie
-        }
-        
-        struct Response3 {
             var images: [MoviesResponse.MovieImages.Images]
+            
         }
         
         struct ViewModel {
             var displayedCast: [DisplayedCast]
+            var displayedImages: [DisplayedImages]
+            let title: String
+            let overview: String
+            let genres: String
+            let runtime: Int
+            let vote: Float
+            let posterPhotoPath: String
             
             struct DisplayedCast {
                 let name: String
                 let character: String
-                let profilePath: String
+                let profilePhotoPath: String
             }
-        }
-        
-        struct ViewModel2 {
-            var displayedDetails: DisplayedDetails
-            
-            struct DisplayedDetails {
-                let title: String
-                let overview: String
-                let genres: String
-                let runtime: Int
-                let vote: Float
-                let posterPath: String
-            }
-        }
-        
-        struct ViewModel3 {
-            var displayedImages: [DisplayedImages]
             
             struct DisplayedImages {
                 let images: String
             }
         }
     }
-    
 }

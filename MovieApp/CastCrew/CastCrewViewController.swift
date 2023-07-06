@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CastCrewDisplayLogic: AnyObject {
-    func displayAllCast(viewModel: AllCastModels.FetchAllCast.ViewModel)
+    func displayGetCast(viewModel: CastCrewModels.FetchCastCrew.ViewModel)
 }
 
 final class CastCrewViewController: UIViewController {
@@ -24,7 +24,7 @@ final class CastCrewViewController: UIViewController {
     
     // MARK: - Property
     
-    var allCast: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
+    var displayedCast: [CastCrewModels.FetchCastCrew.ViewModel.DisplayedCast] = []
     
     // MARK: - Object lifecycle
     
@@ -43,6 +43,7 @@ final class CastCrewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Cast & Crew"
+        interactor?.getCast()
         setupTableView()
     }
     
@@ -64,12 +65,13 @@ final class CastCrewViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "MovieDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieDetailsTableViewCell")
+        tableView.register(UINib(nibName: "CastCrewTableViewCell", bundle: .main), forCellReuseIdentifier: "CastCrewTableViewCell")
     }
 }
 
 extension CastCrewViewController: CastCrewDisplayLogic {
-    func displayAllCast(viewModel: AllCastModels.FetchAllCast.ViewModel) {
+    func displayGetCast(viewModel: CastCrewModels.FetchCastCrew.ViewModel) {
+        displayedCast = viewModel.displayedCast
         tableView.reloadData()
     }
 }
@@ -78,15 +80,15 @@ extension CastCrewViewController: CastCrewDisplayLogic {
 
 extension CastCrewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allCast.count
+        return displayedCast.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailsTableViewCell", for: indexPath) as? MovieDetailsTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CastCrewTableViewCell", for: indexPath) as? CastCrewTableViewCell
         else {
             return UITableViewCell()
         }
-        let model = allCast[indexPath.row]
+        let model = displayedCast[indexPath.row]
         cell.setCell(viewModel: model)
         return cell
     }

@@ -8,9 +8,9 @@
 import UIKit
 
 protocol MovieDetailsDisplayLogic: AnyObject {
-    func displayFetchedNames(viewModel: MovieDetailsModels.FetchNames.ViewModel)
-    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails)
-    func displayFetchedImages(viewModel: MovieDetailsModels.FetchNames.ViewModel3)
+    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
+    func displayCast()
+    func displayPhotos()
 }
 
 final class MovieDetailsViewController: UIViewController {
@@ -22,7 +22,7 @@ final class MovieDetailsViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var detailsTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
@@ -36,9 +36,7 @@ final class MovieDetailsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var displayedNames: [MovieDetailsModels.FetchNames.ViewModel.DisplayedCast] = []
-    var displayedDetails: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails?
-    var displayedImages: [MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages] = []
+    var displayedDetails: MovieDetailsModels.FetchMovieDetails.ViewModel?
     
     enum Section: Int, CaseIterable {
         case Synopsis
@@ -75,7 +73,7 @@ final class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableCollectionView()
-        interactor?.fetchMovieNames()
+        interactor?.fetchMovieDetails()
     }
     
     // MARK: - Setup
@@ -94,36 +92,33 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     private func setupTableCollectionView() {
-        detailsTableView.delegate = self
-        detailsTableView.dataSource = self
-        detailsTableView.tableHeaderView = headerView
-        detailsTableView.tableFooterView = footerView
-        detailsTableView.register(UINib(nibName: "MovieDetailsTableViewCell", bundle: .main), forCellReuseIdentifier: "MovieDetailsTableViewCell")
-        detailsTableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
-        detailsTableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableHeaderView = headerView
+        tableView.tableFooterView = footerView
+        tableView.register(UINib(nibName: "CastTableViewCell", bundle: .main), forCellReuseIdentifier: "CastTableViewCell")
+        tableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
+        tableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "CollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "CollectionViewCell")
+        collectionView.register(.init(nibName: "PhotosSectionCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PhotosSectionCollectionViewCell")
+    }
+    
+    private func formatRuntime(_ totalMinutes: Int) -> String {
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        return "\(hours)hr \(minutes)m"
     }
 }
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
-    func displayFetchedNames(viewModel: MovieDetailsModels.FetchNames.ViewModel) {
-        displayedNames = viewModel.displayedCast
-        detailsTableView.reloadData()
-    }
-    
-    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchNames.ViewModel2.DisplayedDetails) {
+    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         displayedDetails = viewModel
         
         titleLabel.text = viewModel.title
         
-        let totalMinutes = viewModel.runtime
-        let hours = totalMinutes / 60
-        let minutes = totalMinutes % 60
-        let formattedString = "\(hours)hr \(minutes)m"
-        durationLabel.text = formattedString
+        durationLabel.text = formatRuntime(viewModel.runtime)
         
         genreLabel.text = viewModel.genres
         
@@ -137,15 +132,22 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         let fullStarImage = UIImage(systemName: "star.fill")
         let halfStarImage = UIImage(systemName: "star.leadinghalf.filled")
         let emptyStarImage = UIImage(systemName: "star")
+        
+        starImages.reserveCapacity(5)
+        
         for i in 0..<5 {
-            if i < fullStars {
-                starImages.append(fullStarImage!)
-            } else if i == fullStars && halfStar >= 0.5 {
-                starImages.append(halfStarImage!)
-            } else {
-                starImages.append(emptyStarImage!)
+                let starImage: UIImage
+                
+                if i < fullStars {
+                    starImage = fullStarImage!
+                } else if i == fullStars && halfStar >= 0.5 {
+                    starImage = halfStarImage!
+                } else {
+                    starImage = emptyStarImage!
+                }
+            
+                starImages.append(starImage)
             }
-        }
         
         starRatingStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
@@ -155,24 +157,29 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
             starRatingStackView.addArrangedSubview(imageView)
         }
         
-        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
+        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPhotoPath) {
             posterImageView.load(url: posterUrl)
             backgroundImageView.load(url: posterUrl)
-            //            backgroundImageView.addBlurEffect()
-            //            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
-            //                backgroundImageView.image = blurredImage
-            //            }
+//            backgroundImageView.addBlurEffect()
+//            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
+//                backgroundImageView.image = blurredImage
+//            }
         }
-        detailsTableView.reloadData()
+        
+        tableView.reloadData()
+        collectionView.reloadData()
     }
     
-    func displayFetchedImages(viewModel: MovieDetailsModels.FetchNames.ViewModel3) {
-        displayedImages = viewModel.displayedImages
-        collectionView.reloadData()
+    func displayCast() {
+        router?.routeToCastCrew()
+    }
+    
+    func displayPhotos() {
+        router?.routeToPhotos()
     }
 }
 
-// MARK: - UITableView
+// MARK: - TableView
 
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -186,7 +193,7 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         case .Synopsis:
             return displayedDetails != nil ? 1 : 0
         case .Cast:
-            return min(displayedNames.count, 4)
+            return min(displayedDetails?.displayedCast.count ?? .zero, 4)
         case .Photos:
             return 0
         }
@@ -201,8 +208,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             cell?.setCell(viewModel: displayedDetails?.overview ?? "")
             return cell ?? UITableViewCell()
         case .Cast:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MovieDetailsTableViewCell", for: indexPath) as? MovieDetailsTableViewCell
-            let model = displayedNames[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath) as? CastTableViewCell
+            guard let model = displayedDetails?.displayedCast[indexPath.row] else { return UITableViewCell() }
             cell?.setCell(viewModel: model)
             return cell ?? UITableViewCell()
         case .Photos:
@@ -215,45 +222,34 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let section = Section(rawValue: section) else { return UIView() }
-//
-//        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-//        sectionHeader?.title.text = section.title
-//        sectionHeader?.button.isHidden = section == .Synopsis
-//        sectionHeader?.button.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
-//        return sectionHeader
-        
         guard let section = Section(rawValue: section) else { return UIView() }
+
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+        sectionHeader?.title.text = section.title
+
         switch section {
         case .Synopsis:
-            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-            sectionHeader?.title.text = section.title
             sectionHeader?.button.isHidden = true
-            return sectionHeader
-        case .Cast:
-            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-            sectionHeader?.title.text = section.title
+        case .Cast, .Photos:
             sectionHeader?.button.isHidden = false
-            sectionHeader?.button.addTarget(self, action: #selector(selectButtonCast), for: .touchUpInside)
-            return sectionHeader
-        case .Photos:
-            let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
-            sectionHeader?.title.text = section.title
-            sectionHeader?.button.isHidden = false
-            sectionHeader?.button.addTarget(self, action: #selector(selectButtonPhotos), for: .touchUpInside)
-            return sectionHeader
+            if section == .Cast {
+                sectionHeader?.button.addTarget(self, action: #selector(viewAllCastButton), for: .touchUpInside)
+            } else if section == .Photos {
+                sectionHeader?.button.addTarget(self, action: #selector(viewAllPhotosButton), for: .touchUpInside)
+            }
         }
+
+        return sectionHeader
     }
     
-    @objc func selectButtonCast() {
-        guard let router = router else { return }
-        router.routeToCastCrew()
+    @objc func viewAllCastButton() {
+        guard let displayedDetails else { return }
+        interactor?.viewAllCast(with: displayedDetails.displayedCast)
     }
     
-    @objc func selectButtonPhotos() {
-        print("tapped")
-        guard let router = router else { return }
-        router.routeToPhotos()
+    @objc func viewAllPhotosButton() {
+        guard let displayedDetails else { return }
+        interactor?.viewAllPhotos(with: displayedDetails.displayedImages)
     }
 }
 
@@ -261,17 +257,19 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
 extension MovieDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedImages.count
+        return displayedDetails?.displayedImages.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosSectionCollectionViewCell", for: indexPath) as? PhotosSectionCollectionViewCell else { return UICollectionViewCell() }
         
-        let model = displayedImages[indexPath.item]
+        guard let model = displayedDetails?.displayedImages[indexPath.item] else { return cell }
         cell.setCell(viewModel: model)
         return cell
     }
 }
+
+// MARK: - CollectionViewDelegateFlowLayout
 
 extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -279,7 +277,7 @@ extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

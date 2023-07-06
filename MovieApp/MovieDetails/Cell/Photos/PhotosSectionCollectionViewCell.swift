@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  PhotosSectionCollectionViewCell.swift
 //  MovieApp
 //
 //  Created by Cengizhan Tomak on 4.07.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class PhotosSectionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var movieImage: UIImageView!
     
@@ -16,11 +16,10 @@ class CollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setCell(viewModel: MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages) {
+    func setCell(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages) {
         
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.images) {
             movieImage.load(url: profileUrl)
         }
     }
-
 }

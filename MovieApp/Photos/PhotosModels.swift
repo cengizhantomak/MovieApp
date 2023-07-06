@@ -7,24 +7,24 @@
 
 import Foundation
 
-// swiftlint:disable nesting
-enum Photos {
+enum PhotosModels {
     
-    enum Case {
+    enum FethcPhotos {
         
         struct Request {
             
         }
         
         struct Response {
-            
+            var photos: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]
         }
         
         struct ViewModel {
+            var displayedImages: [DisplayedImages]
             
+            struct DisplayedImages {
+                let images: String
+            }
         }
-        
     }
-    
 }
-// swiftlint:enable nesting

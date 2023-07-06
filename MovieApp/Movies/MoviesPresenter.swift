@@ -9,7 +9,8 @@ import Foundation
 
 protocol MoviesPresentationLogic: AnyObject {
     func presentMovies(response: MoviesModels.FetchMovies.Response)
-//    func presentDetails(response: MovieDetailsModels.FetchNames.Response2)
+    func presentMovieDetail()
+//    func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response2)
 }
 
 final class MoviesPresenter: MoviesPresentationLogic {
@@ -37,7 +38,11 @@ final class MoviesPresenter: MoviesPresentationLogic {
         }
     }
     
-//    func presentDetails(response: MovieDetailsModels.FetchNames.Response2) {
+    func presentMovieDetail() {
+        viewController?.displayMovieDetails()
+    }
+    
+//    func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response2) {
 //        let displayedDetails = MoviesModels.FetchMovies.ViewModel2.DisplayedDetails(
 //            runtime: response.details.runtime
 //        )

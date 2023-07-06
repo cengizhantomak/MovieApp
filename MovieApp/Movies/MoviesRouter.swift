@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MoviesRoutingLogic: AnyObject {
-    func routeToMovieDetails(with movieID: Int)
+    func routeToMovieDetails()
 }
 
 protocol MoviesDataPassing: AnyObject {
@@ -21,14 +21,14 @@ final class MoviesRouter: MoviesRoutingLogic, MoviesDataPassing {
     weak var viewController: MoviesViewController?
     var dataStore: MoviesDataStore?
     
-    func routeToMovieDetails(with movieID: Int) {
+    func routeToMovieDetails() {
         let storyboard = UIStoryboard(name: "MovieDetails", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController,
-              let sourceVC = viewController else { return }
+        let dataStore else { return }
         
-        destinationVC.router?.dataStore?.selectedMovieID = movieID
+        destinationVC.router?.dataStore?.selectedMovieID = dataStore.selectedMovieId
         destinationVC.loadViewIfNeeded()
-        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }

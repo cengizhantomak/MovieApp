@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 protocol MovieDetailsRoutingLogic: AnyObject {
-    func routeToCastCrew()
     func routeToPhotos()
+    func routeToCastCrew()
 }
 
 protocol MovieDetailsDataPassing: AnyObject {
@@ -26,25 +26,25 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         let storyboard = UIStoryboard(name: "CastCrew", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CastCrewViewController") as? CastCrewViewController,
-              let sourceVC = viewController else {
+        let dataStore else {
             return
         }
         
-        destinationVC.allCast = sourceVC.displayedNames
+        destinationVC.router?.dataStore?.allCast = dataStore.allCast
         destinationVC.loadViewIfNeeded()
-        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToPhotos() {
         let storyboard = UIStoryboard(name: "Photos", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController,
-              let sourceVC = viewController else {
+              let dataStore else {
             return
         }
         
-        destinationVC.displayedPhotos = sourceVC.displayedImages
+        destinationVC.router?.dataStore?.allPhotos = dataStore.allPhotos
         destinationVC.loadViewIfNeeded()
-        sourceVC.navigationController?.pushViewController(destinationVC, animated: true)
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }

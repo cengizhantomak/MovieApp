@@ -30,10 +30,10 @@ class SectionHeader: UITableViewHeaderFooterView {
         contentView.addSubview(button)
         
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 0),
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            button.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: 0),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             button.widthAnchor.constraint(equalToConstant: 54),
             button.heightAnchor.constraint(equalToConstant: 18)

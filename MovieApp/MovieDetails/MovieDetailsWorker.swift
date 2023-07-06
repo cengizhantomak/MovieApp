@@ -25,5 +25,4 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
     func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieImages.Backdrops, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.images(id: id), responseModel: MoviesResponse.MovieImages.Backdrops.self, completion: completion)
     }
-    
 }

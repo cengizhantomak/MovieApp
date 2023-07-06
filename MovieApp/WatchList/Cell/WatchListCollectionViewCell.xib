@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WatchListCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="380"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="334" height="380"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vgw-tq-ugU">
+                        <rect key="frame" x="0.0" y="0.0" width="334" height="303"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZi-vu-rV3">
+                        <rect key="frame" x="0.0" y="340" width="31" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Xx5-OE-k4j"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                        <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cK2-YQ-7fD">
+                        <rect key="frame" x="0.0" y="319" width="78" height="14"/>
+                        <color key="tintColor" red="0.97254901959999995" green="0.76862745099999996" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="aS1-AQ-OCD"/>
+                            <constraint firstAttribute="height" constant="14" id="xAy-KN-ut2"/>
+                        </constraints>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="releaseDate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu6-66-sFa">
+                        <rect key="frame" x="0.0" y="362" width="69.333333333333329" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="dmt-Zz-yvB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="wu6-66-sFa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1hd-iT-R3j"/>
+                <constraint firstItem="qZi-vu-rV3" firstAttribute="top" secondItem="cK2-YQ-7fD" secondAttribute="bottom" constant="7" id="FY5-Gl-MU3"/>
+                <constraint firstItem="Vgw-tq-ugU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="O5H-4j-4u3"/>
+                <constraint firstItem="cK2-YQ-7fD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Tz6-TH-u39"/>
+                <constraint firstItem="wu6-66-sFa" firstAttribute="top" secondItem="qZi-vu-rV3" secondAttribute="bottom" constant="4" id="Vm3-qF-fqa"/>
+                <constraint firstAttribute="bottom" secondItem="wu6-66-sFa" secondAttribute="bottom" id="WI7-pg-iiQ"/>
+                <constraint firstAttribute="trailing" secondItem="Vgw-tq-ugU" secondAttribute="trailing" id="aev-H8-3aj"/>
+                <constraint firstItem="cK2-YQ-7fD" firstAttribute="top" secondItem="Vgw-tq-ugU" secondAttribute="bottom" constant="16" id="c5R-gz-chc"/>
+                <constraint firstItem="Vgw-tq-ugU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="i1t-Dk-SOU"/>
+                <constraint firstItem="qZi-vu-rV3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sAa-VD-5FX"/>
+            </constraints>
+            <size key="customSize" width="334" height="380"/>
+            <connections>
+                <outlet property="posterImage" destination="Vgw-tq-ugU" id="VaS-cp-JUh"/>
+                <outlet property="releaseDateLabel" destination="wu6-66-sFa" id="mjv-dl-5GU"/>
+                <outlet property="starRatingStackView" destination="cK2-YQ-7fD" id="5Ip-fx-p9h"/>
+                <outlet property="titleLabel" destination="qZi-vu-rV3" id="41M-aB-fp9"/>
+            </connections>
+            <point key="canvasLocation" x="328.24427480916029" y="104.92957746478874"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -99,8 +99,9 @@ final class PhotosViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
 }
+
+// MARK: - DisplayLogic
 
 extension PhotosViewController: PhotosDisplayLogic {
     func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel) {

@@ -11,6 +11,7 @@ import UIKit
 protocol MovieDetailsRoutingLogic: AnyObject {
     func routeToPhotos()
     func routeToCastCrew()
+    func routeToWatchList()
 }
 
 protocol MovieDetailsDataPassing: AnyObject {
@@ -44,6 +45,17 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         }
         
         destinationVC.router?.dataStore?.allPhotos = dataStore.allPhotos
+        destinationVC.loadViewIfNeeded()
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToWatchList() {
+        let storyboard = UIStoryboard(name: "Watchlist", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "WatchlistViewController") as? WatchlistViewController else {
+            return
+        }
+        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

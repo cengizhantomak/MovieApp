@@ -69,6 +69,8 @@ final class CastCrewViewController: UIViewController {
     }
 }
 
+// MARK: - DisplayLogic
+
 extension CastCrewViewController: CastCrewDisplayLogic {
     func displayGetCast(viewModel: CastCrewModels.FetchCastCrew.ViewModel) {
         displayedCast = viewModel.displayedCast

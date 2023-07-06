@@ -1,23 +1,23 @@
 //
-//  MoviesViewController.swift
+//  WatchlistViewController.swift
 //  MovieApp
 //
-//  Created by Cengizhan Tomak on 26.06.2023.
+//  Created by Cengizhan Tomak on 6.07.2023.
 //
 
 import UIKit
 
-protocol MoviesDisplayLogic: AnyObject {
-    func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel)
-    func displayMovieDetails()
+protocol WatchlistDisplayLogic: AnyObject {
+    func displayFetchedWatchList(viewModel: WatchlistModels.FetchWatchList.ViewModel)
+    func displayWatchListMovieDetails()
 }
 
-final class MoviesViewController: UIViewController {
+final class WatchlistViewController: UIViewController {
     
     // MARK: - VIP Properties
     
-    var interactor: MoviesBusinessLogic?
-    var router: (MoviesRoutingLogic & MoviesDataPassing)?
+    var interactor: WatchlistBusinessLogic?
+    var router: (WatchlistRoutingLogic & WatchlistDataPassing)?
     
     // MARK: - Outlet
     
@@ -25,7 +25,7 @@ final class MoviesViewController: UIViewController {
     
     // MARK: - Property
     
-    var displayedMovies: [MoviesModels.FetchMovies.ViewModel.DisplayedMovie] = []
+    var displayedWatchList: [WatchlistModels.FetchWatchList.ViewModel.DisplayedWatchList] = []
     
     // MARK: - Object lifecycle
     
@@ -44,7 +44,7 @@ final class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor?.fetchNowPlaying()
+        interactor?.fetchWatchList()
         setupCollectionView()
     }
     
@@ -52,9 +52,9 @@ final class MoviesViewController: UIViewController {
     
     private func setup() {
         let viewController = self
-        let interactor = MoviesInteractor()
-        let presenter = MoviesPresenter()
-        let router = MoviesRouter()
+        let interactor = WatchlistInteractor()
+        let presenter = WatchlistPresenter()
+        let router = WatchlistRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -66,64 +66,56 @@ final class MoviesViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MovieCollectionViewCell")
-        collectionView.register(MovieCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MovieCollectionReusableView")
+        collectionView.register(.init(nibName: "WatchListCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "WatchListCollectionViewCell")
     }
 }
 
 // MARK: - DisplayLogic
 
-extension MoviesViewController: MoviesDisplayLogic {
-    func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel) {
-        displayedMovies = viewModel.displayedMovies
+extension WatchlistViewController: WatchlistDisplayLogic {
+    func displayFetchedWatchList(viewModel: WatchlistModels.FetchWatchList.ViewModel) {
+        displayedWatchList = viewModel.displayedWatchList
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
     
-    func displayMovieDetails() {
+    func displayWatchListMovieDetails() {
         router?.routeToMovieDetails()
     }
 }
 
 // MARK: - CollecionView
 
-extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WatchlistViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedMovies.count
+        return displayedWatchList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WatchListCollectionViewCell", for: indexPath) as? WatchListCollectionViewCell else { return UICollectionViewCell() }
         
-        let model = displayedMovies[indexPath.item]
+        let model = displayedWatchList[indexPath.item]
         cell.setCell(viewModel: model)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        interactor?.selectMovieDetail(index: indexPath.item)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionReusableView", for: indexPath) as? MovieCollectionReusableView else { return UICollectionReusableView() }
-        
-        return headerView
+        interactor?.selectWatchListMovieDetail(index: indexPath.item)
     }
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
-extension MoviesViewController: UICollectionViewDelegateFlowLayout {
+extension WatchlistViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width - 40) / 2, height: (collectionView.frame.height + 5) / 2)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(27)
     }

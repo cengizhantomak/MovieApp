@@ -110,7 +110,14 @@ final class MovieDetailsViewController: UIViewController {
         let minutes = totalMinutes % 60
         return "\(hours)hr \(minutes)m"
     }
+    
+    
+    @IBAction func addWatchlistButton(_ sender: Any) {
+        router?.routeToWatchList()
+    }
 }
+
+// MARK: - DisplayLogic
 
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {

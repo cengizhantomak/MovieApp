@@ -1,13 +1,13 @@
 //
-//  MovieCollectionViewCell.swift
+//  WatchListCollectionViewCell.swift
 //  MovieApp
 //
-//  Created by Cengizhan Tomak on 3.07.2023.
+//  Created by Cengizhan Tomak on 6.07.2023.
 //
 
 import UIKit
 
-class MovieCollectionViewCell: UICollectionViewCell {
+class WatchListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var starRatingStackView: UIStackView!
@@ -19,7 +19,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setCell(viewModel: MoviesModels.FetchMovies.ViewModel.DisplayedMovie) {
+    func setCell(viewModel: WatchlistModels.FetchWatchList.ViewModel.DisplayedWatchList) {
         if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
             posterImage.load(url: posterUrl)
         }
@@ -66,10 +66,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         titleLabel.text = viewModel.title
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // Gelen tarih formatı
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: viewModel.releaseDate)
 
-        dateFormatter.dateFormat = "dd.MM.yyyy" // Yeni tarih formatı
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         let formattedDate = dateFormatter.string(from: date!)
 
         releaseDateLabel.text = formattedDate

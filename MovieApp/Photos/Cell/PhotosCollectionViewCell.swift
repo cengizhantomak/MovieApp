@@ -16,11 +16,10 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setCell(viewModel: MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages) {
+    func setCell(viewModel: PhotosModels.FethcPhotos.ViewModel.DisplayedImages) {
         
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.images) {
             photosImage.load(url: profileUrl)
         }
     }
-
 }

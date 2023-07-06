@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZd-wP-4Ta">
-                        <rect key="frame" x="20" y="9" width="340" height="107"/>
+                        <rect key="frame" x="15" y="9" width="345" height="107"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                         <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="CZd-wP-4Ta" secondAttribute="trailing" constant="15" id="G7q-78-KBZ"/>
                     <constraint firstItem="CZd-wP-4Ta" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="RAl-fQ-KQH"/>
-                    <constraint firstItem="CZd-wP-4Ta" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hDW-eG-rYq"/>
+                    <constraint firstItem="CZd-wP-4Ta" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hDW-eG-rYq"/>
                     <constraint firstAttribute="bottom" secondItem="CZd-wP-4Ta" secondAttribute="bottom" constant="9" id="yda-rI-EBn"/>
                 </constraints>
             </tableViewCellContentView>

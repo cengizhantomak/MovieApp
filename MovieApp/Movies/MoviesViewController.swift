@@ -9,6 +9,7 @@ import UIKit
 
 protocol MoviesDisplayLogic: AnyObject {
     func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel)
+    func displayMovieDetails()
 }
 
 final class MoviesViewController: UIViewController {
@@ -67,37 +68,18 @@ final class MoviesViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(.init(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MovieCollectionViewCell")
-        collectionView.register(CollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionReusableView")
-//        collectionView.collectionViewLayout = getCompotionalLayout()
+        collectionView.register(MovieCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MovieCollectionReusableView")
     }
-    
-    // fractional -> kendini contain eden- parent view a oranı
-    // estimated -> bir değer veriyoruz ama yapı kendisi oranını ayarlıyor
-    // absolute -> sabit değer
-    
-//    private func getCompotionalLayout() -> UICollectionViewLayout {
-//
-//        let itemSize = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(0.5),
-//            heightDimension: .fractionalHeight(1.0)
-//        )
-//
-//        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//        let groupLayout = NSCollectionLayoutSize(
-//            widthDimension: .fractionalWidth(1.0),
-//            heightDimension: .fractionalHeight(0.5)
-//        )
-//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayout, subitems: [item])
-//        let section = NSCollectionLayoutSection(group: group)
-//        let layout = UICollectionViewCompositionalLayout(section: section)
-//        return layout
-//    }
 }
 
 extension MoviesViewController: MoviesDisplayLogic {
     func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel) {
         displayedMovies = viewModel.displayedMovies
         collectionView.reloadData()
+    }
+    
+    func displayMovieDetails() {
+        router?.routeToMovieDetails()
     }
 }
 
@@ -117,23 +99,25 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovieId = displayedMovies[indexPath.item].id
-        router?.routeToMovieDetails(with: selectedMovieId)
+        
+        interactor?.selectMovieDetail(index: indexPath.item) //2. yöntem
+//        let selectedMovieId = displayedMovies[indexPath.item].id
+//        router?.routeToMovieDetails(with: selectedMovieId)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionReusableView", for: indexPath) as? CollectionReusableView else { return UICollectionReusableView() }
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionReusableView", for: indexPath) as? MovieCollectionReusableView else { return UICollectionReusableView() }
         
         return headerView
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - CollectionViewDelegateFlowLayout
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width - 40) / 2, height: (collectionView.frame.height + 9) / 2)
+        return CGSize(width: (collectionView.frame.width - 40) / 2, height: (collectionView.frame.height + 5) / 2)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -141,7 +125,7 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return CGFloat(5)
+        return CGFloat(27)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

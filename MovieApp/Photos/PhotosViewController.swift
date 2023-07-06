@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PhotosDisplayLogic: AnyObject {
-    
+    func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel)
 }
 
 final class PhotosViewController: UIViewController {
@@ -22,7 +22,7 @@ final class PhotosViewController: UIViewController {
     
     // MARK: - Properties
     
-    var displayedPhotos: [MovieDetailsModels.FetchNames.ViewModel3.DisplayedImages] = []
+    var displayedPhotos: [PhotosModels.FethcPhotos.ViewModel.DisplayedImages] = []
     
     // MARK: - Object lifecycle
     
@@ -42,10 +42,11 @@ final class PhotosViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Photos"
+        interactor?.getPhotos()
         setupCollectionView()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     private func setup() {
         let viewController = self
@@ -66,6 +67,8 @@ final class PhotosViewController: UIViewController {
         collectionView.register(.init(nibName: "PhotosCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PhotosCollectionViewCell")
         collectionView.collectionViewLayout = getCompotionalLayout()
     }
+    
+    // MARK: - CompotionalLayout
     
     func getCompotionalLayout() -> UICollectionViewLayout {
         
@@ -96,11 +99,14 @@ final class PhotosViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-
+    
 }
 
 extension PhotosViewController: PhotosDisplayLogic {
-    
+    func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel) {
+        displayedPhotos = viewModel.displayedImages
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - CollectionView

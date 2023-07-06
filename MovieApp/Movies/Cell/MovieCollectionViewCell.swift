@@ -66,10 +66,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         titleLabel.text = viewModel.title
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" // Gelen tarih formatı
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: viewModel.releaseDate)
 
-        dateFormatter.dateFormat = "dd.MM.yyyy" // Yeni tarih formatı
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         let formattedDate = dateFormatter.string(from: date!)
 
         releaseDateLabel.text = formattedDate

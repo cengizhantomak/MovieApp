@@ -20,6 +20,15 @@
 		47396F172A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47396F152A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib */; };
 		474E4C3D2A4B089600697B7D /* SynopsisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */; };
 		474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */; };
+		476DBC712A57160900539FE3 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC6A2A57160900539FE3 /* Watchlist.storyboard */; };
+		476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */; };
+		476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */; };
+		476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */; };
+		476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6E2A57160900539FE3 /* WatchlistModels.swift */; };
+		476DBC762A57160900539FE3 /* WatchlistWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6F2A57160900539FE3 /* WatchlistWorker.swift */; };
+		476DBC772A57160900539FE3 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC702A57160900539FE3 /* WatchlistRouter.swift */; };
+		476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC792A572F5A00539FE3 /* WatchListCollectionViewCell.swift */; };
+		476DBC7C2A572F5A00539FE3 /* WatchListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC7A2A572F5A00539FE3 /* WatchListCollectionViewCell.xib */; };
 		47923F082A5206200074CA99 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47923F072A5206200074CA99 /* UIImage+Extensions.swift */; };
 		47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */; };
 		47959E3A2A56174D00CD5701 /* CastCrewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */; };
@@ -97,6 +106,15 @@
 		47396F152A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosSectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynopsisTableViewCell.swift; sourceTree = "<group>"; };
 		474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynopsisTableViewCell.xib; sourceTree = "<group>"; };
+		476DBC6A2A57160900539FE3 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
+		476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
+		476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistInteractor.swift; sourceTree = "<group>"; };
+		476DBC6E2A57160900539FE3 /* WatchlistModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistModels.swift; sourceTree = "<group>"; };
+		476DBC6F2A57160900539FE3 /* WatchlistWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistWorker.swift; sourceTree = "<group>"; };
+		476DBC702A57160900539FE3 /* WatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRouter.swift; sourceTree = "<group>"; };
+		476DBC792A572F5A00539FE3 /* WatchListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListCollectionViewCell.swift; sourceTree = "<group>"; };
+		476DBC7A2A572F5A00539FE3 /* WatchListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchListCollectionViewCell.xib; sourceTree = "<group>"; };
 		47923F072A5206200074CA99 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCrewTableViewCell.swift; sourceTree = "<group>"; };
 		47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCrewTableViewCell.xib; sourceTree = "<group>"; };
@@ -231,6 +249,30 @@
 			path = Synopsis;
 			sourceTree = "<group>";
 		};
+		476DBC692A57159400539FE3 /* WatchList */ = {
+			isa = PBXGroup;
+			children = (
+				476DBC782A572F4100539FE3 /* Cell */,
+				476DBC6A2A57160900539FE3 /* Watchlist.storyboard */,
+				476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */,
+				476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */,
+				476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */,
+				476DBC6E2A57160900539FE3 /* WatchlistModels.swift */,
+				476DBC6F2A57160900539FE3 /* WatchlistWorker.swift */,
+				476DBC702A57160900539FE3 /* WatchlistRouter.swift */,
+			);
+			path = WatchList;
+			sourceTree = "<group>";
+		};
+		476DBC782A572F4100539FE3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				476DBC792A572F5A00539FE3 /* WatchListCollectionViewCell.swift */,
+				476DBC7A2A572F5A00539FE3 /* WatchListCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47959E362A56173200CD5701 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,11 +337,12 @@
 			children = (
 				47D8B2E02A4969B6003CFE2D /* Networking */,
 				47A626A62A50538C004A144E /* Extension */,
+				4798A4222A3F5B6C00F0C19D /* Font */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				47D8B2FC2A497888003CFE2D /* MovieDetails */,
 				4722671B2A4EC0E500784729 /* CastCrew */,
 				47E6121F2A5556E300E85A11 /* Photos */,
-				4798A4222A3F5B6C00F0C19D /* Font */,
+				476DBC692A57159400539FE3 /* WatchList */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
 				47D1BC332A3F40BB001A2622 /* Assets.xcassets */,
@@ -467,6 +510,7 @@
 				4798A4462A3F5B8A00F0C19D /* SF-Pro-Text-Medium.otf in Resources */,
 				4798A4372A3F5B8A00F0C19D /* SF-Pro-Text-Black.otf in Resources */,
 				47D1BC342A3F40BB001A2622 /* Assets.xcassets in Resources */,
+				476DBC7C2A572F5A00539FE3 /* WatchListCollectionViewCell.xib in Resources */,
 				4798A4352A3F5B8A00F0C19D /* SF-Pro-Text-Light.otf in Resources */,
 				4798A4442A3F5B8A00F0C19D /* SF-Pro-Text-Regular.otf in Resources */,
 				47D8B30F2A497A28003CFE2D /* CastTableViewCell.xib in Resources */,
@@ -483,6 +527,7 @@
 				47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */,
 				4798A43C2A3F5B8A00F0C19D /* SF-Pro-Text-BlackItalic.otf in Resources */,
 				472267232A4EC13700784729 /* CastCrew.storyboard in Resources */,
+				476DBC712A57160900539FE3 /* Watchlist.storyboard in Resources */,
 				4798A4382A3F5B8A00F0C19D /* SF-Pro-Text-Semibold.otf in Resources */,
 				4798A4412A3F5B8A00F0C19D /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				4798A43A2A3F5B8A00F0C19D /* SF-Pro-Text-Bold.otf in Resources */,
@@ -499,11 +544,16 @@
 			files = (
 				47D8B3082A4978C0003CFE2D /* MovieDetailsModels.swift in Sources */,
 				47E612282A5556FD00E85A11 /* PhotosViewController.swift in Sources */,
+				476DBC772A57160900539FE3 /* WatchlistRouter.swift in Sources */,
 				47D8B3052A4978C0003CFE2D /* MovieDetailsViewController.swift in Sources */,
 				47396F162A54BECF005B8301 /* PhotosSectionCollectionViewCell.swift in Sources */,
 				47D8B2E82A4969E0003CFE2D /* RequestError.swift in Sources */,
 				47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */,
+				476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */,
+				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
+				476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */,
 				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
+				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				47D8B3092A4978C0003CFE2D /* MovieDetailsWorker.swift in Sources */,
 				47D8B2FB2A496C8F003CFE2D /* MoviesResponse.swift in Sources */,
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
@@ -533,11 +583,13 @@
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
 				47D8B30A2A4978C0003CFE2D /* MovieDetailsRouter.swift in Sources */,
 				47396ECE2A548C1D005B8301 /* MovieCollectionReusableView.swift in Sources */,
+				476DBC762A57160900539FE3 /* WatchlistWorker.swift in Sources */,
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
 				47D8B2E72A4969E0003CFE2D /* RequestMethod.swift in Sources */,
 				47D8B2E62A4969E0003CFE2D /* Endpoint.swift in Sources */,
 				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
+				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,

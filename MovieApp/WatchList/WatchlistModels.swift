@@ -1,28 +1,28 @@
 //
-//  MoviesModels.swift
+//  WatchlistModels.swift
 //  MovieApp
 //
-//  Created by Cengizhan Tomak on 26.06.2023.
+//  Created by Cengizhan Tomak on 6.07.2023.
 //
 
 import Foundation
 
-enum MoviesModels {
+enum WatchlistModels {
     
-    enum FetchMovies {
+    enum FetchWatchList {
         
         struct Request {
             
         }
         
         struct Response {
-            var movies: [MoviesResponse.MovieNowPlaying.Movie]
+            var watchList: [MoviesResponse.MovieNowPlaying.Movie]
         }
         
         struct ViewModel {
-            var displayedMovies: [DisplayedMovie]
+            var displayedWatchList: [DisplayedWatchList]
             
-            struct DisplayedMovie {
+            struct DisplayedWatchList {
                 let title: String
                 let releaseDate: String
                 let posterPath: String

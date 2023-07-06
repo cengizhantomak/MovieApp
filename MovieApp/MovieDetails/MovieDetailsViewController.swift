@@ -111,6 +111,11 @@ final class MovieDetailsViewController: UIViewController {
         return "\(hours)hr \(minutes)m"
     }
     
+    // MARK: - Action
+    
+    @IBAction func getTicketButton(_ sender: Any) {
+        router?.routeToGetTicket()
+    }
     
     @IBAction func addWatchlistButton(_ sender: Any) {
         router?.routeToWatchList()
@@ -122,14 +127,15 @@ final class MovieDetailsViewController: UIViewController {
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         displayedDetails = viewModel
+        guard let displayedDetails else { return }
         
-        titleLabel.text = viewModel.title
+        titleLabel.text = displayedDetails.title
         
-        durationLabel.text = formatRuntime(viewModel.runtime)
+        durationLabel.text = formatRuntime(displayedDetails.runtime)
         
-        genreLabel.text = viewModel.genres
+        genreLabel.text = displayedDetails.genres
         
-        let vote = viewModel.vote / 2
+        let vote = displayedDetails.vote / 2
         let formattedVote = String(format: "%.1f", vote) + "/5"
         ratingLabel.text = formattedVote
         
@@ -164,7 +170,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
             starRatingStackView.addArrangedSubview(imageView)
         }
         
-        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPhotoPath) {
+        if let posterUrl = ImageUrlHelper.imageUrl(for: displayedDetails.posterPhotoPath) {
             posterImageView.load(url: posterUrl)
             backgroundImageView.load(url: posterUrl)
 //            backgroundImageView.addBlurEffect()

@@ -137,6 +137,9 @@
                                                     <real key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="getTicketButton:" destination="nxe-uw-h5I" eventType="touchUpInside" id="5Yb-pq-NOU"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VS-sY-GeI">
                                             <rect key="frame" x="15" y="170" width="345" height="48"/>

@@ -74,6 +74,9 @@ final class MovieDetailsViewController: UIViewController {
         
         setupTableCollectionView()
         interactor?.fetchMovieDetails()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddedToWatchlist(_:)), name: .movieAddedToWatchlist, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddToWatchlistFailed(_:)), name: .movieAddToWatchlistFailed, object: nil)
     }
     
     // MARK: - Setup
@@ -119,6 +122,32 @@ final class MovieDetailsViewController: UIViewController {
     
     @IBAction func addWatchlistButton(_ sender: Any) {
         interactor?.postToWatchlist()
+    }
+    
+    @objc func viewAllCastButton() {
+        guard let displayedDetails else { return }
+        interactor?.viewAllCast(with: displayedDetails.displayedCast)
+    }
+    
+    @objc func viewAllPhotosButton() {
+        guard let displayedDetails else { return }
+        interactor?.viewAllPhotos(with: displayedDetails.displayedImages)
+    }
+    
+    @objc func onMovieAddedToWatchlist(_ notification: Notification) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Success", message: "The movie has been successfully added to your watchlist.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func onMovieAddToWatchlistFailed(_ notification: Notification) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: "An error occurred while adding the movie to your watchlist.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -253,16 +282,6 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         }
 
         return sectionHeader
-    }
-    
-    @objc func viewAllCastButton() {
-        guard let displayedDetails else { return }
-        interactor?.viewAllCast(with: displayedDetails.displayedCast)
-    }
-    
-    @objc func viewAllPhotosButton() {
-        guard let displayedDetails else { return }
-        interactor?.viewAllPhotos(with: displayedDetails.displayedImages)
     }
 }
 

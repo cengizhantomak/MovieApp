@@ -80,8 +80,10 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
             switch result {
             case .success(let response):
                 print("Film başarıyla watchlist'e eklendi!: \(response)")
+                NotificationCenter.default.post(name: .movieAddedToWatchlist, object: nil)
             case .failure(let error):
                 print("Watchlist'e film eklenirken hata: \(error.localizedDescription)")
+                NotificationCenter.default.post(name: .movieAddToWatchlistFailed, object: nil)
             }
         }
     }

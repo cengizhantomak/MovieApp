@@ -29,6 +29,15 @@
 		476DBC772A57160900539FE3 /* WatchlistRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC702A57160900539FE3 /* WatchlistRouter.swift */; };
 		476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC792A572F5A00539FE3 /* WatchListCollectionViewCell.swift */; };
 		476DBC7C2A572F5A00539FE3 /* WatchListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC7A2A572F5A00539FE3 /* WatchListCollectionViewCell.xib */; };
+		476DBC942A575BE100539FE3 /* GetTicket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC8D2A575BE100539FE3 /* GetTicket.storyboard */; };
+		476DBC952A575BE100539FE3 /* GetTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC8E2A575BE100539FE3 /* GetTicketViewController.swift */; };
+		476DBC962A575BE100539FE3 /* GetTicketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC8F2A575BE100539FE3 /* GetTicketPresenter.swift */; };
+		476DBC972A575BE100539FE3 /* GetTicketInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC902A575BE100539FE3 /* GetTicketInteractor.swift */; };
+		476DBC982A575BE100539FE3 /* GetTicketModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC912A575BE100539FE3 /* GetTicketModels.swift */; };
+		476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC922A575BE100539FE3 /* GetTicketWorker.swift */; };
+		476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC932A575BE100539FE3 /* GetTicketRouter.swift */; };
+		476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */; };
+		476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */; };
 		47923F082A5206200074CA99 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47923F072A5206200074CA99 /* UIImage+Extensions.swift */; };
 		47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */; };
 		47959E3A2A56174D00CD5701 /* CastCrewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */; };
@@ -115,6 +124,15 @@
 		476DBC702A57160900539FE3 /* WatchlistRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistRouter.swift; sourceTree = "<group>"; };
 		476DBC792A572F5A00539FE3 /* WatchListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListCollectionViewCell.swift; sourceTree = "<group>"; };
 		476DBC7A2A572F5A00539FE3 /* WatchListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchListCollectionViewCell.xib; sourceTree = "<group>"; };
+		476DBC8D2A575BE100539FE3 /* GetTicket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetTicket.storyboard; sourceTree = "<group>"; };
+		476DBC8E2A575BE100539FE3 /* GetTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketViewController.swift; sourceTree = "<group>"; };
+		476DBC8F2A575BE100539FE3 /* GetTicketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketPresenter.swift; sourceTree = "<group>"; };
+		476DBC902A575BE100539FE3 /* GetTicketInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketInteractor.swift; sourceTree = "<group>"; };
+		476DBC912A575BE100539FE3 /* GetTicketModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketModels.swift; sourceTree = "<group>"; };
+		476DBC922A575BE100539FE3 /* GetTicketWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketWorker.swift; sourceTree = "<group>"; };
+		476DBC932A575BE100539FE3 /* GetTicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketRouter.swift; sourceTree = "<group>"; };
+		476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
+		476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatCollectionViewCell.xib; sourceTree = "<group>"; };
 		47923F072A5206200074CA99 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCrewTableViewCell.swift; sourceTree = "<group>"; };
 		47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCrewTableViewCell.xib; sourceTree = "<group>"; };
@@ -273,6 +291,30 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		476DBC8C2A575BC000539FE3 /* GetTicket */ = {
+			isa = PBXGroup;
+			children = (
+				476DBC9B2A575DD000539FE3 /* Cell */,
+				476DBC8D2A575BE100539FE3 /* GetTicket.storyboard */,
+				476DBC8E2A575BE100539FE3 /* GetTicketViewController.swift */,
+				476DBC8F2A575BE100539FE3 /* GetTicketPresenter.swift */,
+				476DBC902A575BE100539FE3 /* GetTicketInteractor.swift */,
+				476DBC912A575BE100539FE3 /* GetTicketModels.swift */,
+				476DBC922A575BE100539FE3 /* GetTicketWorker.swift */,
+				476DBC932A575BE100539FE3 /* GetTicketRouter.swift */,
+			);
+			path = GetTicket;
+			sourceTree = "<group>";
+		};
+		476DBC9B2A575DD000539FE3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */,
+				476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47959E362A56173200CD5701 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +384,7 @@
 				47D8B2FC2A497888003CFE2D /* MovieDetails */,
 				4722671B2A4EC0E500784729 /* CastCrew */,
 				47E6121F2A5556E300E85A11 /* Photos */,
+				476DBC8C2A575BC000539FE3 /* GetTicket */,
 				476DBC692A57159400539FE3 /* WatchList */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
@@ -513,9 +556,11 @@
 				476DBC7C2A572F5A00539FE3 /* WatchListCollectionViewCell.xib in Resources */,
 				4798A4352A3F5B8A00F0C19D /* SF-Pro-Text-Light.otf in Resources */,
 				4798A4442A3F5B8A00F0C19D /* SF-Pro-Text-Regular.otf in Resources */,
+				476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */,
 				47D8B30F2A497A28003CFE2D /* CastTableViewCell.xib in Resources */,
 				4798A43B2A3F5B8A00F0C19D /* SF-Pro-Text-ThinItalic.otf in Resources */,
 				4798A4402A3F5B8A00F0C19D /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				476DBC942A575BE100539FE3 /* GetTicket.storyboard in Resources */,
 				474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */,
 				47D8B3042A4978C0003CFE2D /* MovieDetails.storyboard in Resources */,
 				4798A4392A3F5B8A00F0C19D /* SF-Pro-Text-Thin.otf in Resources */,
@@ -549,12 +594,18 @@
 				47396F162A54BECF005B8301 /* PhotosSectionCollectionViewCell.swift in Sources */,
 				47D8B2E82A4969E0003CFE2D /* RequestError.swift in Sources */,
 				47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */,
+				476DBC952A575BE100539FE3 /* GetTicketViewController.swift in Sources */,
+				476DBC982A575BE100539FE3 /* GetTicketModels.swift in Sources */,
 				476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */,
 				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
 				476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */,
 				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
+				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
+				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,
 				47D8B3092A4978C0003CFE2D /* MovieDetailsWorker.swift in Sources */,
+				476DBC962A575BE100539FE3 /* GetTicketPresenter.swift in Sources */,
+				476DBC972A575BE100539FE3 /* GetTicketInteractor.swift in Sources */,
 				47D8B2FB2A496C8F003CFE2D /* MoviesResponse.swift in Sources */,
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
@@ -593,6 +644,7 @@
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,
+				476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

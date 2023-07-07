@@ -113,6 +113,10 @@ final class MovieDetailsViewController: UIViewController {
     
     // MARK: - Action
     
+    @IBAction func getTicketButton(_ sender: Any) {
+        router?.routeToGetTicket()
+    }
+    
     @IBAction func addWatchlistButton(_ sender: Any) {
         interactor?.postToWatchlist()
     }
@@ -123,14 +127,15 @@ final class MovieDetailsViewController: UIViewController {
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         displayedDetails = viewModel
+        guard let displayedDetails else { return }
         
-        titleLabel.text = viewModel.title
+        titleLabel.text = displayedDetails.title
         
-        durationLabel.text = formatRuntime(viewModel.runtime)
+        durationLabel.text = formatRuntime(displayedDetails.runtime)
         
-        genreLabel.text = viewModel.genres
+        genreLabel.text = displayedDetails.genres
         
-        let vote = viewModel.vote / 2
+        let vote = displayedDetails.vote / 2
         let formattedVote = String(format: "%.1f", vote) + "/5"
         ratingLabel.text = formattedVote
         
@@ -165,13 +170,13 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
             starRatingStackView.addArrangedSubview(imageView)
         }
         
-        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPhotoPath) {
+        if let posterUrl = ImageUrlHelper.imageUrl(for: displayedDetails.posterPhotoPath) {
             posterImageView.load(url: posterUrl)
             backgroundImageView.load(url: posterUrl)
-            //            backgroundImageView.addBlurEffect()
-            //            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
-            //                backgroundImageView.image = blurredImage
-            //            }
+//            backgroundImageView.addBlurEffect()
+//            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
+//                backgroundImageView.image = blurredImage
+//            }
         }
         
         tableView.reloadData()
@@ -231,10 +236,10 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let section = Section(rawValue: section) else { return UIView() }
-        
+
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
         sectionHeader?.title.text = section.title
-        
+
         switch section {
         case .Synopsis:
             sectionHeader?.button.isHidden = true
@@ -246,7 +251,7 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 sectionHeader?.button.addTarget(self, action: #selector(viewAllPhotosButton), for: .touchUpInside)
             }
         }
-        
+
         return sectionHeader
     }
     
@@ -283,11 +288,11 @@ extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width - 50) / 3, height: (collectionView.frame.height))
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(5)
     }

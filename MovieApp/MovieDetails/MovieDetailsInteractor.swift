@@ -11,6 +11,7 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func fetchMovieDetails()
     func viewAllCast(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast])
     func viewAllPhotos(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages])
+    func postToWatchlist()
 }
 
 protocol MovieDetailsDataStore: AnyObject {
@@ -68,6 +69,19 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
                 self.presenter?.presentDetails(response: response)
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func postToWatchlist() {
+        guard let id = selectedMovieID else { return }
+        worker.postToWatchlist(movieId: id) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                print("Film başarıyla watchlist'e eklendi!: \(response)")
+            case .failure(let error):
+                print("Watchlist'e film eklenirken hata: \(error.localizedDescription)")
             }
         }
     }

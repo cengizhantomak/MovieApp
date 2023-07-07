@@ -11,6 +11,7 @@ protocol MovieDetailsWorkingLogic: AnyObject {
     func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieCredits.Credits, RequestError>) -> Void)
     func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieDetail.Movie, RequestError>) -> Void)
     func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieImages.Backdrops, RequestError>) -> Void)
+    func postToWatchlist(movieId: Int, _ completion: @escaping (Result<WatchlistResponse, RequestError>) -> Void)
 }
 
 final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
@@ -24,5 +25,9 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
     
     func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.MovieImages.Backdrops, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.images(id: id), responseModel: MoviesResponse.MovieImages.Backdrops.self, completion: completion)
+    }
+    
+    func postToWatchlist(movieId: Int, _ completion: @escaping (Result<WatchlistResponse, RequestError>) -> Void) {
+        sendRequest(endpoint: MoviesEndpoint.addToWatchlist(movieId: movieId), responseModel: WatchlistResponse.self, completion: completion)
     }
 }

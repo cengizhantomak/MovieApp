@@ -118,7 +118,7 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     @IBAction func addWatchlistButton(_ sender: Any) {
-        router?.routeToWatchList()
+        interactor?.postToWatchlist()
     }
 }
 
@@ -149,18 +149,18 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         starImages.reserveCapacity(5)
         
         for i in 0..<5 {
-                let starImage: UIImage
-                
-                if i < fullStars {
-                    starImage = fullStarImage!
-                } else if i == fullStars && halfStar >= 0.5 {
-                    starImage = halfStarImage!
-                } else {
-                    starImage = emptyStarImage!
-                }
+            let starImage: UIImage
             
-                starImages.append(starImage)
+            if i < fullStars {
+                starImage = fullStarImage!
+            } else if i == fullStars && halfStar >= 0.5 {
+                starImage = halfStarImage!
+            } else {
+                starImage = emptyStarImage!
             }
+            
+            starImages.append(starImage)
+        }
         
         starRatingStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         

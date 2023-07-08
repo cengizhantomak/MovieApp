@@ -3,11 +3,20 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Movies View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -51,7 +60,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DVS-QW-mtJ" secondAttribute="bottom" id="oCP-zR-pkw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="MovieActive" id="atk-rB-y2v"/>
+                    <tabBarItem key="tabBarItem" title="" image="MovieSelected" id="atk-rB-y2v"/>
                     <navigationItem key="navigationItem" id="Qx8-al-PcP"/>
                     <connections>
                         <outlet property="collectionView" destination="DVS-QW-mtJ" id="f1D-bh-E3v"/>
@@ -93,6 +102,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hBH-89-Uy0"/>
                         <segue destination="J3z-KR-itv" kind="relationship" relationship="viewControllers" id="6iM-rd-bB6"/>
+                        <segue destination="N2E-ng-7xG" kind="relationship" relationship="viewControllers" id="T4I-bh-WM7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKe-vB-NdP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,7 +147,7 @@
                             <constraint firstItem="mvW-j6-Jzi" firstAttribute="trailing" secondItem="GFU-5u-dFZ" secondAttribute="trailing" id="qg8-pH-DWs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="WatchlistActive" id="6G8-DN-1io"/>
+                    <tabBarItem key="tabBarItem" title="" image="WatchlistSelected" id="6G8-DN-1io"/>
                     <connections>
                         <outlet property="collectionView" destination="GFU-5u-dFZ" id="isZ-uO-6Ko"/>
                     </connections>
@@ -146,12 +156,78 @@
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="716.90140845070425"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="sKm-3C-Ryb">
+            <objects>
+                <viewController id="N2E-ng-7xG" customClass="ProfileViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="52D-uL-iFb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MUQ-tm-jaJ">
+                                <rect key="frame" x="144" y="128" width="105" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="Zny-8F-kKY"/>
+                                    <constraint firstAttribute="width" constant="105" id="jvV-jI-hht"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6b-Qi-oy5">
+                                <rect key="frame" x="15" y="248" width="363" height="28"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsN-6U-ecC">
+                                <rect key="frame" x="15" y="286" width="363" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RsN-6U-ecC" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="6nM-h1-mU2"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6b-Qi-oy5" secondAttribute="trailing" constant="15" id="9Tk-lu-Ahg"/>
+                            <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
+                            <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
+                            <constraint firstItem="MUQ-tm-jaJ" firstAttribute="top" secondItem="PzI-bp-cMJ" secondAttribute="top" constant="25" id="bas-qe-2YE"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="RsN-6U-ecC" secondAttribute="trailing" constant="15" id="bpB-l8-Xza"/>
+                            <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
+                            <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
+                            <constraint firstItem="MUQ-tm-jaJ" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="tlM-k6-cRV"/>
+                            <constraint firstItem="D6b-Qi-oy5" firstAttribute="top" secondItem="MUQ-tm-jaJ" secondAttribute="bottom" constant="15" id="xX8-MD-gbd"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="ProfilSelected" id="eME-1s-npk"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="D6b-Qi-oy5" id="Sq4-6g-9Og"/>
+                        <outlet property="profileImage" destination="MUQ-tm-jaJ" id="rdv-kz-jer"/>
+                        <outlet property="userNameLabel" destination="RsN-6U-ecC" id="XJx-B5-HTn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKu-88-mMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053" y="-709"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="MovieActive" width="24" height="24"/>
-        <image name="WatchlistActive" width="24" height="24"/>
+        <image name="MovieSelected" width="24" height="24"/>
+        <image name="ProfilSelected" width="24" height="24"/>
+        <image name="WatchlistSelected" width="24" height="24"/>
+        <namedColor name="0F1B2B">
+            <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

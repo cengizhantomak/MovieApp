@@ -40,10 +40,10 @@ class MovieCollectionReusableView: UICollectionReusableView {
         ])
         
         title.font = UIFont(name: "SFProText-Semibold", size: 14)
-        title.textColor = UIColor(cgColor: .init(red: 0.9, green: 0.1, blue: 0.22, alpha: 1))
+        title.textColor = UIColor(named: "E51937")
         title.text = "Now Showing"
         
-        image.tintColor = UIColor(cgColor: .init(red: 0.9, green: 0.1, blue: 0.22, alpha: 1))
+        image.tintColor = UIColor(named: "E51937")
         let iconImage = UIImage(systemName: "play.circle.fill")
         image.image = iconImage
     }

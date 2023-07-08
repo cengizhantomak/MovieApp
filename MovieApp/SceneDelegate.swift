@@ -19,11 +19,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.backward")
-        UINavigationBar.appearance().tintColor = UIColor(cgColor: .init(red: 0.06, green: 0.11, blue: 0.17, alpha: 1))
+        UINavigationBar.appearance().tintColor = UIColor(named: "0F1B2B")
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for:UIBarMetrics.default)
         
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        guard let _ = (scene as? UIWindowScene) else { return }
+        if #available(iOS 13.0, *) {
+            let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
+            windowScene.windows.forEach { window in
+                window.overrideUserInterfaceStyle = darkModeEnabled ? .dark : .light
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

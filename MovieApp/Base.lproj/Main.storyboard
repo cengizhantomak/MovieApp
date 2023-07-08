@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982.4427480916029" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="131" y="717"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kRa-an-hLJ">
@@ -88,16 +88,16 @@
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
-        <!--Movie-->
+        <!--Tab Bar Controller-->
         <scene sceneID="TJ9-Pv-BHS">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NLA-Yk-2Hx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Movie" id="ix7-7Y-ENL"/>
+                    <navigationItem key="navigationItem" id="ix7-7Y-ENL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U3B-3k-KHl">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="47CFFF"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hBH-89-Uy0"/>
@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFX-zb-K1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052.6717557251909" y="716.90140845070425"/>
+            <point key="canvasLocation" x="1054" y="717"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="sKm-3C-Ryb">
@@ -188,17 +188,33 @@
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Dark Mode" translatesAutoresizingMaskIntoConstraints="NO" id="qxm-s3-DtX">
+                                <rect key="frame" x="329" y="418" width="51" height="31"/>
+                                <connections>
+                                    <action selector="darkModeSwitch:" destination="N2E-ng-7xG" eventType="valueChanged" id="6Y6-Wv-gl2"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-WY-t9X">
+                                <rect key="frame" x="15" y="421.66666666666669" width="103" height="24"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="OVw-WY-t9X" firstAttribute="centerY" secondItem="qxm-s3-DtX" secondAttribute="centerY" id="3CQ-zp-fdK"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="6nM-h1-mU2"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6b-Qi-oy5" secondAttribute="trailing" constant="15" id="9Tk-lu-Ahg"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
+                            <constraint firstItem="qxm-s3-DtX" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="115" id="Lyv-l2-QXw"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="qxm-s3-DtX" secondAttribute="trailing" constant="15" id="PPW-OA-N7y"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="top" secondItem="PzI-bp-cMJ" secondAttribute="top" constant="25" id="bas-qe-2YE"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="RsN-6U-ecC" secondAttribute="trailing" constant="15" id="bpB-l8-Xza"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
+                            <constraint firstItem="OVw-WY-t9X" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="p8V-25-pHU"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="tlM-k6-cRV"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="top" secondItem="MUQ-tm-jaJ" secondAttribute="bottom" constant="15" id="xX8-MD-gbd"/>
@@ -206,6 +222,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ProfilSelected" id="eME-1s-npk"/>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="qxm-s3-DtX" id="dAO-Er-CIH"/>
                         <outlet property="nameLabel" destination="D6b-Qi-oy5" id="Sq4-6g-9Og"/>
                         <outlet property="profileImage" destination="MUQ-tm-jaJ" id="rdv-kz-jer"/>
                         <outlet property="userNameLabel" destination="RsN-6U-ecC" id="XJx-B5-HTn"/>
@@ -213,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKu-88-mMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053" y="-709"/>
+            <point key="canvasLocation" x="2040" y="717"/>
         </scene>
     </scenes>
     <resources>
@@ -222,6 +239,9 @@
         <image name="WatchlistSelected" width="24" height="24"/>
         <namedColor name="0F1B2B">
             <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="47CFFF">
+            <color red="0.27843137254901962" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -414,6 +414,7 @@
 				476DBC692A57159400539FE3 /* WatchList */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
+				47D1BC2D2A3F40BA001A2622 /* Main.storyboard */,
 				47D1BC332A3F40BB001A2622 /* Assets.xcassets */,
 				47D1BC352A3F40BB001A2622 /* LaunchScreen.storyboard */,
 				47D1BC382A3F40BB001A2622 /* Info.plist */,
@@ -456,7 +457,6 @@
 				47D8B2F02A496B03003CFE2D /* MoviesModels.swift */,
 				47D8B2F12A496B03003CFE2D /* MoviesWorker.swift */,
 				47D8B2F22A496B03003CFE2D /* MoviesRouter.swift */,
-				47D1BC2D2A3F40BA001A2622 /* Main.storyboard */,
 			);
 			path = Movies;
 			sourceTree = "<group>";

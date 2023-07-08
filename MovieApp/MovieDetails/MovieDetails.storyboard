@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -35,7 +36,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S77-0a-bvl">
                                             <rect key="frame" x="20" y="367" width="335" height="28.666666666666686"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
-                                            <color key="textColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" name="0F1B2B"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJR-Ex-rDb">
@@ -80,7 +81,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfS-sf-vxk">
                                             <rect key="frame" x="20" y="488.33333333333331" width="142" height="35.999999999999943"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="30"/>
-                                            <color key="textColor" red="0.058823529409999999" green="0.1058823529" blue="0.16862745100000001" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" name="0F1B2B"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSk-qv-AYB">
@@ -242,6 +243,9 @@
     </scenes>
     <resources>
         <image name="play" width="56" height="56"/>
+        <namedColor name="0F1B2B">
+            <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

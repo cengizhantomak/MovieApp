@@ -23,6 +23,7 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     
     // MARK: - Property
     
@@ -47,6 +48,11 @@ final class ProfileViewController: UIViewController {
         
         navigationItem.title = "Profile"
         interactor?.fetchProfile()
+        
+        if #available(iOS 13.0, *) {
+            let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
+            darkModeSwitch.isOn = darkModeEnabled
+        }
     }
     
     // MARK: - Setup
@@ -62,6 +68,24 @@ final class ProfileViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    // MARK: - Action
+    
+    @IBAction func darkModeSwitch(_ sender: UISwitch) {
+        if #available(iOS 13.0, *) {
+            if sender.isOn {
+                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .dark
+                }
+                UserDefaults.standard.set(true, forKey: "darkModeEnabled")
+            } else {
+                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = .light
+                }
+                UserDefaults.standard.set(false, forKey: "darkModeEnabled")
+            }
+        }
     }
 }
 

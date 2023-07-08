@@ -39,8 +39,11 @@ class SectionHeader: UITableViewHeaderFooterView {
             button.heightAnchor.constraint(equalToConstant: 18)
         ])
         
+        title.font = UIFont(name: "SFProText-Medium", size: 18)
+        title.textColor = UIColor(named: "0F1B2B")
+        
         button.setTitle("View All", for: .normal)
-        button.setTitleColor(UIColor(cgColor: .init(red: 0.28, green: 0.81, blue: 1, alpha: 1)), for: .normal)
+        button.setTitleColor(UIColor(named: "47CFFF"), for: .normal)
         let customFont = UIFont(name: "SFProText-Medium", size: 14)
         button.titleLabel?.font = customFont
     }

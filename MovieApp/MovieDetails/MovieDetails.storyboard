@@ -136,6 +136,9 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
                                                     <real key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidthForView">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="getTicketButton:" destination="nxe-uw-h5I" eventType="touchUpInside" id="5Yb-pq-NOU"/>

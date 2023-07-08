@@ -21,7 +21,6 @@
 		474E4C3D2A4B089600697B7D /* SynopsisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */; };
 		474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */; };
 		475935B72A5871A8000C9543 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475935B62A5871A8000C9543 /* NotificationNames.swift */; };
-		476DBC712A57160900539FE3 /* Watchlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC6A2A57160900539FE3 /* Watchlist.storyboard */; };
 		476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */; };
 		476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */; };
 		476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */; };
@@ -39,6 +38,12 @@
 		476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC932A575BE100539FE3 /* GetTicketRouter.swift */; };
 		476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */; };
 		476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */; };
+		478B294E2A597CF50075BE9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29472A597CF50075BE9E /* ProfileViewController.swift */; };
+		478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29482A597CF50075BE9E /* ProfilePresenter.swift */; };
+		478B29502A597CF50075BE9E /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29492A597CF50075BE9E /* ProfileInteractor.swift */; };
+		478B29512A597CF50075BE9E /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B294A2A597CF50075BE9E /* ProfileModels.swift */; };
+		478B29522A597CF50075BE9E /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B294B2A597CF50075BE9E /* ProfileWorker.swift */; };
+		478B29532A597CF50075BE9E /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B294C2A597CF50075BE9E /* ProfileRouter.swift */; };
 		47923F082A5206200074CA99 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47923F072A5206200074CA99 /* UIImage+Extensions.swift */; };
 		47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */; };
 		47959E3A2A56174D00CD5701 /* CastCrewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */; };
@@ -117,7 +122,6 @@
 		474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynopsisTableViewCell.swift; sourceTree = "<group>"; };
 		474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynopsisTableViewCell.xib; sourceTree = "<group>"; };
 		475935B62A5871A8000C9543 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
-		476DBC6A2A57160900539FE3 /* Watchlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Watchlist.storyboard; sourceTree = "<group>"; };
 		476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
 		476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistInteractor.swift; sourceTree = "<group>"; };
@@ -135,6 +139,12 @@
 		476DBC932A575BE100539FE3 /* GetTicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketRouter.swift; sourceTree = "<group>"; };
 		476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatCollectionViewCell.xib; sourceTree = "<group>"; };
+		478B29472A597CF50075BE9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		478B29482A597CF50075BE9E /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		478B29492A597CF50075BE9E /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		478B294A2A597CF50075BE9E /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
+		478B294B2A597CF50075BE9E /* ProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
+		478B294C2A597CF50075BE9E /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		47923F072A5206200074CA99 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		47959E372A56174D00CD5701 /* CastCrewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCrewTableViewCell.swift; sourceTree = "<group>"; };
 		47959E382A56174D00CD5701 /* CastCrewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCrewTableViewCell.xib; sourceTree = "<group>"; };
@@ -273,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				476DBC782A572F4100539FE3 /* Cell */,
-				476DBC6A2A57160900539FE3 /* Watchlist.storyboard */,
 				476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */,
 				476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */,
 				476DBC6D2A57160900539FE3 /* WatchlistInteractor.swift */,
@@ -297,13 +306,13 @@
 			isa = PBXGroup;
 			children = (
 				476DBC9B2A575DD000539FE3 /* Cell */,
-				476DBC8D2A575BE100539FE3 /* GetTicket.storyboard */,
 				476DBC8E2A575BE100539FE3 /* GetTicketViewController.swift */,
 				476DBC8F2A575BE100539FE3 /* GetTicketPresenter.swift */,
 				476DBC902A575BE100539FE3 /* GetTicketInteractor.swift */,
 				476DBC912A575BE100539FE3 /* GetTicketModels.swift */,
 				476DBC922A575BE100539FE3 /* GetTicketWorker.swift */,
 				476DBC932A575BE100539FE3 /* GetTicketRouter.swift */,
+				476DBC8D2A575BE100539FE3 /* GetTicket.storyboard */,
 			);
 			path = GetTicket;
 			sourceTree = "<group>";
@@ -315,6 +324,19 @@
 				476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		478B29452A597CD40075BE9E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				478B29472A597CF50075BE9E /* ProfileViewController.swift */,
+				478B29482A597CF50075BE9E /* ProfilePresenter.swift */,
+				478B29492A597CF50075BE9E /* ProfileInteractor.swift */,
+				478B294A2A597CF50075BE9E /* ProfileModels.swift */,
+				478B294B2A597CF50075BE9E /* ProfileWorker.swift */,
+				478B294C2A597CF50075BE9E /* ProfileRouter.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		47959E362A56173200CD5701 /* Cell */ = {
@@ -383,6 +405,7 @@
 				47D8B2E02A4969B6003CFE2D /* Networking */,
 				47A626A62A50538C004A144E /* Extension */,
 				4798A4222A3F5B6C00F0C19D /* Font */,
+				478B29452A597CD40075BE9E /* Profile */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				47D8B2FC2A497888003CFE2D /* MovieDetails */,
 				4722671B2A4EC0E500784729 /* CastCrew */,
@@ -575,7 +598,6 @@
 				47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */,
 				4798A43C2A3F5B8A00F0C19D /* SF-Pro-Text-BlackItalic.otf in Resources */,
 				472267232A4EC13700784729 /* CastCrew.storyboard in Resources */,
-				476DBC712A57160900539FE3 /* Watchlist.storyboard in Resources */,
 				4798A4382A3F5B8A00F0C19D /* SF-Pro-Text-Semibold.otf in Resources */,
 				4798A4412A3F5B8A00F0C19D /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				4798A43A2A3F5B8A00F0C19D /* SF-Pro-Text-Bold.otf in Resources */,
@@ -604,6 +626,8 @@
 				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
 				476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */,
 				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
+				478B29532A597CF50075BE9E /* ProfileRouter.swift in Sources */,
+				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,
@@ -622,6 +646,7 @@
 				47D8B2EA2A4969E0003CFE2D /* MoviesEndpoint.swift in Sources */,
 				472267252A4EC13700784729 /* CastCrewPresenter.swift in Sources */,
 				474E4C3D2A4B089600697B7D /* SynopsisTableViewCell.swift in Sources */,
+				478B29512A597CF50075BE9E /* ProfileModels.swift in Sources */,
 				47A626A82A50538C004A144E /* UIView+Extensions.swift in Sources */,
 				47D8B3072A4978C0003CFE2D /* MovieDetailsInteractor.swift in Sources */,
 				47923F082A5206200074CA99 /* UIImage+Extensions.swift in Sources */,
@@ -632,6 +657,8 @@
 				47D8B2F92A496B03003CFE2D /* MoviesRouter.swift in Sources */,
 				47D1BC282A3F40BA001A2622 /* AppDelegate.swift in Sources */,
 				47D1BC322A3F40BA001A2622 /* MovieApp.xcdatamodeld in Sources */,
+				478B294E2A597CF50075BE9E /* ProfileViewController.swift in Sources */,
+				478B29502A597CF50075BE9E /* ProfileInteractor.swift in Sources */,
 				47D8B2F62A496B03003CFE2D /* MoviesInteractor.swift in Sources */,
 				47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */,
 				47D8B2F82A496B03003CFE2D /* MoviesWorker.swift in Sources */,
@@ -643,6 +670,7 @@
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
 				47D8B2E72A4969E0003CFE2D /* RequestMethod.swift in Sources */,
 				47D8B2E62A4969E0003CFE2D /* Endpoint.swift in Sources */,
+				478B29522A597CF50075BE9E /* ProfileWorker.swift in Sources */,
 				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
 				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,

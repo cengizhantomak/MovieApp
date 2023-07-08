@@ -109,3 +109,22 @@ struct WatchlistResponse: Decodable {
         case statusMessage = "status_message"
     }
 }
+
+struct ProfileResponse: Codable {
+    let avatar: Avatar
+    let id: Int
+    let name: String
+    let username: String
+}
+
+struct Avatar: Codable {
+    let tmdb: Tmdb
+}
+
+struct Tmdb: Codable {
+    let avatarPath: String
+
+    enum CodingKeys: String, CodingKey {
+        case avatarPath = "avatar_path"
+    }
+}

@@ -14,7 +14,7 @@ protocol WatchlistBusinessLogic: AnyObject {
 
 protocol WatchlistDataStore: AnyObject {
     var selectedMovieId: Int? { get set }
-    var watchListResponse: [MoviesResponse.MovieNowPlaying.Movie] { get set }
+    var watchListResponse: [MoviesResponse.Movie] { get set }
 }
 
 final class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
@@ -23,7 +23,7 @@ final class WatchlistInteractor: WatchlistBusinessLogic, WatchlistDataStore {
     var worker: WatchlistWorkingLogic = WatchlistWorker()
     
     var selectedMovieId: Int?
-    var watchListResponse: [MoviesResponse.MovieNowPlaying.Movie] = []
+    var watchListResponse: [MoviesResponse.Movie] = []
     
     func fetchWatchList() {
         worker.getWatchList { [weak self] result in

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol WatchlistWorkingLogic: AnyObject {
-    func getWatchList(_ completion: @escaping (Result<MoviesResponse.MovieNowPlaying.NowPlaying, RequestError>) -> Void)
+    func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void)
 }
 
 final class WatchlistWorker: WatchlistWorkingLogic, HTTPClient {
-    func getWatchList(_ completion: @escaping (Result<MoviesResponse.MovieNowPlaying.NowPlaying, RequestError>) -> Void) {
-        sendRequest(endpoint: MoviesEndpoint.watchList, responseModel: MoviesResponse.MovieNowPlaying.NowPlaying.self, completion: completion)
+    func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void) {
+        sendRequest(endpoint: MoviesEndpoint.watchList, responseModel: MoviesResponse.NowPlaying.self, completion: completion)
     }
 }

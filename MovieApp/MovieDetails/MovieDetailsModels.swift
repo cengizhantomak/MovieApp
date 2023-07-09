@@ -16,9 +16,9 @@ enum MovieDetailsModels {
         }
         
         struct Response {
-            var cast: [MoviesResponse.MovieCredits.Cast]
-            var details: MoviesResponse.MovieDetail.Movie
-            var images: [MoviesResponse.MovieImages.Images]
+            var cast: [MoviesResponse.Cast]
+            var details: MoviesResponse.Movie
+            var images: [MoviesResponse.Images]
             
         }
         

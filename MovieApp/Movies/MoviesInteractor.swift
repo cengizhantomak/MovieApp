@@ -14,7 +14,7 @@ protocol MoviesBusinessLogic: AnyObject {
 
 protocol MoviesDataStore: AnyObject {
     var selectedMovieId: Int? { get set }
-    var movieResponse: [MoviesResponse.MovieNowPlaying.Movie] { get set }
+    var movieResponse: [MoviesResponse.Movie] { get set }
 }
 
 final class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
@@ -22,7 +22,7 @@ final class MoviesInteractor: MoviesBusinessLogic, MoviesDataStore {
     var worker: MoviesWorkingLogic = MoviesWorker()
     
     var selectedMovieId: Int?
-    var movieResponse: [MoviesResponse.MovieNowPlaying.Movie] = []
+    var movieResponse: [MoviesResponse.Movie] = []
     
     func fetchNowPlaying() {
         worker.getNowPlaying { [weak self] result in

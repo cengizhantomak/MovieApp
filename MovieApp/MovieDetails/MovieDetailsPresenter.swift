@@ -9,8 +9,8 @@ import Foundation
 
 protocol MovieDetailsPresentationLogic: AnyObject {
     func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
-    func presentCast(names: [MoviesResponse.MovieCredits.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]
-    func presentImages(images: [MoviesResponse.MovieImages.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]
+    func presentCast(names: [MoviesResponse.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]
+    func presentImages(images: [MoviesResponse.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]
     func presentAllCast()
     func presentAllPhotos()
 }
@@ -24,8 +24,8 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
             displayedCast: presentCast(names: response.cast), displayedImages: presentImages(images: response.images),
             title: response.details.title,
             overview: response.details.overview,
-            genres: response.details.genres.map { $0.genresName }.joined(separator: ", "),
-            runtime: response.details.runtime,
+            genres: response.details.genres?.compactMap { $0.name }.joined(separator: ", ") ?? "",
+            runtime: response.details.runtime ?? 0,
             vote: response.details.vote,
             posterPhotoPath: response.details.posterPath
         )
@@ -35,7 +35,7 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         }
     }
     
-    func presentCast(names: [MoviesResponse.MovieCredits.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] {
+    func presentCast(names: [MoviesResponse.Cast]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] {
         return names.map {
             MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast(
                 name: $0.name ?? "",
@@ -45,7 +45,7 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         }
     }
     
-    func presentImages(images: [MoviesResponse.MovieImages.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] {
+    func presentImages(images: [MoviesResponse.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] {
         return images.map {
             MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages(
                 images: $0.images

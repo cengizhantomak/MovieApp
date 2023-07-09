@@ -43,7 +43,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         }
     }
     
-    func fetchMovieCast(details: MoviesResponse.MovieDetail.Movie) {
+    func fetchMovieCast(details: MoviesResponse.Movie) {
         guard let id = selectedMovieID else { return }
         
         worker.getMovieCredits(id: id) { [weak self] result in
@@ -58,7 +58,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         }
     }
     
-    func fetchmovieImages(details: MoviesResponse.MovieDetail.Movie, cast: [MoviesResponse.MovieCredits.Cast]) {
+    func fetchmovieImages(details: MoviesResponse.Movie, cast: [MoviesResponse.Cast]) {
         guard let id = selectedMovieID else { return }
         worker.getMovieImages(id: id) { [weak self] result in
             guard let self else { return }
@@ -76,7 +76,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     func postToWatchlist() {
         guard let id = selectedMovieID else { return }
         worker.postToWatchlist(movieId: id) { [weak self] result in
-            guard let self else { return }
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 print("Film başarıyla watchlist'e eklendi!: \(response)")

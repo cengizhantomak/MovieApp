@@ -16,7 +16,7 @@ enum ProfileModels {
         }
         
         struct Response {
-            var profile: ProfileResponse
+            var profile: MoviesResponse.Profile
         }
         
         struct ViewModel {

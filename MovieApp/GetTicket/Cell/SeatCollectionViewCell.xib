@@ -4,8 +4,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,28 +22,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="201" height="184"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgF-2P-DgT">
-                        <rect key="frame" x="0.0" y="0.0" width="201" height="184"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
-                                <real key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvz-Iu-18b">
+                        <rect key="frame" x="77.333333333333329" y="81.333333333333329" width="46.333333333333329" height="21.666666666666671"/>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
+                        <color key="textColor" systemColor="systemGrayColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="qgF-2P-DgT" secondAttribute="trailing" id="FAT-3c-55S"/>
-                <constraint firstAttribute="bottom" secondItem="qgF-2P-DgT" secondAttribute="bottom" id="P4z-0S-kCk"/>
-                <constraint firstItem="qgF-2P-DgT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ifw-M5-pUO"/>
-                <constraint firstItem="qgF-2P-DgT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tWj-Sn-bso"/>
+                <constraint firstItem="dvz-Iu-18b" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XaC-j5-mz5"/>
+                <constraint firstItem="dvz-Iu-18b" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="w3y-CH-EmR"/>
             </constraints>
             <size key="customSize" width="201" height="184"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidthForView">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColorForView">
+                    <color key="value" systemColor="systemGrayColor"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="seatView" destination="qgF-2P-DgT" id="Jz3-vW-2jd"/>
+                <outlet property="textLabel" destination="dvz-Iu-18b" id="8SZ-Ro-uLH"/>
             </connections>
             <point key="canvasLocation" x="246.56488549618319" y="35.91549295774648"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

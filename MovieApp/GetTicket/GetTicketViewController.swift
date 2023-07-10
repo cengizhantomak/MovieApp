@@ -24,6 +24,9 @@ final class GetTicketViewController: UIViewController {
     
     var selectedSeats: Set<Int> = []
     
+    let a = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+    let b = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    
     // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -64,39 +67,49 @@ final class GetTicketViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(.init(nibName: "SeatCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "SeatCollectionViewCell")
-        collectionView.collectionViewLayout = getCompotionalLayout()
+        collectionView.collectionViewLayout = getCompositionalLayout()
         collectionView.allowsMultipleSelection = true
     }
     
-    // MARK: - CompotionalLayout
+    // MARK: - CompositionalLayout
     
-    func getCompotionalLayout() -> UICollectionViewLayout {
+    func getCompositionalLayout() -> UICollectionViewLayout {
         
-        // Item boyutunu tanımla
+        // Item
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0 / 9),
+            widthDimension: .fractionalWidth(1.0 / 3),
             heightDimension: .fractionalHeight(1.0)
         )
-        
-        // Itemi kullanarak bir grup oluştur
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing:5) // Sağdan ve soldan boşluk bırak
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 3, bottom: 0, trailing:3)
         
-        // Grup boyutunu tanımla
-        let groupLayout = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0 / 6)
+        // Group in Group
+        let innerGroupLayout = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0 / 3),
+            heightDimension: .fractionalHeight(1.0)
         )
+        let innerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: innerGroupLayout, subitems: [item])
+        innerGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6)
         
-        // Grubu oluştur
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayout, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        let middleGroupLayout = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0 / 3)
+        )
+        let middleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: middleGroupLayout, subitems: [innerGroup])
+        middleGroup.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 0 , bottom: 3, trailing: 0)
         
-        // Bölümü oluştur
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 35, bottom: 0, trailing: 35) // Bölümün içinden boşluk bırak
+        let outerGroupLayout = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(0.45)
+        )
+        let outerGroup = NSCollectionLayoutGroup.vertical(layoutSize: outerGroupLayout, subitems: [middleGroup])
+        outerGroup.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 35 , bottom: 6, trailing: 35)
         
-        // Layout'u oluştur ve döndür
+        // Section
+        let section = NSCollectionLayoutSection(group: outerGroup)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0 , bottom: 0, trailing: 0)
+        
+        // Layout
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -112,19 +125,29 @@ extension GetTicketViewController: GetTicketDisplayLogic {
 
 extension GetTicketViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 81
+        return a.count * b.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeatCollectionViewCell", for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
         
-        if selectedSeats.contains(indexPath.row) {
-            cell.contentView.backgroundColor = UIColor(red: 0.28, green: 0.81, blue: 1, alpha: 1)
-        } else {
-            cell.contentView.backgroundColor = UIColor.white
+        var combined = [String]()
+        
+        a.forEach { letter in
+            b.forEach { number in
+                combined.append("\(letter)\(number)")
+            }
         }
         
+        let value = combined[indexPath.row]
         
+        cell.textLabel.text = value
+        
+        if selectedSeats.contains(indexPath.row) {
+            cell.contentView.backgroundColor = UIColor(named: "47CFFF")
+        } else {
+            cell.contentView.backgroundColor = UIColor.clear
+        }
         
         return cell
     }

@@ -33,6 +33,7 @@ final class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var starRatingStackView: UIStackView!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var watchlistButton: UIButton!
     
     // MARK: - Properties
     
@@ -136,17 +137,15 @@ final class MovieDetailsViewController: UIViewController {
     
     @objc func onMovieAddedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Success", message: "The movie has been successfully added to your watchlist.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.watchlistButton.setTitle("Added Watchlist", for: .normal)
+            self.watchlistButton.isEnabled = false
+            UIAlertHelper.shared.showAlert(title: "Success", message: "The movie has been successfully added to your watchlist.", buttonTitle: "OK", on: self)
         }
     }
     
     @objc func onMovieAddToWatchlistFailed(_ notification: Notification) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: "An error occurred while adding the movie to your watchlist.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            UIAlertHelper.shared.showAlert(title: "Error", message: "An error occurred while adding the movie to your watchlist.", buttonTitle: "OK", on: self)
         }
     }
 }
@@ -206,6 +205,12 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 //            if let blurredImage = backgroundImageView.image?.blurred(radius: 10.0) {
 //                backgroundImageView.image = blurredImage
 //            }
+        }
+        
+        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+            
+            watchlistButton.setTitle("On Watchlist", for: .normal)
+            watchlistButton.isEnabled = false
         }
         
         tableView.reloadData()

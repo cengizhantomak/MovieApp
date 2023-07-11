@@ -234,6 +234,7 @@
                         <outlet property="starRatingStackView" destination="vSk-qv-AYB" id="gWl-sJ-jHt"/>
                         <outlet property="tableView" destination="PR8-oV-M7a" id="vI8-92-yNP"/>
                         <outlet property="titleLabel" destination="S77-0a-bvl" id="jHM-x9-kF0"/>
+                        <outlet property="watchlistButton" destination="6VS-sY-GeI" id="1K5-r4-Are"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

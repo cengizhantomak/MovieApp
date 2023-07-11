@@ -9,5 +9,6 @@ import Foundation
 
 extension Notification.Name {
     static let movieAddedToWatchlist = Notification.Name("movieAddedToWatchlist")
-    static let movieAddToWatchlistFailed = Notification.Name("movieAddToWatchlistFailed")
+    static let movieDeletedToWatchlist = Notification.Name("movieDeletedToWatchlist")
+    static let movieAddDeleteToWatchlistFailed = Notification.Name("movieAddDeleteToWatchlistFailed")
 }

@@ -33,7 +33,7 @@ final class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var starRatingStackView: UIStackView!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var watchlistButton: UIButton!
+    @IBOutlet weak var addRemoveWatchlistButton: UIButton!
     
     // MARK: - Properties
     
@@ -77,7 +77,8 @@ final class MovieDetailsViewController: UIViewController {
         interactor?.fetchMovieDetails()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddedToWatchlist(_:)), name: .movieAddedToWatchlist, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddToWatchlistFailed(_:)), name: .movieAddToWatchlistFailed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieDeletedToWatchlist(_:)), name: .movieDeletedToWatchlist, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddToWatchlistFailed(_:)), name: .movieAddDeleteToWatchlistFailed, object: nil)
     }
     
     // MARK: - Setup
@@ -115,14 +116,38 @@ final class MovieDetailsViewController: UIViewController {
         return "\(hours)hr \(minutes)m"
     }
     
+    private func updateWatchlistButtonTitle() {
+        guard let displayedDetails else { return }
+        
+        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+            addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+        } else {
+            addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
+        }
+    }
+    
     // MARK: - Action
     
     @IBAction func getTicketButton(_ sender: Any) {
         router?.routeToGetTicket()
     }
     
-    @IBAction func addWatchlistButton(_ sender: Any) {
-        interactor?.postToWatchlist()
+    @IBAction func addRemoveWatchlistButton(_ sender: Any) {
+        guard var displayedDetails else { return }
+        
+        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+            interactor?.postToWatchlist2()
+            if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {
+                displayedDetails.displayedWatchList.remove(at: index)
+            }
+        } else {
+            interactor?.postToWatchlist()
+            let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
+            displayedDetails.displayedWatchList.append(watchlistItem)
+        }
+        
+        self.displayedDetails = displayedDetails
+        updateWatchlistButtonTitle()
     }
     
     @objc func viewAllCastButton() {
@@ -137,9 +162,15 @@ final class MovieDetailsViewController: UIViewController {
     
     @objc func onMovieAddedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.watchlistButton.setTitle("Added Watchlist", for: .normal)
-            self.watchlistButton.isEnabled = false
-            UIAlertHelper.shared.showAlert(title: "Success", message: "The movie has been successfully added to your watchlist.", buttonTitle: "OK", on: self)
+            self.addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+            UIAlertHelper.shared.showAlert(title: "Added", message: "The movie has been successfully added to your watchlist.", buttonTitle: "OK", on: self)
+        }
+    }
+    
+    @objc func onMovieDeletedToWatchlist(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
+            UIAlertHelper.shared.showAlert(title: "Removed", message: "The movie has been successfully removed from your watch list.", buttonTitle: "OK", on: self)
         }
     }
     
@@ -179,15 +210,15 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 //                backgroundImageView.image = blurredImage
 //            }
         }
-        
-        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
-            
-            watchlistButton.setTitle("On Watchlist", for: .normal)
-            watchlistButton.isEnabled = false
-        }
-        
+                
         tableView.reloadData()
         collectionView.reloadData()
+        
+        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+            addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+        } else {
+            addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
+        }
     }
     
     func displayCast() {

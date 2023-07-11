@@ -13,6 +13,7 @@ protocol MovieDetailsWorkingLogic: AnyObject {
     func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.Backdrops, RequestError>) -> Void)
     func postToWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
     func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void)
+    func postToWatchlist2(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
 }
 
 final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
@@ -34,5 +35,9 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
     
     func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.watchList, responseModel: MoviesResponse.NowPlaying.self, completion: completion)
+    }
+    
+    func postToWatchlist2(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+        sendRequest(endpoint: MoviesEndpoint.removeFromWatchlist(movieId: movieId), responseModel: MoviesResponse.Watchlist.self, completion: completion)
     }
 }

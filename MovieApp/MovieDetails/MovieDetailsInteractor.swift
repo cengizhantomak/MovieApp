@@ -65,7 +65,19 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
             
             switch result {
             case .success(let images):
-                let response = MovieDetailsModels.FetchMovieDetails.Response(cast: cast, details: details, images: images.backdrops)
+                fetchWatchList(details: details, cast: cast, images: images.backdrops)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchWatchList(details: MoviesResponse.Movie, cast: [MoviesResponse.Cast], images: [MoviesResponse.Images]) {
+        worker.getWatchList { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let watchList):
+                let response = MovieDetailsModels.FetchMovieDetails.Response(cast: cast, details: details, images: images, watchList: watchList.results)
                 self.presenter?.presentDetails(response: response)
             case .failure(let error):
                 print(error.localizedDescription)

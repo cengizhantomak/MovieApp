@@ -41,8 +41,8 @@ final class WatchlistViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         interactor?.fetchWatchList()
         setupCollectionView()

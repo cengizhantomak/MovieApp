@@ -24,6 +24,7 @@ public enum MoviesEndpoint {
     case watchList
     case addToWatchlist(movieId: Int)
     case profile
+    case removeFromWatchlist(movieId: Int)
 }
 
 extension MoviesEndpoint: Endpoint {
@@ -31,7 +32,7 @@ extension MoviesEndpoint: Endpoint {
         switch self {
         case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_):
             return [URLQueryItem(name: "api_key", value: APIConstants.apiKey)]
-        case  .watchList,.addToWatchlist(_), .profile:
+        case  .watchList,.addToWatchlist(_), .profile, .removeFromWatchlist(_):
             return [
                 URLQueryItem(name: "api_key", value: APIConstants.apiKey),
                 URLQueryItem(name: "session_id", value: APIConstants.sessionId)]
@@ -58,6 +59,8 @@ extension MoviesEndpoint: Endpoint {
             return "/3/account/\(APIConstants.accountId)/watchlist/movies"
         case .addToWatchlist(_):
             return "/3/account/\(APIConstants.accountId)/watchlist"
+        case .removeFromWatchlist(_):
+            return "/3/account/\(APIConstants.accountId)/watchlist"
         case .profile:
             return "/3/account/\(APIConstants.accountId)"
         }
@@ -67,7 +70,7 @@ extension MoviesEndpoint: Endpoint {
         switch self {
         case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .profile:
             return .get
-        case .addToWatchlist:
+        case .addToWatchlist, .removeFromWatchlist:
             return .post
         }
     }
@@ -75,7 +78,7 @@ extension MoviesEndpoint: Endpoint {
     public var header: [String : String]? {
         // TODO: Singleton Keychain Manager
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .addToWatchlist, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .addToWatchlist, .removeFromWatchlist, .profile:
             return [
                 //                "Authorization": "Bearer \(accessToken)"
                 "Content-Type": "application/json;charset=utf-8"
@@ -83,7 +86,7 @@ extension MoviesEndpoint: Endpoint {
         }
     }
     
-    public var body: [String: String]? {
+    public var body: [String: Any]? {
         switch self {
         case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .profile:
             return nil
@@ -91,7 +94,13 @@ extension MoviesEndpoint: Endpoint {
             return [
                 "media_type": "movie",
                 "media_id": "\(movieId)",
-                "watchlist": "true"
+                "watchlist": true
+            ]
+        case .removeFromWatchlist(let movieId):
+            return [
+                "media_type": "movie",
+                "media_id": "\(movieId)",
+                "watchlist": false
             ]
         }
     }

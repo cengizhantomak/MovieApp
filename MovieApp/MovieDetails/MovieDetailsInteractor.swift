@@ -12,6 +12,7 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func viewAllCast(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast])
     func viewAllPhotos(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages])
     func postToWatchlist()
+    func postToWatchlist2()
 }
 
 protocol MovieDetailsDataStore: AnyObject {
@@ -95,7 +96,22 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
                 NotificationCenter.default.post(name: .movieAddedToWatchlist, object: nil)
             case .failure(let error):
                 print("Watchlist'e film eklenirken hata: \(error.localizedDescription)")
-                NotificationCenter.default.post(name: .movieAddToWatchlistFailed, object: nil)
+                NotificationCenter.default.post(name: .movieAddDeleteToWatchlistFailed, object: nil)
+            }
+        }
+    }
+    
+    func postToWatchlist2() {
+        guard let id = selectedMovieID else { return }
+        worker.postToWatchlist2(movieId: id) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                print("Film başarıyla watchlist'ten silindi!: \(response)")
+                NotificationCenter.default.post(name: .movieDeletedToWatchlist, object: nil)
+            case .failure(let error):
+                print("Watchlist'e film silinirken hata: \(error.localizedDescription)")
+                NotificationCenter.default.post(name: .movieAddDeleteToWatchlistFailed, object: nil)
             }
         }
     }

@@ -21,6 +21,7 @@
 		47396F172A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47396F152A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib */; };
 		474E4C3D2A4B089600697B7D /* SynopsisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */; };
 		474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */; };
+		4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753EABE2A5D884400755DAB /* StarRatingHelper.swift */; };
 		475935B72A5871A8000C9543 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475935B62A5871A8000C9543 /* NotificationNames.swift */; };
 		476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */; };
 		476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */; };
@@ -123,6 +124,7 @@
 		47396F152A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosSectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		474E4C3B2A4B089600697B7D /* SynopsisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynopsisTableViewCell.swift; sourceTree = "<group>"; };
 		474E4C3C2A4B089600697B7D /* SynopsisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynopsisTableViewCell.xib; sourceTree = "<group>"; };
+		4753EABE2A5D884400755DAB /* StarRatingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingHelper.swift; sourceTree = "<group>"; };
 		475935B62A5871A8000C9543 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		476DBC6B2A57160900539FE3 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		476DBC6C2A57160900539FE3 /* WatchlistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPresenter.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */,
+				4753EABE2A5D884400755DAB /* StarRatingHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				476DBC972A575BE100539FE3 /* GetTicketInteractor.swift in Sources */,
 				47D8B2FB2A496C8F003CFE2D /* MoviesResponse.swift in Sources */,
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
+				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,

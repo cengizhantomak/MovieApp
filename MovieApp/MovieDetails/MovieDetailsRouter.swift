@@ -55,6 +55,8 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "GetTicketViewController") as? GetTicketViewController else { return }
         
+        destinationVC.router?.dataStore?.selectedMovieTitle = dataStore?.selectedMovieTitle
+        destinationVC.router?.dataStore?.selectedMovieImage = dataStore?.selectedMovieImage
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

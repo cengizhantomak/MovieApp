@@ -11,6 +11,7 @@ protocol MovieDetailsDisplayLogic: AnyObject {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
     func displayCast()
     func displayPhotos()
+    func displayGetTicket()
 }
 
 final class MovieDetailsViewController: UIViewController {
@@ -129,7 +130,8 @@ final class MovieDetailsViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func getTicketButton(_ sender: Any) {
-        router?.routeToGetTicket()
+        guard let displayedDetails else { return }
+        interactor?.selectedMovieGetTicket(movie: displayedDetails.title, image: displayedDetails.posterPhotoPath)
     }
     
     @IBAction func addRemoveWatchlistButton(_ sender: Any) {
@@ -227,6 +229,10 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     
     func displayPhotos() {
         router?.routeToPhotos()
+    }
+    
+    func displayGetTicket() {
+        router?.routeToGetTicket()
     }
 }
 

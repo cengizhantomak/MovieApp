@@ -8,7 +8,10 @@
 import UIKit
 
 protocol GetTicketDisplayLogic: AnyObject {
-    
+    func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel)
+    func displayDateTheater()
+    func didSelectDate(_ date: Date)
+    func didSelectTheater(_ theater: String)
 }
 
 final class GetTicketViewController: UIViewController {
@@ -20,12 +23,14 @@ final class GetTicketViewController: UIViewController {
     
     // MARK: - Outlet
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var theatreTextField: UITextField!
+    @IBOutlet weak var getTicketButton: UIButton!
     
-    var selectedSeats: Set<Int> = []
+    // MARK: - Property
     
-    let a = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
-    let b = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    let data = ["Kadikoy", "Besiktas", "Taksim", "Sisli", "Avcilar"]
+    var displayedMovie: GetTicketModels.FetchGetTicket.ViewModel?
     
     // MARK: - Object lifecycle
     
@@ -43,9 +48,13 @@ final class GetTicketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "Get Ticket"
-        setupCollectionView()
+        interactor?.getMovie()
+        navigationItem.title = displayedMovie?.selectedMovieTitle
+        setupDateTextField()
+        setupTheaterTextField()
+        setupTapGesture()
+        getTicketButton.isEnabled = false
+        getTicketButton.backgroundColor = .gray
     }
     
     // MARK: - Setup
@@ -63,109 +72,109 @@ final class GetTicketViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    private func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(.init(nibName: "SeatCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "SeatCollectionViewCell")
-        collectionView.collectionViewLayout = getCompositionalLayout()
-        collectionView.allowsMultipleSelection = true
+    private func setupDateTextField() {
+        dateTextField.delegate = self
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        if #available (iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        dateTextField.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
     }
     
-    // MARK: - CompositionalLayout
+    private func setupTheaterTextField() {
+        theatreTextField.delegate = self
+        let pickerView = UIPickerView()
+        theatreTextField.inputView = pickerView
+        pickerView.dataSource = self
+        pickerView.delegate = self
+    }
     
-    func getCompositionalLayout() -> UICollectionViewLayout {
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector (didTapView))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc private func didTapView() {
+        view.endEditing(true)
+    }
+    
+    @IBAction func getTicketButtonTapped(_ sender: Any) {
+        guard let selectedDate = dateTextField.text,
+              let selectedTheater = theatreTextField.text else {
+            return
+        }
         
-        // Item
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0 / 3),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 3, bottom: 0, trailing:3)
-        
-        // Group in Group
-        let innerGroupLayout = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0 / 3),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let innerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: innerGroupLayout, subitems: [item])
-        innerGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6)
-        
-        let middleGroupLayout = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0 / 3)
-        )
-        let middleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: middleGroupLayout, subitems: [innerGroup])
-        middleGroup.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 0 , bottom: 3, trailing: 0)
-        
-        let outerGroupLayout = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(0.45)
-        )
-        let outerGroup = NSCollectionLayoutGroup.vertical(layoutSize: outerGroupLayout, subitems: [middleGroup])
-        outerGroup.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 35 , bottom: 6, trailing: 35)
-        
-        // Section
-        let section = NSCollectionLayoutSection(group: outerGroup)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0 , bottom: 0, trailing: 0)
-        
-        // Layout
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        interactor?.selectedDateTheater(selectedDate, selectedTheater)
     }
 }
 
 // MARK: - DisplayLogic
 
 extension GetTicketViewController: GetTicketDisplayLogic {
+    func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel) {
+        displayedMovie = viewModel
+    }
     
+    func didSelectDate(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateTextField.text = dateFormatter.string(from: date)
+    }
+    
+    func didSelectTheater(_ theater: String) {
+        theatreTextField.text = theater
+    }
+    
+    func displayDateTheater() {
+        router?.routeToDateTheater()
+    }
 }
 
-// MARK: - CollectionView
+// MARK: - UITextField
 
-extension GetTicketViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return a.count * b.count
+extension GetTicketViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeatCollectionViewCell", for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
-        
-        var combined = [String]()
-        
-        a.forEach { letter in
-            b.forEach { number in
-                combined.append("\(letter)\(number)")
-            }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let dateText = dateTextField.text, !dateText.isEmpty,
+              let theaterText = theatreTextField.text, !theaterText.isEmpty else {
+            getTicketButton.isEnabled = false
+            return
         }
         
-        let value = combined[indexPath.row]
-        
-        cell.textLabel.text = value
-        
-        if selectedSeats.contains(indexPath.row) {
-            cell.contentView.backgroundColor = UIColor(named: "47CFFF")
-        } else {
-            cell.contentView.backgroundColor = UIColor.clear
-        }
-        
-        return cell
+        getTicketButton.isEnabled = true
+        getTicketButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+    }
+}
+
+// MARK: - UIPickerView
+
+extension GetTicketViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 // Tek bir sütun kullanacağız
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
-        
-        if selectedSeats.contains(indexPath.row) {
-            selectedSeats.remove(indexPath.row)
-            collectionView.deselectItem(at: indexPath, animated: true)
-        } else {
-            selectedSeats.insert(indexPath.row)
-        }
-        collectionView.reloadItems(at: [indexPath])
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return data.count // Dizi eleman sayısı kadar satır olacak
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectedSeats.remove(indexPath.row)
-        collectionView.reloadItems(at: [indexPath])
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return data[row] // Her bir satır için veriyi döndürme
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        theatreTextField.text = data[row] // Seçilen veriyi TextField'e yerleştirme
     }
 }

@@ -13,12 +13,15 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func viewAllPhotos(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages])
     func postToWatchlist()
     func postToWatchlist2()
+    func selectedMovieGetTicket(movie: String, image: String)
 }
 
 protocol MovieDetailsDataStore: AnyObject {
     var selectedMovieID: Int? { get set }
     var allCast: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] { get set }
     var allPhotos: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] { get set }
+    var selectedMovieTitle: String? { get set }
+    var selectedMovieImage: String? { get set }
 }
 
 final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
@@ -29,6 +32,8 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     var selectedMovieID: Int?
     var allCast: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] = []
     var allPhotos: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] = []
+    var selectedMovieTitle: String?
+    var selectedMovieImage: String?
     
     func fetchMovieDetails() {
         guard let id = selectedMovieID else { return }
@@ -124,5 +129,11 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     func viewAllPhotos(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]) {
         allPhotos = with
         presenter?.presentAllPhotos()
+    }
+    
+    func selectedMovieGetTicket(movie: String, image: String) {
+        selectedMovieTitle = movie
+        selectedMovieImage = image
+        presenter?.presentGetTicket()
     }
 }

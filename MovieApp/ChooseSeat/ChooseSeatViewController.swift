@@ -9,6 +9,7 @@ import UIKit
 
 protocol ChooseSeatDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
+    func updateViewComponents()
 }
 
 final class ChooseSeatViewController: UIViewController {
@@ -19,14 +20,15 @@ final class ChooseSeatViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var seatLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var continueButton: UIButton!
     
     // MARK: - VIP Properties
     
-    var selectedSeats: Set<Int> = []
-    
-    let a = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
-    let b = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    
+    let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+    let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var selectedSeats = [String]()
     var displayedMovie: ChooseSeatModels.FetchChooseSeat.ViewModel?
     
     // MARK: - Object lifecycle
@@ -49,6 +51,8 @@ final class ChooseSeatViewController: UIViewController {
         interactor?.getMovie()
         setupNavigationBar()
         setupCollectionView()
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -123,6 +127,9 @@ final class ChooseSeatViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    @IBAction func continueButtonTapped(_ sender: Any) {
+    }
 }
 
 // MARK: - DisplayLogic
@@ -131,13 +138,28 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
         displayedMovie = viewModel
     }
+    
+    func updateViewComponents() {
+        selectedSeats.sort()
+        seatLabel.text = selectedSeats.joined(separator: ", ") + (selectedSeats.isEmpty ? "" : " SELECTED")
+        let totalAmount = Double(selectedSeats.count) * 18.00
+        priceLabel.text = "$ " + String(format: "%.2f", totalAmount)
+        
+        if selectedSeats.isEmpty {
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = .systemGray
+        } else {
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        }
+    }
 }
 
 // MARK: - UICollectionView
 
 extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return a.count * b.count
+        return row.count * seat.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -145,39 +167,43 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         
         var combined = [String]()
         
-        a.forEach { letter in
-            b.forEach { number in
+        row.forEach { letter in
+            seat.forEach { number in
                 combined.append("\(letter)\(number)")
             }
         }
         
         let value = combined[indexPath.row]
-        
         cell.textLabel.text = value
-        
-        if selectedSeats.contains(indexPath.row) {
-            cell.contentView.backgroundColor = UIColor(named: "47CFFF")
-        } else {
-            cell.contentView.backgroundColor = UIColor.clear
-        }
+        cell.isSelected = cell.isSelected
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
-        
-        if selectedSeats.contains(indexPath.row) {
-            selectedSeats.remove(indexPath.row)
+        if selectedSeats.count >= 10 {
             collectionView.deselectItem(at: indexPath, animated: true)
+            
+            UIAlertHelper.shared.showAlert(
+                title: "Seat Selection Limit Reached",
+                message: "You can select up to 10 seats only.",
+                buttonTitle: "OK",
+                on: self
+            )
         } else {
-            selectedSeats.insert(indexPath.row)
+            guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
+            
+            selectedSeats.append(cell.textLabel.text ?? "")
+            updateViewComponents()
         }
-        collectionView.reloadItems(at: [indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectedSeats.remove(indexPath.row)
-        collectionView.reloadItems(at: [indexPath])
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
+        
+        if let index = selectedSeats.firstIndex(of: cell.textLabel.text ?? "") {
+            selectedSeats.remove(at: index)
+            updateViewComponents()
+        }
     }
 }

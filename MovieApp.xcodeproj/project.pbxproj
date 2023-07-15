@@ -40,7 +40,6 @@
 		476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC932A575BE100539FE3 /* GetTicketRouter.swift */; };
 		476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */; };
 		476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */; };
-		4773F83E2A61930A00CF4C8D /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F83D2A61930A00CF4C8D /* KeychainHelper.swift */; };
 		4773F8472A61934A00CF4C8D /* ChooseSeat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4773F8402A61934A00CF4C8D /* ChooseSeat.storyboard */; };
 		4773F8482A61934A00CF4C8D /* ChooseSeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F8412A61934A00CF4C8D /* ChooseSeatViewController.swift */; };
 		4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F8422A61934A00CF4C8D /* ChooseSeatPresenter.swift */; };
@@ -152,7 +151,6 @@
 		476DBC932A575BE100539FE3 /* GetTicketRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicketRouter.swift; sourceTree = "<group>"; };
 		476DBC9C2A575DE200539FE3 /* SeatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCollectionViewCell.swift; sourceTree = "<group>"; };
 		476DBC9D2A575DE200539FE3 /* SeatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeatCollectionViewCell.xib; sourceTree = "<group>"; };
-		4773F83D2A61930A00CF4C8D /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		4773F8402A61934A00CF4C8D /* ChooseSeat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChooseSeat.storyboard; sourceTree = "<group>"; };
 		4773F8412A61934A00CF4C8D /* ChooseSeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSeatViewController.swift; sourceTree = "<group>"; };
 		4773F8422A61934A00CF4C8D /* ChooseSeatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSeatPresenter.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			children = (
 				47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */,
 				4753EABE2A5D884400755DAB /* StarRatingHelper.swift */,
-				4773F83D2A61930A00CF4C8D /* KeychainHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -743,7 +740,6 @@
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,
 				476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */,
-				4773F83E2A61930A00CF4C8D /* KeychainHelper.swift in Sources */,
 				4773F8482A61934A00CF4C8D /* ChooseSeatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

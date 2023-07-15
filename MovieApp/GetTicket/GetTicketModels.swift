@@ -9,7 +9,7 @@ import Foundation
 
 enum GetTicketModels {
     
-    enum Case {
+    enum FetchGetTicket {
         
         struct Request {
             
@@ -20,7 +20,8 @@ enum GetTicketModels {
         }
         
         struct ViewModel {
-            
+            var selectedMovieTitle: String?
+            var selectedMovieImage: String?
         }
     }
 }

@@ -17,10 +17,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        UINavigationBar.appearance().backIndicatorImage = UIImage(systemName: "arrow.backward")
-        UINavigationBar.appearance().tintColor = UIColor(named: "0F1B2B")
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for:UIBarMetrics.default)
+        // Renk ve font tanımlamalarını yapalım
+        guard let font = UIFont(name: "SFProText-Medium", size: 18),
+              let color = UIColor(named: "0F1B2B") else {
+            return
+        }
+        
+        let attrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: color,
+            .font: font
+        ]
+        
+        // Uygulamanın genelinde Navigasyon çubuğu başlığının görünümünü ayarlıyoruz
+        UINavigationBar.appearance().titleTextAttributes = attrs
+        
+        // Back butonu görünümünü özelleştiriyoruz
+        let backImage = UIImage(systemName: "arrow.backward")
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().tintColor = color
+        
+        // Back butonu başlığını gizliyoruz
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: 0), for: UIBarMetrics.default)
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         

@@ -11,6 +11,7 @@ protocol MovieDetailsPresentationLogic: AnyObject {
     func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response)
     func presentAllCast()
     func presentAllPhotos()
+    func presentGetTicket()
 }
 
 final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
@@ -66,5 +67,9 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     
     func presentAllPhotos() {
         viewController?.displayPhotos()
+    }
+    
+    func presentGetTicket() {
+        viewController?.displayGetTicket()
     }
 }

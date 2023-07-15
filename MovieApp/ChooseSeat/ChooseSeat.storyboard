@@ -13,6 +13,9 @@
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Choose Seat View Controller-->
@@ -113,12 +116,63 @@
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvJ-S6-QbF">
+                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seat" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKg-6n-Mta">
+                                        <rect key="frame" x="20" y="14.5" width="214" height="14.5"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3Q-2r-m2k">
+                                        <rect key="frame" x="20" y="33" width="214" height="29"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="24"/>
+                                        <color key="textColor" name="price"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1p-km-7Sc">
+                                        <rect key="frame" x="244" y="14" width="150" height="44"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Str-SI-izn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Continue"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="continueButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="e0p-ui-iM6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstItem="u3Q-2r-m2k" firstAttribute="leading" secondItem="dvJ-S6-QbF" secondAttribute="leading" constant="20" id="2hk-4G-LEY"/>
+                                    <constraint firstItem="u3Q-2r-m2k" firstAttribute="top" secondItem="BKg-6n-Mta" secondAttribute="bottom" constant="4" id="43c-YY-38V"/>
+                                    <constraint firstItem="K1p-km-7Sc" firstAttribute="leading" secondItem="BKg-6n-Mta" secondAttribute="trailing" constant="10" id="45X-Yd-KJj"/>
+                                    <constraint firstItem="K1p-km-7Sc" firstAttribute="leading" secondItem="u3Q-2r-m2k" secondAttribute="trailing" constant="10" id="6vQ-22-P4Y"/>
+                                    <constraint firstAttribute="height" constant="72" id="Mfe-yb-VBM"/>
+                                    <constraint firstItem="BKg-6n-Mta" firstAttribute="leading" secondItem="dvJ-S6-QbF" secondAttribute="leading" constant="20" id="hLw-0L-9Sg"/>
+                                    <constraint firstAttribute="bottom" secondItem="K1p-km-7Sc" secondAttribute="bottom" constant="14" id="oVf-I8-xqv"/>
+                                    <constraint firstAttribute="trailing" secondItem="K1p-km-7Sc" secondAttribute="trailing" constant="20" id="phe-yA-XRL"/>
+                                    <constraint firstAttribute="bottom" secondItem="u3Q-2r-m2k" secondAttribute="bottom" constant="10" id="qEa-g8-UXy"/>
+                                    <constraint firstItem="K1p-km-7Sc" firstAttribute="top" secondItem="dvJ-S6-QbF" secondAttribute="top" constant="14" id="tTK-nY-R4Q"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="ir0-BX-tcR" secondAttribute="trailing" constant="122" id="2Te-EB-cs0"/>
                             <constraint firstItem="BY4-Ww-rqc" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="3Zt-2c-Xjk"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="dvJ-S6-QbF" secondAttribute="bottom" id="3p2-Wy-bl8"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="dvJ-S6-QbF" secondAttribute="trailing" id="8uN-v2-Emv"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="9Xs-cJ-uub" secondAttribute="trailing" id="9zO-Xd-S4g"/>
                             <constraint firstItem="ir0-BX-tcR" firstAttribute="centerY" secondItem="xhb-mD-Xvi" secondAttribute="centerY" id="CKI-fO-OxV"/>
                             <constraint firstItem="9kc-gm-Yvh" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="Ecx-1w-xf3"/>
@@ -129,6 +183,7 @@
                             <constraint firstItem="Fhe-OU-nku" firstAttribute="top" secondItem="xhb-mD-Xvi" secondAttribute="bottom" constant="6" id="UH2-2f-pix"/>
                             <constraint firstAttribute="trailing" secondItem="6NR-8R-7nZ" secondAttribute="trailing" constant="20" id="V5c-PJ-SAd"/>
                             <constraint firstItem="9Xs-cJ-uub" firstAttribute="top" secondItem="9kc-gm-Yvh" secondAttribute="bottom" constant="35" id="ahf-wK-XZL"/>
+                            <constraint firstItem="dvJ-S6-QbF" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="bR4-G2-Awd"/>
                             <constraint firstItem="6NR-8R-7nZ" firstAttribute="leading" secondItem="chM-je-gA4" secondAttribute="leading" constant="20" id="dQX-IG-EDc"/>
                             <constraint firstItem="8nA-iN-TUG" firstAttribute="centerX" secondItem="ir0-BX-tcR" secondAttribute="centerX" id="ign-Ps-8GI"/>
                             <constraint firstItem="ir0-BX-tcR" firstAttribute="top" secondItem="6NR-8R-7nZ" secondAttribute="bottom" constant="28" id="jAx-Uz-po3"/>
@@ -142,11 +197,14 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="9Xs-cJ-uub" id="Vz7-hQ-F8Z"/>
+                        <outlet property="continueButton" destination="K1p-km-7Sc" id="0zD-dk-KZr"/>
+                        <outlet property="priceLabel" destination="u3Q-2r-m2k" id="sMU-qL-c5R"/>
+                        <outlet property="seatLabel" destination="BKg-6n-Mta" id="ORl-jX-FbH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="28"/>
+            <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
         </scene>
     </scenes>
     <resources>
@@ -155,8 +213,14 @@
         <namedColor name="0F1B2B">
             <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="2B3543">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="47CFFF">
             <color red="0.27843137254901962" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="price">
+            <color red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

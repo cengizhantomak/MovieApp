@@ -11,10 +11,10 @@ class SeatCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var textLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-    }
+    override var isSelected: Bool {
+            didSet {
+                backgroundColor = isSelected ? UIColor(named: "47CFFF") : UIColor.clear
+            }
+        }
 
 }

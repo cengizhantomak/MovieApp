@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetTicketPresentationLogic: AnyObject {
-    func presentMovie(_ displayedTitle: String)
+    func presentMovie(ticketDetails: GetTicketModels.FetchGetTicket.ViewModel)
     func presentDateTheater()
 }
 
@@ -16,9 +16,8 @@ final class GetTicketPresenter: GetTicketPresentationLogic {
     
     weak var viewController: GetTicketDisplayLogic?
     
-    func presentMovie(_ displayedTitle: String) {
-        let displayedMovie = GetTicketModels.FetchGetTicket.ViewModel(selectedMovieTitle: displayedTitle)
-        self.viewController?.displayFetchedMovie(viewModel: displayedMovie)
+    func presentMovie(ticketDetails: GetTicketModels.FetchGetTicket.ViewModel) {
+        self.viewController?.displayFetchedMovie(viewModel: ticketDetails)
     }
     
     func presentDateTheater() {

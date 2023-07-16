@@ -11,8 +11,8 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func fetchMovieDetails()
     func viewAllCast(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast])
     func viewAllPhotos(with: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages])
-    func postToWatchlist()
-    func postToWatchlist2()
+    func postToAddWatchlist()
+    func postToRemoveWatchlist()
     func selectedMovieGetTicket(movie: String, image: String)
 }
 
@@ -91,10 +91,10 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         }
     }
     
-    func postToWatchlist() {
+    func postToAddWatchlist() {
         guard let id = selectedMovieID else { return }
         worker.postToWatchlist(movieId: id) { [weak self] result in
-            guard let self = self else { return }
+            guard self != nil else { return }
             switch result {
             case .success(let response):
                 print("Film başarıyla watchlist'e eklendi!: \(response)")
@@ -106,10 +106,10 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         }
     }
     
-    func postToWatchlist2() {
+    func postToRemoveWatchlist() {
         guard let id = selectedMovieID else { return }
         worker.postToWatchlist2(movieId: id) { [weak self] result in
-            guard let self = self else { return }
+            guard self != nil else { return }
             switch result {
             case .success(let response):
                 print("Film başarıyla watchlist'ten silindi!: \(response)")

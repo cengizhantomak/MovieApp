@@ -9,16 +9,11 @@ import Foundation
 
 protocol ChooseSeatBusinessLogic: AnyObject {
     func getMovie()
-    func selectedSeatPrice(_ seat: [String], _ price: Double)
+    func selectedSeatPrice(seat: [String], price: Double)
 }
 
 protocol ChooseSeatDataStore: AnyObject {
-    var selectedMovieTitle: String? { get set }
-    var selectedMovieImage: String? { get set }
-    var selectedDate: String? { get set }
-    var selectedTheater: String? { get set }
-    var chooseSeat: [String] { get set }
-    var totalAmount: Double? { get set }
+    var seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel? { get set }
 }
 
 final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
@@ -26,24 +21,16 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
     var presenter: ChooseSeatPresentationLogic?
     var worker: ChooseSeatWorkingLogic = ChooseSeatWorker()
     
-    var selectedMovieTitle: String?
-    var selectedMovieImage: String?
-    var selectedDate: String?
-    var selectedTheater: String?
-    var chooseSeat: [String] = []
-    var totalAmount: Double?
+    var seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel?
     
     func getMovie() {
-        guard let selectedMovieTitle,
-        let selectedMovieImage,
-        let selectedDate,
-        let selectedTheater else { return }
-        presenter?.presentMovie(selectedMovieTitle, selectedMovieImage, selectedDate, selectedTheater)
+        guard let seatDetails else { return }
+        presenter?.presentMovie(seatDetails: seatDetails)
     }
     
-    func selectedSeatPrice(_ seat: [String], _ price: Double) {
-        chooseSeat = seat
-        totalAmount = price
+    func selectedSeatPrice(seat: [String], price: Double) {
+        seatDetails?.chooseSeat = seat
+        seatDetails?.totalAmount = price
         presenter?.presentSeatPrice()
     }
 }

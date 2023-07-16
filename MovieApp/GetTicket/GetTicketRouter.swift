@@ -25,12 +25,16 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
         let storyboard = UIStoryboard(name: "ChooseSeat", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChooseSeatViewController") as? ChooseSeatViewController,
-              let dataStore else { return }
+              let dataStore,
+              let chooseSeatDataStore = destinationVC.router?.dataStore else { return }
         
-        destinationVC.router?.dataStore?.selectedMovieTitle = dataStore.selectedMovieTitle
-        destinationVC.router?.dataStore?.selectedMovieImage = dataStore.selectedMovieImage
-        destinationVC.router?.dataStore?.selectedDate = dataStore.selectedDate
-        destinationVC.router?.dataStore?.selectedTheater = dataStore.selectedTheater
+        chooseSeatDataStore.seatDetails = ChooseSeatModels.FetchChooseSeat.ViewModel(
+            selectedMovieTitle: dataStore.ticketDetails?.selectedMovieTitle,
+            selectedMovieImage: dataStore.ticketDetails?.selectedMovieImage,
+            selectedDate: dataStore.ticketDetails?.selectedDate,
+            selectedTheater: dataStore.ticketDetails?.selectedTheater
+        )
+        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

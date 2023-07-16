@@ -32,7 +32,6 @@ final class ChooseSeatViewController: UIViewController {
     let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
     let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     var selectedSeats: [String] = []
-    var displayedMovie: ChooseSeatModels.FetchChooseSeat.ViewModel?
     var totalAmount: Double = 0.0
     
     // MARK: - Object lifecycle
@@ -53,7 +52,6 @@ final class ChooseSeatViewController: UIViewController {
         super.viewDidLoad()
         
         interactor?.getMovie()
-        setupNavigationBar()
         setupCollectionView()
         continueButton.isEnabled = false
         continueButton.backgroundColor = .systemGray
@@ -72,13 +70,6 @@ final class ChooseSeatViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-    }
-    
-    private func setupNavigationBar() {
-        guard let displayedMovie else { return }
-        let customView = NavigationCustomView(frame: CGRect(x: 0, y: 0, width: 250, height: 38))
-        customView.setupView(viewModel: displayedMovie)
-        navigationItem.titleView = customView
     }
     
     private func setupCollectionView() {
@@ -133,7 +124,7 @@ final class ChooseSeatViewController: UIViewController {
     }
     
     @IBAction func continueButtonTapped(_ sender: Any) {
-        interactor?.selectedSeatPrice(selectedSeats, totalAmount)
+        interactor?.selectedSeatPrice(seat: selectedSeats, price: totalAmount)
     }
 }
 
@@ -141,7 +132,9 @@ final class ChooseSeatViewController: UIViewController {
 
 extension ChooseSeatViewController: ChooseSeatDisplayLogic {
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
-        displayedMovie = viewModel
+        let customView = NavigationCustomView(frame: CGRect(x: 0, y: 0, width: 250, height: 38))
+        customView.setupView(viewModel: viewModel)
+        navigationItem.titleView = customView
     }
     
     func updateViewComponents() {

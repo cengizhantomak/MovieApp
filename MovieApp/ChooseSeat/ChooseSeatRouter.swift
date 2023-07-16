@@ -25,14 +25,18 @@ final class ChooseSeatRouter: ChooseSeatRoutingLogic, ChooseSeatDataPassing {
         let storyboard = UIStoryboard(name: "Payment", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController,
-              let dataStore else { return }
+              let dataStore,
+              let paymentDataStore = destinationVC.router?.dataStore else { return }
         
-        destinationVC.router?.dataStore?.selectedMovieTitle = dataStore.selectedMovieTitle
-        destinationVC.router?.dataStore?.selectedMovieImage = dataStore.selectedMovieImage
-        destinationVC.router?.dataStore?.selectedDate = dataStore.selectedDate
-        destinationVC.router?.dataStore?.selectedTheater = dataStore.selectedTheater
-        destinationVC.router?.dataStore?.chooseSeat = dataStore.chooseSeat
-        destinationVC.router?.dataStore?.totalAmount = dataStore.totalAmount
+        paymentDataStore.paymentDetails = PaymentModels.FetchPayment.ViewModel(
+            selectedMovieTitle: dataStore.seatDetails?.selectedMovieTitle,
+            selectedMovieImage: dataStore.seatDetails?.selectedMovieImage,
+            selectedDate: dataStore.seatDetails?.selectedDate,
+            selectedTheater: dataStore.seatDetails?.selectedTheater,
+            chooseSeat: dataStore.seatDetails?.chooseSeat,
+            totalAmount: dataStore.seatDetails?.totalAmount
+        )
+        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

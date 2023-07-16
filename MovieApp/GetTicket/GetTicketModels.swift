@@ -22,6 +22,8 @@ enum GetTicketModels {
         struct ViewModel {
             var selectedMovieTitle: String?
             var selectedMovieImage: String?
+            var selectedDate: String?
+            var selectedTheater: String?
         }
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 protocol GetTicketDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel)
     func displayDateTheater()
-    func didSelectDate(_ date: Date)
-    func didSelectTheater(_ theater: String)
+    func didSelectDate(date: Date)
+    func didSelectTheater(theater: String)
 }
 
 final class GetTicketViewController: UIViewController {
@@ -30,7 +30,6 @@ final class GetTicketViewController: UIViewController {
     // MARK: - Property
     
     let data = ["Kadikoy", "Besiktas", "Taksim", "Sisli", "Avcilar"]
-    var displayedMovie: GetTicketModels.FetchGetTicket.ViewModel?
     
     // MARK: - Object lifecycle
     
@@ -48,8 +47,8 @@ final class GetTicketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         interactor?.getMovie()
-        navigationItem.title = displayedMovie?.selectedMovieTitle
         setupDateTextField()
         setupTheaterTextField()
         setupTapGesture()
@@ -114,7 +113,7 @@ final class GetTicketViewController: UIViewController {
             return
         }
         
-        interactor?.selectedDateTheater(selectedDate, selectedTheater)
+        interactor?.selectedDateTheater(date: selectedDate, theater: selectedTheater)
     }
 }
 
@@ -122,16 +121,16 @@ final class GetTicketViewController: UIViewController {
 
 extension GetTicketViewController: GetTicketDisplayLogic {
     func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel) {
-        displayedMovie = viewModel
+        navigationItem.title = viewModel.selectedMovieTitle
     }
     
-    func didSelectDate(_ date: Date) {
+    func didSelectDate(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
         dateTextField.text = dateFormatter.string(from: date)
     }
     
-    func didSelectTheater(_ theater: String) {
+    func didSelectTheater(theater: String) {
         theatreTextField.text = theater
     }
     

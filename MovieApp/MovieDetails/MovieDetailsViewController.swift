@@ -138,12 +138,12 @@ final class MovieDetailsViewController: UIViewController {
         guard var displayedDetails else { return }
         
         if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
-            interactor?.postToWatchlist2()
+            interactor?.postToRemoveWatchlist()
             if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {
                 displayedDetails.displayedWatchList.remove(at: index)
             }
         } else {
-            interactor?.postToWatchlist()
+            interactor?.postToAddWatchlist()
             let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
             displayedDetails.displayedWatchList.append(watchlistItem)
         }
@@ -165,20 +165,35 @@ final class MovieDetailsViewController: UIViewController {
     @objc func onMovieAddedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
             self.addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
-            UIAlertHelper.shared.showAlert(title: "Added", message: "The movie has been successfully added to your watchlist.", buttonTitle: "OK", on: self)
+            UIAlertHelper.shared.showAlert(
+                title: "Added",
+                message: "The movie has been successfully added to your watchlist.",
+                buttonTitle: "OK",
+                on: self
+            )
         }
     }
     
     @objc func onMovieDeletedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
             self.addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
-            UIAlertHelper.shared.showAlert(title: "Removed", message: "The movie has been successfully removed from your watch list.", buttonTitle: "OK", on: self)
+            UIAlertHelper.shared.showAlert(
+                title: "Removed",
+                message: "The movie has been successfully removed from your watch list.",
+                buttonTitle: "OK",
+                on: self
+            )
         }
     }
     
     @objc func onMovieAddToWatchlistFailed(_ notification: Notification) {
         DispatchQueue.main.async {
-            UIAlertHelper.shared.showAlert(title: "Error", message: "An error occurred while adding the movie to your watchlist.", buttonTitle: "OK", on: self)
+            UIAlertHelper.shared.showAlert(
+                title: "Error",
+                message: "An error occurred while adding the movie to your watchlist.",
+                buttonTitle: "OK",
+                on: self
+            )
         }
     }
 }
@@ -201,7 +216,12 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         ratingLabel.text = formattedVote
         
         if let starImages = StarRatingHelper.createStarImages(for: vote) {
-            StarRatingHelper.updateStarRatingStackView(with: starImages, starSize: 20, starSpacing: 4, in: starRatingStackView)
+            StarRatingHelper.updateStarRatingStackView(
+                with: starImages,
+                starSize: 20,
+                starSpacing: 4,
+                in: starRatingStackView
+            )
         }
         
         if let posterUrl = ImageUrlHelper.imageUrl(for: displayedDetails.posterPhotoPath) {

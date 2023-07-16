@@ -31,10 +31,6 @@ final class PaymentViewController: UIViewController {
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var placeOrderButton: UIButton!
     
-    // MARK: - Properties
-    
-    var displayedMovie: PaymentModels.FetchPayment.ViewModel?
-    
     // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -51,6 +47,7 @@ final class PaymentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         interactor?.getMovie()
         navigationItem.title = "Payment"
         setupTextField()
@@ -90,16 +87,14 @@ final class PaymentViewController: UIViewController {
 
 extension PaymentViewController: PaymentDisplayLogic {
     func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel) {
-        displayedMovie = viewModel
-        guard let displayedMovie else { return }
-        if let posterUrl = ImageUrlHelper.imageUrl(for: displayedMovie.selectedMovieImage ?? "") {
+        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.selectedMovieImage ?? "") {
             posterImage.load(url: posterUrl)
         }
         
-        titleLabel.text = displayedMovie.selectedMovieTitle
-        dateLabel.text = displayedMovie.selectedDate
-        seatLabel.text = displayedMovie.chooseSeat
-        priceLabel.text = "$ " + String(format: "%.2f", displayedMovie.totalAmount ?? .zero)
+        titleLabel.text = viewModel.selectedMovieTitle
+        dateLabel.text = viewModel.selectedDate
+        seatLabel.text = viewModel.chooseSeat?.joined(separator: ", ")
+        priceLabel.text = "$ " + String(format: "%.2f", viewModel.totalAmount ?? .zero)
     }
 }
 

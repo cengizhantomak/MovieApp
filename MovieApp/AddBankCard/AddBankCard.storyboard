@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nxe-uw-h5I">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add Bank Card View Controller-->
+        <scene sceneID="D3m-6j-bBI">
+            <objects>
+                <viewController storyboardIdentifier="AddBankCardViewController" id="nxe-uw-h5I" customClass="AddBankCardViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs4-PN-EcG">
+                                <rect key="frame" x="25" y="218" width="90.5" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Expire" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rp-Fo-DyT">
+                                <rect key="frame" x="25" y="313" width="77.5" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-0v-eh2">
+                                <rect key="frame" x="148.5" y="313" width="29.5" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4S-gi-2Uk">
+                                <rect key="frame" x="25" y="123" width="75.5" height="17"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xms-u7-iVo">
+                                <rect key="frame" x="25" y="150" width="364" height="44"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hlV-iT-TVx"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-Sy-uZ3">
+                                <rect key="frame" x="25" y="245" width="364" height="44"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1UU-Es-mnG"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mc-pX-u3T">
+                                <rect key="frame" x="25" y="340" width="100" height="44"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2ma-k4-q1q"/>
+                                    <constraint firstAttribute="width" constant="100" id="Lkk-YL-vB8"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBQ-FS-a64">
+                                <rect key="frame" x="149" y="340" width="60" height="44"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="mJF-dr-4kA"/>
+                                    <constraint firstAttribute="width" constant="60" id="tv6-vT-jpg"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLC-9O-spv">
+                                <rect key="frame" x="25" y="809" width="364" height="48"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.098039215690000001" blue="0.2156862745" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Qh5-Lx-d6n"/>
+                                    <constraint firstAttribute="height" constant="48" id="X3m-Ko-zVn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Add Card"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addCardButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="CY8-a3-QDX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
+                        <color key="backgroundColor" name="theme"/>
+                        <constraints>
+                            <constraint firstItem="dBQ-FS-a64" firstAttribute="leading" secondItem="2mc-pX-u3T" secondAttribute="trailing" constant="24" id="8kp-gr-kxq"/>
+                            <constraint firstItem="OKB-Sy-uZ3" firstAttribute="top" secondItem="fs4-PN-EcG" secondAttribute="bottom" constant="10" id="8vQ-p8-9Mf"/>
+                            <constraint firstItem="6rp-Fo-DyT" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="BoD-KG-pDe"/>
+                            <constraint firstItem="gKI-0v-eh2" firstAttribute="top" secondItem="OKB-Sy-uZ3" secondAttribute="bottom" constant="24" id="Cz4-v8-C9Y"/>
+                            <constraint firstItem="fs4-PN-EcG" firstAttribute="top" secondItem="xms-u7-iVo" secondAttribute="bottom" constant="24" id="E8b-fx-fn6"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="xms-u7-iVo" secondAttribute="trailing" constant="25" id="Hc2-0u-Hs3"/>
+                            <constraint firstItem="xms-u7-iVo" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="IGl-Hg-r1f"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="FLC-9O-spv" secondAttribute="trailing" constant="25" id="Tih-GO-32U"/>
+                            <constraint firstItem="FLC-9O-spv" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="Tje-76-xAC"/>
+                            <constraint firstItem="p4S-gi-2Uk" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="75" id="Yc1-Nj-DwP"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="FLC-9O-spv" secondAttribute="bottom" constant="5" id="ZYa-ts-8dw"/>
+                            <constraint firstItem="p4S-gi-2Uk" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="ago-9j-IZ1"/>
+                            <constraint firstItem="xms-u7-iVo" firstAttribute="top" secondItem="p4S-gi-2Uk" secondAttribute="bottom" constant="10" id="djM-FI-lwi"/>
+                            <constraint firstItem="dBQ-FS-a64" firstAttribute="top" secondItem="gKI-0v-eh2" secondAttribute="bottom" constant="10" id="fXy-Gb-uaa"/>
+                            <constraint firstItem="fs4-PN-EcG" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="gGW-OP-mPM"/>
+                            <constraint firstItem="gKI-0v-eh2" firstAttribute="leading" secondItem="6rp-Fo-DyT" secondAttribute="trailing" constant="46" id="gdh-qD-UUg"/>
+                            <constraint firstItem="OKB-Sy-uZ3" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="iKI-bV-CTK"/>
+                            <constraint firstItem="2mc-pX-u3T" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="mXT-GW-gyM"/>
+                            <constraint firstItem="6rp-Fo-DyT" firstAttribute="top" secondItem="OKB-Sy-uZ3" secondAttribute="bottom" constant="24" id="nth-gb-NI6"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="OKB-Sy-uZ3" secondAttribute="trailing" constant="25" id="q0I-eF-KJv"/>
+                            <constraint firstItem="2mc-pX-u3T" firstAttribute="top" secondItem="6rp-Fo-DyT" secondAttribute="bottom" constant="10" id="yfi-gc-kZq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCardButton" destination="FLC-9O-spv" id="ggc-8j-MNE"/>
+                        <outlet property="cardNumberTextField" destination="OKB-Sy-uZ3" id="NQZ-Mf-d6k"/>
+                        <outlet property="cvvTextField" destination="dBQ-FS-a64" id="fHZ-83-dkX"/>
+                        <outlet property="dateExpireTextField" destination="2mc-pX-u3T" id="i4h-uT-ibx"/>
+                        <outlet property="nameCardTextField" destination="xms-u7-iVo" id="hqd-ua-PWt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105.79710144927537" y="27.455357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="0F1B2B">
+            <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="2B3543">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="theme">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

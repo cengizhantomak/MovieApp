@@ -1,35 +1,30 @@
 //
-//  PaymentViewController.swift
+//  AddBankCardViewController.swift
 //  MovieApp
 //
-//  Created by Cengizhan Tomak on 15.07.2023.
+//  Created by Cengizhan Tomak on 16.07.2023.
 //
 
 import UIKit
 
-protocol PaymentDisplayLogic: AnyObject {
-    func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel)
+protocol AddBankCardDisplayLogic: AnyObject {
+    
 }
 
-final class PaymentViewController: UIViewController {
+final class AddBankCardViewController: UIViewController {
     
     // MARK: - VIP Properties
     
-    var interactor: PaymentBusinessLogic?
-    var router: (PaymentRoutingLogic & PaymentDataPassing)?
+    var interactor: AddBankCardBusinessLogic?
+    var router: (AddBankCardRoutingLogic & AddBankCardDataPassing)?
     
     // MARK: - Outlet
     
-    @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var seatLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nameCardTextField: UITextField!
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var dateExpireTextField: UITextField!
     @IBOutlet weak var cvvTextField: UITextField!
-    @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var addCardButton: UIButton!
     
     // MARK: - Object lifecycle
     
@@ -48,20 +43,19 @@ final class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor?.getMovie()
-        navigationItem.title = "Payment"
+        navigationItem.title = "Add Bank Card"
         setupTextField()
-        placeOrderButton.isEnabled = false
-        placeOrderButton.backgroundColor = .gray
+        addCardButton.isEnabled = false
+        addCardButton.backgroundColor = .gray
     }
     
     // MARK: - Setup
     
     private func setup() {
         let viewController = self
-        let interactor = PaymentInteractor()
-        let presenter = PaymentPresenter()
-        let router = PaymentRouter()
+        let interactor = AddBankCardInteractor()
+        let presenter = AddBankCardPresenter()
+        let router = AddBankCardRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -79,32 +73,25 @@ final class PaymentViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func placeOrderButtonTapped(_ sender: Any) {
-    }
-    
-    @IBAction func addBankCardTapped(_ sender: Any) {
-        router?.routeToAddBankCard()
+    @IBAction func addCardButtonTapped(_ sender: Any) {
+        guard let cardName = nameCardTextField.text,
+                  let cardNumber = cardNumberTextField.text,
+                  let expiryDate = dateExpireTextField.text,
+                  let cvv = cvvTextField.text else { return }
+        
+        interactor?.saveBankCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv, viewController: self)
     }
 }
 
 // MARK: - DisplayLogic
 
-extension PaymentViewController: PaymentDisplayLogic {
-    func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel) {
-        if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.selectedMovieImage ?? "") {
-            posterImage.load(url: posterUrl)
-        }
-        
-        titleLabel.text = viewModel.selectedMovieTitle
-        dateLabel.text = viewModel.selectedDate
-        seatLabel.text = "Seat: \(viewModel.chooseSeat?.joined(separator: ", ") ?? "")"
-        priceLabel.text = "$ " + String(format: "%.2f", viewModel.totalAmount ?? .zero)
-    }
+extension AddBankCardViewController: AddBankCardDisplayLogic {
+    
 }
 
 // MARK: - UITextFieldDelegate
 
-extension PaymentViewController: UITextFieldDelegate {
+extension AddBankCardViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == nameCardTextField {
@@ -227,12 +214,12 @@ extension PaymentViewController: UITextFieldDelegate {
               let cardNumberText = cardNumberTextField.text, cardNumberText.count == 19,
               let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
               let cvvText = cvvTextField.text, cvvText.count == 3 else {
-            placeOrderButton.isEnabled = false
-            placeOrderButton.backgroundColor = .gray
+            addCardButton.isEnabled = false
+            addCardButton.backgroundColor = .gray
             return
         }
         
-        placeOrderButton.isEnabled = true
-        placeOrderButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        addCardButton.isEnabled = true
+        addCardButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
     }
 }

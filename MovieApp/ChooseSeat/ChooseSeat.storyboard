@@ -41,8 +41,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Xs-cJ-uub">
-                                <rect key="frame" x="0.0" y="156" width="414" height="331"/>
+                                <rect key="frame" x="0.0" y="156" width="414" height="250"/>
                                 <color key="backgroundColor" name="theme"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="dC0-nT-gUx"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="21m-Qb-6B9">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -61,14 +64,14 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getTicketRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="6NR-8R-7nZ">
-                                <rect key="frame" x="20" y="515" width="374" height="1"/>
+                                <rect key="frame" x="20" y="434" width="374" height="1"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="5Ox-ov-T4j"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-mD-Xvi">
-                                <rect key="frame" x="122" y="544" width="20" height="20"/>
+                                <rect key="frame" x="122" y="463" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="bDm-FA-1pq"/>
                                     <constraint firstAttribute="height" constant="20" id="vLp-he-W4z"/>
@@ -86,7 +89,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ir0-BX-tcR">
-                                <rect key="frame" x="272" y="544" width="20" height="20"/>
+                                <rect key="frame" x="272" y="463" width="20" height="20"/>
                                 <color key="backgroundColor" name="47CFFF"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="OSP-Hd-qYX"/>
@@ -105,13 +108,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-OU-nku">
-                                <rect key="frame" x="102" y="570" width="60.5" height="17"/>
+                                <rect key="frame" x="102" y="489" width="60.5" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nA-iN-TUG">
-                                <rect key="frame" x="260.5" y="570" width="43" height="17"/>
+                                <rect key="frame" x="260.5" y="489" width="43" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
@@ -178,7 +181,6 @@
                             <constraint firstItem="9kc-gm-Yvh" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="Ecx-1w-xf3"/>
                             <constraint firstItem="9kc-gm-Yvh" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="54" id="Hrl-6g-9jG"/>
                             <constraint firstItem="9Xs-cJ-uub" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="OjF-Bt-oOW"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="9Xs-cJ-uub" secondAttribute="bottom" constant="375" id="Opr-g3-2cd"/>
                             <constraint firstItem="Fhe-OU-nku" firstAttribute="centerX" secondItem="xhb-mD-Xvi" secondAttribute="centerX" id="RWp-3u-Acw"/>
                             <constraint firstItem="Fhe-OU-nku" firstAttribute="top" secondItem="xhb-mD-Xvi" secondAttribute="bottom" constant="6" id="UH2-2f-pix"/>
                             <constraint firstAttribute="trailing" secondItem="6NR-8R-7nZ" secondAttribute="trailing" constant="20" id="V5c-PJ-SAd"/>
@@ -220,7 +222,7 @@
             <color red="0.27843137254901962" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="price">
-            <color red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.14117647058823529" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

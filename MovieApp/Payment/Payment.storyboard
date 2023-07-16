@@ -106,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0M-Lq-dVT">
-                                <rect key="frame" x="148.5" y="434" width="30" height="17"/>
+                                <rect key="frame" x="148.5" y="434" width="29.5" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" name="0F1B2B"/>
                                 <nil key="highlightedColor"/>
@@ -184,6 +184,15 @@
                                 <color key="textColor" name="price"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-vG-2fT">
+                                <rect key="frame" x="25" y="529" width="138" height="33"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="+ Add Bank Card"/>
+                                <connections>
+                                    <action selector="addBankCardTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="I87-kY-5yh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" name="theme"/>
@@ -210,10 +219,12 @@
                             <constraint firstItem="ko6-dg-JMw" firstAttribute="leading" secondItem="kBA-4x-dim" secondAttribute="trailing" constant="24" id="fOe-sP-V9h"/>
                             <constraint firstItem="v0M-Lq-dVT" firstAttribute="leading" secondItem="nPj-tx-udw" secondAttribute="trailing" constant="46" id="iRV-ae-weM"/>
                             <constraint firstItem="aqv-8u-rXv" firstAttribute="top" secondItem="vwx-ai-XAT" secondAttribute="bottom" constant="24" id="kW9-vk-xJ5"/>
+                            <constraint firstItem="1dC-vG-2fT" firstAttribute="top" secondItem="kBA-4x-dim" secondAttribute="bottom" constant="24" id="kfx-yn-JWk"/>
                             <constraint firstItem="aZV-nI-ftv" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="mhx-q9-kre"/>
                             <constraint firstItem="RBn-Wi-MUb" firstAttribute="top" secondItem="aZV-nI-ftv" secondAttribute="bottom" constant="16" id="ohh-Zd-ccG"/>
                             <constraint firstItem="iFD-Qb-d9g" firstAttribute="top" secondItem="aqv-8u-rXv" secondAttribute="bottom" constant="10" id="qqu-Z4-TTV"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="RBn-Wi-MUb" secondAttribute="bottom" constant="2" id="rk7-GU-XfS"/>
+                            <constraint firstItem="1dC-vG-2fT" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="tIT-fx-GfD"/>
                             <constraint firstItem="kBA-4x-dim" firstAttribute="top" secondItem="nPj-tx-udw" secondAttribute="bottom" constant="10" id="xbl-7z-abH"/>
                             <constraint firstItem="vwx-ai-XAT" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="25" id="zyO-aU-JWd"/>
                         </constraints>
@@ -244,7 +255,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="price">
-            <color red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.14117647058823529" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,6 +15,13 @@
 		4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128232A62E5DC0019DFEC /* PaymentModels.swift */; };
 		4721282B2A62E5DC0019DFEC /* PaymentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128242A62E5DC0019DFEC /* PaymentWorker.swift */; };
 		4721282C2A62E5DC0019DFEC /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128252A62E5DC0019DFEC /* PaymentRouter.swift */; };
+		472128352A64306D0019DFEC /* AddBankCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4721282E2A64306D0019DFEC /* AddBankCard.storyboard */; };
+		472128362A64306D0019DFEC /* AddBankCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4721282F2A64306D0019DFEC /* AddBankCardViewController.swift */; };
+		472128372A64306D0019DFEC /* AddBankCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128302A64306D0019DFEC /* AddBankCardPresenter.swift */; };
+		472128382A64306D0019DFEC /* AddBankCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128312A64306D0019DFEC /* AddBankCardInteractor.swift */; };
+		472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128322A64306D0019DFEC /* AddBankCardModels.swift */; };
+		4721283A2A64306D0019DFEC /* AddBankCardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128332A64306D0019DFEC /* AddBankCardWorker.swift */; };
+		4721283B2A64306D0019DFEC /* AddBankCardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128342A64306D0019DFEC /* AddBankCardRouter.swift */; };
 		4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472267192A4E205B00784729 /* SectionHeader.swift */; };
 		472267232A4EC13700784729 /* CastCrew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4722671C2A4EC13700784729 /* CastCrew.storyboard */; };
 		472267242A4EC13700784729 /* CastCrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4722671D2A4EC13700784729 /* CastCrewViewController.swift */; };
@@ -133,6 +140,13 @@
 		472128232A62E5DC0019DFEC /* PaymentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModels.swift; sourceTree = "<group>"; };
 		472128242A62E5DC0019DFEC /* PaymentWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWorker.swift; sourceTree = "<group>"; };
 		472128252A62E5DC0019DFEC /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
+		4721282E2A64306D0019DFEC /* AddBankCard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBankCard.storyboard; sourceTree = "<group>"; };
+		4721282F2A64306D0019DFEC /* AddBankCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardViewController.swift; sourceTree = "<group>"; };
+		472128302A64306D0019DFEC /* AddBankCardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardPresenter.swift; sourceTree = "<group>"; };
+		472128312A64306D0019DFEC /* AddBankCardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardInteractor.swift; sourceTree = "<group>"; };
+		472128322A64306D0019DFEC /* AddBankCardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardModels.swift; sourceTree = "<group>"; };
+		472128332A64306D0019DFEC /* AddBankCardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardWorker.swift; sourceTree = "<group>"; };
+		472128342A64306D0019DFEC /* AddBankCardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBankCardRouter.swift; sourceTree = "<group>"; };
 		472267192A4E205B00784729 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		4722671C2A4EC13700784729 /* CastCrew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CastCrew.storyboard; sourceTree = "<group>"; };
 		4722671D2A4EC13700784729 /* CastCrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCrewViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +290,20 @@
 				4721281F2A62E5DC0019DFEC /* Payment.storyboard */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		4721282D2A6430440019DFEC /* AddBankCard */ = {
+			isa = PBXGroup;
+			children = (
+				4721282F2A64306D0019DFEC /* AddBankCardViewController.swift */,
+				472128302A64306D0019DFEC /* AddBankCardPresenter.swift */,
+				472128312A64306D0019DFEC /* AddBankCardInteractor.swift */,
+				472128322A64306D0019DFEC /* AddBankCardModels.swift */,
+				472128332A64306D0019DFEC /* AddBankCardWorker.swift */,
+				472128342A64306D0019DFEC /* AddBankCardRouter.swift */,
+				4721282E2A64306D0019DFEC /* AddBankCard.storyboard */,
+			);
+			path = AddBankCard;
 			sourceTree = "<group>";
 		};
 		472267182A4E1FCA00784729 /* SectionHeader */ = {
@@ -495,6 +523,7 @@
 				476DBC8C2A575BC000539FE3 /* GetTicket */,
 				4773F83F2A61932C00CF4C8D /* ChooseSeat */,
 				4721281E2A62E5540019DFEC /* Payment */,
+				4721282D2A6430440019DFEC /* AddBankCard */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
 				47D1BC2D2A3F40BA001A2622 /* Main.storyboard */,
@@ -656,6 +685,7 @@
 				472128262A62E5DC0019DFEC /* Payment.storyboard in Resources */,
 				47959E3A2A56174D00CD5701 /* CastCrewTableViewCell.xib in Resources */,
 				4773F8472A61934A00CF4C8D /* ChooseSeat.storyboard in Resources */,
+				472128352A64306D0019DFEC /* AddBankCard.storyboard in Resources */,
 				4798A43E2A3F5B8A00F0C19D /* SF-Pro-Text-MediumItalic.otf in Resources */,
 				4798A43F2A3F5B8A00F0C19D /* SF-Pro-Text-LightItalic.otf in Resources */,
 				4798A4452A3F5B8A00F0C19D /* SF-Pro-Text-HeavyItalic.otf in Resources */,
@@ -702,6 +732,7 @@
 				476DBC772A57160900539FE3 /* WatchlistRouter.swift in Sources */,
 				47D8B3052A4978C0003CFE2D /* MovieDetailsViewController.swift in Sources */,
 				47396F162A54BECF005B8301 /* PhotosSectionCollectionViewCell.swift in Sources */,
+				472128382A64306D0019DFEC /* AddBankCardInteractor.swift in Sources */,
 				47D8B2E82A4969E0003CFE2D /* RequestError.swift in Sources */,
 				4721282B2A62E5DC0019DFEC /* PaymentWorker.swift in Sources */,
 				475935B72A5871A8000C9543 /* NotificationNames.swift in Sources */,
@@ -717,6 +748,7 @@
 				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
+				472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */,
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */,
 				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,
@@ -727,6 +759,7 @@
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
 				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
+				4721283B2A64306D0019DFEC /* AddBankCardRouter.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
 				4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */,
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
@@ -735,6 +768,7 @@
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
 				47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */,
+				472128372A64306D0019DFEC /* AddBankCardPresenter.swift in Sources */,
 				472267292A4EC13700784729 /* CastCrewRouter.swift in Sources */,
 				47D8B2EA2A4969E0003CFE2D /* MoviesEndpoint.swift in Sources */,
 				47126D9B2A5D5E240066E954 /* UIAlertHelper.swift in Sources */,
@@ -759,6 +793,8 @@
 				47D8B2F82A496B03003CFE2D /* MoviesWorker.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
 				47D8B30A2A4978C0003CFE2D /* MovieDetailsRouter.swift in Sources */,
+				4721283A2A64306D0019DFEC /* AddBankCardWorker.swift in Sources */,
+				472128362A64306D0019DFEC /* AddBankCardViewController.swift in Sources */,
 				47396ECE2A548C1D005B8301 /* MovieCollectionReusableView.swift in Sources */,
 				476DBC762A57160900539FE3 /* WatchlistWorker.swift in Sources */,
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,

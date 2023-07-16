@@ -10,9 +10,12 @@ import UIKit
 protocol ChooseSeatDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func updateViewComponents()
+    func displaySeatPrice()
 }
 
 final class ChooseSeatViewController: UIViewController {
+    
+    // MARK: - VIP Properties
     
     var interactor: ChooseSeatBusinessLogic?
     var router: (ChooseSeatRoutingLogic & ChooseSeatDataPassing)?
@@ -24,12 +27,13 @@ final class ChooseSeatViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     
-    // MARK: - VIP Properties
+    // MARK: - Properties
     
     let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
     let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    var selectedSeats = [String]()
+    var selectedSeats: [String] = []
     var displayedMovie: ChooseSeatModels.FetchChooseSeat.ViewModel?
+    var totalAmount: Double = 0.0
     
     // MARK: - Object lifecycle
     
@@ -129,6 +133,7 @@ final class ChooseSeatViewController: UIViewController {
     }
     
     @IBAction func continueButtonTapped(_ sender: Any) {
+        interactor?.selectedSeatPrice(selectedSeats, totalAmount)
     }
 }
 
@@ -142,7 +147,7 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
     func updateViewComponents() {
         selectedSeats.sort()
         seatLabel.text = selectedSeats.joined(separator: ", ") + (selectedSeats.isEmpty ? "" : " SELECTED")
-        let totalAmount = Double(selectedSeats.count) * 18.00
+        totalAmount = Double(selectedSeats.count) * 18.00
         priceLabel.text = "$ " + String(format: "%.2f", totalAmount)
         
         if selectedSeats.isEmpty {
@@ -152,6 +157,10 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
             continueButton.isEnabled = true
             continueButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
         }
+    }
+    
+    func displaySeatPrice() {
+        router?.routeToPayment()
     }
 }
 

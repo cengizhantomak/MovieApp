@@ -136,7 +136,7 @@ extension GetTicketViewController: GetTicketDisplayLogic {
     }
     
     func displayDateTheater() {
-        router?.routeToDateTheater()
+        router?.routeToChooseSeat()
     }
 }
 

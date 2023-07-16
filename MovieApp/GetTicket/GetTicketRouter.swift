@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol GetTicketRoutingLogic: AnyObject {
-    func routeToDateTheater()
+    func routeToChooseSeat()
 }
 
 protocol GetTicketDataPassing: AnyObject {
@@ -21,7 +21,7 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
     weak var viewController: GetTicketViewController?
     var dataStore: GetTicketDataStore?
     
-    func routeToDateTheater() {
+    func routeToChooseSeat() {
         let storyboard = UIStoryboard(name: "ChooseSeat", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChooseSeatViewController") as? ChooseSeatViewController,

@@ -9,6 +9,7 @@ import Foundation
 
 protocol ChooseSeatPresentationLogic: AnyObject {
     func presentMovie(_ displayedTitle: String, _ displayedImage: String, _ displayedDate: String, _ displayedTheatre: String)
+    func presentSeatPrice()
 }
 
 final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
@@ -24,5 +25,9 @@ final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
         )
         
         self.viewController?.displayFetchedMovie(viewModel: displayedMovie)
+    }
+    
+    func presentSeatPrice() {
+        viewController?.displaySeatPrice()
     }
 }

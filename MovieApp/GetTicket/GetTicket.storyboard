@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -41,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4x-li-yeY">
-                                <rect key="frame" x="15" y="799" width="384" height="48"/>
+                                <rect key="frame" x="20" y="799" width="374" height="48"/>
                                 <color key="backgroundColor" red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="c9U-tp-xNP"/>
@@ -83,11 +82,11 @@
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="theme"/>
                         <constraints>
                             <constraint firstItem="9Nw-8f-gkp" firstAttribute="top" secondItem="b9y-wy-fpL" secondAttribute="bottom" constant="20" id="94n-aL-jMs"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="bottom" secondItem="f4x-li-yeY" secondAttribute="bottom" constant="15" id="AIc-S9-kz5"/>
-                            <constraint firstItem="f4x-li-yeY" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="15" id="Afn-hc-NcC"/>
+                            <constraint firstItem="f4x-li-yeY" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="Afn-hc-NcC"/>
                             <constraint firstItem="gIT-Qd-ZQ9" firstAttribute="top" secondItem="9Nw-8f-gkp" secondAttribute="bottom" constant="34" id="Gox-Jg-wvY"/>
                             <constraint firstItem="b9y-wy-fpL" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="60" id="Lq2-13-q1e"/>
                             <constraint firstItem="u45-U1-n8q" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="TNW-3d-FCM"/>
@@ -96,7 +95,7 @@
                             <constraint firstItem="u45-U1-n8q" firstAttribute="top" secondItem="gIT-Qd-ZQ9" secondAttribute="bottom" constant="20" id="eOs-PV-nlg"/>
                             <constraint firstItem="b9y-wy-fpL" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="20" id="erV-ZV-x9K"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="9Nw-8f-gkp" secondAttribute="trailing" constant="20" id="qHn-jL-aWc"/>
-                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="f4x-li-yeY" secondAttribute="trailing" constant="15" id="qM8-1J-LrX"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="f4x-li-yeY" secondAttribute="trailing" constant="20" id="qM8-1J-LrX"/>
                             <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="u45-U1-n8q" secondAttribute="trailing" constant="20" id="z9B-5z-msg"/>
                         </constraints>
                     </view>
@@ -118,8 +117,8 @@
         <namedColor name="2B3543">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="theme">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

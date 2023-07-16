@@ -28,25 +28,25 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PR8-oV-M7a">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1317"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="theme"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="ga1-CU-3Pq">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="545"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S77-0a-bvl">
-                                            <rect key="frame" x="20" y="367" width="335" height="28"/>
+                                            <rect key="frame" x="20" y="367" width="335" height="28.666666666666686"/>
                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
                                             <color key="textColor" name="0F1B2B"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJR-Ex-rDb">
-                                            <rect key="frame" x="158" y="411" width="59" height="18.666666666666686"/>
+                                            <rect key="frame" x="156.33333333333334" y="411.66666666666669" width="62.666666666666657" height="19.333333333333314"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genres" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADN-UH-flo">
-                                            <rect key="frame" x="20" y="437.66666666666669" width="335" height="18.666666666666686"/>
+                                            <rect key="frame" x="20" y="439" width="335" height="19.333333333333314"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,20 +79,20 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfS-sf-vxk">
-                                            <rect key="frame" x="20" y="486.33333333333331" width="142" height="34.999999999999943"/>
+                                            <rect key="frame" x="20" y="488.33333333333331" width="142" height="35.999999999999943"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="30"/>
                                             <color key="textColor" name="0F1B2B"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSk-qv-AYB">
-                                            <rect key="frame" x="170" y="494.33333333333331" width="116" height="18.999999999999943"/>
+                                            <rect key="frame" x="170" y="496.33333333333331" width="116" height="19.999999999999943"/>
                                             <color key="tintColor" red="0.97254901960784312" green="0.76862745098039209" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="116" id="IOZ-2M-cpm"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="theme"/>
                                     <constraints>
                                         <constraint firstItem="ADN-UH-flo" firstAttribute="top" secondItem="eJR-Ex-rDb" secondAttribute="bottom" constant="8" id="1VS-rb-1gL"/>
                                         <constraint firstItem="S77-0a-bvl" firstAttribute="centerX" secondItem="ga1-CU-3Pq" secondAttribute="centerX" id="56k-P3-PMt"/>
@@ -166,7 +166,7 @@
                                         </button>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8eu-nX-fB8">
                                             <rect key="frame" x="0.0" y="5" width="375" height="71"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" name="theme"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EKL-55-ISU">
                                                 <size key="itemSize" width="128" height="128"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -189,7 +189,7 @@
                                             </connections>
                                         </collectionView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="theme"/>
                                     <constraints>
                                         <constraint firstItem="6Km-u3-4ap" firstAttribute="top" secondItem="8eu-nX-fB8" secondAttribute="bottom" constant="30" id="2y9-bh-foY"/>
                                         <constraint firstAttribute="trailing" secondItem="6Km-u3-4ap" secondAttribute="trailing" constant="15" id="4DD-Dg-Ff0"/>
@@ -213,7 +213,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CUq-l0-ZoY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="theme"/>
                         <constraints>
                             <constraint firstItem="PR8-oV-M7a" firstAttribute="leading" secondItem="CUq-l0-ZoY" secondAttribute="leading" id="B8X-G8-llc"/>
                             <constraint firstItem="PR8-oV-M7a" firstAttribute="bottom" secondItem="CUq-l0-ZoY" secondAttribute="bottom" id="FlS-No-OVU"/>
@@ -247,9 +247,9 @@
         <namedColor name="0F1B2B">
             <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="theme">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

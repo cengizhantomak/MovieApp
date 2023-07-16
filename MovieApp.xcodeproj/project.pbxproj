@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		47126D9B2A5D5E240066E954 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */; };
+		472128262A62E5DC0019DFEC /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4721281F2A62E5DC0019DFEC /* Payment.storyboard */; };
+		472128272A62E5DC0019DFEC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128202A62E5DC0019DFEC /* PaymentViewController.swift */; };
+		472128282A62E5DC0019DFEC /* PaymentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128212A62E5DC0019DFEC /* PaymentPresenter.swift */; };
+		472128292A62E5DC0019DFEC /* PaymentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128222A62E5DC0019DFEC /* PaymentInteractor.swift */; };
+		4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128232A62E5DC0019DFEC /* PaymentModels.swift */; };
+		4721282B2A62E5DC0019DFEC /* PaymentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128242A62E5DC0019DFEC /* PaymentWorker.swift */; };
+		4721282C2A62E5DC0019DFEC /* PaymentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128252A62E5DC0019DFEC /* PaymentRouter.swift */; };
 		4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472267192A4E205B00784729 /* SectionHeader.swift */; };
 		472267232A4EC13700784729 /* CastCrew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4722671C2A4EC13700784729 /* CastCrew.storyboard */; };
 		472267242A4EC13700784729 /* CastCrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4722671D2A4EC13700784729 /* CastCrewViewController.swift */; };
@@ -119,6 +126,13 @@
 
 /* Begin PBXFileReference section */
 		47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
+		4721281F2A62E5DC0019DFEC /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		472128202A62E5DC0019DFEC /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		472128212A62E5DC0019DFEC /* PaymentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPresenter.swift; sourceTree = "<group>"; };
+		472128222A62E5DC0019DFEC /* PaymentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInteractor.swift; sourceTree = "<group>"; };
+		472128232A62E5DC0019DFEC /* PaymentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModels.swift; sourceTree = "<group>"; };
+		472128242A62E5DC0019DFEC /* PaymentWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentWorker.swift; sourceTree = "<group>"; };
+		472128252A62E5DC0019DFEC /* PaymentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRouter.swift; sourceTree = "<group>"; };
 		472267192A4E205B00784729 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		4722671C2A4EC13700784729 /* CastCrew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CastCrew.storyboard; sourceTree = "<group>"; };
 		4722671D2A4EC13700784729 /* CastCrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCrewViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +262,20 @@
 				4753EABE2A5D884400755DAB /* StarRatingHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4721281E2A62E5540019DFEC /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				472128202A62E5DC0019DFEC /* PaymentViewController.swift */,
+				472128212A62E5DC0019DFEC /* PaymentPresenter.swift */,
+				472128222A62E5DC0019DFEC /* PaymentInteractor.swift */,
+				472128232A62E5DC0019DFEC /* PaymentModels.swift */,
+				472128242A62E5DC0019DFEC /* PaymentWorker.swift */,
+				472128252A62E5DC0019DFEC /* PaymentRouter.swift */,
+				4721281F2A62E5DC0019DFEC /* Payment.storyboard */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		472267182A4E1FCA00784729 /* SectionHeader */ = {
@@ -466,6 +494,7 @@
 				47E6121F2A5556E300E85A11 /* Photos */,
 				476DBC8C2A575BC000539FE3 /* GetTicket */,
 				4773F83F2A61932C00CF4C8D /* ChooseSeat */,
+				4721281E2A62E5540019DFEC /* Payment */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
 				47D1BC2D2A3F40BA001A2622 /* Main.storyboard */,
@@ -624,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47D1BC372A3F40BB001A2622 /* LaunchScreen.storyboard in Resources */,
+				472128262A62E5DC0019DFEC /* Payment.storyboard in Resources */,
 				47959E3A2A56174D00CD5701 /* CastCrewTableViewCell.xib in Resources */,
 				4773F8472A61934A00CF4C8D /* ChooseSeat.storyboard in Resources */,
 				4798A43E2A3F5B8A00F0C19D /* SF-Pro-Text-MediumItalic.otf in Resources */,
@@ -673,6 +703,7 @@
 				47D8B3052A4978C0003CFE2D /* MovieDetailsViewController.swift in Sources */,
 				47396F162A54BECF005B8301 /* PhotosSectionCollectionViewCell.swift in Sources */,
 				47D8B2E82A4969E0003CFE2D /* RequestError.swift in Sources */,
+				4721282B2A62E5DC0019DFEC /* PaymentWorker.swift in Sources */,
 				475935B72A5871A8000C9543 /* NotificationNames.swift in Sources */,
 				47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */,
 				476DBC952A575BE100539FE3 /* GetTicketViewController.swift in Sources */,
@@ -697,6 +728,7 @@
 				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
+				4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */,
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
@@ -722,6 +754,7 @@
 				478B294E2A597CF50075BE9E /* ProfileViewController.swift in Sources */,
 				478B29502A597CF50075BE9E /* ProfileInteractor.swift in Sources */,
 				47D8B2F62A496B03003CFE2D /* MoviesInteractor.swift in Sources */,
+				472128282A62E5DC0019DFEC /* PaymentPresenter.swift in Sources */,
 				47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */,
 				47D8B2F82A496B03003CFE2D /* MoviesWorker.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
@@ -731,14 +764,17 @@
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,
 				4773F84B2A61934A00CF4C8D /* ChooseSeatModels.swift in Sources */,
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
+				472128292A62E5DC0019DFEC /* PaymentInteractor.swift in Sources */,
 				47D8B2E72A4969E0003CFE2D /* RequestMethod.swift in Sources */,
 				47D8B2E62A4969E0003CFE2D /* Endpoint.swift in Sources */,
 				478B29522A597CF50075BE9E /* ProfileWorker.swift in Sources */,
+				472128272A62E5DC0019DFEC /* PaymentViewController.swift in Sources */,
 				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
 				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,
+				4721282C2A62E5DC0019DFEC /* PaymentRouter.swift in Sources */,
 				476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */,
 				4773F8482A61934A00CF4C8D /* ChooseSeatViewController.swift in Sources */,
 			);

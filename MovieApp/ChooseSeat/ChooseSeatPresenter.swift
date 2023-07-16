@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChooseSeatPresentationLogic: AnyObject {
-    func presentMovie(_ displayedTitle: String, _ displayedImage: String, _ displayedDate: String, _ displayedTheatre: String)
+    func presentMovie(seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func presentSeatPrice()
 }
 
@@ -16,15 +16,8 @@ final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
     
     weak var viewController: ChooseSeatDisplayLogic?
     
-    func presentMovie(_ displayedTitle: String, _ displayedImage: String, _ displayedDate: String, _ displayedTheatre: String) {
-        let displayedMovie = ChooseSeatModels.FetchChooseSeat.ViewModel(
-            selectedMovieTitle: displayedTitle,
-            selectedMovieImage: displayedImage,
-            selectedDate: displayedDate,
-            selectedTheater: displayedTheatre
-        )
-        
-        self.viewController?.displayFetchedMovie(viewModel: displayedMovie)
+    func presentMovie(seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel) {
+        self.viewController?.displayFetchedMovie(viewModel: seatDetails)
     }
     
     func presentSeatPrice() {

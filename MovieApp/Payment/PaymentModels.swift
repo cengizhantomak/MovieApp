@@ -24,7 +24,7 @@ enum PaymentModels {
             var selectedMovieImage: String?
             var selectedDate: String?
             var selectedTheater: String?
-            var chooseSeat: String?
+            var chooseSeat: [String]?
             var totalAmount: Double?
         }
     }

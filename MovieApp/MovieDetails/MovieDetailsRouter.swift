@@ -28,7 +28,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         let storyboard = UIStoryboard(name: "CastCrew", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CastCrewViewController") as? CastCrewViewController,
-        let dataStore else {
+              let dataStore else {
             return
         }
         
@@ -53,10 +53,15 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     func routeToGetTicket() {
         let storyboard = UIStoryboard(name: "GetTicket", bundle: nil)
         
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "GetTicketViewController") as? GetTicketViewController else { return }
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "GetTicketViewController") as? GetTicketViewController,
+              let dataStore,
+              let getTicketDataStore = destinationVC.router?.dataStore else { return }
         
-        destinationVC.router?.dataStore?.selectedMovieTitle = dataStore?.selectedMovieTitle
-        destinationVC.router?.dataStore?.selectedMovieImage = dataStore?.selectedMovieImage
+        getTicketDataStore.ticketDetails = GetTicketModels.FetchGetTicket.ViewModel(
+            selectedMovieTitle: dataStore.selectedMovieTitle,
+            selectedMovieImage: dataStore.selectedMovieImage
+        )
+        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

@@ -23,7 +23,7 @@ final class PaymentPresenter: PaymentPresentationLogic {
     func presentCardValidationResult(response: PaymentModels.FetchPayment.Response) {
         let viewModel: PaymentModels.FetchPayment.ViewModel
         if response.isValid {
-            viewModel = PaymentModels.FetchPayment.ViewModel(message: "Bank card information found successfully.", title: "Success", buttonTitle: "OK")
+            viewModel = PaymentModels.FetchPayment.ViewModel(isPaymentSuccessful: true)
         } else {
             viewModel = PaymentModels.FetchPayment.ViewModel(message: "Bank card information not found. Please check your details.", title: "Error", buttonTitle: "OK")
         }

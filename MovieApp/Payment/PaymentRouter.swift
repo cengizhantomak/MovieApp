@@ -10,6 +10,7 @@ import UIKit
 
 protocol PaymentRoutingLogic: AnyObject {
     func routeToAddBankCard()
+    func routeToCongrats()
 }
 
 protocol PaymentDataPassing: AnyObject {
@@ -25,6 +26,15 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
         let storyboard = UIStoryboard(name: "AddBankCard", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "AddBankCardViewController") as? AddBankCardViewController else { return }
+        
+        destinationVC.loadViewIfNeeded()
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToCongrats() {
+        let storyboard = UIStoryboard(name: "Congrats", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CongratsViewController") as? CongratsViewController else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)

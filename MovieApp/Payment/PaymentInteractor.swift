@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import CoreData
 
 protocol PaymentBusinessLogic: AnyObject {
     func getMovie()
@@ -25,27 +24,22 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
     
     var paymentDetails: PaymentModels.FetchPayment.ViewModel?
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     func getMovie() {
         guard let paymentDetails else { return }
         presenter?.presentMovie(paymentDetails: paymentDetails)
     }
     
     func validateCard(request: PaymentModels.FetchPayment.Request) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BankCard")
-        fetchRequest.predicate = NSPredicate(format: "nameCard == %@ AND cardNumber == %@ AND dateExpire == %@ AND cvv == %@",
-                                             request.nameCard ?? "",
-                                             request.cardNumber ?? "",
-                                             request.dateExpire ?? "",
-                                             request.cvv ?? "")
+        let fetchRequest = worker.createFetchRequest(request: request)
         
         do {
             let bankCards = try context.fetch(fetchRequest)
-            let response = PaymentModels.FetchPayment.Response(isValid: !bankCards.isEmpty)
+            let isValid = !bankCards.isEmpty
+            let response = PaymentModels.FetchPayment.Response(isValid: isValid)
             presenter?.presentCardValidationResult(response: response)
             
-            // Kartın geçerli olup olmadığını kontrol edin ve öyleyse saveMovieTicket'i arayın.
             if response.isValid {
                 saveMovieTicket()
             }
@@ -55,21 +49,16 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
     }
     
     func saveMovieTicket() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        let newTicket = MovieTicket(context: context)
-        newTicket.title = paymentDetails?.selectedMovieTitle
-        newTicket.imagePath = paymentDetails?.selectedMovieImage
-        newTicket.date = paymentDetails?.selectedDate
-        newTicket.theatre = paymentDetails?.selectedTheater
-        newTicket.seat = paymentDetails?.chooseSeat?.joined(separator: ",")
-        newTicket.totalAmount = paymentDetails?.totalAmount ?? 0
+        guard let newTicket = worker.createMovieTicket(paymentDetails: paymentDetails) else {
+            print("Failed to create ticket in Interactor.")
+            return
+        }
         
         do {
             try context.save()
-            print("Ticket saved successfully.")
+            print("Ticket saved successfully in Interactor.")
         } catch {
-            print("Failed to save ticket: \(error)")
+            print("Failed to save ticket in Interactor: \(error)")
         }
     }
 }

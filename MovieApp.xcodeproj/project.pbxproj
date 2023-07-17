@@ -66,6 +66,13 @@
 		477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */; };
 		477C84B22A652D1C005EF3BC /* BankCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */; };
 		477C84B32A652D1C005EF3BC /* BankCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AF2A652D1C005EF3BC /* BankCard+CoreDataProperties.swift */; };
+		477C84BC2A6539A4005EF3BC /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477C84B52A6539A4005EF3BC /* Congrats.storyboard */; };
+		477C84BD2A6539A4005EF3BC /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84B62A6539A4005EF3BC /* CongratsViewController.swift */; };
+		477C84BE2A6539A4005EF3BC /* CongratsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84B72A6539A4005EF3BC /* CongratsPresenter.swift */; };
+		477C84BF2A6539A4005EF3BC /* CongratsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84B82A6539A4005EF3BC /* CongratsInteractor.swift */; };
+		477C84C02A6539A4005EF3BC /* CongratsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84B92A6539A4005EF3BC /* CongratsModels.swift */; };
+		477C84C12A6539A4005EF3BC /* CongratsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84BA2A6539A4005EF3BC /* CongratsWorker.swift */; };
+		477C84C22A6539A4005EF3BC /* CongratsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84BB2A6539A4005EF3BC /* CongratsRouter.swift */; };
 		478B294E2A597CF50075BE9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29472A597CF50075BE9E /* ProfileViewController.swift */; };
 		478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29482A597CF50075BE9E /* ProfilePresenter.swift */; };
 		478B29502A597CF50075BE9E /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B29492A597CF50075BE9E /* ProfileInteractor.swift */; };
@@ -195,6 +202,13 @@
 		477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		477C84AF2A652D1C005EF3BC /* BankCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		477C84B52A6539A4005EF3BC /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
+		477C84B62A6539A4005EF3BC /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
+		477C84B72A6539A4005EF3BC /* CongratsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsPresenter.swift; sourceTree = "<group>"; };
+		477C84B82A6539A4005EF3BC /* CongratsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsInteractor.swift; sourceTree = "<group>"; };
+		477C84B92A6539A4005EF3BC /* CongratsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsModels.swift; sourceTree = "<group>"; };
+		477C84BA2A6539A4005EF3BC /* CongratsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsWorker.swift; sourceTree = "<group>"; };
+		477C84BB2A6539A4005EF3BC /* CongratsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsRouter.swift; sourceTree = "<group>"; };
 		478B29472A597CF50075BE9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		478B29482A597CF50075BE9E /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		478B29492A597CF50075BE9E /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
@@ -442,6 +456,20 @@
 			path = CutomView;
 			sourceTree = "<group>";
 		};
+		477C84B42A653988005EF3BC /* Congrats */ = {
+			isa = PBXGroup;
+			children = (
+				477C84B62A6539A4005EF3BC /* CongratsViewController.swift */,
+				477C84B72A6539A4005EF3BC /* CongratsPresenter.swift */,
+				477C84B82A6539A4005EF3BC /* CongratsInteractor.swift */,
+				477C84B92A6539A4005EF3BC /* CongratsModels.swift */,
+				477C84BA2A6539A4005EF3BC /* CongratsWorker.swift */,
+				477C84BB2A6539A4005EF3BC /* CongratsRouter.swift */,
+				477C84B52A6539A4005EF3BC /* Congrats.storyboard */,
+			);
+			path = Congrats;
+			sourceTree = "<group>";
+		};
 		478B29452A597CD40075BE9E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +564,7 @@
 				4773F83F2A61932C00CF4C8D /* ChooseSeat */,
 				4721281E2A62E5540019DFEC /* Payment */,
 				4721282D2A6430440019DFEC /* AddBankCard */,
+				477C84B42A653988005EF3BC /* Congrats */,
 				47D1BC272A3F40BA001A2622 /* AppDelegate.swift */,
 				47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */,
 				47D1BC2D2A3F40BA001A2622 /* Main.storyboard */,
@@ -710,6 +739,7 @@
 				4798A4352A3F5B8A00F0C19D /* SF-Pro-Text-Light.otf in Resources */,
 				4798A4442A3F5B8A00F0C19D /* SF-Pro-Text-Regular.otf in Resources */,
 				476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */,
+				477C84BC2A6539A4005EF3BC /* Congrats.storyboard in Resources */,
 				47D8B30F2A497A28003CFE2D /* CastTableViewCell.xib in Resources */,
 				4798A43B2A3F5B8A00F0C19D /* SF-Pro-Text-ThinItalic.otf in Resources */,
 				4798A4402A3F5B8A00F0C19D /* SF-Pro-Text-RegularItalic.otf in Resources */,
@@ -751,6 +781,7 @@
 				47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */,
 				476DBC952A575BE100539FE3 /* GetTicketViewController.swift in Sources */,
 				476DBC982A575BE100539FE3 /* GetTicketModels.swift in Sources */,
+				477C84C12A6539A4005EF3BC /* CongratsWorker.swift in Sources */,
 				476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */,
 				4773F84C2A61934A00CF4C8D /* ChooseSeatWorker.swift in Sources */,
 				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
@@ -759,6 +790,7 @@
 				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
 				478B29532A597CF50075BE9E /* ProfileRouter.swift in Sources */,
 				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
+				477C84C02A6539A4005EF3BC /* CongratsModels.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
 				472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */,
@@ -778,6 +810,7 @@
 				4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */,
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
+				477C84BE2A6539A4005EF3BC /* CongratsPresenter.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
@@ -808,6 +841,7 @@
 				47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */,
 				47D8B2F82A496B03003CFE2D /* MoviesWorker.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
+				477C84BF2A6539A4005EF3BC /* CongratsInteractor.swift in Sources */,
 				47D8B30A2A4978C0003CFE2D /* MovieDetailsRouter.swift in Sources */,
 				4721283A2A64306D0019DFEC /* AddBankCardWorker.swift in Sources */,
 				472128362A64306D0019DFEC /* AddBankCardViewController.swift in Sources */,
@@ -816,12 +850,14 @@
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,
 				4773F84B2A61934A00CF4C8D /* ChooseSeatModels.swift in Sources */,
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
+				477C84C22A6539A4005EF3BC /* CongratsRouter.swift in Sources */,
 				472128292A62E5DC0019DFEC /* PaymentInteractor.swift in Sources */,
 				47D8B2E72A4969E0003CFE2D /* RequestMethod.swift in Sources */,
 				47D8B2E62A4969E0003CFE2D /* Endpoint.swift in Sources */,
 				478B29522A597CF50075BE9E /* ProfileWorker.swift in Sources */,
 				472128272A62E5DC0019DFEC /* PaymentViewController.swift in Sources */,
 				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
+				477C84BD2A6539A4005EF3BC /* CongratsViewController.swift in Sources */,
 				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,

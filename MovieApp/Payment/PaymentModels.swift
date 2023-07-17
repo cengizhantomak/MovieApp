@@ -32,6 +32,7 @@ enum PaymentModels {
             var message: String?
             var title: String?
             var buttonTitle: String?
+            var isPaymentSuccessful: Bool?
         }
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol PaymentDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel)
+    func displayCardValidationResult(viewModel: PaymentModels.FetchPayment.ViewModel)
 }
 
 final class PaymentViewController: UIViewController {
@@ -80,6 +81,8 @@ final class PaymentViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func placeOrderButtonTapped(_ sender: Any) {
+        let request = PaymentModels.FetchPayment.Request(nameCard: nameCardTextField.text, cardNumber: cardNumberTextField.text, dateExpire: dateExpireTextField.text, cvv: cvvTextField.text)
+        interactor?.validateCard(request: request)
     }
     
     @IBAction func addBankCardTapped(_ sender: Any) {
@@ -99,6 +102,15 @@ extension PaymentViewController: PaymentDisplayLogic {
         dateLabel.text = viewModel.selectedDate
         seatLabel.text = "Seat: \(viewModel.chooseSeat?.joined(separator: ", ") ?? "")"
         priceLabel.text = "$ " + String(format: "%.2f", viewModel.totalAmount ?? .zero)
+    }
+    
+    func displayCardValidationResult(viewModel: PaymentModels.FetchPayment.ViewModel) {
+        UIAlertHelper.shared.showAlert(
+            title: viewModel.title,
+            message: viewModel.message,
+            buttonTitle: viewModel.buttonTitle,
+            on: self
+        )
     }
 }
 

@@ -98,6 +98,17 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     private func setupTableCollectionView() {
+        
+        // TableView'in üst kısmına boşluk ekleyin
+        tableView.contentInsetAdjustmentBehavior = .never
+        
+        // Yerleşim alanınızın üstündeki statüs çubuğunu dikkate alın
+        if #available(iOS 11.0, *) {
+            tableView.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
+        } else {
+            tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: 0, right: 0)
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = headerView
@@ -117,24 +128,24 @@ final class MovieDetailsViewController: UIViewController {
         return "\(hours)hr \(minutes)m"
     }
     
-    private func updateWatchlistButtonTitle() {
-        guard let displayedDetails else { return }
-        
-        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
-            addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
-        } else {
-            addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
-        }
-    }
+//    private func updateWatchlistButtonTitle() {
+//        guard let displayedDetails else { return }
+//
+//        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+//            addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+//        } else {
+//            addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
+//        }
+//    }
     
     // MARK: - Action
     
-    @IBAction func getTicketButton(_ sender: Any) {
+    @IBAction func getTicketButtonTapped(_ sender: Any) {
         guard let displayedDetails else { return }
         interactor?.selectedMovieGetTicket(movie: displayedDetails.title, image: displayedDetails.posterPhotoPath)
     }
     
-    @IBAction func addRemoveWatchlistButton(_ sender: Any) {
+    @IBAction func addRemoveWatchlistButtonTapped(_ sender: Any) {
         guard var displayedDetails else { return }
         
         if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
@@ -149,7 +160,7 @@ final class MovieDetailsViewController: UIViewController {
         }
         
         self.displayedDetails = displayedDetails
-        updateWatchlistButtonTitle()
+//        updateWatchlistButtonTitle()
     }
     
     @objc func viewAllCastButton() {
@@ -165,6 +176,7 @@ final class MovieDetailsViewController: UIViewController {
     @objc func onMovieAddedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
             self.addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+            self.addRemoveWatchlistButton.backgroundColor = UIColor(named: "47CFFF")
             UIAlertHelper.shared.showAlert(
                 title: "Added",
                 message: "The movie has been successfully added to your watchlist.",
@@ -177,6 +189,7 @@ final class MovieDetailsViewController: UIViewController {
     @objc func onMovieDeletedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
             self.addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
+            self.addRemoveWatchlistButton.backgroundColor = UIColor(named: "buttonRed")
             UIAlertHelper.shared.showAlert(
                 title: "Removed",
                 message: "The movie has been successfully removed from your watch list.",
@@ -238,6 +251,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         
         if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
             addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)
+            self.addRemoveWatchlistButton.backgroundColor = UIColor(named: "47CFFF")
         } else {
             addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
         }

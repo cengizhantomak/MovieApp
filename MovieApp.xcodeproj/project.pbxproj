@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470B8DF52A682D6600A47C99 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */; };
 		47126D9B2A5D5E240066E954 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */; };
 		472128262A62E5DC0019DFEC /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4721281F2A62E5DC0019DFEC /* Payment.storyboard */; };
 		472128272A62E5DC0019DFEC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128202A62E5DC0019DFEC /* PaymentViewController.swift */; };
@@ -151,6 +152,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
 		4721281F2A62E5DC0019DFEC /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		472128202A62E5DC0019DFEC /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				47A626A72A50538C004A144E /* UIView+Extensions.swift */,
 				47923F072A5206200074CA99 /* UIImage+Extensions.swift */,
 				475935B62A5871A8000C9543 /* NotificationNames.swift */,
+				470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
 				472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */,
+				470B8DF52A682D6600A47C99 /* UIViewController+Keyboard.swift in Sources */,
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */,
 				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,

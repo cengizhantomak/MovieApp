@@ -52,6 +52,7 @@ final class PaymentViewController: UIViewController {
         interactor?.getMovie()
         navigationItem.title = "Payment"
         setupTextField()
+        setupDismissKeyboardOnTap()
         placeOrderButton.isEnabled = false
         placeOrderButton.backgroundColor = .gray
     }

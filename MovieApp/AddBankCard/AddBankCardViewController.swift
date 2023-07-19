@@ -45,6 +45,7 @@ final class AddBankCardViewController: UIViewController {
         
         navigationItem.title = "Add Bank Card"
         setupTextField()
+        setupDismissKeyboardOnTap()
         addCardButton.isEnabled = false
         addCardButton.backgroundColor = .gray
     }

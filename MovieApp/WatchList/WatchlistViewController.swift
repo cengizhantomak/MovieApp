@@ -121,6 +121,6 @@ extension WatchlistViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 54)
+        return CGSize(width: collectionView.frame.width, height: 40)
     }
 }

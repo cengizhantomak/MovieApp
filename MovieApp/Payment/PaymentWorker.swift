@@ -40,6 +40,7 @@ final class PaymentWorker: PaymentWorkingLogic {
         newTicket.seat = paymentDetails?.chooseSeat?.joined(separator: ", ")
         newTicket.totalAmount = paymentDetails?.totalAmount ?? 0
         newTicket.timestamp = Date()
+        newTicket.id = UUID()
         
         return newTicket
     }

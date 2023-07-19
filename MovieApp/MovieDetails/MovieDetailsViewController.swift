@@ -218,6 +218,8 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         displayedDetails = viewModel
         guard let displayedDetails else { return }
         
+        navigationItem.title = displayedDetails.title
+        
         titleLabel.text = displayedDetails.title
         
         durationLabel.text = formatRuntime(displayedDetails.runtime)

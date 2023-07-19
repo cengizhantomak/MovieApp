@@ -32,6 +32,11 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
     }
     
     func validateCard(request: PaymentModels.FetchPayment.Request) {
+        if worker.checkTicketExists(paymentDetails: paymentDetails) {
+            presenter?.presentTicketExistAlert()
+            return
+        }
+        
         let fetchRequest = worker.createFetchRequest(request: request)
         
         do {

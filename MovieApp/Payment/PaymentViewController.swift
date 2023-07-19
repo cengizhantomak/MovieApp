@@ -105,15 +105,15 @@ extension PaymentViewController: PaymentDisplayLogic {
     }
     
     func displayCardValidationResult(viewModel: PaymentModels.FetchPayment.ViewModel) {
-        if viewModel.isPaymentSuccessful == true {
-            router?.routeToCongrats()
-        } else {
+        if let message = viewModel.message {
             UIAlertHelper.shared.showAlert(
                 title: viewModel.title,
-                message: viewModel.message,
+                message: message,
                 buttonTitle: viewModel.buttonTitle,
                 on: self
             )
+        } else {
+            router?.routeToCongrats()
         }
     }
 }

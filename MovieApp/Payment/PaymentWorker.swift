@@ -12,9 +12,33 @@ import CoreData
 protocol PaymentWorkingLogic: AnyObject {
     func createFetchRequest(request: PaymentModels.FetchPayment.Request) -> NSFetchRequest<NSManagedObject>
     func createMovieTicket(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> MovieTicket?
+    func checkTicketExists(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> Bool
 }
 
 final class PaymentWorker: PaymentWorkingLogic {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func checkTicketExists(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> Bool {
+        guard let paymentDetails else { return false }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieTicket")
+        fetchRequest.predicate = NSPredicate(
+            format: "title == %@ AND date == %@ AND theatre == %@ AND seat == %@",
+            paymentDetails.selectedMovieTitle ?? "",
+            paymentDetails.selectedDate ?? "",
+            paymentDetails.selectedTheater ?? "",
+            paymentDetails.chooseSeat?.joined(separator: ", ") ?? ""
+        )
+        
+        do {
+            let fetchedResults = try context.fetch(fetchRequest)
+            return !fetchedResults.isEmpty
+        } catch let error {
+            print("Error checking ticket existence: \(error)")
+            return false
+        }
+    }
     
     func createFetchRequest(request: PaymentModels.FetchPayment.Request) -> NSFetchRequest<NSManagedObject> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BankCard")
@@ -30,7 +54,6 @@ final class PaymentWorker: PaymentWorkingLogic {
     }
     
     func createMovieTicket(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> MovieTicket? {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let newTicket = MovieTicket(context: context)
         newTicket.title = paymentDetails?.selectedMovieTitle

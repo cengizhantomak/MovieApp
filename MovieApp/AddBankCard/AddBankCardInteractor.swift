@@ -28,6 +28,7 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
         if checkCardExistence(cardNumber: cardNumber, context: context) {
             // Kart zaten var
             print("This card already exists in CoreData.")
+            // TODO: - UIAlertHelper will be edited
             UIAlertHelper.shared.showAlert(
                 title: "Error",
                 message: "This card already exists.",
@@ -46,6 +47,7 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
             do {
                 try context.save()
                 print("Bank Card saved successfully!")
+                // TODO: - UIAlertHelper will be edited
                 UIAlertHelper.shared.showAlert(
                     title: "Success",
                     message: "Bank Card saved successfully!",
@@ -54,6 +56,7 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
                 )
             } catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
+                // TODO: - UIAlertHelper will be edited
                 UIAlertHelper.shared.showAlert(
                     title: "Error",
                     message: "Could not save. \(error), \(error.userInfo)",

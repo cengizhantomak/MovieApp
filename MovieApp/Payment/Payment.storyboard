@@ -155,7 +155,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBn-Wi-MUb">
                                 <rect key="frame" x="20" y="812" width="374" height="48"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.098039215686274508" blue="0.21568627450980393" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="buttonRed"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="egV-Xc-eQz"/>
                                 </constraints>
@@ -253,6 +253,9 @@
         </namedColor>
         <namedColor name="2B3543">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="buttonRed">
+            <color red="0.89999997615814209" green="0.10000000149011612" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="price">
             <color red="0.96862745098039216" green="0.14117647058823529" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,8 +52,9 @@ final class PaymentViewController: UIViewController {
         interactor?.getMovie()
         navigationItem.title = "Payment"
         setupTextField()
+        setupDismissKeyboardOnTap()
         placeOrderButton.isEnabled = false
-        placeOrderButton.backgroundColor = .gray
+        placeOrderButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -244,11 +245,11 @@ extension PaymentViewController: UITextFieldDelegate {
               let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
               let cvvText = cvvTextField.text, cvvText.count == 3 else {
             placeOrderButton.isEnabled = false
-            placeOrderButton.backgroundColor = .gray
+            placeOrderButton.backgroundColor = .systemGray
             return
         }
         
         placeOrderButton.isEnabled = true
-        placeOrderButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        placeOrderButton.backgroundColor = UIColor(named: "buttonRed")
     }
 }

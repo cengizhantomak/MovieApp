@@ -38,7 +38,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFz-HY-LUc">
-                                <rect key="frame" x="0.0" y="229" width="31" height="18"/>
+                                <rect key="frame" x="0.0" y="229" width="272" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="TwC-Eu-VHa"/>
                                 </constraints>
@@ -64,6 +64,7 @@
                             <constraint firstItem="K19-qa-O12" firstAttribute="top" secondItem="dZw-fa-EWf" secondAttribute="bottom" constant="16" id="29H-as-Vg6"/>
                             <constraint firstItem="dCv-qQ-h1R" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="9BL-d5-Jxf"/>
                             <constraint firstItem="K19-qa-O12" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="9Q7-pS-D8c"/>
+                            <constraint firstAttribute="trailing" secondItem="vFz-HY-LUc" secondAttribute="trailing" constant="1" id="C3S-o4-0ve"/>
                             <constraint firstAttribute="trailing" secondItem="dZw-fa-EWf" secondAttribute="trailing" id="ENn-Pn-NCT"/>
                             <constraint firstItem="dCv-qQ-h1R" firstAttribute="top" secondItem="vFz-HY-LUc" secondAttribute="bottom" constant="4" id="G0X-sP-qSw"/>
                             <constraint firstItem="vFz-HY-LUc" firstAttribute="leading" secondItem="Ig1-Be-cok" secondAttribute="leading" id="Kw9-v4-SB8"/>

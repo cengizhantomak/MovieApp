@@ -95,7 +95,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLC-9O-spv">
                                 <rect key="frame" x="25" y="809" width="364" height="48"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.098039215690000001" blue="0.2156862745" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="buttonRed"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Qh5-Lx-d6n"/>
                                     <constraint firstAttribute="height" constant="48" id="X3m-Ko-zVn"/>
@@ -159,6 +159,9 @@
         </namedColor>
         <namedColor name="2B3543">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="buttonRed">
+            <color red="0.89999997615814209" green="0.10000000149011612" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

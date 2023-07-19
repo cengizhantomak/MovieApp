@@ -51,9 +51,9 @@ final class GetTicketViewController: UIViewController {
         interactor?.getMovie()
         setupDateTextField()
         setupTheaterTextField()
-        setupTapGesture()
+        setupDismissKeyboardOnTap()
         getTicketButton.isEnabled = false
-        getTicketButton.backgroundColor = .gray
+        getTicketButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -90,21 +90,12 @@ final class GetTicketViewController: UIViewController {
         pickerView.delegate = self
     }
     
-    private func setupTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector (didTapView))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
     // MARK: - Actions
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
         dateTextField.text = dateFormatter.string(from: sender.date)
-    }
-    
-    @objc private func didTapView() {
-        view.endEditing(true)
     }
     
     @IBAction func getTicketButtonTapped(_ sender: Any) {
@@ -154,7 +145,7 @@ extension GetTicketViewController: UITextFieldDelegate {
         }
         
         getTicketButton.isEnabled = true
-        getTicketButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        getTicketButton.backgroundColor = UIColor(named: "buttonRed")
     }
 }
 

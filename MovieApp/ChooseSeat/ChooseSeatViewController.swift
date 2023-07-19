@@ -148,7 +148,7 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
             continueButton.backgroundColor = .systemGray
         } else {
             continueButton.isEnabled = true
-            continueButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+            continueButton.backgroundColor = UIColor(named: "buttonRed")
         }
     }
     

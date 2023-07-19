@@ -41,6 +41,8 @@ final class CongratsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationItem.setHidesBackButton(true, animated: false)
         interactor?.fetchLatestTicket()
     }
     
@@ -63,7 +65,6 @@ final class CongratsViewController: UIViewController {
     
     @IBAction func exitButtonTapped(_ sender: Any) {
         router?.routeTo()
-        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 

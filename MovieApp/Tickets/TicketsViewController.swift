@@ -134,10 +134,10 @@ extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataS
 extension TicketsViewController: TicketsCollectionViewCellDelegate {
     func didPressCancel(id: UUID) {
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this ticket?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
             self?.interactor?.deleteTicket(request: .init(ticketId: id))
         }
-        let noAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         alertController.addAction(yesAction)
         alertController.addAction(noAction)
         present(alertController, animated: true, completion: nil)

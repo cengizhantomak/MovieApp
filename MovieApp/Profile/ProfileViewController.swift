@@ -47,12 +47,17 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Profile"
-        interactor?.fetchProfile()
         
         if #available(iOS 13.0, *) {
             let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
             darkModeSwitch.isOn = darkModeEnabled
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        interactor?.fetchProfile()
     }
     
     // MARK: - Setup

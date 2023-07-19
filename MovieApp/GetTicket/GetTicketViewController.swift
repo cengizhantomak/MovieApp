@@ -53,7 +53,7 @@ final class GetTicketViewController: UIViewController {
         setupTheaterTextField()
         setupDismissKeyboardOnTap()
         getTicketButton.isEnabled = false
-        getTicketButton.backgroundColor = .gray
+        getTicketButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -145,7 +145,7 @@ extension GetTicketViewController: UITextFieldDelegate {
         }
         
         getTicketButton.isEnabled = true
-        getTicketButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        getTicketButton.backgroundColor = UIColor(named: "buttonRed")
     }
 }
 

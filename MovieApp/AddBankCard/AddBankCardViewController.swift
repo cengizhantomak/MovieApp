@@ -47,7 +47,7 @@ final class AddBankCardViewController: UIViewController {
         setupTextField()
         setupDismissKeyboardOnTap()
         addCardButton.isEnabled = false
-        addCardButton.backgroundColor = .gray
+        addCardButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -216,11 +216,11 @@ extension AddBankCardViewController: UITextFieldDelegate {
               let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
               let cvvText = cvvTextField.text, cvvText.count == 3 else {
             addCardButton.isEnabled = false
-            addCardButton.backgroundColor = .gray
+            addCardButton.backgroundColor = .systemGray
             return
         }
         
         addCardButton.isEnabled = true
-        addCardButton.backgroundColor = UIColor(red: 0.9, green: 0.1, blue: 0.22, alpha: 1)
+        addCardButton.backgroundColor = UIColor(named: "buttonRed")
     }
 }

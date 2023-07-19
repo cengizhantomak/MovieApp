@@ -29,7 +29,23 @@ enum TicketsModels {
                 let theatre: String
                 let seat: String
                 let totalAmount: Double
+                let id: UUID
             }
+        }
+    }
+    
+    enum DeleteTicket {
+        
+        struct Request {
+            let ticketId: UUID
+        }
+        
+        struct Response {
+            let success: Bool
+        }
+        
+        struct ViewModel {
+            let success: Bool
         }
     }
 }

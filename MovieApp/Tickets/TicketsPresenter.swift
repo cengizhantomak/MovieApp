@@ -9,6 +9,7 @@ import Foundation
 
 protocol TicketsPresentationLogic: AnyObject {
     func presentTickets(response: TicketsModels.FetchTickets.Response)
+    func presentDeleteTicketResult(response: TicketsModels.DeleteTicket.Response)
 }
 
 final class TicketsPresenter: TicketsPresentationLogic {
@@ -23,10 +24,17 @@ final class TicketsPresenter: TicketsPresentationLogic {
                 date: ticket.date ?? "",
                 theatre: ticket.theatre ?? "",
                 seat: ticket.seat ?? "",
-                totalAmount: ticket.totalAmount)
+                totalAmount: ticket.totalAmount,
+                id: ticket.id
+            )
         }
         
         let viewModel = TicketsModels.FetchTickets.ViewModel(displayedTickets: displayedTickets)
         viewController?.displayTickets(viewModel: viewModel)
+    }
+    
+    func presentDeleteTicketResult(response: TicketsModels.DeleteTicket.Response) {
+        let viewModel = TicketsModels.DeleteTicket.ViewModel(success: response.success)
+        viewController?.displayDeleteTicketResult(viewModel: viewModel)
     }
 }

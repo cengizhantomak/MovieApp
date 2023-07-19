@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TicketsCollectionViewCellDelegate: AnyObject {
+    func didPressCancel(id: UUID)
+}
+
 class TicketsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
@@ -15,12 +19,14 @@ class TicketsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var seat: UILabel!
     
+    weak var delegate: TicketsCollectionViewCellDelegate?
+    var id: UUID?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     func setCell(viewModel: TicketsModels.FetchTickets.ViewModel.DisplayedTicket) {
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.imagePath) {
             posterImage.load(url: profileUrl)
@@ -30,5 +36,13 @@ class TicketsCollectionViewCell: UICollectionViewCell {
         theatre.text = viewModel.theatre
         date.text = viewModel.date
         seat.text = viewModel.seat
+        
+        id = viewModel.id
+    }
+    
+    @IBAction func iptalEt(_ sender: Any) {
+        if let id = id {
+            delegate?.didPressCancel(id: id)
+        }
     }
 }

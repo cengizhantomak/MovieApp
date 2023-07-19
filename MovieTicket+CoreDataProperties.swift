@@ -23,6 +23,7 @@ extension MovieTicket {
     @NSManaged public var seat: String?
     @NSManaged public var totalAmount: Double
     @NSManaged public var timestamp: Date?
+    @NSManaged public var id: UUID
 
 }
 

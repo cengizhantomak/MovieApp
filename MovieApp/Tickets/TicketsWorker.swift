@@ -10,6 +10,7 @@ import CoreData
 
 protocol TicketsWorkingLogic: AnyObject {
     func fetchTickets(using context: NSManagedObjectContext) throws -> [MovieTicket]
+    func deleteTicket(withId id: UUID, using context: NSManagedObjectContext) throws
 }
 
 final class TicketsWorker: TicketsWorkingLogic {
@@ -19,5 +20,16 @@ final class TicketsWorker: TicketsWorkingLogic {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         return try context.fetch(fetchRequest)
+    }
+    
+    func deleteTicket(withId id: UUID, using context: NSManagedObjectContext) throws {
+        let fetchRequest: NSFetchRequest<MovieTicket> = MovieTicket.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        let tickets = try context.fetch(fetchRequest)
+        if let ticket = tickets.first {
+            context.delete(ticket)
+            try context.save()
+        }
     }
 }

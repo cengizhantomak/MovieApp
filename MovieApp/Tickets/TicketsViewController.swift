@@ -9,6 +9,7 @@ import UIKit
 
 protocol TicketsDisplayLogic: AnyObject {
     func displayTickets(viewModel: TicketsModels.FetchTickets.ViewModel)
+    func displayDeleteTicketResult(viewModel: TicketsModels.DeleteTicket.ViewModel)
 }
 
 final class TicketsViewController: UIViewController {
@@ -99,6 +100,14 @@ extension TicketsViewController: TicketsDisplayLogic {
         displayedTickets = viewModel.displayedTickets
         self.collectionView.reloadData()
     }
+    
+    func displayDeleteTicketResult(viewModel: TicketsModels.DeleteTicket.ViewModel) {
+        if viewModel.success {
+            interactor?.fetchTickets(request: TicketsModels.FetchTickets.Request())
+        } else {
+            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete ticket", buttonTitle: "OK", on: self)
+        }
+    }
 }
 
 // MARK: - CollectionView
@@ -113,6 +122,24 @@ extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let model = displayedTickets[indexPath.item]
         cell.setCell(viewModel: model)
+        
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+// MARK: - TicketsCollectionViewCellDelegate
+
+extension TicketsViewController: TicketsCollectionViewCellDelegate {
+    func didPressCancel(id: UUID) {
+        let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this ticket?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
+            self?.interactor?.deleteTicket(request: .init(ticketId: id))
+        }
+        let noAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

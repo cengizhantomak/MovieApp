@@ -26,6 +26,7 @@ final class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
+    var userTrackingButton: MKUserTrackingButton?
     
     // MARK: - Object lifecycle
     
@@ -45,6 +46,7 @@ final class MapViewController: UIViewController {
         super.viewDidLoad()
         
         setupMapView()
+        setupUserTrackingButtonAndScaleView()
         interactor?.fetchTheatres()
     }
     
@@ -70,6 +72,24 @@ final class MapViewController: UIViewController {
         locationManager.delegate = self
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+    }
+    
+    private func setupUserTrackingButtonAndScaleView() {
+        userTrackingButton = MKUserTrackingButton(mapView: mapView)
+        
+        guard let userTrackingButton = userTrackingButton else { return }
+        
+        userTrackingButton.layer.backgroundColor = UIColor(white: 1, alpha: 0.8).cgColor
+        userTrackingButton.layer.borderColor = UIColor.white.cgColor
+        userTrackingButton.layer.borderWidth = 1
+        userTrackingButton.layer.cornerRadius = 5
+        userTrackingButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(userTrackingButton)
+        
+        NSLayoutConstraint.activate([
+            userTrackingButton.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -45),
+            userTrackingButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -15)
+        ])
     }
     
     // MARK: - Directions Creation

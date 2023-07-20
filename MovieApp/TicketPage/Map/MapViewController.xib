@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="MovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="bYV-un-IGU" id="WBS-fW-h3m"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYV-un-IGU">
+                    <rect key="frame" x="15" y="59" width="345" height="574"/>
+                    <standardMapConfiguration key="preferredConfiguration"/>
+                </mapView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="theme"/>
+            <constraints>
+                <constraint firstItem="bYV-un-IGU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6le-EP-Bfm"/>
+                <constraint firstItem="bYV-un-IGU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Co2-hc-65j"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bYV-un-IGU" secondAttribute="bottom" id="L4L-PU-7tq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bYV-un-IGU" secondAttribute="trailing" constant="15" id="rPT-cx-FSv"/>
+            </constraints>
+            <point key="canvasLocation" x="117" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="theme">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

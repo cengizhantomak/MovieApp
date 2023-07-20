@@ -128,9 +128,9 @@ extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.routeToMap()
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        router?.routeToMap()
+//    }
 }
 
 // MARK: - TicketsCollectionViewCellDelegate

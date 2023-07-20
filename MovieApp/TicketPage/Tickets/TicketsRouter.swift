@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol TicketsRoutingLogic: AnyObject {
-    func routeToMap()
+//    func routeToMap()
 }
 
 protocol TicketsDataPassing: AnyObject {
@@ -22,12 +22,12 @@ final class TicketsRouter: TicketsRoutingLogic, TicketsDataPassing {
     var dataStore: TicketsDataStore?
     
     
-    func routeToMap() {
-        let storyboard = UIStoryboard(name: "Map", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
-        
-        destinationVC.loadViewIfNeeded()
-        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
-    }
+//    func routeToMap() {
+//        let storyboard = UIStoryboard(name: "Map", bundle: nil)
+//
+//        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
+//
+//        destinationVC.loadViewIfNeeded()
+//        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+//    }
 }

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		470B8DF52A682D6600A47C99 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */; };
+		470B8DFE2A695DCE00A47C99 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 470B8DF72A695DCE00A47C99 /* Map.storyboard */; };
+		470B8DFF2A695DCF00A47C99 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DF82A695DCE00A47C99 /* MapViewController.swift */; };
+		470B8E002A695DCF00A47C99 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DF92A695DCE00A47C99 /* MapPresenter.swift */; };
+		470B8E012A695DCF00A47C99 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DFA2A695DCE00A47C99 /* MapInteractor.swift */; };
+		470B8E022A695DCF00A47C99 /* MapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DFB2A695DCE00A47C99 /* MapModels.swift */; };
+		470B8E032A695DCF00A47C99 /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DFC2A695DCE00A47C99 /* MapWorker.swift */; };
+		470B8E042A695DCF00A47C99 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470B8DFD2A695DCE00A47C99 /* MapRouter.swift */; };
 		47126D9B2A5D5E240066E954 /* UIAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */; };
 		472128262A62E5DC0019DFEC /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4721281F2A62E5DC0019DFEC /* Payment.storyboard */; };
 		472128272A62E5DC0019DFEC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472128202A62E5DC0019DFEC /* PaymentViewController.swift */; };
@@ -153,6 +160,13 @@
 
 /* Begin PBXFileReference section */
 		470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		470B8DF72A695DCE00A47C99 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		470B8DF82A695DCE00A47C99 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		470B8DF92A695DCE00A47C99 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		470B8DFA2A695DCE00A47C99 /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		470B8DFB2A695DCE00A47C99 /* MapModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModels.swift; sourceTree = "<group>"; };
+		470B8DFC2A695DCE00A47C99 /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
+		470B8DFD2A695DCE00A47C99 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
 		47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertHelper.swift; sourceTree = "<group>"; };
 		4721281F2A62E5DC0019DFEC /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		472128202A62E5DC0019DFEC /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +323,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		470B8DF62A695DB700A47C99 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				470B8DF82A695DCE00A47C99 /* MapViewController.swift */,
+				470B8DF92A695DCE00A47C99 /* MapPresenter.swift */,
+				470B8DFA2A695DCE00A47C99 /* MapInteractor.swift */,
+				470B8DFB2A695DCE00A47C99 /* MapModels.swift */,
+				470B8DFC2A695DCE00A47C99 /* MapWorker.swift */,
+				470B8DFD2A695DCE00A47C99 /* MapRouter.swift */,
+				470B8DF72A695DCE00A47C99 /* Map.storyboard */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		47126D992A5D5E140066E954 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +627,7 @@
 				478B29452A597CD40075BE9E /* Profile */,
 				476DBC692A57159400539FE3 /* WatchList */,
 				477C84C32A66A583005EF3BC /* Tickets */,
+				470B8DF62A695DB700A47C99 /* Map */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				47D8B2FC2A497888003CFE2D /* MovieDetails */,
 				4722671B2A4EC0E500784729 /* CastCrew */,
@@ -803,6 +832,7 @@
 				4798A4412A3F5B8A00F0C19D /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				4798A43A2A3F5B8A00F0C19D /* SF-Pro-Text-Bold.otf in Resources */,
 				47396F172A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib in Resources */,
+				470B8DFE2A695DCE00A47C99 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +856,7 @@
 				476DBC952A575BE100539FE3 /* GetTicketViewController.swift in Sources */,
 				476DBC982A575BE100539FE3 /* GetTicketModels.swift in Sources */,
 				477C84C12A6539A4005EF3BC /* CongratsWorker.swift in Sources */,
+				470B8DFF2A695DCF00A47C99 /* MapViewController.swift in Sources */,
 				476DBC7B2A572F5A00539FE3 /* WatchListCollectionViewCell.swift in Sources */,
 				4773F84C2A61934A00CF4C8D /* ChooseSeatWorker.swift in Sources */,
 				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
@@ -844,6 +875,7 @@
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */,
 				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,
+				470B8E022A695DCF00A47C99 /* MapModels.swift in Sources */,
 				47D8B3092A4978C0003CFE2D /* MovieDetailsWorker.swift in Sources */,
 				476DBC962A575BE100539FE3 /* GetTicketPresenter.swift in Sources */,
 				476DBC972A575BE100539FE3 /* GetTicketInteractor.swift in Sources */,
@@ -862,6 +894,7 @@
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
 				477C84CF2A66A59C005EF3BC /* TicketsModels.swift in Sources */,
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
+				470B8E012A695DCF00A47C99 /* MapInteractor.swift in Sources */,
 				47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */,
 				472128372A64306D0019DFEC /* AddBankCardPresenter.swift in Sources */,
 				472267292A4EC13700784729 /* CastCrewRouter.swift in Sources */,
@@ -889,6 +922,8 @@
 				477C84B32A652D1C005EF3BC /* BankCard+CoreDataProperties.swift in Sources */,
 				47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */,
 				47D8B2F82A496B03003CFE2D /* MoviesWorker.swift in Sources */,
+				470B8E032A695DCF00A47C99 /* MapWorker.swift in Sources */,
+				470B8E002A695DCF00A47C99 /* MapPresenter.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
 				477C84BF2A6539A4005EF3BC /* CongratsInteractor.swift in Sources */,
 				477C84D02A66A59C005EF3BC /* TicketsWorker.swift in Sources */,
@@ -915,6 +950,7 @@
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,
 				4721282C2A62E5DC0019DFEC /* PaymentRouter.swift in Sources */,
+				470B8E042A695DCF00A47C99 /* MapRouter.swift in Sources */,
 				476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */,
 				4773F8482A61934A00CF4C8D /* ChooseSeatViewController.swift in Sources */,
 			);

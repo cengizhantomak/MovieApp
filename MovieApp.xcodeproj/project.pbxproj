@@ -120,6 +120,15 @@
 		479CD12B2A66E28700F161C8 /* TicketsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479CD1292A66E28700F161C8 /* TicketsCollectionViewCell.xib */; };
 		47A626A82A50538C004A144E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A626A72A50538C004A144E /* UIView+Extensions.swift */; };
 		47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A626A92A505397004A144E /* ImageHelpers.swift */; };
+		47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */; };
+		47C9892C2A6A6D4C000EC6E0 /* MyBankCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */; };
+		47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */; };
+		47C9892E2A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989272A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift */; };
+		47C9892F2A6A6D4C000EC6E0 /* MyBankCardsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989282A6A6D4C000EC6E0 /* MyBankCardsModels.swift */; };
+		47C989302A6A6D4C000EC6E0 /* MyBankCardsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989292A6A6D4C000EC6E0 /* MyBankCardsWorker.swift */; };
+		47C989312A6A6D4C000EC6E0 /* MyBankCardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9892A2A6A6D4C000EC6E0 /* MyBankCardsRouter.swift */; };
+		47C989352A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989332A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift */; };
+		47C989362A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C989342A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib */; };
 		47D1BC282A3F40BA001A2622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D1BC272A3F40BA001A2622 /* AppDelegate.swift */; };
 		47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */; };
 		47D1BC2F2A3F40BA001A2622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47D1BC2D2A3F40BA001A2622 /* Main.storyboard */; };
@@ -274,6 +283,15 @@
 		479CD1292A66E28700F161C8 /* TicketsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketsCollectionViewCell.xib; sourceTree = "<group>"; };
 		47A626A72A50538C004A144E /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		47A626A92A505397004A144E /* ImageHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelpers.swift; sourceTree = "<group>"; };
+		47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBankCards.storyboard; sourceTree = "<group>"; };
+		47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsViewController.swift; sourceTree = "<group>"; };
+		47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsPresenter.swift; sourceTree = "<group>"; };
+		47C989272A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsInteractor.swift; sourceTree = "<group>"; };
+		47C989282A6A6D4C000EC6E0 /* MyBankCardsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsModels.swift; sourceTree = "<group>"; };
+		47C989292A6A6D4C000EC6E0 /* MyBankCardsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsWorker.swift; sourceTree = "<group>"; };
+		47C9892A2A6A6D4C000EC6E0 /* MyBankCardsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsRouter.swift; sourceTree = "<group>"; };
+		47C989332A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		47C989342A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyBankCardsCollectionViewCell.xib; sourceTree = "<group>"; };
 		47D1BC242A3F40BA001A2622 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D1BC272A3F40BA001A2622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47D1BC292A3F40BA001A2622 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -612,6 +630,30 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		47C989232A6A6CE4000EC6E0 /* MyBankCards */ = {
+			isa = PBXGroup;
+			children = (
+				47C989322A6A7287000EC6E0 /* Cell */,
+				47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */,
+				47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */,
+				47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */,
+				47C989272A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift */,
+				47C989282A6A6D4C000EC6E0 /* MyBankCardsModels.swift */,
+				47C989292A6A6D4C000EC6E0 /* MyBankCardsWorker.swift */,
+				47C9892A2A6A6D4C000EC6E0 /* MyBankCardsRouter.swift */,
+			);
+			path = MyBankCards;
+			sourceTree = "<group>";
+		};
+		47C989322A6A7287000EC6E0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47C989332A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift */,
+				47C989342A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47D1BC1B2A3F40BA001A2622 = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +682,7 @@
 				47A626A62A50538C004A144E /* Extension */,
 				4798A4222A3F5B6C00F0C19D /* Font */,
 				478B29452A597CD40075BE9E /* Profile */,
+				47C989232A6A6CE4000EC6E0 /* MyBankCards */,
 				476DBC692A57159400539FE3 /* WatchList */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				470B8E5F2A69C13B00A47C99 /* TicketPage */,
@@ -832,6 +875,7 @@
 				4798A4402A3F5B8A00F0C19D /* SF-Pro-Text-RegularItalic.otf in Resources */,
 				476DBC942A575BE100539FE3 /* GetTicket.storyboard in Resources */,
 				474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */,
+				47C989362A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib in Resources */,
 				470B8E752A69C81600A47C99 /* MapViewController.xib in Resources */,
 				47D8B3042A4978C0003CFE2D /* MovieDetails.storyboard in Resources */,
 				4798A4392A3F5B8A00F0C19D /* SF-Pro-Text-Thin.otf in Resources */,
@@ -842,6 +886,7 @@
 				4798A4432A3F5B8A00F0C19D /* SF-Pro-Text-Heavy.otf in Resources */,
 				47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */,
 				4798A43C2A3F5B8A00F0C19D /* SF-Pro-Text-BlackItalic.otf in Resources */,
+				47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */,
 				472267232A4EC13700784729 /* CastCrew.storyboard in Resources */,
 				4798A4382A3F5B8A00F0C19D /* SF-Pro-Text-Semibold.otf in Resources */,
 				479CD12B2A66E28700F161C8 /* TicketsCollectionViewCell.xib in Resources */,
@@ -898,12 +943,14 @@
 				477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */,
 				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
+				47C9892F2A6A6D4C000EC6E0 /* MyBankCardsModels.swift in Sources */,
 				4721283B2A64306D0019DFEC /* AddBankCardRouter.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
 				4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */,
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				477C84BE2A6539A4005EF3BC /* CongratsPresenter.swift in Sources */,
+				47C989302A6A6D4C000EC6E0 /* MyBankCardsWorker.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
 				477C84CF2A66A59C005EF3BC /* TicketsModels.swift in Sources */,
@@ -923,13 +970,16 @@
 				472267242A4EC13700784729 /* CastCrewViewController.swift in Sources */,
 				47D2169C2A53684D00B9CA98 /* MovieCollectionViewCell.swift in Sources */,
 				47D8B30E2A497A28003CFE2D /* CastTableViewCell.swift in Sources */,
+				47C989312A6A6D4C000EC6E0 /* MyBankCardsRouter.swift in Sources */,
 				47D8B2E92A4969E0003CFE2D /* HTTPClient.swift in Sources */,
+				47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */,
 				479CD12A2A66E28700F161C8 /* TicketsCollectionViewCell.swift in Sources */,
 				47D8B2F92A496B03003CFE2D /* MoviesRouter.swift in Sources */,
 				47D1BC282A3F40BA001A2622 /* AppDelegate.swift in Sources */,
 				47D1BC322A3F40BA001A2622 /* MovieApp.xcdatamodeld in Sources */,
 				478B294E2A597CF50075BE9E /* ProfileViewController.swift in Sources */,
 				478B29502A597CF50075BE9E /* ProfileInteractor.swift in Sources */,
+				47C9892C2A6A6D4C000EC6E0 /* MyBankCardsViewController.swift in Sources */,
 				47D8B2F62A496B03003CFE2D /* MoviesInteractor.swift in Sources */,
 				472128282A62E5DC0019DFEC /* PaymentPresenter.swift in Sources */,
 				477C84B02A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift in Sources */,
@@ -941,6 +991,7 @@
 				470B8E002A695DCF00A47C99 /* MapPresenter.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
 				477C84BF2A6539A4005EF3BC /* CongratsInteractor.swift in Sources */,
+				47C989352A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift in Sources */,
 				477C84D02A66A59C005EF3BC /* TicketsWorker.swift in Sources */,
 				470B8E622A69C16800A47C99 /* TicketPageViewController.swift in Sources */,
 				47D8B30A2A4978C0003CFE2D /* MovieDetailsRouter.swift in Sources */,
@@ -948,6 +999,7 @@
 				472128362A64306D0019DFEC /* AddBankCardViewController.swift in Sources */,
 				47396ECE2A548C1D005B8301 /* MovieCollectionReusableView.swift in Sources */,
 				476DBC762A57160900539FE3 /* WatchlistWorker.swift in Sources */,
+				47C9892E2A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift in Sources */,
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,
 				4773F84B2A61934A00CF4C8D /* ChooseSeatModels.swift in Sources */,
 				470B8E662A69C18900A47C99 /* TicketsViewController.swift in Sources */,

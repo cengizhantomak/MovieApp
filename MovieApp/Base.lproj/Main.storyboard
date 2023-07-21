@@ -220,6 +220,36 @@
                                 <color key="textColor" name="0F1B2B"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5i-M0-LMc">
+                                <rect key="frame" x="15" y="470.66666666666669" width="363" height="50.000000000000057"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YTI-mV-DB1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <color key="tintColor" name="0F1B2B"/>
+                                <state key="normal" title="my" image="Profile">
+                                    <color key="titleColor" name="0F1B2B"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system" imagePlacement="trailing" title="My Bank Card">
+                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                    <color key="baseForegroundColor" name="0F1B2B"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthForView">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorForView">
+                                        <color key="value" name="0F1B2B"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="myBankCardButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="JXg-rn-APi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
                         <color key="backgroundColor" name="theme"/>
@@ -228,16 +258,19 @@
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="6nM-h1-mU2"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6b-Qi-oy5" secondAttribute="trailing" constant="15" id="9Tk-lu-Ahg"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
+                            <constraint firstItem="f5i-M0-LMc" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="HD1-G1-SvD"/>
                             <constraint firstItem="qxm-s3-DtX" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="115" id="Lyv-l2-QXw"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="qxm-s3-DtX" secondAttribute="trailing" constant="15" id="PPW-OA-N7y"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="top" secondItem="PzI-bp-cMJ" secondAttribute="top" constant="25" id="bas-qe-2YE"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="RsN-6U-ecC" secondAttribute="trailing" constant="15" id="bpB-l8-Xza"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="f5i-M0-LMc" secondAttribute="trailing" constant="15" id="cSP-rv-qmh"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
                             <constraint firstItem="OVw-WY-t9X" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="p8V-25-pHU"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="tlM-k6-cRV"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="top" secondItem="MUQ-tm-jaJ" secondAttribute="bottom" constant="15" id="xX8-MD-gbd"/>
+                            <constraint firstItem="f5i-M0-LMc" firstAttribute="top" secondItem="OVw-WY-t9X" secondAttribute="bottom" constant="25" id="xhs-7t-jeZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fyq-9S-CWy">
@@ -399,9 +432,13 @@
         <image name="Movie" width="24" height="24"/>
         <image name="Profile" width="24" height="24"/>
         <image name="Watchlist" width="24" height="24"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
         <image name="tickets" width="24" height="18"/>
         <namedColor name="0F1B2B">
             <color red="0.058823529411764705" green="0.10588235294117647" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="2B3543">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="47CFFF">
             <color red="0.27843137254901962" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

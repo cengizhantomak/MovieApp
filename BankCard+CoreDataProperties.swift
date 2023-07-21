@@ -20,6 +20,7 @@ extension BankCard {
     @NSManaged public var cvv: String?
     @NSManaged public var dateExpire: String?
     @NSManaged public var nameCard: String?
+    @NSManaged public var timestamp: Date?
 
 }
 

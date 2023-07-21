@@ -5,6 +5,7 @@
         <attribute name="cvv" optional="YES" attributeType="String"/>
         <attribute name="dateExpire" optional="YES" attributeType="String"/>
         <attribute name="nameCard" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="MovieTicket" representedClassName="MovieTicket" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String"/>

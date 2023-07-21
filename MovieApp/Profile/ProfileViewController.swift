@@ -46,8 +46,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Profile"
-        
         if #available(iOS 13.0, *) {
             let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
             darkModeSwitch.isOn = darkModeEnabled

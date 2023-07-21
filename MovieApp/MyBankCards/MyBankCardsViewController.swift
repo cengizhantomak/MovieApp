@@ -45,6 +45,7 @@ final class MyBankCardsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "My Bank Cards"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBankCardButtonTapped))
     }
     

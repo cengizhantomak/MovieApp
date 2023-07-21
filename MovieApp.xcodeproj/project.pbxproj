@@ -127,6 +127,8 @@
 		47B3E3D92A6B0EB70054AC4A /* VideosModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D22A6B0EB70054AC4A /* VideosModels.swift */; };
 		47B3E3DA2A6B0EB70054AC4A /* VideosWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D32A6B0EB70054AC4A /* VideosWorker.swift */; };
 		47B3E3DB2A6B0EB70054AC4A /* VideosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D42A6B0EB70054AC4A /* VideosRouter.swift */; };
+		47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */; };
+		47B3E3E02A6B1D470054AC4A /* VideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */; };
 		47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */; };
 		47C9892C2A6A6D4C000EC6E0 /* MyBankCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */; };
 		47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */; };
@@ -297,6 +299,8 @@
 		47B3E3D22A6B0EB70054AC4A /* VideosModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosModels.swift; sourceTree = "<group>"; };
 		47B3E3D32A6B0EB70054AC4A /* VideosWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosWorker.swift; sourceTree = "<group>"; };
 		47B3E3D42A6B0EB70054AC4A /* VideosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosRouter.swift; sourceTree = "<group>"; };
+		47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
+		47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosCollectionViewCell.xib; sourceTree = "<group>"; };
 		47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBankCards.storyboard; sourceTree = "<group>"; };
 		47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsViewController.swift; sourceTree = "<group>"; };
 		47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsPresenter.swift; sourceTree = "<group>"; };
@@ -647,6 +651,7 @@
 		47B3E3CD2A6B0EA00054AC4A /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				47B3E3DC2A6B1D290054AC4A /* Cell */,
 				47B3E3CF2A6B0EB70054AC4A /* VideosViewController.swift */,
 				47B3E3D02A6B0EB70054AC4A /* VideosPresenter.swift */,
 				47B3E3D12A6B0EB70054AC4A /* VideosInteractor.swift */,
@@ -658,17 +663,26 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
+		47B3E3DC2A6B1D290054AC4A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */,
+				47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47C989232A6A6CE4000EC6E0 /* MyBankCards */ = {
 			isa = PBXGroup;
 			children = (
 				47C989322A6A7287000EC6E0 /* Cell */,
-				47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */,
 				47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */,
 				47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */,
 				47C989272A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift */,
 				47C989282A6A6D4C000EC6E0 /* MyBankCardsModels.swift */,
 				47C989292A6A6D4C000EC6E0 /* MyBankCardsWorker.swift */,
 				47C9892A2A6A6D4C000EC6E0 /* MyBankCardsRouter.swift */,
+				47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */,
 			);
 			path = MyBankCards;
 			sourceTree = "<group>";
@@ -922,6 +936,7 @@
 				479CD12B2A66E28700F161C8 /* TicketsCollectionViewCell.xib in Resources */,
 				4798A4412A3F5B8A00F0C19D /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				4798A43A2A3F5B8A00F0C19D /* SF-Pro-Text-Bold.otf in Resources */,
+				47B3E3E02A6B1D470054AC4A /* VideosCollectionViewCell.xib in Resources */,
 				47396F172A54BECF005B8301 /* PhotosSectionCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,6 +1063,7 @@
 				47B3E3DB2A6B0EB70054AC4A /* VideosRouter.swift in Sources */,
 				47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */,
 				477C84BD2A6539A4005EF3BC /* CongratsViewController.swift in Sources */,
+				47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */,
 				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,

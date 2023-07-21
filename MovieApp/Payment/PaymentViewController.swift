@@ -9,6 +9,7 @@ import UIKit
 
 protocol PaymentDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel)
+    func displayFetchedBankCardDetails(viewModel: PaymentModels.FetchPayment.ViewModel)
     func displayCardValidationResult(viewModel: PaymentModels.FetchPayment.ViewModel)
 }
 
@@ -49,12 +50,17 @@ final class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor?.getMovie()
         navigationItem.title = "Payment"
         setupTextField()
         setupDismissKeyboardOnTap()
         placeOrderButton.isEnabled = false
         placeOrderButton.backgroundColor = .systemGray
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.getMovie()
+        interactor?.getbankCardDetails()
     }
     
     // MARK: - Setup
@@ -87,7 +93,7 @@ final class PaymentViewController: UIViewController {
     }
     
     @IBAction func addBankCardTapped(_ sender: Any) {
-        router?.routeToAddBankCard()
+        router?.routeToMyBankCards()
     }
 }
 
@@ -103,6 +109,16 @@ extension PaymentViewController: PaymentDisplayLogic {
         dateLabel.text = viewModel.selectedDate
         seatLabel.text = "Seat: \(viewModel.chooseSeat?.joined(separator: ", ") ?? "")"
         priceLabel.text = "$ " + String(format: "%.2f", viewModel.totalAmount ?? .zero)
+    }
+    
+    func displayFetchedBankCardDetails(viewModel: PaymentModels.FetchPayment.ViewModel) {
+        nameCardTextField.text = viewModel.cardHolder
+        cardNumberTextField.text = viewModel.cardNumber
+        dateExpireTextField.text = viewModel.cardExpires
+        cvvTextField.text = viewModel.cvv
+        
+        placeOrderButton.isEnabled = true
+        placeOrderButton.backgroundColor = UIColor(named: "buttonRed")
     }
     
     func displayCardValidationResult(viewModel: PaymentModels.FetchPayment.ViewModel) {

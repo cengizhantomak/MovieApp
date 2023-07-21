@@ -20,13 +20,22 @@ enum MyBankCardsModels {
         }
         
         struct ViewModel {
-            var displayedBankCard: [DisplayedBankCard]
+            var displayedBankCard: [DisplayedBankCard]?
+            var originViewController: String?
+            var selectedMovieTitle: String?
+            var selectedMovieImage: String?
+            var selectedDate: String?
+            var selectedTheater: String?
+            var chooseSeat: [String]?
+            var totalAmount: Double?
             
             struct DisplayedBankCard {
-                let cardNumber: String
-                let cardHolder: String
-                let cardExpires: String
-                let id: UUID
+                let cardNumber: String?
+                let cardHolder: String?
+                let cardExpires: String?
+                let cvv: String?
+                let id: UUID?
+                
             }
         }
     }

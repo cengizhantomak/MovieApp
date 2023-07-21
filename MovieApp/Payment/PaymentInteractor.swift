@@ -11,6 +11,8 @@ import UIKit
 protocol PaymentBusinessLogic: AnyObject {
     func getMovie()
     func validateCard(request: PaymentModels.FetchPayment.Request)
+    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel)
+    func getbankCardDetails()
 }
 
 protocol PaymentDataStore: AnyObject {
@@ -65,5 +67,14 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
         } catch {
             print("Failed to save ticket in Interactor: \(error)")
         }
+    }
+    
+    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel) {
+        self.paymentDetails = details
+    }
+    
+    func getbankCardDetails() {
+        guard let paymentDetails else { return }
+        presenter?.presentBankCardDetails(bankCardDetails: paymentDetails)
     }
 }

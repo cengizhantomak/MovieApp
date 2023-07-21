@@ -36,13 +36,14 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
                 on: viewController)
         } else {
             // Kart mevcut değil, CoreData'ya kaydedin
-            let bankCardEntity = NSEntityDescription.entity(forEntityName: "BankCard", in: context)!
-            let newBankCard = NSManagedObject(entity: bankCardEntity, insertInto: context)
+            let newBankCard = BankCard(context: context)
             
-            newBankCard.setValue(cardName, forKey: "nameCard")
-            newBankCard.setValue(cardNumber, forKey: "cardNumber")
-            newBankCard.setValue(expiryDate, forKey: "dateExpire")
-            newBankCard.setValue(cvv, forKey: "cvv")
+            newBankCard.nameCard = cardName
+            newBankCard.cardNumber = cardNumber
+            newBankCard.dateExpire = expiryDate
+            newBankCard.cvv = cvv
+            newBankCard.timestamp = Date()
+            newBankCard.id = UUID()
             
             do {
                 try context.save()

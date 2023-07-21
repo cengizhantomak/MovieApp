@@ -62,6 +62,15 @@ public struct MoviesResponse {
         }
     }
     
+    public struct MovieVideos: Codable {
+        public let results: [Videos]
+    }
+    
+    public struct Videos: Codable {
+        let name: String
+        let key: String
+    }
+    
     struct Watchlist: Decodable {
         let statusCode: Int
         let statusMessage: String

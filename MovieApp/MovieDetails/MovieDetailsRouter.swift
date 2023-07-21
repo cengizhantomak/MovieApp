@@ -13,6 +13,7 @@ protocol MovieDetailsRoutingLogic: AnyObject {
     func routeToCastCrew()
     func routeToGetTicket()
     func routeToWatchList()
+    func routeToVideos()
 }
 
 protocol MovieDetailsDataPassing: AnyObject {
@@ -46,6 +47,19 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
         }
         
         destinationVC.router?.dataStore?.allPhotos = dataStore.allPhotos
+        destinationVC.loadViewIfNeeded()
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToVideos() {
+        let storyboard = UIStoryboard(name: "Videos", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "VideosViewController") as? VideosViewController,
+              let dataStore,
+              let getTicketDataStore = destinationVC.router?.dataStore else { return }
+        
+        getTicketDataStore.selectedMovieID = dataStore.selectedMovieID
+        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

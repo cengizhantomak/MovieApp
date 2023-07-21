@@ -38,6 +38,12 @@ final class MyBankCardsViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBankCardButtonTapped))
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -91,6 +97,12 @@ final class MyBankCardsViewController: UIViewController {
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
+    }
+    
+    // MARK: - Actions
+    
+    @objc func addBankCardButtonTapped() {
+        router?.routeToAddBankCard()
     }
 }
 

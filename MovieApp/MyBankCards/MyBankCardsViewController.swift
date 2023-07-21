@@ -10,6 +10,8 @@ import UIKit
 protocol MyBankCardsDisplayLogic: AnyObject {
     func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel)
     func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel)
+    func displaySelectBankCard()
+    func displayOriginViewController(viewModel: String?)
 }
 
 final class MyBankCardsViewController: UIViewController {
@@ -23,7 +25,8 @@ final class MyBankCardsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var displayedBankCards = [MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard]()
+    var displayedBankCards: [MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard] = []
+    var originViewController: String?
     
     // MARK: - Object lifecycle
     
@@ -49,6 +52,7 @@ final class MyBankCardsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+        interactor?.getOriginViewController()
         setupCollectionView()
     }
     
@@ -111,7 +115,7 @@ final class MyBankCardsViewController: UIViewController {
 
 extension MyBankCardsViewController: MyBankCardsDisplayLogic {
     func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel) {
-        displayedBankCards = viewModel.displayedBankCard
+        displayedBankCards = viewModel.displayedBankCard ?? []
         self.collectionView.reloadData()
     }
     
@@ -121,6 +125,14 @@ extension MyBankCardsViewController: MyBankCardsDisplayLogic {
         } else {
             UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete Bank Card", buttonTitle: "OK", on: self)
         }
+    }
+    
+    func displaySelectBankCard() {
+        router?.routeToSelectBankCardPayment()
+    }
+    
+    func displayOriginViewController(viewModel: String?) {
+        originViewController = viewModel
     }
 }
 
@@ -140,6 +152,13 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
         cell.delegate = self
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedBankCard = displayedBankCards[indexPath.item]
+        if originViewController == "PaymentViewController" {
+            interactor?.selectBankCard(bankCardDetail: selectedBankCard)
+            }
     }
 }
 

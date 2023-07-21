@@ -9,6 +9,7 @@ import Foundation
 
 protocol PaymentPresentationLogic: AnyObject {
     func presentMovie(paymentDetails: PaymentModels.FetchPayment.ViewModel)
+    func presentBankCardDetails(bankCardDetails: PaymentModels.FetchPayment.ViewModel)
     func presentCardValidationResult(response: PaymentModels.FetchPayment.Response)
     func presentTicketExistAlert()
 }
@@ -19,6 +20,10 @@ final class PaymentPresenter: PaymentPresentationLogic {
     
     func presentMovie(paymentDetails: PaymentModels.FetchPayment.ViewModel) {
         self.viewController?.displayFetchedMovie(viewModel: paymentDetails)
+    }
+    
+    func presentBankCardDetails(bankCardDetails: PaymentModels.FetchPayment.ViewModel) {
+        self.viewController?.displayFetchedBankCardDetails(viewModel: bankCardDetails)
     }
     
     func presentTicketExistAlert() {

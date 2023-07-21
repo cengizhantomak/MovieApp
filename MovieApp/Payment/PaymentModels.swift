@@ -33,6 +33,11 @@ enum PaymentModels {
             var title: String?
             var buttonTitle: String?
             var isPaymentSuccessful: Bool?
+            var cardNumber: String?
+            var cardHolder: String?
+            var cardExpires: String?
+            var cvv: String?
+            var id: UUID?
         }
     }
 }

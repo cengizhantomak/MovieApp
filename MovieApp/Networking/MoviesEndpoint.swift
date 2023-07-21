@@ -21,6 +21,7 @@ public enum MoviesEndpoint {
     case moviesDetail(id: Int)
     case credits(id: Int)
     case images(id: Int)
+    case videos(id: Int)
     case watchList
     case addToWatchlist(movieId: Int)
     case profile
@@ -30,7 +31,7 @@ public enum MoviesEndpoint {
 extension MoviesEndpoint: Endpoint {
     public var queryItems: [URLQueryItem]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_):
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_), .videos(_):
             return [URLQueryItem(name: "api_key", value: APIConstants.apiKey)]
         case  .watchList,.addToWatchlist(_), .profile, .removeFromWatchlist(_):
             return [
@@ -55,6 +56,8 @@ extension MoviesEndpoint: Endpoint {
             return "/3/movie/\(id)/credits"
         case .images(let id):
             return "/3/movie/\(id)/images"
+        case .videos(let id):
+            return "/3/movie/\(id)/videos"
         case .watchList:
             return "/3/account/\(APIConstants.accountId)/watchlist/movies"
         case .addToWatchlist(_):
@@ -68,7 +71,7 @@ extension MoviesEndpoint: Endpoint {
     
     public var method: RequestMethod {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile:
             return .get
         case .addToWatchlist, .removeFromWatchlist:
             return .post
@@ -78,7 +81,7 @@ extension MoviesEndpoint: Endpoint {
     public var header: [String : String]? {
         // TODO: Singleton Keychain Manager
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .addToWatchlist, .removeFromWatchlist, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .addToWatchlist, .removeFromWatchlist, .profile:
             return [
                 //                "Authorization": "Bearer \(accessToken)"
                 "Content-Type": "application/json;charset=utf-8"
@@ -88,7 +91,7 @@ extension MoviesEndpoint: Endpoint {
     
     public var body: [String: Any]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .watchList, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile:
             return nil
         case .addToWatchlist(let movieId):
             return [

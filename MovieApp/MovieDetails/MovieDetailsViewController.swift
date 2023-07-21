@@ -173,6 +173,10 @@ final class MovieDetailsViewController: UIViewController {
         interactor?.viewAllPhotos(with: displayedDetails.displayedImages)
     }
     
+    @IBAction func videosButtonTapped(_ sender: Any) {
+        router?.routeToVideos()
+    }
+    
     @objc func onMovieAddedToWatchlist(_ notification: Notification) {
         DispatchQueue.main.async {
             self.addRemoveWatchlistButton.setTitle("Remove Watchlist", for: .normal)

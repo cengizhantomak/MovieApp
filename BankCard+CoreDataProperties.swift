@@ -21,6 +21,7 @@ extension BankCard {
     @NSManaged public var dateExpire: String?
     @NSManaged public var nameCard: String?
     @NSManaged public var timestamp: Date?
+    @NSManaged public var id: UUID
 
 }
 

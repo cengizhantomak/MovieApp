@@ -26,7 +26,23 @@ enum MyBankCardsModels {
                 let cardNumber: String
                 let cardHolder: String
                 let cardExpires: String
+                let id: UUID
             }
+        }
+    }
+    
+    enum DeleteBankCard {
+        
+        struct Request {
+            let bankCardId: UUID
+        }
+        
+        struct Response {
+            let success: Bool
+        }
+        
+        struct ViewModel {
+            let success: Bool
         }
     }
 }

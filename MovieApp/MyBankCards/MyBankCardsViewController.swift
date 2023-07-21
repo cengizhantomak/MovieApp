@@ -9,6 +9,7 @@ import UIKit
 
 protocol MyBankCardsDisplayLogic: AnyObject {
     func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel)
+    func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel)
 }
 
 final class MyBankCardsViewController: UIViewController {
@@ -113,6 +114,14 @@ extension MyBankCardsViewController: MyBankCardsDisplayLogic {
         displayedBankCards = viewModel.displayedBankCard
         self.collectionView.reloadData()
     }
+    
+    func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel) {
+        if viewModel.success {
+            interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+        } else {
+            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete Bank Card", buttonTitle: "OK", on: self)
+        }
+    }
 }
 
 // MARK: - CollectionView
@@ -128,6 +137,23 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
         let model = displayedBankCards[indexPath.item]
         cell.setCell(viewModel: model)
         
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+// MARK: - TicketsCollectionViewCellDelegate
+
+extension MyBankCardsViewController: MyBankCardsCollectionViewCellDelegate {
+    func didPressCancel(id: UUID) {
+        let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this Bank Card?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in
+            self?.interactor?.deleteBankCard(request: .init(bankCardId: id))
+        }
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

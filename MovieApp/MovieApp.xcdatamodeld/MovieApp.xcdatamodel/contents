@@ -4,6 +4,7 @@
         <attribute name="cardNumber" optional="YES" attributeType="String"/>
         <attribute name="cvv" optional="YES" attributeType="String"/>
         <attribute name="dateExpire" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="nameCard" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>

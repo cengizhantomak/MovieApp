@@ -10,6 +10,7 @@ import CoreData
 
 protocol MyBankCardsWorkingLogic: AnyObject {
     func fetchBankCards(using context: NSManagedObjectContext) throws -> [BankCard]
+    func deleteBankCard(withId id: UUID, using context: NSManagedObjectContext) throws
 }
 
 final class MyBankCardsWorker: MyBankCardsWorkingLogic {
@@ -20,5 +21,16 @@ final class MyBankCardsWorker: MyBankCardsWorkingLogic {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         return try context.fetch(fetchRequest)
+    }
+    
+    func deleteBankCard(withId id: UUID, using context: NSManagedObjectContext) throws {
+        let fetchRequest: NSFetchRequest<BankCard> = BankCard.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        let bankCards = try context.fetch(fetchRequest)
+        if let bankCard = bankCards.first {
+            context.delete(bankCard)
+            try context.save()
+        }
     }
 }

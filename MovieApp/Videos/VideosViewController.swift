@@ -97,7 +97,10 @@ final class VideosViewController: UIViewController {
 
 extension VideosViewController: VideosDisplayLogic {
     func displayedFetchedVideos(viewModel: VideosModels.FetchVideos.ViewModel) {
-        displayedVideos = viewModel.displayedVideos
+        DispatchQueue.main.async {
+            self.displayedVideos = viewModel.displayedVideos
+            self.collectionView.reloadData()
+        }
     }
 }
 

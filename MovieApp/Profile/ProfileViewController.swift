@@ -92,6 +92,10 @@ final class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func myBankCardButtonTapped(_ sender: Any) {
+        router?.routeToMyBankCards()
+    }
 }
 
 // MARK: - DisplayLogic

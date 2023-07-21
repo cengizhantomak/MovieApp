@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MyBankCardsCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="192"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="340" height="192"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qoy-HY-NSX" userLabel="View1">
+                        <rect key="frame" x="0.0" y="0.0" width="340" height="192"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankCard" translatesAutoresizingMaskIntoConstraints="NO" id="Zcn-Wy-KtH">
+                                <rect key="frame" x="0.0" y="0.0" width="340" height="192"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEBIT CARD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMp-et-N9z">
+                                <rect key="frame" x="200.66666666666666" y="24" width="112.33333333333334" height="21"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6o-wv-dG4">
+                                <rect key="frame" x="27" y="84" width="286" height="24"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn9-kL-F2g">
+                                <rect key="frame" x="27" y="150" width="200" height="19.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="jct-f9-tCi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CARD HOLDER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLa-iS-a6K">
+                                <rect key="frame" x="26.999999999999993" y="131.66666666666666" width="86.333333333333314" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXPIRES" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8um-Uu-Ily">
+                                <rect key="frame" x="263" y="131.66666666666666" width="50" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="12"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAN-5d-v3r">
+                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="eiX-gt-QpF"/>
+                                    <constraint firstAttribute="height" constant="20" id="rHo-Vd-ccV"/>
+                                </constraints>
+                                <color key="tintColor" name="buttonRed"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="KiD-r8-P5X"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dav-pD-oi1">
+                                <rect key="frame" x="271" y="150" width="42" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="p6o-wv-dG4" firstAttribute="centerY" secondItem="Zcn-Wy-KtH" secondAttribute="centerY" id="3jl-76-Ecg"/>
+                            <constraint firstAttribute="bottom" secondItem="Zcn-Wy-KtH" secondAttribute="bottom" id="69O-s3-MbG"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="width" secondItem="Qoy-HY-NSX" secondAttribute="width" id="70h-gm-XHy"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="trailing" secondItem="nMp-et-N9z" secondAttribute="trailing" constant="27" id="BVs-vC-VRS"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="bottom" secondItem="WLa-iS-a6K" secondAttribute="bottom" constant="46" id="BaW-yX-dKj"/>
+                            <constraint firstItem="nMp-et-N9z" firstAttribute="top" secondItem="Zcn-Wy-KtH" secondAttribute="top" constant="24" id="Crl-X9-Gjg"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="height" secondItem="Qoy-HY-NSX" secondAttribute="height" id="EKO-EL-cTm"/>
+                            <constraint firstItem="LAN-5d-v3r" firstAttribute="leading" secondItem="Qoy-HY-NSX" secondAttribute="leading" constant="10" id="Io3-1c-Bak"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="trailing" secondItem="8um-Uu-Ily" secondAttribute="trailing" constant="27" id="JrA-k6-W8Y"/>
+                            <constraint firstItem="p6o-wv-dG4" firstAttribute="leading" secondItem="Qoy-HY-NSX" secondAttribute="leading" constant="27" id="LZh-tl-pUw"/>
+                            <constraint firstAttribute="trailing" secondItem="Zcn-Wy-KtH" secondAttribute="trailing" id="P65-In-UOB"/>
+                            <constraint firstItem="p6o-wv-dG4" firstAttribute="centerX" secondItem="Zcn-Wy-KtH" secondAttribute="centerX" id="WPT-8B-1cR"/>
+                            <constraint firstItem="Jn9-kL-F2g" firstAttribute="top" secondItem="WLa-iS-a6K" secondAttribute="bottom" constant="4" id="Wm6-39-Ovb"/>
+                            <constraint firstItem="Dav-pD-oi1" firstAttribute="top" secondItem="8um-Uu-Ily" secondAttribute="bottom" constant="4" id="ZYB-1y-5cw"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="leading" secondItem="Qoy-HY-NSX" secondAttribute="leading" id="aHm-vx-IAt"/>
+                            <constraint firstAttribute="height" constant="192" id="j9K-30-rFt"/>
+                            <constraint firstItem="WLa-iS-a6K" firstAttribute="leading" secondItem="Zcn-Wy-KtH" secondAttribute="leading" constant="27" id="qcM-Mn-E10"/>
+                            <constraint firstItem="Jn9-kL-F2g" firstAttribute="leading" secondItem="Zcn-Wy-KtH" secondAttribute="leading" constant="27" id="tN0-38-0kW"/>
+                            <constraint firstItem="8um-Uu-Ily" firstAttribute="centerY" secondItem="WLa-iS-a6K" secondAttribute="centerY" id="tge-Br-l1R"/>
+                            <constraint firstAttribute="width" constant="340" id="toB-fQ-hb6"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="top" secondItem="Qoy-HY-NSX" secondAttribute="top" id="z24-vr-HcT"/>
+                            <constraint firstItem="LAN-5d-v3r" firstAttribute="top" secondItem="Qoy-HY-NSX" secondAttribute="top" constant="10" id="z4c-c0-PV3"/>
+                            <constraint firstItem="Zcn-Wy-KtH" firstAttribute="trailing" secondItem="Dav-pD-oi1" secondAttribute="trailing" constant="27" id="zuD-2H-AVw"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qoy-HY-NSX" secondAttribute="trailing" id="0PQ-z8-28J"/>
+                <constraint firstItem="Qoy-HY-NSX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4lc-xx-AFn"/>
+                <constraint firstItem="Qoy-HY-NSX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FAu-E8-vH8"/>
+                <constraint firstAttribute="bottom" secondItem="Qoy-HY-NSX" secondAttribute="bottom" id="LBg-tg-Wv3"/>
+            </constraints>
+            <size key="customSize" width="437" height="282"/>
+            <connections>
+                <outlet property="cardHolderLabel" destination="Jn9-kL-F2g" id="uWH-jU-G8j"/>
+                <outlet property="cardNumberLabel" destination="p6o-wv-dG4" id="vha-pA-rvi"/>
+                <outlet property="expiresLabel" destination="Dav-pD-oi1" id="w6P-XT-PDX"/>
+            </connections>
+            <point key="canvasLocation" x="389.3129770992366" y="70.422535211267615"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bankCard" width="943" height="533"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="buttonRed">
+            <color red="0.89999997615814209" green="0.10000000149011612" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

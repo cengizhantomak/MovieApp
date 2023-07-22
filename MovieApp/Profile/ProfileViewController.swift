@@ -94,6 +94,28 @@ final class ProfileViewController: UIViewController {
     @IBAction func myBankCardButtonTapped(_ sender: Any) {
         router?.routeToMyBankCards()
     }
+    
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Log Out", message: "Are you sure you want to log out? All your data will be deleted!", preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        let okAction = UIAlertAction(title: "Log Out", style: .destructive) { [weak self] (action) in
+            guard let self else { return }
+            self.interactor?.performLogout { result in
+                switch result {
+                case .success:
+                    self.router?.routeToLoginScreen()
+                case .failure(let error):
+                    UIAlertHelper.shared.showAlert(title: "Error", message: "An error occurred during the logout process: \(error)", buttonTitle: "OK", on: self)
+                }
+            }
+        }
+        alertController.addAction(okAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - DisplayLogic

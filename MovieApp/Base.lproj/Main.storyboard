@@ -337,6 +337,25 @@
                                     <action selector="myBankCardButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="JXg-rn-APi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0s-da-1Yh">
+                                <rect key="frame" x="20" y="716" width="353" height="48"/>
+                                <color key="backgroundColor" name="buttonRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="2Jo-7J-JwP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Log Out"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="5zp-9a-Nkw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
                         <color key="backgroundColor" name="theme"/>
@@ -346,6 +365,7 @@
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6b-Qi-oy5" secondAttribute="trailing" constant="15" id="9Tk-lu-Ahg"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
                             <constraint firstItem="f5i-M0-LMc" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="HD1-G1-SvD"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="Z0s-da-1Yh" secondAttribute="trailing" constant="20" id="HWl-FX-L1u"/>
                             <constraint firstItem="qxm-s3-DtX" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="115" id="Lyv-l2-QXw"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="qxm-s3-DtX" secondAttribute="trailing" constant="15" id="PPW-OA-N7y"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
@@ -355,9 +375,11 @@
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
                             <constraint firstItem="OVw-WY-t9X" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="p8V-25-pHU"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
+                            <constraint firstItem="Z0s-da-1Yh" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="20" id="sRf-0f-fNZ"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="tlM-k6-cRV"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="top" secondItem="MUQ-tm-jaJ" secondAttribute="bottom" constant="15" id="xX8-MD-gbd"/>
                             <constraint firstItem="f5i-M0-LMc" firstAttribute="top" secondItem="OVw-WY-t9X" secondAttribute="bottom" constant="25" id="xhs-7t-jeZ"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="bottom" secondItem="Z0s-da-1Yh" secondAttribute="bottom" constant="5" id="zNK-xh-2cp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fyq-9S-CWy">
@@ -398,17 +420,6 @@
                     <view key="view" contentMode="scaleToFill" id="cq9-2K-YZ8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gi-XN-G8Y">
-                                <rect key="frame" x="159" y="409" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="pageButton:" destination="U70-2X-OdA" eventType="touchUpInside" id="ZzW-YT-uVU"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Z60-75-SGh"/>
                         <color key="backgroundColor" name="theme"/>
                     </view>

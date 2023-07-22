@@ -34,6 +34,16 @@ final class LoginViewController: UIViewController {
         setup()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if UserDefaults.standard.string(forKey: "sessionId") != nil {
+            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
+            APIConstants.sessionId = sessionId
+            router?.routeToApp()
+        }
+    }
+    
     // MARK: - Setup
     
     private func setup() {

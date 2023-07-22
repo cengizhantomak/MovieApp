@@ -63,6 +63,7 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
             switch result {
             case .success(let sessionResponse):
                 APIConstants.sessionId = sessionResponse.sessionId
+                UserDefaults.standard.set(sessionResponse.sessionId, forKey: "sessionId")
                 presenter?.presentLoginSuccess()
             case .failure(let error):
                 print(error)

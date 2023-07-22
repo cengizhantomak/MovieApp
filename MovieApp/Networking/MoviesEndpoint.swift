@@ -9,7 +9,7 @@ import Foundation
 
 struct APIConstants {
     static let apiKey = "ee3a8f4fad83f7af9b46376ca2d6104b"
-    static var sessionId = "d33dc66c115a931b8d8b3188e635bb9754094693"
+    static var sessionId: String?
     static let accountId = "0"
     static var requestToken: String?
     static var username: String?

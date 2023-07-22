@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NLA-Yk-2Hx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oPD-b7-FnJ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -67,7 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9c-g7-0de">
-                                        <rect key="frame" x="-1" y="24" width="70" height="29"/>
+                                        <rect key="frame" x="-1" y="25" width="70" height="28"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
                                         <color key="textColor" name="0F1B2B"/>
                                         <nil key="highlightedColor"/>
@@ -88,10 +88,97 @@
             </objects>
             <point key="canvasLocation" x="-2877" y="1658"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="FvS-QN-O4s">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="oPD-b7-FnJ" customClass="LoginViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="20P-Ya-xve">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QqG-sY-bDx">
+                                <rect key="frame" x="20" y="488.66666666666674" width="353" height="48"/>
+                                <color key="backgroundColor" name="buttonRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="7Sd-Hi-tX4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Login"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="oPD-b7-FnJ" eventType="touchUpInside" id="bPJ-vG-BZ2"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjb-4v-n0I">
+                                <rect key="frame" x="20" y="333.66666666666669" width="353" height="45"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="EF3-lB-qnf"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8am-J7-eZN">
+                                <rect key="frame" x="20" y="403.66666666666669" width="353" height="45"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hk4-Wu-OWj"/>
+                                </constraints>
+                                <color key="textColor" name="0F1B2B"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t6-Eg-lh2">
+                                <rect key="frame" x="131.66666666666666" y="159" width="129.99999999999997" height="30"/>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="25"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your details." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-hD-2Az">
+                                <rect key="frame" x="107" y="204" width="179" height="18"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" name="0F1B2B"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RIm-IV-2CH"/>
+                        <color key="backgroundColor" name="theme"/>
+                        <constraints>
+                            <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="Cjb-4v-n0I" secondAttribute="trailing" constant="20" id="6CD-cQ-dnR"/>
+                            <constraint firstItem="Cjb-4v-n0I" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="7bI-Yv-n4K"/>
+                            <constraint firstItem="Hzs-hD-2Az" firstAttribute="centerX" secondItem="20P-Ya-xve" secondAttribute="centerX" id="F1g-fc-b0w"/>
+                            <constraint firstItem="QqG-sY-bDx" firstAttribute="top" secondItem="8am-J7-eZN" secondAttribute="bottom" constant="40" id="G63-nh-kgS"/>
+                            <constraint firstItem="8am-J7-eZN" firstAttribute="centerY" secondItem="20P-Ya-xve" secondAttribute="centerY" id="KrF-SP-ega"/>
+                            <constraint firstItem="4t6-Eg-lh2" firstAttribute="centerX" secondItem="20P-Ya-xve" secondAttribute="centerX" id="Me2-B4-02a"/>
+                            <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="8am-J7-eZN" secondAttribute="trailing" constant="20" id="SlJ-yT-nMg"/>
+                            <constraint firstItem="Hzs-hD-2Az" firstAttribute="top" secondItem="4t6-Eg-lh2" secondAttribute="bottom" constant="15" id="XxM-s9-O82"/>
+                            <constraint firstItem="8am-J7-eZN" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="h2a-97-xKM"/>
+                            <constraint firstItem="4t6-Eg-lh2" firstAttribute="top" secondItem="RIm-IV-2CH" secondAttribute="top" constant="100" id="ip5-Ab-S9G"/>
+                            <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="QqG-sY-bDx" secondAttribute="trailing" constant="20" id="kZa-jD-ICt"/>
+                            <constraint firstItem="8am-J7-eZN" firstAttribute="top" secondItem="Cjb-4v-n0I" secondAttribute="bottom" constant="25" id="s63-K7-mTo"/>
+                            <constraint firstItem="QqG-sY-bDx" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="sJg-Jy-U2c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="8am-J7-eZN" id="jlT-35-7eV"/>
+                        <outlet property="userNameTextField" destination="Cjb-4v-n0I" id="cqw-Ta-NoS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-RT-x9O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1567" y="-641"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TJ9-Pv-BHS">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NLA-Yk-2Hx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="NLA-Yk-2Hx" customClass="TabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ix7-7Y-ENL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="U3B-3k-KHl">
@@ -280,7 +367,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmW-bs-2nK">
-                                        <rect key="frame" x="-1" y="24" width="77" height="29"/>
+                                        <rect key="frame" x="-1" y="25" width="77" height="28"/>
                                         <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="24"/>
                                         <color key="textColor" name="0F1B2B"/>
                                         <nil key="highlightedColor"/>
@@ -442,6 +529,9 @@
         </namedColor>
         <namedColor name="47CFFF">
             <color red="0.27843137254901962" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="buttonRed">
+            <color red="0.89999997615814209" green="0.10000000149011612" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

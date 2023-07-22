@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileRoutingLogic: AnyObject {
     func routeToMyBankCards()
+    func routeToLoginScreen()
 }
 
 protocol ProfileDataPassing: AnyObject {
@@ -28,5 +29,15 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToLoginScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
+              let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let window = windowScene.windows.first else { return }
+        
+        window.rootViewController = loginVC
+        window.makeKeyAndVisible()
     }
 }

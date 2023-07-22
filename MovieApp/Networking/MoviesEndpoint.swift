@@ -9,8 +9,11 @@ import Foundation
 
 struct APIConstants {
     static let apiKey = "ee3a8f4fad83f7af9b46376ca2d6104b"
-    static let sessionId = "d33dc66c115a931b8d8b3188e635bb9754094693"
-    static let accountId = "18128950"
+    static var sessionId = "d33dc66c115a931b8d8b3188e635bb9754094693"
+    static let accountId = "0"
+    static var requestToken: String?
+    static var username: String?
+    static var password: String?
 }
 
 public enum MoviesEndpoint {
@@ -26,17 +29,26 @@ public enum MoviesEndpoint {
     case addToWatchlist(movieId: Int)
     case profile
     case removeFromWatchlist(movieId: Int)
+    case createRequestToken
+    case validateWithLogin
+    case createSession
 }
 
 extension MoviesEndpoint: Endpoint {
     public var queryItems: [URLQueryItem]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_), .videos(_):
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail(_), .credits(_), .images(_), .videos(_), .createRequestToken:
             return [URLQueryItem(name: "api_key", value: APIConstants.apiKey)]
         case  .watchList,.addToWatchlist(_), .profile, .removeFromWatchlist(_):
             return [
                 URLQueryItem(name: "api_key", value: APIConstants.apiKey),
                 URLQueryItem(name: "session_id", value: APIConstants.sessionId)]
+        case  .validateWithLogin, .createSession:
+            return [
+                URLQueryItem(name: "api_key", value: APIConstants.apiKey),
+                URLQueryItem(name: "request_token", value: APIConstants.requestToken),
+                URLQueryItem(name: "username", value: APIConstants.username),
+                URLQueryItem(name: "password", value: APIConstants.password)]
         }
     }
     
@@ -66,14 +78,20 @@ extension MoviesEndpoint: Endpoint {
             return "/3/account/\(APIConstants.accountId)/watchlist"
         case .profile:
             return "/3/account/\(APIConstants.accountId)"
+        case .createRequestToken:
+            return "/3/authentication/token/new"
+        case .validateWithLogin:
+            return "/3/authentication/token/validate_with_login"
+        case .createSession:
+            return "/3/authentication/session/new"
         }
     }
     
     public var method: RequestMethod {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile, .createRequestToken:
             return .get
-        case .addToWatchlist, .removeFromWatchlist:
+        case .addToWatchlist, .removeFromWatchlist, .validateWithLogin, .createSession:
             return .post
         }
     }
@@ -81,7 +99,7 @@ extension MoviesEndpoint: Endpoint {
     public var header: [String : String]? {
         // TODO: Singleton Keychain Manager
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .addToWatchlist, .removeFromWatchlist, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .addToWatchlist, .removeFromWatchlist, .profile, .createRequestToken, .validateWithLogin, .createSession:
             return [
                 //                "Authorization": "Bearer \(accessToken)"
                 "Content-Type": "application/json;charset=utf-8"
@@ -91,7 +109,7 @@ extension MoviesEndpoint: Endpoint {
     
     public var body: [String: Any]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile:
+        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile, .createRequestToken, .validateWithLogin, .createSession:
             return nil
         case .addToWatchlist(let movieId):
             return [

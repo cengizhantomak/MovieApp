@@ -9,7 +9,7 @@ import Foundation
 
 protocol GetTicketBusinessLogic: AnyObject {
     func getMovie()
-    func selectedDateTheater(date: String, theater: String)
+    func selectedDateTheater(date: String, time: String, theater: String)
 }
 
 protocol GetTicketDataStore: AnyObject {
@@ -28,8 +28,9 @@ final class GetTicketInteractor: GetTicketBusinessLogic, GetTicketDataStore {
         presenter?.presentMovie(ticketDetails: ticketDetails)
     }
     
-    func selectedDateTheater(date: String, theater: String) {
+    func selectedDateTheater(date: String, time: String, theater: String) {
         ticketDetails?.selectedDate = date
+        ticketDetails?.selectedTime = time
         ticketDetails?.selectedTheater = theater
         presenter?.presentDateTheater()
     }

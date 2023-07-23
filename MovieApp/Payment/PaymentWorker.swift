@@ -24,9 +24,10 @@ final class PaymentWorker: PaymentWorkingLogic {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieTicket")
         fetchRequest.predicate = NSPredicate(
-            format: "title == %@ AND date == %@ AND theatre == %@ AND seat == %@",
+            format: "title == %@ AND date == %@ AND time == %@ AND theatre == %@ AND seat == %@",
             paymentDetails.selectedMovieTitle ?? "",
             paymentDetails.selectedDate ?? "",
+            paymentDetails.selectedTime ?? "",
             paymentDetails.selectedTheater ?? "",
             paymentDetails.chooseSeat?.joined(separator: ", ") ?? ""
         )
@@ -59,6 +60,7 @@ final class PaymentWorker: PaymentWorkingLogic {
         newTicket.title = paymentDetails?.selectedMovieTitle
         newTicket.imagePath = paymentDetails?.selectedMovieImage
         newTicket.date = paymentDetails?.selectedDate
+        newTicket.time = paymentDetails?.selectedTime
         newTicket.theatre = paymentDetails?.selectedTheater
         newTicket.seat = paymentDetails?.chooseSeat?.joined(separator: ", ")
         newTicket.totalAmount = paymentDetails?.totalAmount ?? 0

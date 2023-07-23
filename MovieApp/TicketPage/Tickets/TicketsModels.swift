@@ -26,6 +26,7 @@ enum TicketsModels {
                 let title: String
                 let imagePath: String
                 let date: String
+                let time: String
                 let theatre: String
                 let seat: String
                 let totalAmount: Double

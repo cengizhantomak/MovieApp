@@ -10,8 +10,8 @@ import UIKit
 protocol GetTicketDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel)
     func displayDateTheater()
-    func didSelectDate(date: Date)
-    func didSelectTheater(theater: String)
+//    func didSelectDate(date: Date)
+//    func didSelectTheater(theater: String)
 }
 
 final class GetTicketViewController: UIViewController {
@@ -24,12 +24,14 @@ final class GetTicketViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var theatreTextField: UITextField!
     @IBOutlet weak var getTicketButton: UIButton!
     
     // MARK: - Property
     
     let data = ["Kadikoy", "Besiktas", "Taksim", "Sisli", "Avcilar"]
+    let time = ["10:00 - 12:30", "13:00 - 15:30", "16:00 - 18:30", "19:00 - 21:30", "22:00 - 00:30"]
     
     // MARK: - Object lifecycle
     
@@ -50,6 +52,7 @@ final class GetTicketViewController: UIViewController {
         
         interactor?.getMovie()
         setupDateTextField()
+        setupTimeTextField()
         setupTheaterTextField()
         setupDismissKeyboardOnTap()
         getTicketButton.isEnabled = false
@@ -78,8 +81,24 @@ final class GetTicketViewController: UIViewController {
         if #available (iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
+        
+        // Tarih aralığını belirlemek için minimumDate ve maximumDate'i ayarla
+        let currentDate = Date()
+        datePicker.minimumDate = currentDate
+        
+        let thirtyDaysFromNow = Calendar.current.date(byAdding: .day, value: 90, to: currentDate)
+        datePicker.maximumDate = thirtyDaysFromNow
+        
         dateTextField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+    }
+    
+    private func setupTimeTextField() {
+        timeTextField.delegate = self
+        let pickerView = UIPickerView()
+        timeTextField.inputView = pickerView
+        pickerView.dataSource = self
+        pickerView.delegate = self
     }
     
     private func setupTheaterTextField() {
@@ -94,17 +113,18 @@ final class GetTicketViewController: UIViewController {
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateFormatter.dateFormat = "dd MMMM, yyyy"
         dateTextField.text = dateFormatter.string(from: sender.date)
     }
     
     @IBAction func getTicketButtonTapped(_ sender: Any) {
         guard let selectedDate = dateTextField.text,
+              let selectedTime = timeTextField.text,
               let selectedTheater = theatreTextField.text else {
             return
         }
         
-        interactor?.selectedDateTheater(date: selectedDate, theater: selectedTheater)
+        interactor?.selectedDateTheater(date: selectedDate, time: selectedTime, theater: selectedTheater)
     }
 }
 
@@ -115,15 +135,15 @@ extension GetTicketViewController: GetTicketDisplayLogic {
         navigationItem.title = viewModel.selectedMovieTitle
     }
     
-    func didSelectDate(date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        dateTextField.text = dateFormatter.string(from: date)
-    }
-    
-    func didSelectTheater(theater: String) {
-        theatreTextField.text = theater
-    }
+//    func didSelectDate(date: Date) {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMMM yyyy"
+//        dateTextField.text = dateFormatter.string(from: date)
+//    }
+//
+//    func didSelectTheater(theater: String) {
+//        theatreTextField.text = theater
+//    }
     
     func displayDateTheater() {
         router?.routeToChooseSeat()
@@ -139,6 +159,7 @@ extension GetTicketViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let dateText = dateTextField.text, !dateText.isEmpty,
+              let timeText = timeTextField.text, !timeText.isEmpty,
               let theaterText = theatreTextField.text, !theaterText.isEmpty else {
             getTicketButton.isEnabled = false
             return
@@ -157,14 +178,30 @@ extension GetTicketViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count // Dizi eleman sayısı kadar satır olacak
+        if pickerView == theatreTextField.inputView {
+            return data.count // Dizi eleman sayısı kadar satır olacak
+        } else if pickerView == timeTextField.inputView {
+            return time.count
+        } else {
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return data[row] // Her bir satır için veriyi döndürme
+        if pickerView == theatreTextField.inputView {
+            return data[row] // Her bir satır için veriyi döndürme
+        } else if pickerView == timeTextField.inputView {
+            return time[row]
+        } else {
+            return nil
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        theatreTextField.text = data[row] // Seçilen veriyi TextField'e yerleştirme
+        if pickerView == theatreTextField.inputView {
+            theatreTextField.text = data[row] // Seçilen veriyi TextField'e yerleştirme
+        } else if pickerView == timeTextField.inputView {
+            timeTextField.text = time[row]
+        }
     }
 }

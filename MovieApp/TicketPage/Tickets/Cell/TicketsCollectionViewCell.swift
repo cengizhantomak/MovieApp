@@ -14,10 +14,11 @@ protocol TicketsCollectionViewCellDelegate: AnyObject {
 class TicketsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var theatre: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var seat: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var theatreLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var seatLabel: UILabel!
     
     weak var delegate: TicketsCollectionViewCellDelegate?
     var id: UUID?
@@ -32,10 +33,11 @@ class TicketsCollectionViewCell: UICollectionViewCell {
             posterImage.load(url: profileUrl)
         }
         
-        title.text = viewModel.title
-        theatre.text = viewModel.theatre
-        date.text = viewModel.date
-        seat.text = viewModel.seat
+        titleLabel.text = viewModel.title
+        theatreLabel.text = viewModel.theatre
+        dateLabel.text = viewModel.date
+        timeLabel.text = viewModel.time
+        seatLabel.text = viewModel.seat
         
         id = viewModel.id
     }

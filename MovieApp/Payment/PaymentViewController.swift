@@ -24,6 +24,7 @@ final class PaymentViewController: UIViewController {
     
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var seatLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -106,6 +107,7 @@ extension PaymentViewController: PaymentDisplayLogic {
         }
         
         titleLabel.text = viewModel.selectedMovieTitle
+        timeLabel.text = viewModel.selectedTime
         dateLabel.text = viewModel.selectedDate
         seatLabel.text = "Seat: \(viewModel.chooseSeat?.joined(separator: ", ") ?? "")"
         priceLabel.text = "$ " + String(format: "%.2f", viewModel.totalAmount ?? .zero)

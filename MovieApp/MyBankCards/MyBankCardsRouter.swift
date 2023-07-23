@@ -44,6 +44,7 @@ final class MyBankCardsRouter: MyBankCardsRoutingLogic, MyBankCardsDataPassing {
             selectedMovieTitle: selectedMovie.selectedMovieTitle,
             selectedMovieImage: selectedMovie.selectedMovieImage,
             selectedDate: selectedMovie.selectedDate,
+            selectedTime: selectedMovie.selectedTime,
             selectedTheater: selectedMovie.selectedTheater,
             chooseSeat: selectedMovie.chooseSeat,
             totalAmount: selectedMovie.totalAmount,

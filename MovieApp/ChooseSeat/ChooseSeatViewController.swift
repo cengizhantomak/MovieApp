@@ -164,6 +164,7 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
             .filter {
                 $0.title == viewModel.selectedMovieTitle &&
                 $0.date == viewModel.selectedDate &&
+                $0.time == viewModel.selectedTime &&
                 $0.theatre == viewModel.selectedTheater
             }
             .flatMap { $0.seat?.components(separatedBy: ", ") ?? [] }

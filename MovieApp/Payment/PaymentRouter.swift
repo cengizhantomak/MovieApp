@@ -34,6 +34,7 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
             selectedMovieTitle: dataStore.paymentDetails?.selectedMovieTitle,
             selectedMovieImage: dataStore.paymentDetails?.selectedMovieImage,
             selectedDate: dataStore.paymentDetails?.selectedDate,
+            selectedTime: dataStore.paymentDetails?.selectedTime,
             selectedTheater: dataStore.paymentDetails?.selectedTheater,
             chooseSeat: dataStore.paymentDetails?.chooseSeat,
             totalAmount: dataStore.paymentDetails?.totalAmount

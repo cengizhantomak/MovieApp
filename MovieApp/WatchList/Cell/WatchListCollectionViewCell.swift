@@ -36,7 +36,7 @@ class WatchListCollectionViewCell: UICollectionViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: viewModel.releaseDate)
 
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = "dd MMM, yyyy"
         let formattedDate = dateFormatter.string(from: date!)
 
         releaseDateLabel.text = formattedDate

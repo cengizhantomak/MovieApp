@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ChooseSeatDisplayLogic: AnyObject {
+    func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func updateViewComponents()
     func displaySeatPrice()
@@ -29,6 +30,8 @@ final class ChooseSeatViewController: UIViewController {
     
     // MARK: - Properties
     
+    var displayedTickets: [ChooseSeatModels.FetchChooseSeat.ViewModel.DisplayedTicket] = []
+    var unavailableSeats: [String] = []
     let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
     let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     var selectedSeats: [String] = []
@@ -51,10 +54,15 @@ final class ChooseSeatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        interactor?.fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request())
         interactor?.getMovie()
         setupCollectionView()
         continueButton.isEnabled = false
         continueButton.backgroundColor = .systemGray
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     // MARK: - Setup
@@ -131,10 +139,24 @@ final class ChooseSeatViewController: UIViewController {
 // MARK: - DisplayLogic
 
 extension ChooseSeatViewController: ChooseSeatDisplayLogic {
+    func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
+        displayedTickets = viewModel.displayedTickets ?? []
+    }
+    
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
         let customView = NavigationCustomView(frame: CGRect(x: 0, y: 0, width: 250, height: 38))
         customView.setupView(viewModel: viewModel)
         navigationItem.titleView = customView
+        
+        unavailableSeats = displayedTickets
+            .filter {
+                $0.title == viewModel.selectedMovieTitle &&
+                $0.date == viewModel.selectedDate &&
+                $0.theatre == viewModel.selectedTheater
+            }
+            .flatMap { $0.seat?.components(separatedBy: ", ") ?? [] }
+        
+        collectionView.reloadData()
     }
     
     func updateViewComponents() {
@@ -178,6 +200,11 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         let value = combined[indexPath.row]
         cell.textLabel.text = value
         cell.isSelected = cell.isSelected
+        
+        if unavailableSeats.contains(value) {
+            cell.isUserInteractionEnabled = false
+            cell.contentView.backgroundColor = .lightGray
+        }
         
         return cell
     }

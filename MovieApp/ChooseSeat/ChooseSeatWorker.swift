@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ChooseSeatWorkingLogic: AnyObject {
-    
+    func fetchTickets(using context: NSManagedObjectContext) throws -> [MovieTicket]
 }
 
 final class ChooseSeatWorker: ChooseSeatWorkingLogic {
-    
+    func fetchTickets(using context: NSManagedObjectContext) throws -> [MovieTicket] {
+        let fetchRequest: NSFetchRequest<MovieTicket> = MovieTicket.fetchRequest()
+        
+        return try context.fetch(fetchRequest)
+    }
 }

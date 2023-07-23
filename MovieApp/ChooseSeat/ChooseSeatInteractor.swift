@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ChooseSeatBusinessLogic: AnyObject {
     func getMovie()
     func selectedSeatPrice(seat: [String], price: Double)
+    func fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request)
 }
 
 protocol ChooseSeatDataStore: AnyObject {
@@ -22,6 +24,18 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
     var worker: ChooseSeatWorkingLogic = ChooseSeatWorker()
     
     var seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel?
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request) {
+        do {
+            let tickets = try worker.fetchTickets(using: context)
+            let response = ChooseSeatModels.FetchChooseSeat.Response(tickets: tickets)
+            presenter?.presentTickets(response: response)
+        } catch {
+            print("Failed to fetch tickets: \(error)")
+        }
+    }
     
     func getMovie() {
         guard let seatDetails else { return }

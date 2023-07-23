@@ -32,6 +32,7 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
             selectedMovieTitle: dataStore.ticketDetails?.selectedMovieTitle,
             selectedMovieImage: dataStore.ticketDetails?.selectedMovieImage,
             selectedDate: dataStore.ticketDetails?.selectedDate,
+            selectedTime: dataStore.ticketDetails?.selectedTime,
             selectedTheater: dataStore.ticketDetails?.selectedTheater
         )
         

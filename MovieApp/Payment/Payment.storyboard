@@ -239,6 +239,7 @@
                         <outlet property="posterImage" destination="grV-6R-Ncr" id="YlN-Kw-U2r"/>
                         <outlet property="priceLabel" destination="OWX-nC-w1k" id="puC-Sj-EMX"/>
                         <outlet property="seatLabel" destination="m9I-kb-zgo" id="sat-7r-hvH"/>
+                        <outlet property="timeLabel" destination="b6M-Vc-Daq" id="djW-jo-p5L"/>
                         <outlet property="titleLabel" destination="qSx-Mc-2eT" id="uUJ-Tr-gic"/>
                     </connections>
                 </viewController>

@@ -23,6 +23,7 @@ enum ChooseSeatModels {
             var selectedMovieTitle: String?
             var selectedMovieImage: String?
             var selectedDate: String?
+            var selectedTime: String?
             var selectedTheater: String?
             var chooseSeat: [String]?
             var totalAmount: Double?
@@ -33,6 +34,7 @@ enum ChooseSeatModels {
                 let title: String?
                 let imagePath: String?
                 let date: String?
+                let time: String?
                 let theatre: String?
                 let seat: String?
                 let totalAmount: Double?

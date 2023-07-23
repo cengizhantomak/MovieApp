@@ -33,6 +33,7 @@ final class ChooseSeatRouter: ChooseSeatRoutingLogic, ChooseSeatDataPassing {
             selectedMovieTitle: dataStore.seatDetails?.selectedMovieTitle,
             selectedMovieImage: dataStore.seatDetails?.selectedMovieImage,
             selectedDate: dataStore.seatDetails?.selectedDate,
+            selectedTime: dataStore.seatDetails?.selectedTime,
             selectedTheater: dataStore.seatDetails?.selectedTheater,
             chooseSeat: dataStore.seatDetails?.chooseSeat,
             totalAmount: dataStore.seatDetails?.totalAmount

@@ -35,7 +35,7 @@ class NavigationCustomView: UIView {
         title.font = UIFont(name: "SFProText-Semibold", size: 16)
         title.textColor = UIColor(named: "0F1B2B")
         
-        subTitle.text = viewModel.selectedDate
+        subTitle.text = "\(viewModel.selectedTime ?? "") in \(viewModel.selectedDate ?? "")"
         subTitle.font = UIFont(name: "SFProText-Medium", size: 12)
         subTitle.textColor = .systemGray
         

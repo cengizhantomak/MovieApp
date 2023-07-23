@@ -21,6 +21,7 @@ final class CongratsViewController: UIViewController {
     // MARK: - Outlet
     
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var theatreLabel: UILabel!
     @IBOutlet weak var seatLabel: UILabel!
     
@@ -73,6 +74,7 @@ final class CongratsViewController: UIViewController {
 extension CongratsViewController: CongratsDisplayLogic {
     func displayLatestTicket(viewModel: CongratsModels.FetchCongrats.ViewModel) {
         dateLabel.text = viewModel.date
+        timeLabel.text = viewModel.time
         theatreLabel.text = viewModel.theatre
         seatLabel.text = viewModel.seat
     }

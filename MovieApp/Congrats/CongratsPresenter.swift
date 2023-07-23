@@ -21,6 +21,7 @@ final class CongratsPresenter: CongratsPresentationLogic {
             title: ticket.title,
             imagePath: ticket.imagePath,
             date: ticket.date,
+            time: ticket.time,
             theatre: ticket.theatre,
             seat: ticket.seat,
             totalAmount: ticket.totalAmount

@@ -19,6 +19,7 @@ extension MovieTicket {
     @NSManaged public var title: String?
     @NSManaged public var imagePath: String?
     @NSManaged public var date: String?
+    @NSManaged public var time: String?
     @NSManaged public var theatre: String?
     @NSManaged public var seat: String?
     @NSManaged public var totalAmount: Double

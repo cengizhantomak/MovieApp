@@ -63,6 +63,18 @@ final class ChooseSeatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if unavailableSeats.count == 81 {
+            UIAlertHelper.shared.showAlert(
+                title: "Dikkat",
+                message: "Tüm koltuklar dolu!",
+                buttonTitle: "Tamam",
+                on: self,
+                buttonAction: {
+                    self.router?.routeToBack()
+                }
+            )
+        }
     }
     
     // MARK: - Setup

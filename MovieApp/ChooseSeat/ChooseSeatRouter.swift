@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChooseSeatRoutingLogic: AnyObject {
     func routeToPayment()
+    func routeToBack()
 }
 
 protocol ChooseSeatDataPassing: AnyObject {
@@ -39,5 +40,9 @@ final class ChooseSeatRouter: ChooseSeatRoutingLogic, ChooseSeatDataPassing {
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToBack() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }

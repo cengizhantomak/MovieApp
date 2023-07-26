@@ -31,11 +31,7 @@ final class ChooseSeatViewController: UIViewController {
     // MARK: - Properties
     
     var displayedTickets: [ChooseSeatModels.FetchChooseSeat.ViewModel.DisplayedTicket] = []
-    var unavailableSeats: [String] = []
-    let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
-    let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    var selectedSeats: [String] = []
-    var totalAmount: Double = 0.0
+    var displayedSeatData = ChooseSeatModels.FetchChooseSeat.SeatDataModel.SeatData()
     
     // MARK: - Object lifecycle
     
@@ -64,7 +60,7 @@ final class ChooseSeatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if unavailableSeats.count == 81 {
+        if displayedSeatData.unavailableSeats.count >= displayedSeatData.seat.count * displayedSeatData.row.count {
             UIAlertHelper.shared.showAlert(
                 title: "Dikkat",
                 message: "Tüm koltuklar dolu!",
@@ -144,7 +140,7 @@ final class ChooseSeatViewController: UIViewController {
     }
     
     @IBAction func continueButtonTapped(_ sender: Any) {
-        interactor?.selectedSeatPrice(seat: selectedSeats, price: totalAmount)
+        interactor?.selectedSeatPrice(seat: displayedSeatData.selectedSeats, price: displayedSeatData.totalAmount)
     }
 }
 
@@ -160,7 +156,7 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
         customView.setupView(viewModel: viewModel)
         navigationItem.titleView = customView
         
-        unavailableSeats = displayedTickets
+        displayedSeatData.unavailableSeats = displayedTickets
             .filter {
                 $0.title == viewModel.selectedMovieTitle &&
                 $0.date == viewModel.selectedDate &&
@@ -173,12 +169,12 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
     }
     
     func updateViewComponents() {
-        selectedSeats.sort()
-        seatLabel.text = selectedSeats.joined(separator: ", ") + (selectedSeats.isEmpty ? "" : " SELECTED")
-        totalAmount = Double(selectedSeats.count) * 18.00
-        priceLabel.text = "$ " + String(format: "%.2f", totalAmount)
+        displayedSeatData.selectedSeats.sort()
+        seatLabel.text = displayedSeatData.selectedSeats.joined(separator: ", ") + (displayedSeatData.selectedSeats.isEmpty ? "" : " SELECTED")
+        displayedSeatData.totalAmount = Double(displayedSeatData.selectedSeats.count) * 18.00
+        priceLabel.text = "$ " + String(format: "%.2f", displayedSeatData.totalAmount)
         
-        if selectedSeats.isEmpty {
+        if displayedSeatData.selectedSeats.isEmpty {
             continueButton.isEnabled = false
             continueButton.backgroundColor = .systemGray
         } else {
@@ -196,7 +192,7 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
 
 extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return row.count * seat.count
+        return displayedSeatData.row.count * displayedSeatData.seat.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -204,8 +200,8 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         
         var combined = [String]()
         
-        row.forEach { letter in
-            seat.forEach { number in
+        displayedSeatData.row.forEach { letter in
+            displayedSeatData.seat.forEach { number in
                 combined.append("\(letter)\(number)")
             }
         }
@@ -214,7 +210,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.textLabel.text = value
         cell.isSelected = cell.isSelected
         
-        if unavailableSeats.contains(value) {
+        if displayedSeatData.unavailableSeats.contains(value) {
             cell.isUserInteractionEnabled = false
             cell.contentView.backgroundColor = .lightGray
         }
@@ -223,7 +219,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if selectedSeats.count >= 10 {
+        if displayedSeatData.selectedSeats.count >= 10 {
             collectionView.deselectItem(at: indexPath, animated: true)
             
             UIAlertHelper.shared.showAlert(
@@ -235,7 +231,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         } else {
             guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
             
-            selectedSeats.append(cell.textLabel.text ?? "")
+            displayedSeatData.selectedSeats.append(cell.textLabel.text ?? "")
             updateViewComponents()
         }
     }
@@ -243,8 +239,8 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
         
-        if let index = selectedSeats.firstIndex(of: cell.textLabel.text ?? "") {
-            selectedSeats.remove(at: index)
+        if let index = displayedSeatData.selectedSeats.firstIndex(of: cell.textLabel.text ?? "") {
+            displayedSeatData.selectedSeats.remove(at: index)
             updateViewComponents()
         }
     }

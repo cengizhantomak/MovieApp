@@ -41,5 +41,17 @@ enum ChooseSeatModels {
                 let id: UUID?
             }
         }
+        
+        struct SeatDataModel {
+            var seatData: SeatData?
+            
+            struct SeatData {
+                var unavailableSeats: [String] = []
+                let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+                let seat = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                var selectedSeats: [String] = []
+                var totalAmount: Double = 0.0
+            }
+        }
     }
 }

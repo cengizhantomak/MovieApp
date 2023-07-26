@@ -30,8 +30,7 @@ final class GetTicketViewController: UIViewController {
     
     // MARK: - Property
     
-    let data = ["Kadikoy", "Besiktas", "Taksim", "Sisli", "Avcilar"]
-    let time = ["10:00 - 12:30", "13:00 - 15:30", "16:00 - 18:30", "19:00 - 21:30", "22:00 - 00:30"]
+    let displayedGetTicketData = GetTicketModels.FetchGetTicket.GetTicketData()
     
     // MARK: - Object lifecycle
     
@@ -179,9 +178,9 @@ extension GetTicketViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == theatreTextField.inputView {
-            return data.count // Dizi eleman sayısı kadar satır olacak
+            return displayedGetTicketData.theaters.count // Dizi eleman sayısı kadar satır olacak
         } else if pickerView == timeTextField.inputView {
-            return time.count
+            return displayedGetTicketData.times.count
         } else {
             return 0
         }
@@ -189,9 +188,9 @@ extension GetTicketViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == theatreTextField.inputView {
-            return data[row] // Her bir satır için veriyi döndürme
+            return displayedGetTicketData.theaters[row] // Her bir satır için veriyi döndürme
         } else if pickerView == timeTextField.inputView {
-            return time[row]
+            return displayedGetTicketData.times[row]
         } else {
             return nil
         }
@@ -199,9 +198,9 @@ extension GetTicketViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == theatreTextField.inputView {
-            theatreTextField.text = data[row] // Seçilen veriyi TextField'e yerleştirme
+            theatreTextField.text = displayedGetTicketData.theaters[row] // Seçilen veriyi TextField'e yerleştirme
         } else if pickerView == timeTextField.inputView {
-            timeTextField.text = time[row]
+            timeTextField.text = displayedGetTicketData.times[row]
         }
     }
 }

@@ -543,7 +543,7 @@
 		4773F83F2A61932C00CF4C8D /* ChooseSeat */ = {
 			isa = PBXGroup;
 			children = (
-				4773F8502A62BA2700CF4C8D /* CutomView */,
+				4773F8502A62BA2700CF4C8D /* CustomView */,
 				476DBC9B2A575DD000539FE3 /* Cell */,
 				4773F8412A61934A00CF4C8D /* ChooseSeatViewController.swift */,
 				4773F8422A61934A00CF4C8D /* ChooseSeatPresenter.swift */,
@@ -556,12 +556,12 @@
 			path = ChooseSeat;
 			sourceTree = "<group>";
 		};
-		4773F8502A62BA2700CF4C8D /* CutomView */ = {
+		4773F8502A62BA2700CF4C8D /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				4773F84E2A629ACF00CF4C8D /* NavigationCustomView.swift */,
 			);
-			path = CutomView;
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		477C84B42A653988005EF3BC /* Congrats */ = {

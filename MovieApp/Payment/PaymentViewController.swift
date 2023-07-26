@@ -62,6 +62,8 @@ final class PaymentViewController: UIViewController {
         super.viewWillAppear(animated)
         interactor?.getMovie()
         interactor?.getbankCardDetails()
+        placeOrderButton.isEnabled = false
+        placeOrderButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup

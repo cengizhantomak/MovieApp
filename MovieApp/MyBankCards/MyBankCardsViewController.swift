@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol selectionBankCardDelegate {
+    func getBankCardData(nameCard: String?, cardNumber: String?, dateExpire: String?, cvv: String?)
+}
+
 protocol MyBankCardsDisplayLogic: AnyObject {
     func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel)
     func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel)
-    func displaySelectBankCard()
+//    func displaySelectBankCard()
     func displayOriginViewController(viewModel: String?)
 }
 
@@ -18,6 +22,7 @@ final class MyBankCardsViewController: UIViewController {
     
     var interactor: MyBankCardsBusinessLogic?
     var router: (MyBankCardsRoutingLogic & MyBankCardsDataPassing)?
+    var delegate: selectionBankCardDelegate?
     
     // MARK: - Outlets
     
@@ -128,9 +133,9 @@ extension MyBankCardsViewController: MyBankCardsDisplayLogic {
         }
     }
     
-    func displaySelectBankCard() {
-        router?.routeToSelectBankCardPayment()
-    }
+//    func displaySelectBankCard() {
+//        router?.routeToSelectBankCardPayment()
+//    }
     
     func displayOriginViewController(viewModel: String?) {
         originViewController = viewModel
@@ -156,10 +161,11 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedBankCard = displayedBankCards[indexPath.item]
         if originViewController == "PaymentViewController" {
-            interactor?.selectBankCard(bankCardDetail: selectedBankCard)
-            }
+            let selectedBankCard = displayedBankCards[indexPath.item]
+            delegate?.getBankCardData(nameCard: selectedBankCard.cardHolder, cardNumber: selectedBankCard.cardNumber, dateExpire: selectedBankCard.cardExpires, cvv: selectedBankCard.cvv)
+            router?.routeToSelectBankCardPayment()
+        }
     }
 }
 

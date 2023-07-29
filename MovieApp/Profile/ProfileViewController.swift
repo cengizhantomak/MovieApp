@@ -106,7 +106,8 @@ final class ProfileViewController: UIViewController {
             self.interactor?.performLogout { result in
                 switch result {
                 case .success:
-                    UserDefaults.standard.removeObject(forKey: "sessionId")
+                    KeyChainHelper.shared.delete(service: "movieDB", account: "sessionId")
+//                    UserDefaults.standard.removeObject(forKey: "sessionId")
                     self.router?.routeToLoginScreen()
                 case .failure(let error):
                     UIAlertHelper.shared.showAlert(title: "Error", message: "An error occurred during the logout process: \(error)", buttonTitle: "OK", on: self)

@@ -11,7 +11,7 @@ import UIKit
 protocol MyBankCardsBusinessLogic: AnyObject {
     func fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request)
     func deleteBankCard(request: MyBankCardsModels.DeleteBankCard.Request)
-    func selectBankCard(bankCardDetail: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard?)
+//    func selectBankCard(bankCardDetail: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard?)
     func getOriginViewController()
 }
 
@@ -51,10 +51,10 @@ final class MyBankCardsInteractor: MyBankCardsBusinessLogic, MyBankCardsDataStor
         }
     }
     
-    func selectBankCard(bankCardDetail: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard?) {
-        selectedBankCard = bankCardDetail
-        presenter?.presentSelectBankCard()
-    }
+//    func selectBankCard(bankCardDetail: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard?) {
+//        selectedBankCard = bankCardDetail
+//        presenter?.presentSelectBankCard()
+//    }
     
     func getOriginViewController() {
         guard let selectedMovie else { return }

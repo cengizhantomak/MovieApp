@@ -62,8 +62,8 @@ final class PaymentViewController: UIViewController {
         super.viewWillAppear(animated)
         interactor?.getMovie()
         interactor?.getbankCardDetails()
-        placeOrderButton.isEnabled = false
-        placeOrderButton.backgroundColor = .systemGray
+        //        placeOrderButton.isEnabled = false
+        //        placeOrderButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
@@ -120,6 +120,15 @@ extension PaymentViewController: PaymentDisplayLogic {
         cardNumberTextField.text = viewModel.cardNumber
         dateExpireTextField.text = viewModel.cardExpires
         cvvTextField.text = viewModel.cvv
+        
+        guard let nameCardText = nameCardTextField.text, !nameCardText.isEmpty,
+              let cardNumberText = cardNumberTextField.text, cardNumberText.count == 19,
+              let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
+              let cvvText = cvvTextField.text, cvvText.count == 3 else {
+            placeOrderButton.isEnabled = false
+            placeOrderButton.backgroundColor = .systemGray
+            return
+        }
         
         placeOrderButton.isEnabled = true
         placeOrderButton.backgroundColor = UIColor(named: "buttonRed")
@@ -259,17 +268,17 @@ extension PaymentViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let nameCardText = nameCardTextField.text, !nameCardText.isEmpty,
-              let cardNumberText = cardNumberTextField.text, cardNumberText.count == 19,
-              let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
-              let cvvText = cvvTextField.text, cvvText.count == 3 else {
-            placeOrderButton.isEnabled = false
-            placeOrderButton.backgroundColor = .systemGray
-            return
-        }
-        
-        placeOrderButton.isEnabled = true
-        placeOrderButton.backgroundColor = UIColor(named: "buttonRed")
-    }
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        guard let nameCardText = nameCardTextField.text, !nameCardText.isEmpty,
+//              let cardNumberText = cardNumberTextField.text, cardNumberText.count == 19,
+//              let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
+//              let cvvText = cvvTextField.text, cvvText.count == 3 else {
+//            placeOrderButton.isEnabled = false
+//            placeOrderButton.backgroundColor = .systemGray
+//            return
+//        }
+//        
+//        placeOrderButton.isEnabled = true
+//        placeOrderButton.backgroundColor = UIColor(named: "buttonRed")
+//    }
 }

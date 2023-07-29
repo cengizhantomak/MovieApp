@@ -26,20 +26,12 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
         let storyboard = UIStoryboard(name: "MyBankCards", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyBankCardsViewController") as? MyBankCardsViewController,
-              let dataStore,
               let myBankCardDataStore = destinationVC.router?.dataStore else { return }
         
         myBankCardDataStore.selectedMovie = MyBankCardsModels.FetchMyBankCards.ViewModel(
-            originViewController: "PaymentViewController",
-            selectedMovieTitle: dataStore.paymentDetails?.selectedMovieTitle,
-            selectedMovieImage: dataStore.paymentDetails?.selectedMovieImage,
-            selectedDate: dataStore.paymentDetails?.selectedDate,
-            selectedTime: dataStore.paymentDetails?.selectedTime,
-            selectedTheater: dataStore.paymentDetails?.selectedTheater,
-            chooseSeat: dataStore.paymentDetails?.chooseSeat,
-            totalAmount: dataStore.paymentDetails?.totalAmount
-        )
+            originViewController: "PaymentViewController")
         
+        destinationVC.delegate = self
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
@@ -51,5 +43,14 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+}
+
+extension PaymentRouter: selectionBankCardDelegate {
+    func getBankCardData(nameCard: String?, cardNumber: String?, dateExpire: String?, cvv: String?) {
+        dataStore?.paymentDetails?.cardHolder = nameCard
+        dataStore?.paymentDetails?.cardNumber = cardNumber
+        dataStore?.paymentDetails?.cardExpires = dateExpire
+        dataStore?.paymentDetails?.cvv = cvv
     }
 }

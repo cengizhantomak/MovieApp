@@ -37,11 +37,17 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.string(forKey: "sessionId") != nil {
-            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
+        if let data = KeyChainHelper.shared.read(service: "movieDB", account: "sessionId"),
+           let sessionId = String(data: data, encoding: .utf8) {
             APIConstants.sessionId = sessionId
             router?.routeToApp()
         }
+        
+//        if UserDefaults.standard.string(forKey: "sessionId") != nil {
+//            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
+//            APIConstants.sessionId = sessionId
+//            router?.routeToApp()
+//        }
     }
     
     // MARK: - Setup

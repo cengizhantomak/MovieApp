@@ -9,7 +9,7 @@ import Foundation
 
 protocol MyBankCardsPresentationLogic: AnyObject {
     func presentBankCards(response: MyBankCardsModels.FetchMyBankCards.Response)
-    func presentSelectBankCard()
+//    func presentSelectBankCard()
     func presentOriginViewController(originViewController: String?)
 }
 
@@ -37,9 +37,9 @@ final class MyBankCardsPresenter: MyBankCardsPresentationLogic {
         viewController?.displayDeleteBankCardResult(viewModel: viewModel)
     }
     
-    func presentSelectBankCard() {
-        viewController?.displaySelectBankCard()
-    }
+//    func presentSelectBankCard() {
+//        viewController?.displaySelectBankCard()
+//    }
     
     func presentOriginViewController(originViewController: String?) {
         viewController?.displayOriginViewController(viewModel: originViewController)

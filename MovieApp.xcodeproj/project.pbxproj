@@ -125,7 +125,7 @@
 		479CD12A2A66E28700F161C8 /* TicketsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD1282A66E28700F161C8 /* TicketsCollectionViewCell.swift */; };
 		479CD12B2A66E28700F161C8 /* TicketsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 479CD1292A66E28700F161C8 /* TicketsCollectionViewCell.xib */; };
 		47A626A82A50538C004A144E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A626A72A50538C004A144E /* UIView+Extensions.swift */; };
-		47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A626A92A505397004A144E /* ImageHelpers.swift */; };
+		47A626AA2A505397004A144E /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A626A92A505397004A144E /* ImageHelper.swift */; };
 		47B3E3D52A6B0EB70054AC4A /* Videos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B3E3CE2A6B0EB70054AC4A /* Videos.storyboard */; };
 		47B3E3D62A6B0EB70054AC4A /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3CF2A6B0EB70054AC4A /* VideosViewController.swift */; };
 		47B3E3D72A6B0EB70054AC4A /* VideosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D02A6B0EB70054AC4A /* VideosPresenter.swift */; };
@@ -135,6 +135,7 @@
 		47B3E3DB2A6B0EB70054AC4A /* VideosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D42A6B0EB70054AC4A /* VideosRouter.swift */; };
 		47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */; };
 		47B3E3E02A6B1D470054AC4A /* VideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */; };
+		47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */; };
 		47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */; };
 		47C9892C2A6A6D4C000EC6E0 /* MyBankCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */; };
 		47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */; };
@@ -303,7 +304,7 @@
 		479CD1282A66E28700F161C8 /* TicketsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsCollectionViewCell.swift; sourceTree = "<group>"; };
 		479CD1292A66E28700F161C8 /* TicketsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketsCollectionViewCell.xib; sourceTree = "<group>"; };
 		47A626A72A50538C004A144E /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		47A626A92A505397004A144E /* ImageHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelpers.swift; sourceTree = "<group>"; };
+		47A626A92A505397004A144E /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		47B3E3CE2A6B0EB70054AC4A /* Videos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Videos.storyboard; sourceTree = "<group>"; };
 		47B3E3CF2A6B0EB70054AC4A /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		47B3E3D02A6B0EB70054AC4A /* VideosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosPresenter.swift; sourceTree = "<group>"; };
@@ -313,6 +314,7 @@
 		47B3E3D42A6B0EB70054AC4A /* VideosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosRouter.swift; sourceTree = "<group>"; };
 		47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosCollectionViewCell.xib; sourceTree = "<group>"; };
+		47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
 		47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBankCards.storyboard; sourceTree = "<group>"; };
 		47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsViewController.swift; sourceTree = "<group>"; };
 		47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsPresenter.swift; sourceTree = "<group>"; };
@@ -404,6 +406,8 @@
 			children = (
 				47126D9A2A5D5E240066E954 /* UIAlertHelper.swift */,
 				4753EABE2A5D884400755DAB /* StarRatingHelper.swift */,
+				47A626A92A505397004A144E /* ImageHelper.swift */,
+				47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -792,7 +796,6 @@
 				47D8B2E52A4969E0003CFE2D /* MoviesEndpoint.swift */,
 				47D8B2E42A4969E0003CFE2D /* HTTPClient.swift */,
 				47D8B2FA2A496C8F003CFE2D /* MoviesResponse.swift */,
-				47A626A92A505397004A144E /* ImageHelpers.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -996,11 +999,12 @@
 				477C84B22A652D1C005EF3BC /* BankCard+CoreDataClass.swift in Sources */,
 				476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */,
 				477C84CE2A66A59C005EF3BC /* TicketsInteractor.swift in Sources */,
-				47A626AA2A505397004A144E /* ImageHelpers.swift in Sources */,
+				47A626AA2A505397004A144E /* ImageHelper.swift in Sources */,
 				478B29532A597CF50075BE9E /* ProfileRouter.swift in Sources */,
 				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
 				477C84D12A66A59C005EF3BC /* TicketsRouter.swift in Sources */,
 				477C84C02A6539A4005EF3BC /* CongratsModels.swift in Sources */,
+				47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
 				472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */,

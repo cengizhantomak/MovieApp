@@ -2,7 +2,7 @@
 //  KeyChainHelper.swift
 //  MovieApp
 //
-//  Created by Kerem Tuna Tomak on 29.07.2023.
+//  Created by Cengizhan Tomak on 29.07.2023.
 //
 
 import Foundation
@@ -12,59 +12,59 @@ final class KeyChainHelper {
     static let shared = KeyChainHelper()
     private init() {}
     
-    let myDictionary: [Int: String] =  [1: "test"]
-    
     func save(_ data: Data, service: String, account: String) {
         
-        let query = [
-            kSecValueData: data,
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrService: service,
-            kSecAttrAccount: account
-        ] as CFDictionary
+        let query: [String: Any] = [
+            kSecValueData as String: data,
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account
+        ]
         
-        //error
-        let status = SecItemAdd(query, nil)
-        
-        if status != errSecSuccess {
-            print("Error: \(status)")
-        }
+        let status = SecItemAdd(query as CFDictionary, nil)
         
         if status == errSecDuplicateItem {
-            let query = [
-                kSecAttrService: service,
-                kSecAttrAccount: account,
-                kSecClass: kSecClassGenericPassword
-            ] as CFDictionary
+            let updateQuery: [String: Any] = [
+                kSecAttrService as String: service,
+                kSecAttrAccount as String: account,
+                kSecClass as String: kSecClassGenericPassword
+            ]
             
-            let attributesToUpdate = [kSecValueData: data] as CFDictionary
-            SecItemUpdate(query, attributesToUpdate)
+            let attributesToUpdate: [String: Any] = [kSecValueData as String: data]
+            SecItemUpdate(updateQuery as CFDictionary, attributesToUpdate as CFDictionary)
+        } else if status != errSecSuccess {
+            print("Error: \(status)")
         }
     }
     
     func read(service: String, account: String) -> Data? {
         
-        let query = [
-            kSecAttrService: service,
-            kSecAttrAccount: account,
-            kSecClass: kSecClassGenericPassword,
-            kSecReturnData: true
-        ] as CFDictionary
+        let query: [String: Any] = [
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+            kSecClass as String: kSecClassGenericPassword,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
         
-        var result: AnyObject?
+        var dataTypeRef: AnyObject?
+        let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
         
-        SecItemAdd(query, &result)
-        return (result as? Data)
+        if status == noErr {
+            return dataTypeRef as! Data?
+        } else {
+            return nil
+        }
     }
     
     func delete(service: String, account: String) {
         
-        let query = [
-            kSecAttrService: service,
-            kSecAttrAccount: account,
-            kSecClass: kSecClassGenericPassword
-        ] as CFDictionary
+        let query: [String: Any] = [
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+            kSecClass as String: kSecClassGenericPassword
+        ]
         
-        SecItemDelete(query)
+        SecItemDelete(query as CFDictionary)
     }
 }

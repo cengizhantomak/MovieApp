@@ -11,7 +11,7 @@ import UIKit
 protocol PaymentBusinessLogic: AnyObject {
     func getMovie()
     func validateCard(request: PaymentModels.FetchPayment.Request)
-    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel)
+//    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel)
     func getbankCardDetails()
 }
 
@@ -69,9 +69,9 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
         }
     }
     
-    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel) {
-        self.paymentDetails = details
-    }
+//    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel) {
+//        self.paymentDetails = details
+//    }
     
     func getbankCardDetails() {
         guard let paymentDetails else { return }

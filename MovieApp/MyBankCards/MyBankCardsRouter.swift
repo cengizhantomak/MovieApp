@@ -32,38 +32,6 @@ final class MyBankCardsRouter: MyBankCardsRoutingLogic, MyBankCardsDataPassing {
     }
     
     func routeToSelectBankCardPayment() {
-        let storyboard = UIStoryboard(name: "Payment", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController,
-              let dataStore = dataStore,
-              let paymentDataStore = destinationVC.router?.dataStore,
-              let selectedMovie = dataStore.selectedMovie,
-              let selectedBankCard = dataStore.selectedBankCard else { return }
-        
-        paymentDataStore.paymentDetails = PaymentModels.FetchPayment.ViewModel(
-            selectedMovieTitle: selectedMovie.selectedMovieTitle,
-            selectedMovieImage: selectedMovie.selectedMovieImage,
-            selectedDate: selectedMovie.selectedDate,
-            selectedTime: selectedMovie.selectedTime,
-            selectedTheater: selectedMovie.selectedTheater,
-            chooseSeat: selectedMovie.chooseSeat,
-            totalAmount: selectedMovie.totalAmount,
-            cardNumber: selectedBankCard.cardNumber,
-            cardHolder: selectedBankCard.cardHolder,
-            cardExpires: selectedBankCard.cardExpires,
-            cvv: selectedBankCard.cvv,
-            id: selectedBankCard.id
-        )
-        
-        guard let viewController = viewController,
-              let navigationController = viewController.navigationController,
-              let index = navigationController.viewControllers.firstIndex(of: viewController),
-              index > 0,
-              let previousVC = navigationController.viewControllers[index - 1] as? PaymentViewController,
-              let paymentDetails = paymentDataStore.paymentDetails else { return }
-        
-        previousVC.interactor?.updatePaymentDetails(with: paymentDetails)
-        
-        navigationController.popViewController(animated: true)
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }

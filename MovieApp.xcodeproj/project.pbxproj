@@ -80,6 +80,13 @@
 		4775354B2A7674260008BC9C /* SignUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535442A7674260008BC9C /* SignUpModels.swift */; };
 		4775354C2A7674260008BC9C /* SignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535452A7674260008BC9C /* SignUpWorker.swift */; };
 		4775354D2A7674260008BC9C /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535462A7674260008BC9C /* SignUpRouter.swift */; };
+		477535562A767E600008BC9C /* ResetPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4775354F2A767E600008BC9C /* ResetPassword.storyboard */; };
+		477535572A767E600008BC9C /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535502A767E600008BC9C /* ResetPasswordViewController.swift */; };
+		477535582A767E600008BC9C /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535512A767E600008BC9C /* ResetPasswordPresenter.swift */; };
+		477535592A767E600008BC9C /* ResetPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535522A767E600008BC9C /* ResetPasswordInteractor.swift */; };
+		4775355A2A767E600008BC9C /* ResetPasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535532A767E600008BC9C /* ResetPasswordModels.swift */; };
+		4775355B2A767E600008BC9C /* ResetPasswordWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535542A767E600008BC9C /* ResetPasswordWorker.swift */; };
+		4775355C2A767E600008BC9C /* ResetPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535552A767E600008BC9C /* ResetPasswordRouter.swift */; };
 		477C84B02A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */; };
 		477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */; };
 		477C84B22A652D1C005EF3BC /* BankCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */; };
@@ -273,6 +280,13 @@
 		477535442A7674260008BC9C /* SignUpModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModels.swift; sourceTree = "<group>"; };
 		477535452A7674260008BC9C /* SignUpWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWorker.swift; sourceTree = "<group>"; };
 		477535462A7674260008BC9C /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
+		4775354F2A767E600008BC9C /* ResetPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetPassword.storyboard; sourceTree = "<group>"; };
+		477535502A767E600008BC9C /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		477535512A767E600008BC9C /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
+		477535522A767E600008BC9C /* ResetPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInteractor.swift; sourceTree = "<group>"; };
+		477535532A767E600008BC9C /* ResetPasswordModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModels.swift; sourceTree = "<group>"; };
+		477535542A767E600008BC9C /* ResetPasswordWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordWorker.swift; sourceTree = "<group>"; };
+		477535552A767E600008BC9C /* ResetPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRouter.swift; sourceTree = "<group>"; };
 		477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataClass.swift"; sourceTree = "<group>"; };
 		477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankCard+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -610,6 +624,20 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		4775354E2A767E490008BC9C /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				477535502A767E600008BC9C /* ResetPasswordViewController.swift */,
+				477535512A767E600008BC9C /* ResetPasswordPresenter.swift */,
+				477535522A767E600008BC9C /* ResetPasswordInteractor.swift */,
+				477535532A767E600008BC9C /* ResetPasswordModels.swift */,
+				477535542A767E600008BC9C /* ResetPasswordWorker.swift */,
+				477535552A767E600008BC9C /* ResetPasswordRouter.swift */,
+				4775354F2A767E600008BC9C /* ResetPassword.storyboard */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
 		477C84B42A653988005EF3BC /* Congrats */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +838,7 @@
 				4798A4222A3F5B6C00F0C19D /* Font */,
 				479BCB292A6BEBB0004F2539 /* Login */,
 				4775353F2A76740F0008BC9C /* SignUp */,
+				4775354E2A767E490008BC9C /* ResetPassword */,
 				478B29452A597CD40075BE9E /* Profile */,
 				47C989232A6A6CE4000EC6E0 /* MyBankCards */,
 				4721282D2A6430440019DFEC /* AddBankCard */,
@@ -1013,6 +1042,7 @@
 				47D8B3042A4978C0003CFE2D /* MovieDetails.storyboard in Resources */,
 				4798A4392A3F5B8A00F0C19D /* SF-Pro-Text-Thin.otf in Resources */,
 				47D1BC2F2A3F40BA001A2622 /* Main.storyboard in Resources */,
+				477535562A767E600008BC9C /* ResetPassword.storyboard in Resources */,
 				4798A43D2A3F5B8A00F0C19D /* SF-Pro-Text-Ultralight.otf in Resources */,
 				47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */,
 				4798A4362A3F5B8A00F0C19D /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
@@ -1039,8 +1069,10 @@
 			files = (
 				479BCB322A6BEBC6004F2539 /* LoginViewController.swift in Sources */,
 				47D8B3082A4978C0003CFE2D /* MovieDetailsModels.swift in Sources */,
+				477535572A767E600008BC9C /* ResetPasswordViewController.swift in Sources */,
 				47E612282A5556FD00E85A11 /* PhotosViewController.swift in Sources */,
 				476DBC772A57160900539FE3 /* WatchlistRouter.swift in Sources */,
+				4775355C2A767E600008BC9C /* ResetPasswordRouter.swift in Sources */,
 				479BCB342A6BEBC6004F2539 /* LoginInteractor.swift in Sources */,
 				47D8B3052A4978C0003CFE2D /* MovieDetailsViewController.swift in Sources */,
 				47396F162A54BECF005B8301 /* PhotosSectionCollectionViewCell.swift in Sources */,
@@ -1073,6 +1105,7 @@
 				470B8DF52A682D6600A47C99 /* UIViewController+Keyboard.swift in Sources */,
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */,
+				477535592A767E600008BC9C /* ResetPasswordInteractor.swift in Sources */,
 				476DBC9A2A575BE100539FE3 /* GetTicketRouter.swift in Sources */,
 				470B8E022A695DCF00A47C99 /* MapModels.swift in Sources */,
 				47D8B3092A4978C0003CFE2D /* MovieDetailsWorker.swift in Sources */,
@@ -1085,6 +1118,7 @@
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
 				477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */,
 				47BE723B2A75A886000F8F34 /* LinkedInPresenter.swift in Sources */,
+				4775355A2A767E600008BC9C /* ResetPasswordModels.swift in Sources */,
 				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
 				47C9892F2A6A6D4C000EC6E0 /* MyBankCardsModels.swift in Sources */,
@@ -1095,6 +1129,7 @@
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				477C84BE2A6539A4005EF3BC /* CongratsPresenter.swift in Sources */,
+				477535582A767E600008BC9C /* ResetPasswordPresenter.swift in Sources */,
 				47C989302A6A6D4C000EC6E0 /* MyBankCardsWorker.swift in Sources */,
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
@@ -1153,6 +1188,7 @@
 				4721283A2A64306D0019DFEC /* AddBankCardWorker.swift in Sources */,
 				472128362A64306D0019DFEC /* AddBankCardViewController.swift in Sources */,
 				47396ECE2A548C1D005B8301 /* MovieCollectionReusableView.swift in Sources */,
+				4775355B2A767E600008BC9C /* ResetPasswordWorker.swift in Sources */,
 				476DBC762A57160900539FE3 /* WatchlistWorker.swift in Sources */,
 				47C9892E2A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift in Sources */,
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,

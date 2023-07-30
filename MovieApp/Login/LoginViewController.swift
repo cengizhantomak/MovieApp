@@ -74,6 +74,9 @@ final class LoginViewController: UIViewController {
     @IBAction func signUpButtonTapped(_ sender: Any) {
         router?.routeToSignUp()
     }
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        router?.routeToResetPassword()
+    }
 }
 
 // MARK: - DisplayLogic

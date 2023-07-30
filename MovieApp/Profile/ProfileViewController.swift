@@ -95,6 +95,10 @@ final class ProfileViewController: UIViewController {
         router?.routeToMyBankCards()
     }
     
+    @IBAction func linkedInButtonTapped(_ sender: Any) {
+        router?.routeToLinkedIn()
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Log Out", message: "Are you sure you want to log out? All your data will be deleted!", preferredStyle: .alert)
 

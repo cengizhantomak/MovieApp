@@ -296,7 +296,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5i-M0-LMc">
-                                <rect key="frame" x="15" y="498" width="363" height="50"/>
+                                <rect key="frame" x="15" y="438" width="363" height="50"/>
                                 <color key="backgroundColor" name="2B3543"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YTI-mV-DB1"/>
@@ -345,7 +345,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-f4-fac">
-                                <rect key="frame" x="15" y="423" width="363" height="50"/>
+                                <rect key="frame" x="15" y="373" width="363" height="50"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Dark Mode" translatesAutoresizingMaskIntoConstraints="NO" id="qxm-s3-DtX">
                                         <rect key="frame" x="302" y="9.6666666666666856" width="51" height="31"/>
@@ -380,21 +380,54 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jX9-ig-85y">
+                                <rect key="frame" x="15" y="503" width="363" height="50"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bIx-Mc-248"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <color key="tintColor" name="0F1B2B"/>
+                                <state key="normal" title="my" image="Profile">
+                                    <color key="titleColor" name="0F1B2B"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system" imagePlacement="trailing" title="LinkedIn">
+                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                    <color key="baseForegroundColor" name="0F1B2B"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthForView">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorForView">
+                                        <color key="value" systemColor="systemGrayColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="linkedInButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="rAI-x0-0jl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
                         <color key="backgroundColor" name="theme"/>
                         <constraints>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="6nM-h1-mU2"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6b-Qi-oy5" secondAttribute="trailing" constant="15" id="9Tk-lu-Ahg"/>
-                            <constraint firstItem="f5i-M0-LMc" firstAttribute="top" secondItem="q6G-f4-fac" secondAttribute="bottom" constant="25" id="DMG-NS-ORY"/>
+                            <constraint firstItem="f5i-M0-LMc" firstAttribute="top" secondItem="q6G-f4-fac" secondAttribute="bottom" constant="15" id="DMG-NS-ORY"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="jX9-ig-85y" secondAttribute="trailing" constant="15" id="F6m-Im-Njz"/>
                             <constraint firstItem="f5i-M0-LMc" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="HD1-G1-SvD"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="Z0s-da-1Yh" secondAttribute="trailing" constant="20" id="HWl-FX-L1u"/>
+                            <constraint firstItem="jX9-ig-85y" firstAttribute="top" secondItem="f5i-M0-LMc" secondAttribute="bottom" constant="15" id="Hw7-s8-qRj"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
+                            <constraint firstItem="jX9-ig-85y" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="W9r-dA-0Bm"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="top" secondItem="PzI-bp-cMJ" secondAttribute="top" constant="25" id="bas-qe-2YE"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="RsN-6U-ecC" secondAttribute="trailing" constant="15" id="bpB-l8-Xza"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="f5i-M0-LMc" secondAttribute="trailing" constant="15" id="cSP-rv-qmh"/>
-                            <constraint firstItem="q6G-f4-fac" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="100" id="hwe-O7-nLf"/>
+                            <constraint firstItem="q6G-f4-fac" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="50" id="hwe-O7-nLf"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
                             <constraint firstItem="q6G-f4-fac" firstAttribute="centerX" secondItem="RsN-6U-ecC" secondAttribute="centerX" id="r8n-d0-iE2"/>

@@ -136,6 +136,13 @@
 		47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */; };
 		47B3E3E02A6B1D470054AC4A /* VideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */; };
 		47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */; };
+		47BE72392A75A886000F8F34 /* LinkedIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47BE72322A75A886000F8F34 /* LinkedIn.storyboard */; };
+		47BE723A2A75A886000F8F34 /* LinkedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72332A75A886000F8F34 /* LinkedInViewController.swift */; };
+		47BE723B2A75A886000F8F34 /* LinkedInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72342A75A886000F8F34 /* LinkedInPresenter.swift */; };
+		47BE723C2A75A886000F8F34 /* LinkedInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72352A75A886000F8F34 /* LinkedInInteractor.swift */; };
+		47BE723D2A75A886000F8F34 /* LinkedInModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72362A75A886000F8F34 /* LinkedInModels.swift */; };
+		47BE723E2A75A886000F8F34 /* LinkedInWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72372A75A886000F8F34 /* LinkedInWorker.swift */; };
+		47BE723F2A75A886000F8F34 /* LinkedInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72382A75A886000F8F34 /* LinkedInRouter.swift */; };
 		47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */; };
 		47C9892C2A6A6D4C000EC6E0 /* MyBankCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */; };
 		47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */; };
@@ -315,6 +322,13 @@
 		47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideosCollectionViewCell.xib; sourceTree = "<group>"; };
 		47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
+		47BE72322A75A886000F8F34 /* LinkedIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LinkedIn.storyboard; sourceTree = "<group>"; };
+		47BE72332A75A886000F8F34 /* LinkedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInViewController.swift; sourceTree = "<group>"; };
+		47BE72342A75A886000F8F34 /* LinkedInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInPresenter.swift; sourceTree = "<group>"; };
+		47BE72352A75A886000F8F34 /* LinkedInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInInteractor.swift; sourceTree = "<group>"; };
+		47BE72362A75A886000F8F34 /* LinkedInModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInModels.swift; sourceTree = "<group>"; };
+		47BE72372A75A886000F8F34 /* LinkedInWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInWorker.swift; sourceTree = "<group>"; };
+		47BE72382A75A886000F8F34 /* LinkedInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedInRouter.swift; sourceTree = "<group>"; };
 		47C989242A6A6D4C000EC6E0 /* MyBankCards.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyBankCards.storyboard; sourceTree = "<group>"; };
 		47C989252A6A6D4C000EC6E0 /* MyBankCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsViewController.swift; sourceTree = "<group>"; };
 		47C989262A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCardsPresenter.swift; sourceTree = "<group>"; };
@@ -701,6 +715,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		47BE72312A75A83B000F8F34 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+				47BE72332A75A886000F8F34 /* LinkedInViewController.swift */,
+				47BE72342A75A886000F8F34 /* LinkedInPresenter.swift */,
+				47BE72352A75A886000F8F34 /* LinkedInInteractor.swift */,
+				47BE72362A75A886000F8F34 /* LinkedInModels.swift */,
+				47BE72372A75A886000F8F34 /* LinkedInWorker.swift */,
+				47BE72382A75A886000F8F34 /* LinkedInRouter.swift */,
+				47BE72322A75A886000F8F34 /* LinkedIn.storyboard */,
+			);
+			path = LinkedIn;
+			sourceTree = "<group>";
+		};
 		47C989232A6A6CE4000EC6E0 /* MyBankCards */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +784,7 @@
 				478B29452A597CD40075BE9E /* Profile */,
 				47C989232A6A6CE4000EC6E0 /* MyBankCards */,
 				4721282D2A6430440019DFEC /* AddBankCard */,
+				47BE72312A75A83B000F8F34 /* LinkedIn */,
 				476DBC692A57159400539FE3 /* WatchList */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				470B8E5F2A69C13B00A47C99 /* TicketPage */,
@@ -946,6 +975,7 @@
 				47D8B30F2A497A28003CFE2D /* CastTableViewCell.xib in Resources */,
 				4798A43B2A3F5B8A00F0C19D /* SF-Pro-Text-ThinItalic.otf in Resources */,
 				4798A4402A3F5B8A00F0C19D /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				47BE72392A75A886000F8F34 /* LinkedIn.storyboard in Resources */,
 				476DBC942A575BE100539FE3 /* GetTicket.storyboard in Resources */,
 				474E4C3E2A4B089600697B7D /* SynopsisTableViewCell.xib in Resources */,
 				47C989362A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.xib in Resources */,
@@ -997,6 +1027,7 @@
 				4773F84C2A61934A00CF4C8D /* ChooseSeatWorker.swift in Sources */,
 				476DBC722A57160900539FE3 /* WatchlistViewController.swift in Sources */,
 				477C84B22A652D1C005EF3BC /* BankCard+CoreDataClass.swift in Sources */,
+				47BE723C2A75A886000F8F34 /* LinkedInInteractor.swift in Sources */,
 				476DBC752A57160900539FE3 /* WatchlistModels.swift in Sources */,
 				477C84CE2A66A59C005EF3BC /* TicketsInteractor.swift in Sources */,
 				47A626AA2A505397004A144E /* ImageHelper.swift in Sources */,
@@ -1017,10 +1048,12 @@
 				47B3E3D82A6B0EB70054AC4A /* VideosInteractor.swift in Sources */,
 				476DBC962A575BE100539FE3 /* GetTicketPresenter.swift in Sources */,
 				47B3E3D72A6B0EB70054AC4A /* VideosPresenter.swift in Sources */,
+				47BE723D2A75A886000F8F34 /* LinkedInModels.swift in Sources */,
 				476DBC972A575BE100539FE3 /* GetTicketInteractor.swift in Sources */,
 				47D8B2FB2A496C8F003CFE2D /* MoviesResponse.swift in Sources */,
 				472267282A4EC13700784729 /* CastCrewWorker.swift in Sources */,
 				477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */,
+				47BE723B2A75A886000F8F34 /* LinkedInPresenter.swift in Sources */,
 				4753EABF2A5D884400755DAB /* StarRatingHelper.swift in Sources */,
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
 				47C9892F2A6A6D4C000EC6E0 /* MyBankCardsModels.swift in Sources */,
@@ -1050,6 +1083,7 @@
 				47923F082A5206200074CA99 /* UIImage+Extensions.swift in Sources */,
 				47B3E3DA2A6B0EB70054AC4A /* VideosWorker.swift in Sources */,
 				472267242A4EC13700784729 /* CastCrewViewController.swift in Sources */,
+				47BE723A2A75A886000F8F34 /* LinkedInViewController.swift in Sources */,
 				47D2169C2A53684D00B9CA98 /* MovieCollectionViewCell.swift in Sources */,
 				47B3E3D62A6B0EB70054AC4A /* VideosViewController.swift in Sources */,
 				47D8B30E2A497A28003CFE2D /* CastTableViewCell.swift in Sources */,
@@ -1075,6 +1109,7 @@
 				470B8E032A695DCF00A47C99 /* MapWorker.swift in Sources */,
 				470B8E002A695DCF00A47C99 /* MapPresenter.swift in Sources */,
 				472267262A4EC13700784729 /* CastCrewInteractor.swift in Sources */,
+				47BE723E2A75A886000F8F34 /* LinkedInWorker.swift in Sources */,
 				477C84BF2A6539A4005EF3BC /* CongratsInteractor.swift in Sources */,
 				47C989352A6A72A1000EC6E0 /* MyBankCardsCollectionViewCell.swift in Sources */,
 				477C84D02A66A59C005EF3BC /* TicketsWorker.swift in Sources */,
@@ -1108,6 +1143,7 @@
 				470B8E042A695DCF00A47C99 /* MapRouter.swift in Sources */,
 				476DBC9E2A575DE200539FE3 /* SeatCollectionViewCell.swift in Sources */,
 				4773F8482A61934A00CF4C8D /* ChooseSeatViewController.swift in Sources */,
+				47BE723F2A75A886000F8F34 /* LinkedInRouter.swift in Sources */,
 				47B3E3D92A6B0EB70054AC4A /* VideosModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

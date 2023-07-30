@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileRoutingLogic: AnyObject {
     func routeToMyBankCards()
+    func routeToLinkedIn()
     func routeToLoginScreen()
 }
 
@@ -27,6 +28,16 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyBankCardsViewController") as? MyBankCardsViewController else { return }
         
+        destinationVC.loadViewIfNeeded()
+        viewController?.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func routeToLinkedIn() {
+        let storyboard = UIStoryboard(name: "LinkedIn", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "LinkedInViewController") as? LinkedInViewController else { return }
+        
+        destinationVC.hidesBottomBarWhenPushed = true
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

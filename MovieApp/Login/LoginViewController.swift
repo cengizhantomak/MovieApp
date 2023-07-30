@@ -70,6 +70,10 @@ final class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         interactor?.login(username: userNameTextField.text, password: passwordTextField.text)
     }
+    
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        router?.routeToSignUp()
+    }
 }
 
 // MARK: - DisplayLogic

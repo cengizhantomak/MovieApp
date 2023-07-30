@@ -105,7 +105,7 @@
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Log In"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
                                         <real key="value" value="4"/>
@@ -147,21 +147,43 @@
                                 <color key="textColor" name="0F1B2B"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsh-Kb-nPZ">
+                                <rect key="frame" x="20" y="561.66666666666663" width="353" height="48"/>
+                                <color key="backgroundColor" name="buttonRed"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="WJq-Lf-YIH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sign Up"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpButtonTapped:" destination="oPD-b7-FnJ" eventType="touchUpInside" id="Wp1-1h-7h3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RIm-IV-2CH"/>
                         <color key="backgroundColor" name="theme"/>
                         <constraints>
                             <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="Cjb-4v-n0I" secondAttribute="trailing" constant="20" id="6CD-cQ-dnR"/>
                             <constraint firstItem="Cjb-4v-n0I" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="7bI-Yv-n4K"/>
+                            <constraint firstItem="Wsh-Kb-nPZ" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="DG4-Q7-zqD"/>
                             <constraint firstItem="Hzs-hD-2Az" firstAttribute="centerX" secondItem="20P-Ya-xve" secondAttribute="centerX" id="F1g-fc-b0w"/>
                             <constraint firstItem="QqG-sY-bDx" firstAttribute="top" secondItem="8am-J7-eZN" secondAttribute="bottom" constant="40" id="G63-nh-kgS"/>
                             <constraint firstItem="8am-J7-eZN" firstAttribute="centerY" secondItem="20P-Ya-xve" secondAttribute="centerY" id="KrF-SP-ega"/>
                             <constraint firstItem="4t6-Eg-lh2" firstAttribute="centerX" secondItem="20P-Ya-xve" secondAttribute="centerX" id="Me2-B4-02a"/>
+                            <constraint firstItem="Wsh-Kb-nPZ" firstAttribute="top" secondItem="QqG-sY-bDx" secondAttribute="bottom" constant="25" id="Qtv-qe-yYu"/>
                             <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="8am-J7-eZN" secondAttribute="trailing" constant="20" id="SlJ-yT-nMg"/>
                             <constraint firstItem="Hzs-hD-2Az" firstAttribute="top" secondItem="4t6-Eg-lh2" secondAttribute="bottom" constant="15" id="XxM-s9-O82"/>
                             <constraint firstItem="8am-J7-eZN" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="h2a-97-xKM"/>
                             <constraint firstItem="4t6-Eg-lh2" firstAttribute="top" secondItem="RIm-IV-2CH" secondAttribute="top" constant="100" id="ip5-Ab-S9G"/>
                             <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="QqG-sY-bDx" secondAttribute="trailing" constant="20" id="kZa-jD-ICt"/>
+                            <constraint firstItem="RIm-IV-2CH" firstAttribute="trailing" secondItem="Wsh-Kb-nPZ" secondAttribute="trailing" constant="20" id="mT9-z5-xEt"/>
                             <constraint firstItem="8am-J7-eZN" firstAttribute="top" secondItem="Cjb-4v-n0I" secondAttribute="bottom" constant="25" id="s63-K7-mTo"/>
                             <constraint firstItem="QqG-sY-bDx" firstAttribute="leading" secondItem="RIm-IV-2CH" secondAttribute="leading" constant="20" id="sJg-Jy-U2c"/>
                         </constraints>

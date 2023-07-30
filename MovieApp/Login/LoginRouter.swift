@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginRoutingLogic: AnyObject {
     func routeToApp()
+    func routeToSignUp()
 }
 
 protocol LoginDataPassing: AnyObject {
@@ -33,5 +34,14 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
             window.rootViewController = tabBarController
             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
         }
+    }
+    
+    func routeToSignUp() {
+        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        
+        destinationVC.loadViewIfNeeded()
+        viewController?.present(destinationVC, animated: true)
     }
 }

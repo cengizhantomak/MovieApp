@@ -73,6 +73,13 @@
 		4773F84C2A61934A00CF4C8D /* ChooseSeatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F8452A61934A00CF4C8D /* ChooseSeatWorker.swift */; };
 		4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F8462A61934A00CF4C8D /* ChooseSeatRouter.swift */; };
 		4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F84E2A629ACF00CF4C8D /* NavigationCustomView.swift */; };
+		477535472A7674260008BC9C /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477535402A7674260008BC9C /* SignUp.storyboard */; };
+		477535482A7674260008BC9C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535412A7674260008BC9C /* SignUpViewController.swift */; };
+		477535492A7674260008BC9C /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535422A7674260008BC9C /* SignUpPresenter.swift */; };
+		4775354A2A7674260008BC9C /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535432A7674260008BC9C /* SignUpInteractor.swift */; };
+		4775354B2A7674260008BC9C /* SignUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535442A7674260008BC9C /* SignUpModels.swift */; };
+		4775354C2A7674260008BC9C /* SignUpWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535452A7674260008BC9C /* SignUpWorker.swift */; };
+		4775354D2A7674260008BC9C /* SignUpRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535462A7674260008BC9C /* SignUpRouter.swift */; };
 		477C84B02A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */; };
 		477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */; };
 		477C84B22A652D1C005EF3BC /* BankCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */; };
@@ -259,6 +266,13 @@
 		4773F8452A61934A00CF4C8D /* ChooseSeatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSeatWorker.swift; sourceTree = "<group>"; };
 		4773F8462A61934A00CF4C8D /* ChooseSeatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSeatRouter.swift; sourceTree = "<group>"; };
 		4773F84E2A629ACF00CF4C8D /* NavigationCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCustomView.swift; sourceTree = "<group>"; };
+		477535402A7674260008BC9C /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		477535412A7674260008BC9C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		477535422A7674260008BC9C /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		477535432A7674260008BC9C /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		477535442A7674260008BC9C /* SignUpModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModels.swift; sourceTree = "<group>"; };
+		477535452A7674260008BC9C /* SignUpWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpWorker.swift; sourceTree = "<group>"; };
+		477535462A7674260008BC9C /* SignUpRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRouter.swift; sourceTree = "<group>"; };
 		477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataClass.swift"; sourceTree = "<group>"; };
 		477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		477C84AE2A652D1C005EF3BC /* BankCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankCard+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -582,6 +596,20 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		4775353F2A76740F0008BC9C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				477535412A7674260008BC9C /* SignUpViewController.swift */,
+				477535422A7674260008BC9C /* SignUpPresenter.swift */,
+				477535432A7674260008BC9C /* SignUpInteractor.swift */,
+				477535442A7674260008BC9C /* SignUpModels.swift */,
+				477535452A7674260008BC9C /* SignUpWorker.swift */,
+				477535462A7674260008BC9C /* SignUpRouter.swift */,
+				477535402A7674260008BC9C /* SignUp.storyboard */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		477C84B42A653988005EF3BC /* Congrats */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +809,7 @@
 				47A626A62A50538C004A144E /* Extension */,
 				4798A4222A3F5B6C00F0C19D /* Font */,
 				479BCB292A6BEBB0004F2539 /* Login */,
+				4775353F2A76740F0008BC9C /* SignUp */,
 				478B29452A597CD40075BE9E /* Profile */,
 				47C989232A6A6CE4000EC6E0 /* MyBankCards */,
 				4721282D2A6430440019DFEC /* AddBankCard */,
@@ -971,6 +1000,7 @@
 				4798A4442A3F5B8A00F0C19D /* SF-Pro-Text-Regular.otf in Resources */,
 				476DBC9F2A575DE200539FE3 /* SeatCollectionViewCell.xib in Resources */,
 				470B8E672A69C18900A47C99 /* TicketsViewController.xib in Resources */,
+				477535472A7674260008BC9C /* SignUp.storyboard in Resources */,
 				477C84BC2A6539A4005EF3BC /* Congrats.storyboard in Resources */,
 				47D8B30F2A497A28003CFE2D /* CastTableViewCell.xib in Resources */,
 				4798A43B2A3F5B8A00F0C19D /* SF-Pro-Text-ThinItalic.otf in Resources */,
@@ -1035,6 +1065,7 @@
 				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
 				477C84D12A66A59C005EF3BC /* TicketsRouter.swift in Sources */,
 				477C84C02A6539A4005EF3BC /* CongratsModels.swift in Sources */,
+				4775354D2A7674260008BC9C /* SignUpRouter.swift in Sources */,
 				47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */,
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
@@ -1071,12 +1102,15 @@
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
 				470B8E012A695DCF00A47C99 /* MapInteractor.swift in Sources */,
 				47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */,
+				477535492A7674260008BC9C /* SignUpPresenter.swift in Sources */,
 				472128372A64306D0019DFEC /* AddBankCardPresenter.swift in Sources */,
 				472267292A4EC13700784729 /* CastCrewRouter.swift in Sources */,
 				47D8B2EA2A4969E0003CFE2D /* MoviesEndpoint.swift in Sources */,
 				47126D9B2A5D5E240066E954 /* UIAlertHelper.swift in Sources */,
 				472267252A4EC13700784729 /* CastCrewPresenter.swift in Sources */,
 				474E4C3D2A4B089600697B7D /* SynopsisTableViewCell.swift in Sources */,
+				4775354B2A7674260008BC9C /* SignUpModels.swift in Sources */,
+				477535482A7674260008BC9C /* SignUpViewController.swift in Sources */,
 				478B29512A597CF50075BE9E /* ProfileModels.swift in Sources */,
 				47A626A82A50538C004A144E /* UIView+Extensions.swift in Sources */,
 				47D8B3072A4978C0003CFE2D /* MovieDetailsInteractor.swift in Sources */,
@@ -1102,6 +1136,7 @@
 				472128282A62E5DC0019DFEC /* PaymentPresenter.swift in Sources */,
 				477C84B02A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift in Sources */,
 				477C84B32A652D1C005EF3BC /* BankCard+CoreDataProperties.swift in Sources */,
+				4775354A2A7674260008BC9C /* SignUpInteractor.swift in Sources */,
 				470B8E742A69C81600A47C99 /* MapViewController.swift in Sources */,
 				479BCB372A6BEBC6004F2539 /* LoginRouter.swift in Sources */,
 				47D1BC2A2A3F40BA001A2622 /* SceneDelegate.swift in Sources */,
@@ -1136,6 +1171,7 @@
 				477C84BD2A6539A4005EF3BC /* CongratsViewController.swift in Sources */,
 				47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */,
 				476DBC742A57160900539FE3 /* WatchlistInteractor.swift in Sources */,
+				4775354C2A7674260008BC9C /* SignUpWorker.swift in Sources */,
 				47E612292A5556FD00E85A11 /* PhotosPresenter.swift in Sources */,
 				47D8B2F52A496B03003CFE2D /* MoviesPresenter.swift in Sources */,
 				472267272A4EC13700784729 /* CastCrewModels.swift in Sources */,

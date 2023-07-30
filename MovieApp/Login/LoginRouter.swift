@@ -11,6 +11,7 @@ import UIKit
 protocol LoginRoutingLogic: AnyObject {
     func routeToApp()
     func routeToSignUp()
+    func routeToResetPassword()
 }
 
 protocol LoginDataPassing: AnyObject {
@@ -40,6 +41,15 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
         let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
         
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        
+        destinationVC.loadViewIfNeeded()
+        viewController?.present(destinationVC, animated: true)
+    }
+    
+    func routeToResetPassword() {
+        let storyboard = UIStoryboard(name: "ResetPassword", bundle: nil)
+        
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)

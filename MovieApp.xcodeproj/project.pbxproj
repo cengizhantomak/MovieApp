@@ -207,6 +207,7 @@
 		47E6122D2A5556FD00E85A11 /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E612262A5556FD00E85A11 /* PhotosRouter.swift */; };
 		47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */; };
 		47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */; };
+		47E8EA982A77E51F005468E1 /* MovieDetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -424,6 +425,7 @@
 		47E612262A5556FD00E85A11 /* PhotosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRouter.swift; sourceTree = "<group>"; };
 		47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
+		47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +679,7 @@
 			children = (
 				4775356B2A768A770008BC9C /* MovieDetailsViewControllerTests.swift */,
 				470F5B542A76E36F002ACDFF /* MovieDetailsInteractorTests.swift */,
+				47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E8EA982A77E51F005468E1 /* MovieDetailsPresenterTests.swift in Sources */,
 				470F5B552A76E36F002ACDFF /* MovieDetailsInteractorTests.swift in Sources */,
 				4775356C2A768A770008BC9C /* MovieDetailsViewControllerTests.swift in Sources */,
 				477535642A7689D60008BC9C /* MovieAppTests.swift in Sources */,

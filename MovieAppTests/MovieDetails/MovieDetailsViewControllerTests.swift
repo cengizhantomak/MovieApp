@@ -28,18 +28,19 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         mockRouter = MockMovieDetailsRouter()
         sut.router = mockRouter
         
-        testViewModel = createTestViewModel()
+        testViewModel = sampleViewModel()
     }
     
     override func tearDown() {
-        super.tearDown()
-        
         sut = nil
         mockInteractor = nil
         mockRouter = nil
+        super.tearDown()
     }
     
-    func createTestViewModel() -> MovieDetailsModels.FetchMovieDetails.ViewModel {
+    // MARK: - Sample Data
+    
+    func sampleViewModel() -> MovieDetailsModels.FetchMovieDetails.ViewModel {
         return MovieDetailsModels.FetchMovieDetails.ViewModel(displayedCast: [],
                                                               displayedImages: [],
                                                               displayedWatchList: [],
@@ -52,69 +53,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
                                                               id: 0)
     }
     
-    final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
-        
-        var fetchMovieDetailsCalled = false
-        var viewAllCastCalled = false
-        var viewAllPhotosCalled = false
-        var postToAddWatchlistCalled = false
-        var postToRemoveWatchlistCalled = false
-        var selectedMovieGetTicketCalled = false
-        
-        func fetchMovieDetails() {
-            fetchMovieDetailsCalled = true
-        }
-        
-        func viewAllCast(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]) {
-            viewAllCastCalled = true
-        }
-        
-        func viewAllPhotos(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]) {
-            viewAllPhotosCalled = true
-        }
-        
-        func postToAddWatchlist() {
-            postToAddWatchlistCalled = true
-        }
-        
-        func postToRemoveWatchlist() {
-            postToRemoveWatchlistCalled = true
-        }
-        
-        func selectedMovieGetTicket(movie: String, image: String) {
-            selectedMovieGetTicketCalled = true
-        }
-    }
-    
-    final class MockMovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassing {
-        var dataStore: MovieApp.MovieDetailsDataStore?
-        
-        var routeToPhotosCalled = false
-        var routeToCastCrewCalled = false
-        var routeToGetTicketCalled = false
-        var routeToWatchListCalled = false
-        var routeToVideosCalled = false
-        
-        func routeToPhotos() {
-            routeToPhotosCalled = true
-        }
-        
-        func routeToCastCrew() {
-            routeToCastCrewCalled = true
-        }
-        
-        func routeToGetTicket() {
-            routeToGetTicketCalled = true
-        }
-        
-        func routeToWatchList() {
-            routeToWatchListCalled = true
-        }
-        
-        func routeToVideos() {
-            routeToVideosCalled = true
-        }
-    }
+    // MARK: - Test Cases
     
     func test_viewDidLoad() {
         // Given
@@ -234,7 +173,6 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.addRemoveWatchlistButton.title(for: .normal), "Add Watchlist")
         XCTAssertEqual(sut.addRemoveWatchlistButton.backgroundColor, UIColor(named: "buttonRed"))
     }
-    
     
     func test_displayCast() {
         // Given
@@ -387,5 +325,72 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(spacing, CGFloat(5))
+    }
+}
+
+// MARK: - Mock Interactor
+
+final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
+    var fetchMovieDetailsCalled = false
+    var viewAllCastCalled = false
+    var viewAllPhotosCalled = false
+    var postToAddWatchlistCalled = false
+    var postToRemoveWatchlistCalled = false
+    var selectedMovieGetTicketCalled = false
+    
+    func fetchMovieDetails() {
+        fetchMovieDetailsCalled = true
+    }
+    
+    func viewAllCast(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]) {
+        viewAllCastCalled = true
+    }
+    
+    func viewAllPhotos(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]) {
+        viewAllPhotosCalled = true
+    }
+    
+    func postToAddWatchlist() {
+        postToAddWatchlistCalled = true
+    }
+    
+    func postToRemoveWatchlist() {
+        postToRemoveWatchlistCalled = true
+    }
+    
+    func selectedMovieGetTicket(movie: String, image: String) {
+        selectedMovieGetTicketCalled = true
+    }
+}
+
+// MARK: - Mock Router
+
+final class MockMovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassing {
+    var dataStore: MovieApp.MovieDetailsDataStore?
+    
+    var routeToPhotosCalled = false
+    var routeToCastCrewCalled = false
+    var routeToGetTicketCalled = false
+    var routeToWatchListCalled = false
+    var routeToVideosCalled = false
+    
+    func routeToPhotos() {
+        routeToPhotosCalled = true
+    }
+    
+    func routeToCastCrew() {
+        routeToCastCrewCalled = true
+    }
+    
+    func routeToGetTicket() {
+        routeToGetTicketCalled = true
+    }
+    
+    func routeToWatchList() {
+        routeToWatchListCalled = true
+    }
+    
+    func routeToVideos() {
+        routeToVideosCalled = true
     }
 }

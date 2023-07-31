@@ -59,7 +59,7 @@ class MovieDetailsPresenterTest: XCTestCase {
     
     // MARK: - Test Cases
     
-    func test_PresentDetails() {
+    func test_presentDetails() {
         // Given
         let response = sampleResponse()
         
@@ -80,7 +80,7 @@ class MovieDetailsPresenterTest: XCTestCase {
         XCTAssertEqual(mockVC.displayedDetails?.title, response.details.title)
     }
     
-    func test_PresentAllCast() {
+    func test_presentAllCast() {
         // When
         sut.presentAllCast()
         
@@ -88,7 +88,7 @@ class MovieDetailsPresenterTest: XCTestCase {
         XCTAssertTrue(mockVC.isDisplayCastCalled)
     }
     
-    func test_PresentAllPhotos() {
+    func test_presentAllPhotos() {
         // When
         sut.presentAllPhotos()
         
@@ -96,7 +96,7 @@ class MovieDetailsPresenterTest: XCTestCase {
         XCTAssertTrue(mockVC.isDisplayPhotosCalled)
     }
     
-    func test_PresentGetTicket() {
+    func test_presentGetTicket() {
         // When
         sut.presentGetTicket()
         

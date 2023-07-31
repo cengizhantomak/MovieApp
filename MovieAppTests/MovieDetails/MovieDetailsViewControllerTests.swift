@@ -23,9 +23,8 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         sut?.loadViewIfNeeded()
         
         mockInteractor = MockMovieDetailsInteractor()
-        sut.interactor = mockInteractor
-        
         mockRouter = MockMovieDetailsRouter()
+        sut.interactor = mockInteractor
         sut.router = mockRouter
         
         testViewModel = sampleViewModel()
@@ -111,7 +110,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(mockInteractor.postToRemoveWatchlistCalled)
     }
     
-    func test_ViewAllCastButtonCallsInteractorMethod() {
+    func test_viewAllCastButtonCallsInteractorMethod() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -122,7 +121,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(mockInteractor.viewAllCastCalled)
     }
     
-    func test_ViewAllPhotosButtonCallsInteractorMethod() {
+    func test_viewAllPhotosButtonCallsInteractorMethod() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -133,7 +132,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(mockInteractor.viewAllPhotosCalled)
     }
     
-    func test_VideosButtonTapped() {
+    func test_videosButtonTapped() {
         // Given
         
         // When
@@ -143,7 +142,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(mockRouter.routeToVideosCalled)
     }
     
-    func testOnMovieAddedToWatchlist() {
+    func test_onMovieAddedToWatchlist() {
         // Given
         let expectation = self.expectation(description: "Wait for main queue")
         DispatchQueue.main.async {
@@ -212,7 +211,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfSections, 3)
     }
     
-    func test_numberOfRowsInSection_Synopsis() {
+    func test_numberOfRowsInSection_synopsis() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -223,7 +222,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfRows, 1)
     }
     
-    func test_numberOfRowsInSection_Cast() {
+    func test_numberOfRowsInSection_cast() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -234,7 +233,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfRows, 0)
     }
     
-    func test_numberOfRowsInSection_Photos() {
+    func test_numberOfRowsInSection_photos() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -245,7 +244,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfRows, 0)
     }
     
-    func test_cellForRowAt_Synopsis() {
+    func test_cellForRowAt_synopsis() {
         // Given
         sut.displayedDetails = testViewModel
         
@@ -256,7 +255,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(cell is SynopsisTableViewCell)
     }
     
-    func test_cellForRowAt_Photos() {
+    func test_cellForRowAt_photos() {
         // Given
         sut.displayedDetails = testViewModel
         

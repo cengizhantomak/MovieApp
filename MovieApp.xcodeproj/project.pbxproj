@@ -208,6 +208,7 @@
 		47E612312A55577300E85A11 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */; };
 		47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */; };
 		47E8EA982A77E51F005468E1 /* MovieDetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */; };
+		47E8EA9A2A780797005468E1 /* MovieDetailsRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8EA992A780797005468E1 /* MovieDetailsRouterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +427,7 @@
 		47E6122F2A55577300E85A11 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		47E612302A55577300E85A11 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
 		47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsPresenterTests.swift; sourceTree = "<group>"; };
+		47E8EA992A780797005468E1 /* MovieDetailsRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRouterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -680,6 +682,7 @@
 				4775356B2A768A770008BC9C /* MovieDetailsViewControllerTests.swift */,
 				470F5B542A76E36F002ACDFF /* MovieDetailsInteractorTests.swift */,
 				47E8EA972A77E51F005468E1 /* MovieDetailsPresenterTests.swift */,
+				47E8EA992A780797005468E1 /* MovieDetailsRouterTests.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -1150,6 +1153,7 @@
 				470F5B552A76E36F002ACDFF /* MovieDetailsInteractorTests.swift in Sources */,
 				4775356C2A768A770008BC9C /* MovieDetailsViewControllerTests.swift in Sources */,
 				477535642A7689D60008BC9C /* MovieAppTests.swift in Sources */,
+				47E8EA9A2A780797005468E1 /* MovieDetailsRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

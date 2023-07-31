@@ -93,7 +93,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     
     func postToAddWatchlist() {
         guard let id = selectedMovieID else { return }
-        worker.postToWatchlist(movieId: id) { [weak self] result in
+        worker.postToAddWatchlist(movieId: id) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success(let response):
@@ -108,7 +108,7 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     
     func postToRemoveWatchlist() {
         guard let id = selectedMovieID else { return }
-        worker.postToWatchlist2(movieId: id) { [weak self] result in
+        worker.postToRemoveWatchlist(movieId: id) { [weak self] result in
             guard self != nil else { return }
             switch result {
             case .success(let response):

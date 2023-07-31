@@ -11,9 +11,9 @@ protocol MovieDetailsWorkingLogic: AnyObject {
     func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.Credits, RequestError>) -> Void)
     func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.Movie, RequestError>) -> Void)
     func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.Backdrops, RequestError>) -> Void)
-    func postToWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
+    func postToAddWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
     func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void)
-    func postToWatchlist2(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
+    func postToRemoveWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void)
 }
 
 final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
@@ -29,7 +29,7 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
         sendRequest(endpoint: MoviesEndpoint.images(id: id), responseModel: MoviesResponse.Backdrops.self, completion: completion)
     }
     
-    func postToWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+    func postToAddWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.addToWatchlist(movieId: movieId), responseModel: MoviesResponse.Watchlist.self, completion: completion)
     }
     
@@ -37,7 +37,7 @@ final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
         sendRequest(endpoint: MoviesEndpoint.watchList, responseModel: MoviesResponse.NowPlaying.self, completion: completion)
     }
     
-    func postToWatchlist2(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+    func postToRemoveWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.removeFromWatchlist(movieId: movieId), responseModel: MoviesResponse.Watchlist.self, completion: completion)
     }
 }

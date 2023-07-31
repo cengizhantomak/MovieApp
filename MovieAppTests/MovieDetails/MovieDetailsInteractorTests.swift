@@ -178,7 +178,7 @@ final class MockMovieDetailsWorker: MovieDetailsWorkingLogic {
         }
     }
     
-    func postToWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+    func postToAddWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
         postToWatchlistCalled = true
         if let response = postToWatchlistResponse {
             completion(response)
@@ -192,7 +192,7 @@ final class MockMovieDetailsWorker: MovieDetailsWorkingLogic {
         }
     }
     
-    func postToWatchlist2(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+    func postToRemoveWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
         postToWatchlist2Called = true
         if let response = postToWatchlist2Response {
             completion(response)

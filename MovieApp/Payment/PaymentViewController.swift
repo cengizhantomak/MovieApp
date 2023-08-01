@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol PaymentDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel)
@@ -32,7 +33,7 @@ final class PaymentViewController: UIViewController {
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var dateExpireTextField: UITextField!
     @IBOutlet weak var cvvTextField: UITextField!
-    @IBOutlet weak var placeOrderButton: UIButton!
+    @IBOutlet weak var placeOrderButton: RedButton!
     
     // MARK: - Object lifecycle
     
@@ -54,8 +55,7 @@ final class PaymentViewController: UIViewController {
         navigationItem.title = "Payment"
         setupTextField()
         setupDismissKeyboardOnTap()
-        placeOrderButton.isEnabled = false
-        placeOrderButton.backgroundColor = .systemGray
+        setupButtonUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +86,12 @@ final class PaymentViewController: UIViewController {
         cardNumberTextField.delegate = self
         dateExpireTextField.delegate = self
         cvvTextField.delegate = self
+    }
+    
+    private func setupButtonUI() {
+        placeOrderButton.setupButtonText(text: "Place Order")
+        placeOrderButton.isEnabled = false
+        placeOrderButton.backgroundColor = .systemGray
     }
     
     // MARK: - Actions

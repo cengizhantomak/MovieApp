@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol MovieDetailsDisplayLogic: AnyObject {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel)
@@ -34,7 +35,8 @@ final class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var starRatingStackView: UIStackView!
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var addRemoveWatchlistButton: UIButton!
+    @IBOutlet weak var getTicketButton: RedButton!
+    @IBOutlet weak var addRemoveWatchlistButton: RedButton!
     
     // MARK: - Properties
     
@@ -76,6 +78,7 @@ final class MovieDetailsViewController: UIViewController {
         
         setupTableCollectionView()
         interactor?.fetchMovieDetails()
+        setupButtonUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddedToWatchlist(_:)), name: .movieAddedToWatchlist, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onMovieDeletedToWatchlist(_:)), name: .movieDeletedToWatchlist, object: nil)
@@ -95,6 +98,11 @@ final class MovieDetailsViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    private func setupButtonUI() {
+        getTicketButton.setupButtonText(text: "Get Ticket")
+        addRemoveWatchlistButton.setupButtonText(text: "Add Watchlist")
     }
     
     private func setupTableCollectionView() {

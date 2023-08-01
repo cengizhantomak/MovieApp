@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol ProfileDisplayLogic: AnyObject {
     func displayProfile(viewModel: ProfileModels.FetchProfile.ViewModel)
@@ -24,6 +25,7 @@ final class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var logoutButton: RedButton!
     
     // MARK: - Property
     
@@ -50,6 +52,8 @@ final class ProfileViewController: UIViewController {
             let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
             darkModeSwitch.isOn = darkModeEnabled
         }
+        
+        setupButtonUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +75,10 @@ final class ProfileViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    private func setupButtonUI() {
+        logoutButton.setupButtonText(text: "Log Out")
     }
     
     // MARK: - Action

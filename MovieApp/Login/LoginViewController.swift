@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol LoginDisplayLogic: AnyObject {
     func displayLoginSuccess()
@@ -21,6 +22,8 @@ final class LoginViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: RedButton!
+    @IBOutlet weak var signupButton: RedButton!
     
     // MARK: - Object lifecycle
     
@@ -43,6 +46,8 @@ final class LoginViewController: UIViewController {
             router?.routeToApp()
         }
         
+        setupButtonUI()
+        
 //        if UserDefaults.standard.string(forKey: "sessionId") != nil {
 //            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
 //            APIConstants.sessionId = sessionId
@@ -63,6 +68,11 @@ final class LoginViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    private func setupButtonUI() {
+        loginButton.setupButtonText(text: "Log In")
+        signupButton.setupButtonText(text: "Sign Up")
     }
     
     // MARK: - Action

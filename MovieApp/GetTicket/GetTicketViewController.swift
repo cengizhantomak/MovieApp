@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol GetTicketDisplayLogic: AnyObject {
     func displayFetchedMovie(viewModel: GetTicketModels.FetchGetTicket.ViewModel)
@@ -26,7 +27,7 @@ final class GetTicketViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var theatreTextField: UITextField!
-    @IBOutlet weak var getTicketButton: UIButton!
+    @IBOutlet weak var getTicketButton: RedButton!
     
     // MARK: - Property
     
@@ -54,8 +55,7 @@ final class GetTicketViewController: UIViewController {
         setupTimeTextField()
         setupTheaterTextField()
         setupDismissKeyboardOnTap()
-        getTicketButton.isEnabled = false
-        getTicketButton.backgroundColor = .systemGray
+        setupButtonUI()
     }
     
     // MARK: - Setup
@@ -106,6 +106,12 @@ final class GetTicketViewController: UIViewController {
         theatreTextField.inputView = pickerView
         pickerView.dataSource = self
         pickerView.delegate = self
+    }
+    
+    private func setupButtonUI() {
+        getTicketButton.setupButtonText(text: "Get Ticket")
+        getTicketButton.isEnabled = false
+        getTicketButton.backgroundColor = .systemGray
     }
     
     // MARK: - Actions

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CustomButton
 
 protocol AddBankCardDisplayLogic: AnyObject {
     
@@ -24,7 +25,7 @@ final class AddBankCardViewController: UIViewController {
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var dateExpireTextField: UITextField!
     @IBOutlet weak var cvvTextField: UITextField!
-    @IBOutlet weak var addCardButton: UIButton!
+    @IBOutlet weak var addCardButton: RedButton!
     
     // MARK: - Object lifecycle
     
@@ -46,8 +47,7 @@ final class AddBankCardViewController: UIViewController {
         navigationItem.title = "Add Bank Card"
         setupTextField()
         setupDismissKeyboardOnTap()
-        addCardButton.isEnabled = false
-        addCardButton.backgroundColor = .systemGray
+        setupButtonUI()
     }
     
     // MARK: - Setup
@@ -70,6 +70,12 @@ final class AddBankCardViewController: UIViewController {
         cardNumberTextField.delegate = self
         dateExpireTextField.delegate = self
         cvvTextField.delegate = self
+    }
+    
+    private func setupButtonUI() {
+        addCardButton.setupButtonText(text: "Add Card")
+        addCardButton.isEnabled = false
+        addCardButton.backgroundColor = .systemGray
     }
     
     // MARK: - Actions

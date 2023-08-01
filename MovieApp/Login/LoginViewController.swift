@@ -47,6 +47,7 @@ final class LoginViewController: UIViewController {
         }
         
         setupButtonUI()
+        setupDismissKeyboardOnTap()
         
 //        if UserDefaults.standard.string(forKey: "sessionId") != nil {
 //            let sessionId = UserDefaults.standard.string(forKey: "sessionId")

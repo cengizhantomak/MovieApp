@@ -152,6 +152,7 @@
 		47B3E3DB2A6B0EB70054AC4A /* VideosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3D42A6B0EB70054AC4A /* VideosRouter.swift */; };
 		47B3E3DF2A6B1D470054AC4A /* VideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B3E3DD2A6B1D470054AC4A /* VideosCollectionViewCell.swift */; };
 		47B3E3E02A6B1D470054AC4A /* VideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B3E3DE2A6B1D470054AC4A /* VideosCollectionViewCell.xib */; };
+		47BC50B02A79117000C7B808 /* CustomButton in Frameworks */ = {isa = PBXBuildFile; productRef = 47BC50AF2A79117000C7B808 /* CustomButton */; };
 		47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE722F2A757BE6000F8F34 /* KeyChainHelper.swift */; };
 		47BE72392A75A886000F8F34 /* LinkedIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47BE72322A75A886000F8F34 /* LinkedIn.storyboard */; };
 		47BE723A2A75A886000F8F34 /* LinkedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE72332A75A886000F8F34 /* LinkedInViewController.swift */; };
@@ -444,6 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47BC50B02A79117000C7B808 /* CustomButton in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1043,9 @@
 			dependencies = (
 			);
 			name = MovieApp;
+			packageProductDependencies = (
+				47BC50AF2A79117000C7B808 /* CustomButton */,
+			);
 			productName = MovieApp;
 			productReference = 47D1BC242A3F40BA001A2622 /* MovieApp.app */;
 			productType = "com.apple.product-type.application";
@@ -1073,6 +1078,9 @@
 				Base,
 			);
 			mainGroup = 47D1BC1B2A3F40BA001A2622;
+			packageReferences = (
+				47BC50AE2A79117000C7B808 /* XCRemoteSwiftPackageReference "CustomButtonMovieTicket" */,
+			);
 			productRefGroup = 47D1BC252A3F40BA001A2622 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1585,6 +1593,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47BC50AE2A79117000C7B808 /* XCRemoteSwiftPackageReference "CustomButtonMovieTicket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cengizhantomak/CustomButtonMovieTicket";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		47BC50AF2A79117000C7B808 /* CustomButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47BC50AE2A79117000C7B808 /* XCRemoteSwiftPackageReference "CustomButtonMovieTicket" */;
+			productName = CustomButton;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		47D1BC302A3F40BA001A2622 /* MovieApp.xcdatamodeld */ = {

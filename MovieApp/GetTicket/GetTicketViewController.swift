@@ -51,9 +51,7 @@ final class GetTicketViewController: UIViewController {
         super.viewDidLoad()
         
         interactor?.getMovie()
-        setupDateTextField()
-        setupTimeTextField()
-        setupTheaterTextField()
+        setupTextField()
         setupDismissKeyboardOnTap()
         setupButtonUI()
     }
@@ -73,7 +71,7 @@ final class GetTicketViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    private func setupDateTextField() {
+    private func setupTextField() {
         dateTextField.delegate = self
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
@@ -90,22 +88,32 @@ final class GetTicketViewController: UIViewController {
         
         dateTextField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-    }
-    
-    private func setupTimeTextField() {
+        
+        let pickerView = UIPickerView()
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
         timeTextField.delegate = self
-        let pickerView = UIPickerView()
+        theatreTextField.delegate = self
         timeTextField.inputView = pickerView
-        pickerView.dataSource = self
-        pickerView.delegate = self
+        theatreTextField.inputView = pickerView
+        
+        setupToolbar()
     }
     
-    private func setupTheaterTextField() {
-        theatreTextField.delegate = self
-        let pickerView = UIPickerView()
-        theatreTextField.inputView = pickerView
-        pickerView.dataSource = self
-        pickerView.delegate = self
+    private func setupToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker))
+        
+        toolbar.setItems([doneButton, spaceButton, cancelButton], animated: false)
+        
+        dateTextField.inputAccessoryView = toolbar
+        timeTextField.inputAccessoryView = toolbar
+        theatreTextField.inputAccessoryView = toolbar
     }
     
     private func setupButtonUI() {
@@ -115,6 +123,31 @@ final class GetTicketViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @objc func donePicker() {
+        if dateTextField.isFirstResponder {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd MMM, yyyy"
+            if let datePicker = self.dateTextField.inputView as? UIDatePicker {
+                self.dateTextField.text = formatter.string(from: datePicker.date)
+            }
+            self.dateTextField.endEditing(true)
+        } else if timeTextField.isFirstResponder {
+            if let pickerView = self.timeTextField.inputView as? UIPickerView {
+                self.timeTextField.text = displayedGetTicketData.times[pickerView.selectedRow(inComponent: 0)]
+            }
+            self.timeTextField.endEditing(true)
+        } else if theatreTextField.isFirstResponder {
+            if let pickerView = self.theatreTextField.inputView as? UIPickerView {
+                self.theatreTextField.text = displayedGetTicketData.theaters[pickerView.selectedRow(inComponent: 0)]
+            }
+            self.theatreTextField.endEditing(true)
+        }
+    }
+    
+    @objc func cancelPicker() {
+        self.view.endEditing(true)
+    }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()

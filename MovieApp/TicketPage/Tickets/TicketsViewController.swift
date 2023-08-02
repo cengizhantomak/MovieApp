@@ -62,7 +62,7 @@ final class TicketsViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "TicketsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TicketsCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.ticketsCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.ticketsCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
     
@@ -118,7 +118,7 @@ extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TicketsCollectionViewCell", for: indexPath) as? TicketsCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.ticketsCell, for: indexPath) as? TicketsCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedTickets[indexPath.item]
         cell.setCell(viewModel: model)

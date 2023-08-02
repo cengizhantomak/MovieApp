@@ -42,23 +42,6 @@ final class MovieDetailsViewController: UIViewController {
     
     var displayedDetails: MovieDetailsModels.FetchMovieDetails.ViewModel?
     
-    enum Section: Int, CaseIterable {
-        case Synopsis
-        case Cast
-        case Photos
-        
-        var title: String {
-            switch self {
-            case .Synopsis:
-                return "Synopsis"
-            case .Cast:
-                return "Cast & Crew"
-            case .Photos:
-                return "Photos"
-            }
-        }
-    }
-    
     // MARK: -  Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -121,13 +104,13 @@ final class MovieDetailsViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableHeaderView = headerView
         tableView.tableFooterView = footerView
-        tableView.register(UINib(nibName: "CastTableViewCell", bundle: .main), forCellReuseIdentifier: "CastTableViewCell")
-        tableView.register(UINib(nibName: "SynopsisTableViewCell", bundle: .main), forCellReuseIdentifier: "SynopsisTableViewCell")
-        tableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: "SectionHeader")
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.castCell, bundle: .main), forCellReuseIdentifier: Constants.CellIdentifiers.castCell)
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.synopsisCell, bundle: .main), forCellReuseIdentifier: Constants.CellIdentifiers.synopsisCell)
+        tableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: Constants.SectionHeader.movieDetailsSectionHeader)
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "PhotosSectionCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PhotosSectionCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.photosSectionCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosSectionCell)
     }
     
     private func formatRuntime(_ totalMinutes: Int) -> String {
@@ -288,11 +271,11 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Section.allCases.count
+        return MovieDetailsModels.Section.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = Section(rawValue: section) else { return 0 }
+        guard let section = MovieDetailsModels.Section(rawValue: section) else { return 0 }
         
         switch section {
         case .Synopsis:
@@ -305,15 +288,15 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = Section(rawValue: indexPath.section) else { return UITableViewCell() }
+        guard let section = MovieDetailsModels.Section(rawValue: indexPath.section) else { return UITableViewCell() }
         
         switch section {
         case .Synopsis:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SynopsisTableViewCell", for: indexPath) as? SynopsisTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.synopsisCell, for: indexPath) as? SynopsisTableViewCell
             cell?.setCell(viewModel: displayedDetails?.overview ?? "")
             return cell ?? UITableViewCell()
         case .Cast:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CastTableViewCell", for: indexPath) as? CastTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.castCell, for: indexPath) as? CastTableViewCell
             guard let model = displayedDetails?.displayedCast[indexPath.row] else { return UITableViewCell() }
             cell?.setCell(viewModel: model)
             return cell ?? UITableViewCell()
@@ -327,9 +310,9 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let section = Section(rawValue: section) else { return UIView() }
+        guard let section = MovieDetailsModels.Section(rawValue: section) else { return UIView() }
 
-        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SectionHeader") as? SectionHeader
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constants.SectionHeader.movieDetailsSectionHeader) as? SectionHeader
         sectionHeader?.title.text = section.title
 
         switch section {
@@ -356,7 +339,7 @@ extension MovieDetailsViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosSectionCollectionViewCell", for: indexPath) as? PhotosSectionCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosSectionCell, for: indexPath) as? PhotosSectionCollectionViewCell else { return UICollectionViewCell() }
         
         guard let model = displayedDetails?.displayedImages[indexPath.item] else { return cell }
         cell.setCell(viewModel: model)

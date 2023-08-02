@@ -65,7 +65,7 @@ final class CastCrewViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "CastCrewTableViewCell", bundle: .main), forCellReuseIdentifier: "CastCrewTableViewCell")
+        tableView.register(UINib(nibName: Constants.CellIdentifiers.castCrewCell, bundle: .main), forCellReuseIdentifier: Constants.CellIdentifiers.castCrewCell)
     }
 }
 
@@ -86,7 +86,7 @@ extension CastCrewViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CastCrewTableViewCell", for: indexPath) as? CastCrewTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.castCrewCell, for: indexPath) as? CastCrewTableViewCell
         else {
             return UITableViewCell()
         }

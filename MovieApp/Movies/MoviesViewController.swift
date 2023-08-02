@@ -66,8 +66,8 @@ final class MoviesViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "MovieCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MovieCollectionViewCell")
-        collectionView.register(MovieCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MovieCollectionReusableView")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.movieCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.movieCell)
+        collectionView.register(MovieCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.SectionHeader.movieSectionHeader)
     }
 }
 
@@ -94,7 +94,7 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.movieCell, for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedMovies[indexPath.item]
         cell.setCell(viewModel: model)
@@ -107,7 +107,7 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MovieCollectionReusableView", for: indexPath) as? MovieCollectionReusableView else { return UICollectionReusableView() }
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.SectionHeader.movieSectionHeader, for: indexPath) as? MovieCollectionReusableView else { return UICollectionReusableView() }
         
         return headerView
     }

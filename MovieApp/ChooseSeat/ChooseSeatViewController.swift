@@ -91,7 +91,7 @@ final class ChooseSeatViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "SeatCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "SeatCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.seatCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.seatCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
         collectionView.allowsMultipleSelection = true
     }
@@ -196,7 +196,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeatCollectionViewCell", for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.seatCell, for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
         
         var combined = [String]()
         

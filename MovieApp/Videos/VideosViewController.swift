@@ -62,7 +62,7 @@ final class VideosViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "VideosCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "VideosCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.videosCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.videosCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
     
@@ -112,7 +112,7 @@ extension VideosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideosCollectionViewCell", for: indexPath) as? VideosCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.videosCell, for: indexPath) as? VideosCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedVideos[indexPath.item].key
         cell.loadVideo(videoID: model)

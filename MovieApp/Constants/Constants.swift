@@ -2,7 +2,7 @@
 //  Constants.swift
 //  MovieApp
 //
-//  Created by Kerem Tuna Tomak on 2.08.2023.
+//  Created by Cengizhan Tomak on 2.08.2023.
 //
 
 import Foundation
@@ -13,10 +13,16 @@ public enum Constants {
         static let castCell = "CastTableViewCell"
         static let synopsisCell = "SynopsisTableViewCell"
         static let photosSectionCell = "PhotosSectionCollectionViewCell"
+        static let castCrewCell = "CastCrewTableViewCell"
+        static let photosCell = "PhotosCollectionViewCell"
+        static let videosCell = "VideosCollectionViewCell"
+        static let watchListCell = "WatchListCollectionViewCell"
         static let seatCell = "SeatCollectionViewCell"
+        static let myBankCardsCell = "MyBankCardsCollectionViewCell"
+        static let ticketsCell = "TicketsCollectionViewCell"
     }
-    public enum ReuseIdentifiers {
-        static let movieReusable = "MovieCollectionReusableView"
-        static let sectionHeaderReusable = "SectionHeader"
+    public enum SectionHeader {
+        static let movieSectionHeader = "MovieCollectionReusableView"
+        static let movieDetailsSectionHeader = "SectionHeader"
     }
 }

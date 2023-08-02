@@ -64,7 +64,7 @@ final class PhotosViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "PhotosCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PhotosCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.photosCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosCell)
         collectionView.collectionViewLayout = getCompotionalLayout()
     }
     
@@ -118,7 +118,7 @@ extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosCollectionViewCell", for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosCell, for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedPhotos[indexPath.item]
         cell.setCell(viewModel: model)

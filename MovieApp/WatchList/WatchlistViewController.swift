@@ -66,7 +66,7 @@ final class WatchlistViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "WatchListCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "WatchListCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.watchListCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.watchListCell)
     }
 }
 
@@ -93,7 +93,7 @@ extension WatchlistViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WatchListCollectionViewCell", for: indexPath) as? WatchListCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.watchListCell, for: indexPath) as? WatchListCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedWatchList[indexPath.item]
         cell.setCell(viewModel: model)

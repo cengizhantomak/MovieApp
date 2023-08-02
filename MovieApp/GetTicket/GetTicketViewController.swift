@@ -118,7 +118,7 @@ final class GetTicketViewController: UIViewController {
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM, yyyy"
+        dateFormatter.dateFormat = "dd MMM, yyyy"
         dateTextField.text = dateFormatter.string(from: sender.date)
     }
     

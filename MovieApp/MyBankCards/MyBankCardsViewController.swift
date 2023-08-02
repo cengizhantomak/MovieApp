@@ -80,7 +80,7 @@ final class MyBankCardsViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(.init(nibName: "MyBankCardsCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "MyBankCardsCollectionViewCell")
+        collectionView.register(.init(nibName: Constants.CellIdentifiers.myBankCardsCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.myBankCardsCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
     
@@ -150,7 +150,7 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyBankCardsCollectionViewCell", for: indexPath) as? MyBankCardsCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.myBankCardsCell, for: indexPath) as? MyBankCardsCollectionViewCell else { return UICollectionViewCell() }
         
         let model = displayedBankCards[indexPath.item]
         cell.setCell(viewModel: model)

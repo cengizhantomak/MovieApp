@@ -9,6 +9,23 @@ import Foundation
 
 enum MovieDetailsModels {
     
+    enum Section: Int, CaseIterable {
+        case Synopsis
+        case Cast
+        case Photos
+        
+        var title: String {
+            switch self {
+            case .Synopsis:
+                return "Synopsis"
+            case .Cast:
+                return "Cast & Crew"
+            case .Photos:
+                return "Photos"
+            }
+        }
+    }
+    
     enum FetchMovieDetails {
         
         struct Request {

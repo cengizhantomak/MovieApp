@@ -88,7 +88,6 @@
 		4775355A2A767E600008BC9C /* ResetPasswordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535532A767E600008BC9C /* ResetPasswordModels.swift */; };
 		4775355B2A767E600008BC9C /* ResetPasswordWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535542A767E600008BC9C /* ResetPasswordWorker.swift */; };
 		4775355C2A767E600008BC9C /* ResetPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535552A767E600008BC9C /* ResetPasswordRouter.swift */; };
-		477535642A7689D60008BC9C /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477535632A7689D60008BC9C /* MovieAppTests.swift */; };
 		4775356C2A768A770008BC9C /* MovieDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4775356B2A768A770008BC9C /* MovieDetailsViewControllerTests.swift */; };
 		477C84B02A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */; };
 		477C84B12A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477C84AD2A652D1C005EF3BC /* MovieTicket+CoreDataProperties.swift */; };
@@ -307,7 +306,6 @@
 		477535542A767E600008BC9C /* ResetPasswordWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordWorker.swift; sourceTree = "<group>"; };
 		477535552A767E600008BC9C /* ResetPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRouter.swift; sourceTree = "<group>"; };
 		477535612A7689D60008BC9C /* MovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		477535632A7689D60008BC9C /* MovieAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppTests.swift; sourceTree = "<group>"; };
 		4775356B2A768A770008BC9C /* MovieDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		4775356D2A76C8C00008BC9C /* MovieApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MovieApp.xctestplan; sourceTree = "<group>"; };
 		477C84AC2A652D1C005EF3BC /* MovieTicket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieTicket+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -677,7 +675,6 @@
 			isa = PBXGroup;
 			children = (
 				4775356A2A7689F80008BC9C /* MovieDetails */,
-				477535632A7689D60008BC9C /* MovieAppTests.swift */,
 			);
 			path = MovieAppTests;
 			sourceTree = "<group>";
@@ -1175,7 +1172,6 @@
 				470F5B552A76E36F002ACDFF /* MovieDetailsInteractorTests.swift in Sources */,
 				4775356C2A768A770008BC9C /* MovieDetailsViewControllerTests.swift in Sources */,
 				47E8EA9C2A780D77005468E1 /* MovieDetailsWorkerTests.swift in Sources */,
-				477535642A7689D60008BC9C /* MovieAppTests.swift in Sources */,
 				47E8EA9A2A780797005468E1 /* MovieDetailsRouterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

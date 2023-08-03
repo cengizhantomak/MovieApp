@@ -303,92 +303,94 @@ final class MovieDetailsViewControllerTests: XCTestCase {
     }
 }
 
-// MARK: - Mock Interactor
-
-final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
+extension MovieDetailsViewControllerTests {
     
+    // MARK: - Mock Interactor
     
-    var fetchMovieDetailsCalled = false
-    var viewAllCastCalled = false
-    var viewAllPhotosCalled = false
-    var postToAddWatchlistCalled = false
-    var postToRemoveWatchlistCalled = false
-    var selectedMovieGetTicketCalled = false
-    var formatRuntimeCalled = false
-    var toggleWatchlistStatusCalled = false
-    
-    func fetchMovieDetails() {
-        fetchMovieDetailsCalled = true
+    final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
+        
+        var fetchMovieDetailsCalled = false
+        var viewAllCastCalled = false
+        var viewAllPhotosCalled = false
+        var postToAddWatchlistCalled = false
+        var postToRemoveWatchlistCalled = false
+        var selectedMovieGetTicketCalled = false
+        var formatRuntimeCalled = false
+        var toggleWatchlistStatusCalled = false
+        
+        func fetchMovieDetails() {
+            fetchMovieDetailsCalled = true
+        }
+        
+        func viewAllCast(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]) {
+            viewAllCastCalled = true
+        }
+        
+        func viewAllPhotos(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]) {
+            viewAllPhotosCalled = true
+        }
+        
+        func postToAddWatchlist() {
+            postToAddWatchlistCalled = true
+        }
+        
+        func postToRemoveWatchlist() {
+            postToRemoveWatchlistCalled = true
+        }
+        
+        func selectedMovieGetTicket(movie: String, image: String) {
+            selectedMovieGetTicketCalled = true
+        }
+        
+        func formatRuntime(_ totalMinutes: Int) -> String {
+            formatRuntimeCalled = true
+            return "Dummy Runtime"
+        }
+        
+        func toggleWatchlistStatus(_ details: MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel? {
+            toggleWatchlistStatusCalled = true
+            return MovieDetailsModels.FetchMovieDetails.ViewModel(displayedCast: [],
+                                                                  displayedImages: [],
+                                                                  displayedWatchList: [],
+                                                                  title: "Test Movie",
+                                                                  overview: "Test overview",
+                                                                  genres: "Action",
+                                                                  runtime: 120,
+                                                                  vote: 8.0,
+                                                                  posterPhotoPath: "testPath",
+                                                                  id: 0)
+        }
     }
     
-    func viewAllCast(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast]) {
-        viewAllCastCalled = true
-    }
+    // MARK: - Mock Router
     
-    func viewAllPhotos(with: [MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages]) {
-        viewAllPhotosCalled = true
-    }
-    
-    func postToAddWatchlist() {
-        postToAddWatchlistCalled = true
-    }
-    
-    func postToRemoveWatchlist() {
-        postToRemoveWatchlistCalled = true
-    }
-    
-    func selectedMovieGetTicket(movie: String, image: String) {
-        selectedMovieGetTicketCalled = true
-    }
-    
-    func formatRuntime(_ totalMinutes: Int) -> String {
-        formatRuntimeCalled = true
-        return "Dummy Runtime"
-    }
-    
-    func toggleWatchlistStatus(_ details: MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel? {
-        toggleWatchlistStatusCalled = true
-        return MovieDetailsModels.FetchMovieDetails.ViewModel(displayedCast: [],
-                                                              displayedImages: [],
-                                                              displayedWatchList: [],
-                                                              title: "Test Movie",
-                                                              overview: "Test overview",
-                                                              genres: "Action",
-                                                              runtime: 120,
-                                                              vote: 8.0,
-                                                              posterPhotoPath: "testPath",
-                                                              id: 0)
-    }
-}
-
-// MARK: - Mock Router
-
-final class MockMovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassing {
-    var dataStore: MovieApp.MovieDetailsDataStore?
-    
-    var routeToPhotosCalled = false
-    var routeToCastCrewCalled = false
-    var routeToGetTicketCalled = false
-    var routeToWatchListCalled = false
-    var routeToVideosCalled = false
-    
-    func routeToPhotos() {
-        routeToPhotosCalled = true
-    }
-    
-    func routeToCastCrew() {
-        routeToCastCrewCalled = true
-    }
-    
-    func routeToGetTicket() {
-        routeToGetTicketCalled = true
-    }
-    
-    func routeToWatchList() {
-        routeToWatchListCalled = true
-    }
-    
-    func routeToVideos() {
-        routeToVideosCalled = true
+    final class MockMovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassing {
+        var dataStore: MovieApp.MovieDetailsDataStore?
+        
+        var routeToPhotosCalled = false
+        var routeToCastCrewCalled = false
+        var routeToGetTicketCalled = false
+        var routeToWatchListCalled = false
+        var routeToVideosCalled = false
+        
+        func routeToPhotos() {
+            routeToPhotosCalled = true
+        }
+        
+        func routeToCastCrew() {
+            routeToCastCrewCalled = true
+        }
+        
+        func routeToGetTicket() {
+            routeToGetTicketCalled = true
+        }
+        
+        func routeToWatchList() {
+            routeToWatchListCalled = true
+        }
+        
+        func routeToVideos() {
+            routeToVideosCalled = true
+        }
     }
 }

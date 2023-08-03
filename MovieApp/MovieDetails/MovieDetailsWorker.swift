@@ -17,6 +17,11 @@ protocol MovieDetailsWorkingLogic: AnyObject {
 }
 
 final class MovieDetailsWorker: MovieDetailsWorkingLogic, HTTPClient {
+    let httpClient: HTTPClient
+    init(httpClient: HTTPClient) {
+        self.httpClient = httpClient
+    }
+    
     func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.Credits, RequestError>) -> Void) {
         sendRequest(endpoint: MoviesEndpoint.credits(id: id), responseModel: MoviesResponse.Credits.self, completion: completion)
     }

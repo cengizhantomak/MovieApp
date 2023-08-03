@@ -29,7 +29,8 @@ protocol MovieDetailsDataStore: AnyObject {
 final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
     
     var presenter: MovieDetailsPresentationLogic?
-    var worker: MovieDetailsWorkingLogic = MovieDetailsWorker()
+    let httpClient = NetworkHTTPClient()
+    var worker: MovieDetailsWorkingLogic = MovieDetailsWorker(httpClient: NetworkHTTPClient())
     
     var selectedMovieID: Int?
     var allCast: [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast] = []
@@ -158,8 +159,6 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
             let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
             displayedDetails.displayedWatchList.append(watchlistItem)
         }
-
         return displayedDetails
     }
-
 }

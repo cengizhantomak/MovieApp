@@ -106,7 +106,7 @@ class MovieDetailsInteractorTests: XCTestCase {
         sut.postToAddWatchlist()
         
         // Then
-        XCTAssertTrue(mockWorker.postToWatchlistCalled)
+        XCTAssertTrue(mockWorker.postToAddWatchlistCalled)
     }
     
     func test_postToRemoveWatchlist() {
@@ -117,7 +117,7 @@ class MovieDetailsInteractorTests: XCTestCase {
         sut.postToRemoveWatchlist()
         
         // Then
-        XCTAssertTrue(mockWorker.postToWatchlist2Called)
+        XCTAssertTrue(mockWorker.postToRemoveWatchlistCalled)
     }
     
     func test_viewAllCast() {
@@ -143,84 +143,87 @@ class MovieDetailsInteractorTests: XCTestCase {
     }
 }
 
-// MARK: - Mock Worker
-
-final class MockMovieDetailsWorker: MovieDetailsWorkingLogic {
-    var getMovieDetailsCalled = false
-    var postToWatchlistCalled = false
-    var getMovieCreditsCalled = false
-    var getMovieImagesCalled = false
-    var getWatchListCalled = false
-    var postToWatchlist2Called = false
+extension MovieDetailsInteractorTests {
     
-    // Your mock responses
-    var getMovieCreditsResponse: Result<MoviesResponse.Credits, RequestError>?
-    var getMovieImagesResponse: Result<MoviesResponse.Backdrops, RequestError>?
-    var getWatchListResponse: Result<MoviesResponse.NowPlaying, RequestError>?
-    var postToWatchlistResponse: Result<MoviesResponse.Watchlist, RequestError>?
-    var postToWatchlist2Response: Result<MoviesResponse.Watchlist, RequestError>?
+    // MARK: - Mock Worker
     
-    func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.Credits, RequestError>) -> Void) {
-        getMovieCreditsCalled = true
-        if let response = getMovieCreditsResponse {
-            completion(response)
+    final class MockMovieDetailsWorker: MovieDetailsWorkingLogic {
+        var getMovieDetailsCalled = false
+        var postToAddWatchlistCalled = false
+        var getMovieCreditsCalled = false
+        var getMovieImagesCalled = false
+        var getWatchListCalled = false
+        var postToRemoveWatchlistCalled = false
+        
+        // Your mock responses
+        var getMovieCreditsResponse: Result<MoviesResponse.Credits, RequestError>?
+        var getMovieImagesResponse: Result<MoviesResponse.Backdrops, RequestError>?
+        var getWatchListResponse: Result<MoviesResponse.NowPlaying, RequestError>?
+        var postToWatchlistResponse: Result<MoviesResponse.Watchlist, RequestError>?
+        var postToWatchlist2Response: Result<MoviesResponse.Watchlist, RequestError>?
+        
+        func getMovieCredits(id: Int, _ completion: @escaping (Result<MoviesResponse.Credits, RequestError>) -> Void) {
+            getMovieCreditsCalled = true
+            if let response = getMovieCreditsResponse {
+                completion(response)
+            }
+        }
+        
+        func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.Movie, RequestError>) -> Void) {
+            getMovieDetailsCalled = true
+        }
+        
+        func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.Backdrops, RequestError>) -> Void) {
+            getMovieImagesCalled = true
+            if let response = getMovieImagesResponse {
+                completion(response)
+            }
+        }
+        
+        func postToAddWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+            postToAddWatchlistCalled = true
+            if let response = postToWatchlistResponse {
+                completion(response)
+            }
+        }
+        
+        func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void) {
+            getWatchListCalled = true
+            if let response = getWatchListResponse {
+                completion(response)
+            }
+        }
+        
+        func postToRemoveWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
+            postToRemoveWatchlistCalled = true
+            if let response = postToWatchlist2Response {
+                completion(response)
+            }
         }
     }
     
-    func getMovieDetails(id: Int, _ completion: @escaping (Result<MoviesResponse.Movie, RequestError>) -> Void) {
-        getMovieDetailsCalled = true
-    }
+    // MARK: - Mock Presenter
     
-    func getMovieImages(id: Int, _ completion: @escaping (Result<MoviesResponse.Backdrops, RequestError>) -> Void) {
-        getMovieImagesCalled = true
-        if let response = getMovieImagesResponse {
-            completion(response)
+    final class MockMovieDetailsPresenter: MovieDetailsPresentationLogic {
+        var presentAllCastCalled = false
+        var presentAllPhotosCalled = false
+        var presentDetailsCalled = false
+        var presentGetTicketCalled = false
+        
+        func presentAllCast() {
+            presentAllCastCalled = true
         }
-    }
-    
-    func postToAddWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
-        postToWatchlistCalled = true
-        if let response = postToWatchlistResponse {
-            completion(response)
+        
+        func presentAllPhotos() {
+            presentAllPhotosCalled = true
         }
-    }
-    
-    func getWatchList(_ completion: @escaping (Result<MoviesResponse.NowPlaying, RequestError>) -> Void) {
-        getWatchListCalled = true
-        if let response = getWatchListResponse {
-            completion(response)
+        
+        func presentDetails(response: MovieApp.MovieDetailsModels.FetchMovieDetails.Response) {
+            presentDetailsCalled = true
         }
-    }
-    
-    func postToRemoveWatchlist(movieId: Int, _ completion: @escaping (Result<MoviesResponse.Watchlist, RequestError>) -> Void) {
-        postToWatchlist2Called = true
-        if let response = postToWatchlist2Response {
-            completion(response)
+        
+        func presentGetTicket() {
+            presentGetTicketCalled = true
         }
-    }
-}
-
-// MARK: - Mock Presenter
-
-final class MockMovieDetailsPresenter: MovieDetailsPresentationLogic {
-    var presentAllCastCalled = false
-    var presentAllPhotosCalled = false
-    var presentDetailsCalled = false
-    var presentGetTicketCalled = false
-    
-    func presentAllCast() {
-        presentAllCastCalled = true
-    }
-    
-    func presentAllPhotos() {
-        presentAllPhotosCalled = true
-    }
-    
-    func presentDetails(response: MovieApp.MovieDetailsModels.FetchMovieDetails.Response) {
-        presentDetailsCalled = true
-    }
-    
-    func presentGetTicket() {
-        presentGetTicketCalled = true
     }
 }

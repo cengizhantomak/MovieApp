@@ -30,9 +30,10 @@ final class MyBankCardsInteractor: MyBankCardsBusinessLogic, MyBankCardsDataStor
     var originViewController: String?
     var selectedMovie: MyBankCardsModels.FetchMyBankCards.ViewModel?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         do {
             let bankCards = try worker.fetchBankCards(using: context)
             let response = MyBankCardsModels.FetchMyBankCards.Response(bankCards: bankCards)
@@ -43,6 +44,9 @@ final class MyBankCardsInteractor: MyBankCardsBusinessLogic, MyBankCardsDataStor
     }
     
     func deleteBankCard(request: MyBankCardsModels.DeleteBankCard.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         do {
             try worker.deleteBankCard(withId: request.bankCardId, using: context)
             fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())

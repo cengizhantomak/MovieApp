@@ -23,7 +23,8 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
     var worker: AddBankCardWorkingLogic = AddBankCardWorker()
     
     func saveBankCard(cardName: String, cardNumber: String, expiryDate: String, cvv: String, viewController: UIViewController) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
         
         if checkCardExistence(cardNumber: cardNumber, context: context) {
             // Kart zaten var
@@ -74,8 +75,8 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
         request.fetchLimit = 1
         
         do {
-            let count = try context.count(for: request)
-            return count > 0
+            let result = try context.fetch(request)
+            return !result.isEmpty
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return false

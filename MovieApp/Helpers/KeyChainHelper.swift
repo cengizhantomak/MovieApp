@@ -38,12 +38,13 @@ final class KeyChainHelper {
     }
     
     func read(service: String, account: String) -> Data? {
+        guard let kCFBooleanTrue else { return nil }
         
         let query: [String: Any] = [
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
             kSecClass as String: kSecClassGenericPassword,
-            kSecReturnData as String: kCFBooleanTrue!,
+            kSecReturnData as String: kCFBooleanTrue,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
         
@@ -51,7 +52,7 @@ final class KeyChainHelper {
         let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
         
         if status == noErr {
-            return dataTypeRef as! Data?
+            return dataTypeRef as? Data
         } else {
             return nil
         }

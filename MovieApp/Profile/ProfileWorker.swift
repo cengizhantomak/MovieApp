@@ -20,21 +20,20 @@ final class ProfileWorker: ProfileWorkingLogic, HTTPClient {
     }
     
     func deleteAllData(entity: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         fetchRequest.returnsObjectsAsFaults = false
         
         do {
-            let results = try managedContext.fetch(fetchRequest)
+            let results = try context.fetch(fetchRequest)
             for object in results {
                 guard let objectData = object as? NSManagedObject else { continue }
-                managedContext.delete(objectData)
+                context.delete(objectData)
             }
-            try managedContext.save()
+            try context.save()
             completion(.success(()))
-        }
-        catch let error {
+        } catch let error {
             completion(.failure(error))
         }
     }

@@ -26,14 +26,15 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
     
     var paymentDetails: PaymentModels.FetchPayment.ViewModel?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func getMovie() {
         guard let paymentDetails else { return }
         presenter?.presentMovie(paymentDetails: paymentDetails)
     }
     
     func validateCard(request: PaymentModels.FetchPayment.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         if worker.checkTicketExists(paymentDetails: paymentDetails) {
             presenter?.presentTicketExistAlert()
             return
@@ -56,7 +57,10 @@ final class PaymentInteractor: PaymentBusinessLogic, PaymentDataStore {
     }
     
     func saveMovieTicket() {
-        guard let newTicket = worker.createMovieTicket(paymentDetails: paymentDetails) else {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        guard (worker.createMovieTicket(paymentDetails: paymentDetails)) != nil else {
             print("Failed to create ticket in Interactor.")
             return
         }

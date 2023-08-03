@@ -14,9 +14,11 @@ protocol CongratsWorkingLogic: AnyObject {
 }
 
 final class CongratsWorker: CongratsWorkingLogic {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func fetchLatestTicket() -> MovieTicket? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        let context = appDelegate.persistentContainer.viewContext
+        
         let fetchRequest: NSFetchRequest<MovieTicket> = MovieTicket.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
         fetchRequest.fetchLimit = 1

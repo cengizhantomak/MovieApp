@@ -17,10 +17,12 @@ protocol PaymentWorkingLogic: AnyObject {
 
 final class PaymentWorker: PaymentWorkingLogic {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func checkTicketExists(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> Bool {
-        guard let paymentDetails else { return false }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let paymentDetails else {
+            return false
+        }
+        let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieTicket")
         fetchRequest.predicate = NSPredicate(
@@ -55,6 +57,8 @@ final class PaymentWorker: PaymentWorkingLogic {
     }
     
     func createMovieTicket(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> MovieTicket? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        let context = appDelegate.persistentContainer.viewContext
         
         let newTicket = MovieTicket(context: context)
         newTicket.title = paymentDetails?.selectedMovieTitle

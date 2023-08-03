@@ -22,9 +22,10 @@ final class TicketsInteractor: TicketsBusinessLogic, TicketsDataStore {
     var presenter: TicketsPresentationLogic?
     var worker: TicketsWorkingLogic = TicketsWorker()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func fetchTickets(request: TicketsModels.FetchTickets.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         do {
             let tickets = try worker.fetchTickets(using: context)
             let response = TicketsModels.FetchTickets.Response(tickets: tickets)
@@ -35,6 +36,9 @@ final class TicketsInteractor: TicketsBusinessLogic, TicketsDataStore {
     }
     
     func deleteTicket(request: TicketsModels.DeleteTicket.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         do {
             try worker.deleteTicket(withId: request.ticketId, using: context)
             fetchTickets(request: TicketsModels.FetchTickets.Request())

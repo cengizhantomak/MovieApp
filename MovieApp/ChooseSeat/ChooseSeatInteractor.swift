@@ -25,9 +25,10 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
     
     var seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
         do {
             let tickets = try worker.fetchTickets(using: context)
             let response = ChooseSeatModels.FetchChooseSeat.Response(tickets: tickets)

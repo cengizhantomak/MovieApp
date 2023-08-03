@@ -113,12 +113,6 @@ final class MovieDetailsViewController: UIViewController {
         collectionView.register(.init(nibName: Constants.CellIdentifiers.photosSectionCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosSectionCell)
     }
     
-    private func formatRuntime(_ totalMinutes: Int) -> String {
-        let hours = totalMinutes / 60
-        let minutes = totalMinutes % 60
-        return "\(hours)hr \(minutes)m"
-    }
-    
 //    private func updateWatchlistButtonTitle() {
 //        guard let displayedDetails else { return }
 //
@@ -138,20 +132,7 @@ final class MovieDetailsViewController: UIViewController {
     
     @IBAction func addRemoveWatchlistButtonTapped(_ sender: Any) {
         guard var displayedDetails else { return }
-        
-        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
-            interactor?.postToRemoveWatchlist()
-            if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {
-                displayedDetails.displayedWatchList.remove(at: index)
-            }
-        } else {
-            interactor?.postToAddWatchlist()
-            let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
-            displayedDetails.displayedWatchList.append(watchlistItem)
-        }
-        
-        self.displayedDetails = displayedDetails
-//        updateWatchlistButtonTitle()
+        self.displayedDetails = interactor?.toggleWatchlistStatus(displayedDetails)
     }
     
     @objc func viewAllCastButton() {
@@ -217,7 +198,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         
         titleLabel.text = displayedDetails.title
         
-        durationLabel.text = formatRuntime(displayedDetails.runtime)
+        durationLabel.text = interactor?.formatRuntime(displayedDetails.runtime)
         
         genreLabel.text = displayedDetails.genres
         

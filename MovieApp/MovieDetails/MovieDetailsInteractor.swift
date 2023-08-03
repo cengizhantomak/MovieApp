@@ -14,6 +14,8 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func postToAddWatchlist()
     func postToRemoveWatchlist()
     func selectedMovieGetTicket(movie: String, image: String)
+    func formatRuntime(_ totalMinutes: Int) -> String
+    func toggleWatchlistStatus(_ details: MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieDetailsModels.FetchMovieDetails.ViewModel?
 }
 
 protocol MovieDetailsDataStore: AnyObject {
@@ -136,4 +138,28 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         selectedMovieImage = image
         presenter?.presentGetTicket()
     }
+    
+    func formatRuntime(_ totalMinutes: Int) -> String {
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        return "\(hours)hr \(minutes)m"
+    }
+    
+    func toggleWatchlistStatus(_ details: MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieDetailsModels.FetchMovieDetails.ViewModel? {
+        guard var displayedDetails = details else { return nil }
+
+        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
+            postToRemoveWatchlist()
+            if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {
+                displayedDetails.displayedWatchList.remove(at: index)
+            }
+        } else {
+            postToAddWatchlist()
+            let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
+            displayedDetails.displayedWatchList.append(watchlistItem)
+        }
+
+        return displayedDetails
+    }
+
 }

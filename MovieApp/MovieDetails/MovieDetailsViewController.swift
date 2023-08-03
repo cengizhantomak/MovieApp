@@ -138,20 +138,7 @@ final class MovieDetailsViewController: UIViewController {
     
     @IBAction func addRemoveWatchlistButtonTapped(_ sender: Any) {
         guard var displayedDetails else { return }
-        
-        if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
-            interactor?.postToRemoveWatchlist()
-            if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {
-                displayedDetails.displayedWatchList.remove(at: index)
-            }
-        } else {
-            interactor?.postToAddWatchlist()
-            let watchlistItem = MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: displayedDetails.id)
-            displayedDetails.displayedWatchList.append(watchlistItem)
-        }
-        
-        self.displayedDetails = displayedDetails
-//        updateWatchlistButtonTitle()
+        self.displayedDetails = interactor?.toggleWatchlistStatus(displayedDetails)
     }
     
     @objc func viewAllCastButton() {

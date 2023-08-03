@@ -113,12 +113,6 @@ final class MovieDetailsViewController: UIViewController {
         collectionView.register(.init(nibName: Constants.CellIdentifiers.photosSectionCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosSectionCell)
     }
     
-    private func formatRuntime(_ totalMinutes: Int) -> String {
-        let hours = totalMinutes / 60
-        let minutes = totalMinutes % 60
-        return "\(hours)hr \(minutes)m"
-    }
-    
 //    private func updateWatchlistButtonTitle() {
 //        guard let displayedDetails else { return }
 //
@@ -204,7 +198,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         
         titleLabel.text = displayedDetails.title
         
-        durationLabel.text = formatRuntime(displayedDetails.runtime)
+        durationLabel.text = interactor?.formatRuntime(displayedDetails.runtime)
         
         genreLabel.text = displayedDetails.genres
         

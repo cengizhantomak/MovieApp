@@ -14,6 +14,7 @@ protocol MovieDetailsBusinessLogic: AnyObject {
     func postToAddWatchlist()
     func postToRemoveWatchlist()
     func selectedMovieGetTicket(movie: String, image: String)
+    func formatRuntime(_ totalMinutes: Int) -> String
     func toggleWatchlistStatus(_ details: MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieDetailsModels.FetchMovieDetails.ViewModel?
 }
 
@@ -136,6 +137,12 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         selectedMovieTitle = movie
         selectedMovieImage = image
         presenter?.presentGetTicket()
+    }
+    
+    func formatRuntime(_ totalMinutes: Int) -> String {
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        return "\(hours)hr \(minutes)m"
     }
     
     func toggleWatchlistStatus(_ details: MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieDetailsModels.FetchMovieDetails.ViewModel? {

@@ -105,30 +105,33 @@ class MovieDetailsPresenterTest: XCTestCase {
     }
 }
 
-// MARK: - Mock VC
-
-final class MockMovieDetailsViewController: MovieDetailsDisplayLogic {
-    var isFetchedDetailsCalled = false
-    var isDisplayCastCalled = false
-    var isDisplayPhotosCalled = false
-    var isDisplayGetTicketCalled = false
+extension MovieDetailsPresenterTest {
     
-    var displayedDetails: MovieDetailsModels.FetchMovieDetails.ViewModel?
+    // MARK: - Mock VC
     
-    func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
-        displayedDetails = viewModel
-        isFetchedDetailsCalled = true
-    }
-    
-    func displayCast() {
-        isDisplayCastCalled = true
-    }
-    
-    func displayPhotos() {
-        isDisplayPhotosCalled = true
-    }
-    
-    func displayGetTicket() {
-        isDisplayGetTicketCalled = true
+    final class MockMovieDetailsViewController: MovieDetailsDisplayLogic {
+        var isFetchedDetailsCalled = false
+        var isDisplayCastCalled = false
+        var isDisplayPhotosCalled = false
+        var isDisplayGetTicketCalled = false
+        
+        var displayedDetails: MovieDetailsModels.FetchMovieDetails.ViewModel?
+        
+        func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
+            displayedDetails = viewModel
+            isFetchedDetailsCalled = true
+        }
+        
+        func displayCast() {
+            isDisplayCastCalled = true
+        }
+        
+        func displayPhotos() {
+            isDisplayPhotosCalled = true
+        }
+        
+        func displayGetTicket() {
+            isDisplayGetTicketCalled = true
+        }
     }
 }

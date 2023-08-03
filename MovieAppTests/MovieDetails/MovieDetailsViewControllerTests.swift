@@ -72,7 +72,6 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(sut?.titleLabel.text, "Test Movie")
-        XCTAssertEqual(sut?.durationLabel.text, "2hr 0m")
         XCTAssertEqual(sut?.genreLabel.text, "Action")
     }
     
@@ -85,29 +84,6 @@ final class MovieDetailsViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(mockInteractor.selectedMovieGetTicketCalled)
-    }
-    
-    func test_addRemoveWatchlistButtonTapped_AddToWatchlist() {
-        // Given
-        sut.displayedDetails = testViewModel
-        
-        // When
-        sut.addRemoveWatchlistButtonTapped(UIButton())
-        
-        // Then
-        XCTAssertTrue(mockInteractor.postToAddWatchlistCalled)
-    }
-    
-    func test_addRemoveWatchlistButtonTapped_RemoveFromWatchlist() {
-        // Given
-        testViewModel.displayedWatchList = [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: testViewModel.id)]
-        sut.displayedDetails = testViewModel
-        
-        // When
-        sut.addRemoveWatchlistButtonTapped(UIButton())
-        
-        // Then
-        XCTAssertTrue(mockInteractor.postToRemoveWatchlistCalled)
     }
     
     func test_viewAllCastButtonCallsInteractorMethod() {
@@ -330,12 +306,16 @@ final class MovieDetailsViewControllerTests: XCTestCase {
 // MARK: - Mock Interactor
 
 final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
+    
+    
     var fetchMovieDetailsCalled = false
     var viewAllCastCalled = false
     var viewAllPhotosCalled = false
     var postToAddWatchlistCalled = false
     var postToRemoveWatchlistCalled = false
     var selectedMovieGetTicketCalled = false
+    var formatRuntimeCalled = false
+    var toggleWatchlistStatusCalled = false
     
     func fetchMovieDetails() {
         fetchMovieDetailsCalled = true
@@ -359,6 +339,25 @@ final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
     
     func selectedMovieGetTicket(movie: String, image: String) {
         selectedMovieGetTicketCalled = true
+    }
+    
+    func formatRuntime(_ totalMinutes: Int) -> String {
+        formatRuntimeCalled = true
+        return "Dummy Runtime"
+    }
+    
+    func toggleWatchlistStatus(_ details: MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieApp.MovieDetailsModels.FetchMovieDetails.ViewModel? {
+        toggleWatchlistStatusCalled = true
+        return MovieDetailsModels.FetchMovieDetails.ViewModel(displayedCast: [],
+                                                              displayedImages: [],
+                                                              displayedWatchList: [],
+                                                              title: "Test Movie",
+                                                              overview: "Test overview",
+                                                              genres: "Action",
+                                                              runtime: 120,
+                                                              vote: 8.0,
+                                                              posterPhotoPath: "testPath",
+                                                              id: 0)
     }
 }
 

@@ -322,10 +322,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5i-M0-LMc">
-                                <rect key="frame" x="15" y="438" width="363" height="50"/>
+                                <rect key="frame" x="15" y="418" width="363" height="40"/>
                                 <color key="backgroundColor" name="2B3543"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="YTI-mV-DB1"/>
+                                    <constraint firstAttribute="height" constant="40" id="YTI-mV-DB1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <color key="tintColor" name="0F1B2B"/>
@@ -333,7 +333,7 @@
                                     <color key="titleColor" name="0F1B2B"/>
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system" imagePlacement="trailing" title="My Bank Card">
-                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                     <color key="baseForegroundColor" name="0F1B2B"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -352,7 +352,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0s-da-1Yh" customClass="RedButton" customModule="CustomButton">
-                                <rect key="frame" x="20" y="716" width="353" height="48"/>
+                                <rect key="frame" x="15" y="716" width="363" height="48"/>
                                 <color key="backgroundColor" name="0F1B2B"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="2Jo-7J-JwP"/>
@@ -366,17 +366,17 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-f4-fac">
-                                <rect key="frame" x="15" y="373" width="363" height="50"/>
+                                <rect key="frame" x="15" y="363" width="363" height="40"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="Dark Mode" translatesAutoresizingMaskIntoConstraints="NO" id="qxm-s3-DtX">
-                                        <rect key="frame" x="302" y="9.6666666666666856" width="51" height="31"/>
+                                        <rect key="frame" x="302" y="4.6666666666666856" width="51" height="31"/>
                                         <connections>
                                             <action selector="darkModeSwitch:" destination="N2E-ng-7xG" eventType="valueChanged" id="6Y6-Wv-gl2"/>
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVw-WY-t9X">
-                                        <rect key="frame" x="12" y="13" width="103" height="24"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                        <rect key="frame" x="12" y="9.9999999999999982" width="87.333333333333329" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" name="0F1B2B"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -387,7 +387,7 @@
                                     <constraint firstAttribute="trailing" secondItem="qxm-s3-DtX" secondAttribute="trailing" constant="12" id="Ck9-08-rUg"/>
                                     <constraint firstItem="OVw-WY-t9X" firstAttribute="centerY" secondItem="q6G-f4-fac" secondAttribute="centerY" id="SIH-58-lZD"/>
                                     <constraint firstItem="OVw-WY-t9X" firstAttribute="leading" secondItem="q6G-f4-fac" secondAttribute="leading" constant="12" id="kff-Zd-Zto"/>
-                                    <constraint firstAttribute="height" constant="50" id="m9h-LG-GCa"/>
+                                    <constraint firstAttribute="height" constant="40" id="m9h-LG-GCa"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
@@ -402,10 +402,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jX9-ig-85y">
-                                <rect key="frame" x="15" y="503" width="363" height="50"/>
+                                <rect key="frame" x="15" y="473" width="363" height="40"/>
                                 <color key="backgroundColor" name="2B3543"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="bIx-Mc-248"/>
+                                    <constraint firstAttribute="height" constant="40" id="bIx-Mc-248"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <color key="tintColor" name="0F1B2B"/>
@@ -413,7 +413,7 @@
                                     <color key="titleColor" name="0F1B2B"/>
                                 </state>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system" imagePlacement="trailing" title="LinkedIn">
-                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
+                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                     <color key="baseForegroundColor" name="0F1B2B"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -431,6 +431,36 @@
                                     <action selector="linkedInButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="rAI-x0-0jl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6S-cN-hJy">
+                                <rect key="frame" x="15" y="528" width="363" height="40"/>
+                                <color key="backgroundColor" name="2B3543"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nyN-NW-seO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                <color key="tintColor" name="0F1B2B"/>
+                                <state key="normal" title="my" image="Profile">
+                                    <color key="titleColor" name="0F1B2B"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system" imagePlacement="trailing" title="Mobven Video">
+                                    <fontDescription key="titleFontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                    <color key="baseForegroundColor" name="0F1B2B"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthForView">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorForView">
+                                        <color key="value" systemColor="systemGrayColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusForView">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="mobvenVideoButtonTapped:" destination="N2E-ng-7xG" eventType="touchUpInside" id="ZX2-V1-ohY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PzI-bp-cMJ"/>
                         <color key="backgroundColor" name="theme"/>
@@ -441,21 +471,24 @@
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="Emk-IM-Fje"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="jX9-ig-85y" secondAttribute="trailing" constant="15" id="F6m-Im-Njz"/>
                             <constraint firstItem="f5i-M0-LMc" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="HD1-G1-SvD"/>
-                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="Z0s-da-1Yh" secondAttribute="trailing" constant="20" id="HWl-FX-L1u"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="Z0s-da-1Yh" secondAttribute="trailing" constant="15" id="HWl-FX-L1u"/>
                             <constraint firstItem="jX9-ig-85y" firstAttribute="top" secondItem="f5i-M0-LMc" secondAttribute="bottom" constant="15" id="Hw7-s8-qRj"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="top" secondItem="D6b-Qi-oy5" secondAttribute="bottom" constant="10" id="RDL-x0-eqs"/>
                             <constraint firstItem="jX9-ig-85y" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="W9r-dA-0Bm"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="top" secondItem="PzI-bp-cMJ" secondAttribute="top" constant="25" id="bas-qe-2YE"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="RsN-6U-ecC" secondAttribute="trailing" constant="15" id="bpB-l8-Xza"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="f5i-M0-LMc" secondAttribute="trailing" constant="15" id="cSP-rv-qmh"/>
-                            <constraint firstItem="q6G-f4-fac" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="50" id="hwe-O7-nLf"/>
+                            <constraint firstItem="D6S-cN-hJy" firstAttribute="top" secondItem="jX9-ig-85y" secondAttribute="bottom" constant="15" id="eHR-CG-NaX"/>
+                            <constraint firstItem="q6G-f4-fac" firstAttribute="top" secondItem="RsN-6U-ecC" secondAttribute="bottom" constant="40" id="hwe-O7-nLf"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="lHQ-KO-zpw"/>
                             <constraint firstItem="RsN-6U-ecC" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="qzO-bb-ARC"/>
                             <constraint firstItem="q6G-f4-fac" firstAttribute="centerX" secondItem="RsN-6U-ecC" secondAttribute="centerX" id="r8n-d0-iE2"/>
-                            <constraint firstItem="Z0s-da-1Yh" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="20" id="sRf-0f-fNZ"/>
+                            <constraint firstItem="Z0s-da-1Yh" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="sRf-0f-fNZ"/>
                             <constraint firstItem="MUQ-tm-jaJ" firstAttribute="centerX" secondItem="52D-uL-iFb" secondAttribute="centerX" id="tlM-k6-cRV"/>
+                            <constraint firstItem="PzI-bp-cMJ" firstAttribute="trailing" secondItem="D6S-cN-hJy" secondAttribute="trailing" constant="15" id="udj-ap-LKg"/>
                             <constraint firstItem="q6G-f4-fac" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="uz0-gB-NBb"/>
                             <constraint firstItem="D6b-Qi-oy5" firstAttribute="top" secondItem="MUQ-tm-jaJ" secondAttribute="bottom" constant="15" id="xX8-MD-gbd"/>
+                            <constraint firstItem="D6S-cN-hJy" firstAttribute="leading" secondItem="PzI-bp-cMJ" secondAttribute="leading" constant="15" id="yoS-hk-uGs"/>
                             <constraint firstItem="PzI-bp-cMJ" firstAttribute="bottom" secondItem="Z0s-da-1Yh" secondAttribute="bottom" constant="5" id="zNK-xh-2cp"/>
                         </constraints>
                     </view>

@@ -107,6 +107,10 @@ final class ProfileViewController: UIViewController {
         router?.routeToLinkedIn()
     }
     
+    @IBAction func mobvenVideoButtonTapped(_ sender: Any) {
+        router?.routeToMobvenVideo()
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Log Out", message: "Are you sure you want to log out? All your data will be deleted!", preferredStyle: .alert)
 

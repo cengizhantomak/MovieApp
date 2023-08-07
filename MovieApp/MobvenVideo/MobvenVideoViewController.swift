@@ -84,11 +84,11 @@ final class MobvenVideoViewController: UIViewController {
     }
     
     @IBAction func forwardButtonTapped(_ sender: UIButton) {
-        interactor?.moveForward(player: player)
+        interactor?.moveForwardOrBackward(player: player, seconds: 5)
     }
     
     @IBAction func backwardButtonTapped(_ sender: UIButton) {
-        interactor?.moveBackward(player: player)
+        interactor?.moveForwardOrBackward(player: player, seconds: -5)
     }
 }
 

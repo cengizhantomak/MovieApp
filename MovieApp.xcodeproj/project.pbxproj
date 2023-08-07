@@ -211,6 +211,14 @@
 		47E8EA9A2A780797005468E1 /* MovieDetailsRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8EA992A780797005468E1 /* MovieDetailsRouterTests.swift */; };
 		47E8EA9C2A780D77005468E1 /* MovieDetailsWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E8EA9B2A780D77005468E1 /* MovieDetailsWorkerTests.swift */; };
 		47EFB7062A7A857500E916D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EFB7052A7A857500E916D6 /* Constants.swift */; };
+		47F2E4522A8103FD00A4CCF0 /* MobvenVideoModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E4492A8103FD00A4CCF0 /* MobvenVideoModels.swift */; };
+		47F2E4532A8103FD00A4CCF0 /* MobvenVideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E44A2A8103FD00A4CCF0 /* MobvenVideoPresenter.swift */; };
+		47F2E4542A8103FD00A4CCF0 /* Mobven.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 47F2E44C2A8103FD00A4CCF0 /* Mobven.mp4 */; };
+		47F2E4552A8103FD00A4CCF0 /* MobvenVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E44D2A8103FD00A4CCF0 /* MobvenVideoViewController.swift */; };
+		47F2E4562A8103FD00A4CCF0 /* MobvenVideoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E44E2A8103FD00A4CCF0 /* MobvenVideoWorker.swift */; };
+		47F2E4572A8103FD00A4CCF0 /* MobvenVideoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E44F2A8103FD00A4CCF0 /* MobvenVideoRouter.swift */; };
+		47F2E4582A8103FD00A4CCF0 /* MobvenVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F2E4502A8103FD00A4CCF0 /* MobvenVideo.storyboard */; };
+		47F2E4592A8103FD00A4CCF0 /* MobvenVideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -431,6 +439,14 @@
 		47E8EA992A780797005468E1 /* MovieDetailsRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRouterTests.swift; sourceTree = "<group>"; };
 		47E8EA9B2A780D77005468E1 /* MovieDetailsWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsWorkerTests.swift; sourceTree = "<group>"; };
 		47EFB7052A7A857500E916D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47F2E4492A8103FD00A4CCF0 /* MobvenVideoModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoModels.swift; sourceTree = "<group>"; };
+		47F2E44A2A8103FD00A4CCF0 /* MobvenVideoPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoPresenter.swift; sourceTree = "<group>"; };
+		47F2E44C2A8103FD00A4CCF0 /* Mobven.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mobven.mp4; sourceTree = "<group>"; };
+		47F2E44D2A8103FD00A4CCF0 /* MobvenVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoViewController.swift; sourceTree = "<group>"; };
+		47F2E44E2A8103FD00A4CCF0 /* MobvenVideoWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoWorker.swift; sourceTree = "<group>"; };
+		47F2E44F2A8103FD00A4CCF0 /* MobvenVideoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoRouter.swift; sourceTree = "<group>"; };
+		47F2E4502A8103FD00A4CCF0 /* MobvenVideo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MobvenVideo.storyboard; sourceTree = "<group>"; };
+		47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +916,7 @@
 				47C989232A6A6CE4000EC6E0 /* MyBankCards */,
 				4721282D2A6430440019DFEC /* AddBankCard */,
 				47BE72312A75A83B000F8F34 /* LinkedIn */,
+				47F2E4482A8103FD00A4CCF0 /* MobvenVideo */,
 				476DBC692A57159400539FE3 /* WatchList */,
 				47D8B2EB2A496AE6003CFE2D /* Movies */,
 				470B8E5F2A69C13B00A47C99 /* TicketPage */,
@@ -1015,6 +1032,29 @@
 				47EFB7052A7A857500E916D6 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		47F2E4482A8103FD00A4CCF0 /* MobvenVideo */ = {
+			isa = PBXGroup;
+			children = (
+				47F2E44B2A8103FD00A4CCF0 /* Video */,
+				47F2E44D2A8103FD00A4CCF0 /* MobvenVideoViewController.swift */,
+				47F2E44A2A8103FD00A4CCF0 /* MobvenVideoPresenter.swift */,
+				47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */,
+				47F2E4492A8103FD00A4CCF0 /* MobvenVideoModels.swift */,
+				47F2E44E2A8103FD00A4CCF0 /* MobvenVideoWorker.swift */,
+				47F2E44F2A8103FD00A4CCF0 /* MobvenVideoRouter.swift */,
+				47F2E4502A8103FD00A4CCF0 /* MobvenVideo.storyboard */,
+			);
+			path = MobvenVideo;
+			sourceTree = "<group>";
+		};
+		47F2E44B2A8103FD00A4CCF0 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				47F2E44C2A8103FD00A4CCF0 /* Mobven.mp4 */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1143,12 +1183,14 @@
 				47D8B3042A4978C0003CFE2D /* MovieDetails.storyboard in Resources */,
 				4798A4392A3F5B8A00F0C19D /* SF-Pro-Text-Thin.otf in Resources */,
 				47D1BC2F2A3F40BA001A2622 /* Main.storyboard in Resources */,
+				47F2E4542A8103FD00A4CCF0 /* Mobven.mp4 in Resources */,
 				477535562A767E600008BC9C /* ResetPassword.storyboard in Resources */,
 				4798A43D2A3F5B8A00F0C19D /* SF-Pro-Text-Ultralight.otf in Resources */,
 				47E612322A55577300E85A11 /* PhotosCollectionViewCell.xib in Resources */,
 				4798A4362A3F5B8A00F0C19D /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
 				4798A4432A3F5B8A00F0C19D /* SF-Pro-Text-Heavy.otf in Resources */,
 				47E612272A5556FD00E85A11 /* Photos.storyboard in Resources */,
+				47F2E4582A8103FD00A4CCF0 /* MobvenVideo.storyboard in Resources */,
 				4798A43C2A3F5B8A00F0C19D /* SF-Pro-Text-BlackItalic.otf in Resources */,
 				47C9892B2A6A6D4C000EC6E0 /* MyBankCards.storyboard in Resources */,
 				472267232A4EC13700784729 /* CastCrew.storyboard in Resources */,
@@ -1209,6 +1251,7 @@
 				478B29532A597CF50075BE9E /* ProfileRouter.swift in Sources */,
 				478B294F2A597CF50075BE9E /* ProfilePresenter.swift in Sources */,
 				477C84D12A66A59C005EF3BC /* TicketsRouter.swift in Sources */,
+				47F2E4552A8103FD00A4CCF0 /* MobvenVideoViewController.swift in Sources */,
 				477C84C02A6539A4005EF3BC /* CongratsModels.swift in Sources */,
 				4775354D2A7674260008BC9C /* SignUpRouter.swift in Sources */,
 				47BE72302A757BE6000F8F34 /* KeyChainHelper.swift in Sources */,
@@ -1236,10 +1279,12 @@
 				4773F84A2A61934A00CF4C8D /* ChooseSeatInteractor.swift in Sources */,
 				47C9892F2A6A6D4C000EC6E0 /* MyBankCardsModels.swift in Sources */,
 				4721283B2A64306D0019DFEC /* AddBankCardRouter.swift in Sources */,
+				47F2E4572A8103FD00A4CCF0 /* MobvenVideoRouter.swift in Sources */,
 				47E6122A2A5556FD00E85A11 /* PhotosInteractor.swift in Sources */,
 				4721282A2A62E5DC0019DFEC /* PaymentModels.swift in Sources */,
 				479BCB352A6BEBC6004F2539 /* LoginModels.swift in Sources */,
 				4773F8492A61934A00CF4C8D /* ChooseSeatPresenter.swift in Sources */,
+				47F2E4522A8103FD00A4CCF0 /* MobvenVideoModels.swift in Sources */,
 				47E6122C2A5556FD00E85A11 /* PhotosWorker.swift in Sources */,
 				477C84BE2A6539A4005EF3BC /* CongratsPresenter.swift in Sources */,
 				477535582A767E600008BC9C /* ResetPasswordPresenter.swift in Sources */,
@@ -1268,10 +1313,12 @@
 				472267242A4EC13700784729 /* CastCrewViewController.swift in Sources */,
 				47BE723A2A75A886000F8F34 /* LinkedInViewController.swift in Sources */,
 				47D2169C2A53684D00B9CA98 /* MovieCollectionViewCell.swift in Sources */,
+				47F2E4592A8103FD00A4CCF0 /* MobvenVideoInteractor.swift in Sources */,
 				47B3E3D62A6B0EB70054AC4A /* VideosViewController.swift in Sources */,
 				47D8B30E2A497A28003CFE2D /* CastTableViewCell.swift in Sources */,
 				47C989312A6A6D4C000EC6E0 /* MyBankCardsRouter.swift in Sources */,
 				47D8B2E92A4969E0003CFE2D /* HTTPClient.swift in Sources */,
+				47F2E4562A8103FD00A4CCF0 /* MobvenVideoWorker.swift in Sources */,
 				479BCB332A6BEBC6004F2539 /* LoginPresenter.swift in Sources */,
 				47C9892D2A6A6D4C000EC6E0 /* MyBankCardsPresenter.swift in Sources */,
 				479CD12A2A66E28700F161C8 /* TicketsCollectionViewCell.swift in Sources */,
@@ -1307,6 +1354,7 @@
 				47C9892E2A6A6D4C000EC6E0 /* MyBankCardsInteractor.swift in Sources */,
 				47D8B3062A4978C0003CFE2D /* MovieDetailsPresenter.swift in Sources */,
 				4773F84B2A61934A00CF4C8D /* ChooseSeatModels.swift in Sources */,
+				47F2E4532A8103FD00A4CCF0 /* MobvenVideoPresenter.swift in Sources */,
 				470B8E662A69C18900A47C99 /* TicketsViewController.swift in Sources */,
 				4722671A2A4E205B00784729 /* SectionHeader.swift in Sources */,
 				477C84C22A6539A4005EF3BC /* CongratsRouter.swift in Sources */,

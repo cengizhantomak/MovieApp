@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22146" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nxe-uw-h5I">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22122"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mobven Video View Controller-->
+        <scene sceneID="D3m-6j-bBI">
+            <objects>
+                <viewController storyboardIdentifier="MobvenVideoViewController" id="nxe-uw-h5I" customClass="MobvenVideoViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chM-je-gA4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcV-8J-BhN">
+                                <rect key="frame" x="0.0" y="198" width="414" height="233"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HcV-8J-BhN" secondAttribute="height" multiplier="16:9" id="Hsp-fX-ood"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WT2-No-bE0">
+                                <rect key="frame" x="185.5" y="481" width="43.5" height="34"/>
+                                <color key="tintColor" name="buttonRed"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="playPauseButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="ex0-QU-Dma"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRz-VX-28Z">
+                                <rect key="frame" x="50" y="481" width="56" height="34"/>
+                                <color key="tintColor" name="buttonRed"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="backward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="backwardButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="3iZ-qY-WYR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hl-yn-YhU">
+                                <rect key="frame" x="308" y="481" width="56" height="34"/>
+                                <color key="tintColor" name="buttonRed"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="forward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="forwardButtonTapped:" destination="nxe-uw-h5I" eventType="touchUpInside" id="qbP-rb-hMv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hRz-VX-28Z" firstAttribute="top" secondItem="HcV-8J-BhN" secondAttribute="bottom" constant="50" id="58v-ex-B53"/>
+                            <constraint firstItem="HcV-8J-BhN" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" id="SpN-md-rII"/>
+                            <constraint firstItem="WT2-No-bE0" firstAttribute="top" secondItem="HcV-8J-BhN" secondAttribute="bottom" constant="50" id="g98-6r-qZ5"/>
+                            <constraint firstItem="hRz-VX-28Z" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="50" id="gBQ-mo-R1n"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="8hl-yn-YhU" secondAttribute="trailing" constant="50" id="mqK-4s-7Do"/>
+                            <constraint firstItem="WT2-No-bE0" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="nrF-q0-jGX"/>
+                            <constraint firstItem="HcV-8J-BhN" firstAttribute="centerX" secondItem="chM-je-gA4" secondAttribute="centerX" id="pMP-b7-KhJ"/>
+                            <constraint firstItem="HcV-8J-BhN" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="150" id="tCV-6a-E84"/>
+                            <constraint firstItem="8hl-yn-YhU" firstAttribute="top" secondItem="HcV-8J-BhN" secondAttribute="bottom" constant="50" id="u8X-hw-jPD"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="HcV-8J-BhN" secondAttribute="trailing" id="xhI-RG-IU0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playPauseButton" destination="WT2-No-bE0" id="oXp-Ug-EtQ"/>
+                        <outlet property="videoPlayerView" destination="HcV-8J-BhN" id="97I-lL-Wio"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="107" y="28"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backward.fill" catalog="system" width="128" height="77"/>
+        <image name="forward.fill" catalog="system" width="128" height="77"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <namedColor name="buttonRed">
+            <color red="0.89999997615814209" green="0.10000000149011612" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

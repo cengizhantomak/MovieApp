@@ -12,7 +12,7 @@ import CoreData
 protocol AddBankCardBusinessLogic: AnyObject {
     func saveBankCard(cardName: String, cardNumber: String, expiryDate: String, cvv: String, viewController: UIViewController)
     func shouldChangeCharactersInTextField(textField: UITextField, range: NSRange, string: String) -> Bool
-    func handleTextFieldChange(textFields: [UITextField], button: UIButton)
+    func textFieldDidChangeSelection(textFields: [UITextField], button: UIButton)
 }
 
 protocol AddBankCardDataStore: AnyObject {
@@ -212,7 +212,7 @@ final class AddBankCardInteractor: AddBankCardBusinessLogic, AddBankCardDataStor
         return allowedCharacters.isSuperset(of: characterSet)
     }
     
-    func handleTextFieldChange(textFields: [UITextField], button: UIButton) {
+    func textFieldDidChangeSelection(textFields: [UITextField], button: UIButton) {
         guard let nameCardText = textFields[0].text, !nameCardText.isEmpty,
               let cardNumberText = textFields[1].text, cardNumberText.count == 19,
               let dateExpireText = textFields[2].text, dateExpireText.count == 5,

@@ -108,7 +108,7 @@ extension AddBankCardViewController: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        interactor?.handleTextFieldChange(textFields: [nameCardTextField,
+        interactor?.textFieldDidChangeSelection(textFields: [nameCardTextField,
                                                        cardNumberTextField,
                                                        dateExpireTextField,
                                                        cvvTextField],

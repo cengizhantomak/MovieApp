@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 protocol GetTicketBusinessLogic: AnyObject {
     func getMovie()
     func selectedDateTheater(date: String, time: String, theater: String)
     func getDateRange(days: Int) -> (minDate: Date, maxDate: Date)
+    func textFieldDidChangeSelection(textFields: [UITextField], button: UIButton)
 }
 
 protocol GetTicketDataStore: AnyObject {
@@ -40,5 +42,18 @@ final class GetTicketInteractor: GetTicketBusinessLogic, GetTicketDataStore {
         let currentDate = Date()
         let futureDate = Calendar.current.date(byAdding: .day, value: days, to: currentDate) ?? currentDate
         return (currentDate, futureDate)
+    }
+    
+    func textFieldDidChangeSelection(textFields: [UITextField], button: UIButton) {
+        guard let dateTextField = textFields[0].text, !dateTextField.isEmpty,
+              let timeTextField = textFields[1].text, !timeTextField.isEmpty,
+              let theatreTextField = textFields[2].text, !theatreTextField.isEmpty else {
+            button.isEnabled = false
+            button.backgroundColor = .systemGray
+            return
+        }
+        
+        button.isEnabled = true
+        button.backgroundColor = UIColor(named: "buttonRed")
     }
 }

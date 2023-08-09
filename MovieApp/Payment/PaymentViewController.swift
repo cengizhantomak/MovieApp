@@ -83,9 +83,13 @@ final class PaymentViewController: UIViewController {
     
     private func setupTextField() {
         nameCardTextField.delegate = self
+        nameCardTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.nameCardTextField
         cardNumberTextField.delegate = self
+        cardNumberTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.cardNumberTextField
         dateExpireTextField.delegate = self
+        dateExpireTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.dateExpireTextField
         cvvTextField.delegate = self
+        cvvTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.cvvTextField
     }
     
     private func setupButtonUI() {

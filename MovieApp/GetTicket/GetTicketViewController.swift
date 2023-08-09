@@ -52,6 +52,7 @@ final class GetTicketViewController: UIViewController {
         
         interactor?.getMovie()
         setupTextField()
+        setupPicker()
         setupDismissKeyboardOnTap()
         setupButtonUI()
     }
@@ -73,6 +74,18 @@ final class GetTicketViewController: UIViewController {
     
     private func setupTextField() {
         dateTextField.delegate = self
+        timeTextField.delegate = self
+        theatreTextField.delegate = self
+    }
+    
+    private func setupPicker() {
+        setupDatePicker()
+        setupTimePicker()
+        setupTheatrePicker()
+        setupToolbar()
+    }
+    
+    private func setupDatePicker() {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         if #available (iOS 13.4, *) {
@@ -80,25 +93,26 @@ final class GetTicketViewController: UIViewController {
         }
         
         // Tarih aralığını belirlemek için minimumDate ve maximumDate'i ayarla
-        let currentDate = Date()
-        datePicker.minimumDate = currentDate
-        
-        let thirtyDaysFromNow = Calendar.current.date(byAdding: .day, value: 90, to: currentDate)
-        datePicker.maximumDate = thirtyDaysFromNow
+        guard let dateRange = interactor?.getDateRange(days: 90) else { return }
+        datePicker.minimumDate = dateRange.minDate
+        datePicker.maximumDate = dateRange.maxDate
         
         dateTextField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
-        
-        let pickerView = UIPickerView()
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        timeTextField.delegate = self
-        theatreTextField.delegate = self
-        timeTextField.inputView = pickerView
-        theatreTextField.inputView = pickerView
-        
-        setupToolbar()
+    }
+    
+    private func setupTimePicker() {
+        let timePickerView = UIPickerView()
+        timePickerView.dataSource = self
+        timePickerView.delegate = self
+        timeTextField.inputView = timePickerView
+    }
+    
+    private func setupTheatrePicker() {
+        let theatrePickerView = UIPickerView()
+        theatrePickerView.dataSource = self
+        theatrePickerView.delegate = self
+        theatreTextField.inputView = theatrePickerView
     }
     
     private func setupToolbar() {

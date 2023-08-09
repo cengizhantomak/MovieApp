@@ -10,6 +10,7 @@ import Foundation
 protocol GetTicketBusinessLogic: AnyObject {
     func getMovie()
     func selectedDateTheater(date: String, time: String, theater: String)
+    func getDateRange(days: Int) -> (minDate: Date, maxDate: Date)
 }
 
 protocol GetTicketDataStore: AnyObject {
@@ -33,5 +34,11 @@ final class GetTicketInteractor: GetTicketBusinessLogic, GetTicketDataStore {
         ticketDetails?.selectedTime = time
         ticketDetails?.selectedTheater = theater
         presenter?.presentDateTheater()
+    }
+    
+    func getDateRange(days: Int) -> (minDate: Date, maxDate: Date) {
+        let currentDate = Date()
+        let futureDate = Calendar.current.date(byAdding: .day, value: days, to: currentDate) ?? currentDate
+        return (currentDate, futureDate)
     }
 }

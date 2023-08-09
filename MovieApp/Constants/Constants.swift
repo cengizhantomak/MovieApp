@@ -25,4 +25,10 @@ public enum Constants {
         static let movieSectionHeader = "MovieCollectionReusableView"
         static let movieDetailsSectionHeader = "SectionHeader"
     }
+    public enum textFieldAccessibilityIdentifier {
+        static let nameCardTextField = "nameCardTextField"
+        static let cardNumberTextField = "cardNumberTextField"
+        static let dateExpireTextField = "dateExpireTextField"
+        static let cvvTextField = "cvvTextField"
+    }
 }

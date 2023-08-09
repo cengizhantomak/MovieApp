@@ -67,9 +67,13 @@ final class AddBankCardViewController: UIViewController {
     
     private func setupTextField() {
         nameCardTextField.delegate = self
+        nameCardTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.nameCardTextField
         cardNumberTextField.delegate = self
+        cardNumberTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.cardNumberTextField
         dateExpireTextField.delegate = self
+        dateExpireTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.dateExpireTextField
         cvvTextField.delegate = self
+        cvvTextField.accessibilityIdentifier = Constants.textFieldAccessibilityIdentifier.cvvTextField
     }
     
     private func setupButtonUI() {
@@ -82,9 +86,9 @@ final class AddBankCardViewController: UIViewController {
     
     @IBAction func addCardButtonTapped(_ sender: Any) {
         guard let cardName = nameCardTextField.text,
-                  let cardNumber = cardNumberTextField.text,
-                  let expiryDate = dateExpireTextField.text,
-                  let cvv = cvvTextField.text else { return }
+              let cardNumber = cardNumberTextField.text,
+              let expiryDate = dateExpireTextField.text,
+              let cvv = cvvTextField.text else { return }
         
         interactor?.saveBankCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv, viewController: self)
     }
@@ -100,133 +104,14 @@ extension AddBankCardViewController: AddBankCardDisplayLogic {
 
 extension AddBankCardViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == nameCardTextField {
-            let currentText = textField.text ?? ""
-            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
-            textField.text = updatedText.uppercased()
-            return false
-        }
-        
-        if textField == cardNumberTextField {
-            let previousText = textField.text ?? ""
-            let updatedText = (previousText as NSString).replacingCharacters(in: range, with: string)
-            
-            // Kullanıcının sadece rakam girmesini sağlamak için kontrol ediyoruz
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            if !allowedCharacters.isSuperset(of: characterSet) {
-                return false
-            }
-            
-            // Önceki tüm biçimlendirmeleri kaldırın
-            let strippedCardNumber = updatedText.replacingOccurrences(of: " ", with: "")
-            
-            // Yeni string 16 basamaktan uzun olacaksa, reddedin
-            if strippedCardNumber.count > 16 {
-                return false
-            }
-            
-            // Kart numarasını biçimlendirin
-            var formattedCardNumber = ""
-            let chunkSize = 4
-            let formattedIndices = stride(from: 0, to: strippedCardNumber.count, by: chunkSize)
-            for index in formattedIndices {
-                let startIndex = strippedCardNumber.index(strippedCardNumber.startIndex, offsetBy: index)
-                let endIndex = strippedCardNumber.index(startIndex, offsetBy: chunkSize, limitedBy: strippedCardNumber.endIndex) ?? strippedCardNumber.endIndex
-                let chunk = strippedCardNumber[startIndex..<endIndex]
-                formattedCardNumber += "\(chunk) "
-            }
-            
-            // Varsa, sondaki boşluğu kaldırın
-            formattedCardNumber = formattedCardNumber.trimmingCharacters(in: .whitespaces)
-            
-            textField.text = formattedCardNumber
-            return false
-        }
-        
-        if textField == dateExpireTextField {
-            let previousText = textField.text ?? ""
-            let updatedText = (previousText as NSString).replacingCharacters(in: range, with: string)
-            
-            // Kullanıcının sadece rakam girmesini sağlamak için kontrol ediyoruz
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            if !allowedCharacters.isSuperset(of: characterSet) {
-                return false
-            }
-            
-            // Önceki tüm biçimlendirmeleri kaldırın
-            let strippedExpirationDate = updatedText.replacingOccurrences(of: "/", with: "")
-            
-            // Yeni string 4 basamaktan uzun olacaksa, reddedin
-            if strippedExpirationDate.count > 4 {
-                return false
-            }
-            
-            // Ayın 01 ile 12 arasında olduğundan emin olun
-            if strippedExpirationDate.count >= 2 {
-                let monthString = String(strippedExpirationDate.prefix(2))
-                if let month = Int(monthString), month < 1 || month > 12 {
-                    return false
-                }
-            }
-            
-            // Yılın 23 ile 30 arasında olduğundan emin olun
-            if strippedExpirationDate.count == 4 {
-                let yearString = String(strippedExpirationDate.suffix(2))
-                if let year = Int(yearString), year < 23 || year > 39 {
-                    return false
-                }
-            }
-            
-            var formattedExpirationDate = ""
-            for (index, character) in strippedExpirationDate.enumerated() {
-                // 2 basamaktan sonra eğik çizgi ekleyin
-                if index == 2 {
-                    formattedExpirationDate.append("/")
-                }
-                formattedExpirationDate.append(character)
-            }
-            
-            textField.text = formattedExpirationDate
-            return false
-        }
-        
-        if textField == cvvTextField {
-            // Kullanıcının sadece rakam girmesini sağlamak için kontrol ediyoruz
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            if !allowedCharacters.isSuperset(of: characterSet) {
-                return false
-            }
-            
-            // Yeni metni alıyoruz ve karakter sayısını kontrol ediyoruz
-            if let text = textField.text,
-               let textRange = Range(range, in: text) {
-                let updatedText = text.replacingCharacters(in: textRange, with: string)
-                let cvvCount = updatedText.count
-                
-                // Sadece 3 rakam girilmesini sağlamak için kontrol ediyoruz
-                if cvvCount > 3 {
-                    return false
-                }
-            }
-        }
-        return true
+        return interactor?.shouldChangeCharactersInTextField(textField: textField, range: range, string: string) ?? true
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let nameCardText = nameCardTextField.text, !nameCardText.isEmpty,
-              let cardNumberText = cardNumberTextField.text, cardNumberText.count == 19,
-              let dateExpireText = dateExpireTextField.text, dateExpireText.count == 5,
-              let cvvText = cvvTextField.text, cvvText.count == 3 else {
-            addCardButton.isEnabled = false
-            addCardButton.backgroundColor = .systemGray
-            return
-        }
-        
-        addCardButton.isEnabled = true
-        addCardButton.backgroundColor = UIColor(named: "buttonRed")
+        interactor?.handleTextFieldChange(textFields: [nameCardTextField,
+                                                       cardNumberTextField,
+                                                       dateExpireTextField,
+                                                       cvvTextField],
+                                          button: addCardButton)
     }
 }

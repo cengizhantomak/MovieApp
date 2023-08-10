@@ -22,10 +22,8 @@ final class MoviesRouter: MoviesRoutingLogic, MoviesDataPassing {
     var dataStore: MoviesDataStore?
     
     func routeToMovieDetails() {
-        let storyboard = UIStoryboard(name: "MovieDetails", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController,
-        let dataStore else { return }
+        guard let destinationVC: MovieDetailsViewController = StoryboardHelper.instantiateViewController(withIdentifier: "MovieDetailsViewController", fromStoryboard: "MovieDetails"),
+              let dataStore else { return }
         
         destinationVC.router?.dataStore?.selectedMovieID = dataStore.selectedMovieId
         destinationVC.loadViewIfNeeded()

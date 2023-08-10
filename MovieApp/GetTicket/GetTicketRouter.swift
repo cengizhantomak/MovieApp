@@ -22,9 +22,7 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
     var dataStore: GetTicketDataStore?
     
     func routeToChooseSeat() {
-        let storyboard = UIStoryboard(name: "ChooseSeat", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChooseSeatViewController") as? ChooseSeatViewController,
+        guard let destinationVC: ChooseSeatViewController = StoryboardHelper.instantiateViewController(withIdentifier: "ChooseSeatViewController", fromStoryboard: "ChooseSeat"),
               let dataStore,
               let chooseSeatDataStore = destinationVC.router?.dataStore else { return }
         
@@ -33,8 +31,7 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
             selectedMovieImage: dataStore.ticketDetails?.selectedMovieImage,
             selectedDate: dataStore.ticketDetails?.selectedDate,
             selectedTime: dataStore.ticketDetails?.selectedTime,
-            selectedTheater: dataStore.ticketDetails?.selectedTheater
-        )
+            selectedTheater: dataStore.ticketDetails?.selectedTheater)
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)

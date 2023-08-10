@@ -25,18 +25,14 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
     var dataStore: ProfileDataStore?
     
     func routeToMyBankCards() {
-        let storyboard = UIStoryboard(name: "MyBankCards", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyBankCardsViewController") as? MyBankCardsViewController else { return }
+        guard let destinationVC: MyBankCardsViewController = StoryboardHelper.instantiateViewController(withIdentifier: "MyBankCardsViewController", fromStoryboard: "MyBankCards") else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToLinkedIn() {
-        let storyboard = UIStoryboard(name: "LinkedIn", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "LinkedInViewController") as? LinkedInViewController else { return }
+        guard let destinationVC: LinkedInViewController = StoryboardHelper.instantiateViewController(withIdentifier: "LinkedInViewController", fromStoryboard: "LinkedIn") else { return }
         
         destinationVC.hidesBottomBarWhenPushed = true
         destinationVC.loadViewIfNeeded()
@@ -44,9 +40,7 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
     }
     
     func routeToMobvenVideo() {
-        let storyboard = UIStoryboard(name: "MobvenVideo", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MobvenVideoViewController") as? MobvenVideoViewController else { return }
+        guard let destinationVC: MobvenVideoViewController = StoryboardHelper.instantiateViewController(withIdentifier: "MobvenVideoViewController", fromStoryboard: "MobvenVideo") else { return }
         
         destinationVC.hidesBottomBarWhenPushed = true
         destinationVC.loadViewIfNeeded()
@@ -54,8 +48,7 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
     }
     
     func routeToLoginScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
+        guard let loginVC: LoginViewController = StoryboardHelper.instantiateViewController(withIdentifier: "LoginViewController", fromStoryboard: "Main"),
               let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
               let window = windowScene.windows.first else { return }
         

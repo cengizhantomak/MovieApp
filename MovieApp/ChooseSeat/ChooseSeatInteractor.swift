@@ -11,7 +11,10 @@ import UIKit
 protocol ChooseSeatBusinessLogic: AnyObject {
     func getMovie()
     func selectedSeatPrice(seat: [String], price: Double)
-    func fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request)
+    func fetchTickets()
+    func filterUnavailableSeats(seatFilter: [ChooseSeatModels.FetchChooseSeat.ViewModel.DisplayedTicket]) -> [String]
+    func updateViewComponents(displayedSeatData: ChooseSeatModels.FetchChooseSeat.SeatDataModel.SeatData)
+    func getSeatValue(for indexPath: IndexPath, row: [String], seat: [Int]) -> String
 }
 
 protocol ChooseSeatDataStore: AnyObject {
@@ -25,7 +28,7 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
     
     var seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel?
     
-    func fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request) {
+    func fetchTickets() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
@@ -47,5 +50,33 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
         seatDetails?.chooseSeat = seat
         seatDetails?.totalAmount = price
         presenter?.presentSeatPrice()
+    }
+    
+    func filterUnavailableSeats(seatFilter: [ChooseSeatModels.FetchChooseSeat.ViewModel.DisplayedTicket]) -> [String] {
+        return seatFilter.filter {
+            $0.title == seatDetails?.selectedMovieTitle &&
+            $0.date == seatDetails?.selectedDate &&
+            $0.time == seatDetails?.selectedTime &&
+            $0.theatre == seatDetails?.selectedTheater
+        }.flatMap { $0.seat?.components(separatedBy: ", ") ?? [] }
+    }
+    
+    func updateViewComponents(displayedSeatData: ChooseSeatModels.FetchChooseSeat.SeatDataModel.SeatData) {
+        var selectedSeats = displayedSeatData.selectedSeats
+        selectedSeats.sort()
+        
+        let totalAmount = Double(displayedSeatData.selectedSeats.count) * 18.00
+        presenter?.presentUpdatedViewComponents(selectedSeats: selectedSeats, totalAmount: totalAmount)
+    }
+    
+    func getSeatValue(for indexPath: IndexPath, row: [String], seat: [Int]) -> String {
+        var combined = [String]()
+        row.forEach { letter in
+            seat.forEach { number in
+                combined.append("\(letter)\(number)")
+            }
+        }
+        
+        return combined[indexPath.row]
     }
 }

@@ -23,7 +23,7 @@ final class ChooseSeatRouter: ChooseSeatRoutingLogic, ChooseSeatDataPassing {
     var dataStore: ChooseSeatDataStore?
     
     func routeToPayment() {
-        guard let destinationVC: PaymentViewController = StoryboardHelper.instantiateViewController(withIdentifier: "PaymentViewController", fromStoryboard: "Payment"),
+        guard let destinationVC: PaymentViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.paymentViewController, fromStoryboard: Constants.StoryboardName.payment),
               let dataStore,
               let paymentDataStore = destinationVC.router?.dataStore else { return }
         

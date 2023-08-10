@@ -22,7 +22,7 @@ final class WatchlistRouter: WatchlistRoutingLogic, WatchlistDataPassing {
     var dataStore: WatchlistDataStore?
     
     func routeToMovieDetails() {
-        guard let destinationVC: MovieDetailsViewController = StoryboardHelper.instantiateViewController(withIdentifier: "MovieDetailsViewController", fromStoryboard: "MovieDetails"),
+        guard let destinationVC: MovieDetailsViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.movieDetailsViewController, fromStoryboard: Constants.StoryboardName.movieDetails),
               let dataStore else { return }
         
         destinationVC.router?.dataStore?.selectedMovieID = dataStore.selectedMovieId

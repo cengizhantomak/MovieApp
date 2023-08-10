@@ -25,7 +25,7 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     
     func routeToApp() {
         DispatchQueue.main.async {
-            guard let tabBarController: UITabBarController = StoryboardHelper.instantiateViewController(withIdentifier: "TabBarController", fromStoryboard: "Main"),
+            guard let tabBarController: UITabBarController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.tabBarController, fromStoryboard: Constants.StoryboardName.main),
                   let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let delegate = windowScene.delegate as? SceneDelegate,
                   let window = delegate.window else { return }
@@ -37,14 +37,14 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     }
     
     func routeToSignUp() {
-        guard let destinationVC: SignUpViewController = StoryboardHelper.instantiateViewController(withIdentifier: "SignUpViewController", fromStoryboard: "SignUp") else { return }
+        guard let destinationVC: SignUpViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.signUpViewController, fromStoryboard: Constants.StoryboardName.signUp) else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)
     }
     
     func routeToResetPassword() {
-        guard let destinationVC: ResetPasswordViewController = StoryboardHelper.instantiateViewController(withIdentifier: "ResetPasswordViewController", fromStoryboard: "ResetPassword") else { return }
+        guard let destinationVC: ResetPasswordViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.resetPasswordViewController, fromStoryboard: Constants.StoryboardName.resetPassword) else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)

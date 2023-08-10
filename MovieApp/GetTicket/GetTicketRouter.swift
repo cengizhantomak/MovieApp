@@ -22,7 +22,7 @@ final class GetTicketRouter: GetTicketRoutingLogic, GetTicketDataPassing {
     var dataStore: GetTicketDataStore?
     
     func routeToChooseSeat() {
-        guard let destinationVC: ChooseSeatViewController = StoryboardHelper.instantiateViewController(withIdentifier: "ChooseSeatViewController", fromStoryboard: "ChooseSeat"),
+        guard let destinationVC: ChooseSeatViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.chooseSeatViewController, fromStoryboard: Constants.StoryboardName.chooseSeat),
               let dataStore,
               let chooseSeatDataStore = destinationVC.router?.dataStore else { return }
         

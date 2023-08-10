@@ -26,7 +26,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     var dataStore: MovieDetailsDataStore?
     
     func routeToCastCrew() {
-        guard let destinationVC: CastCrewViewController = StoryboardHelper.instantiateViewController(withIdentifier: "CastCrewViewController", fromStoryboard: "CastCrew"),
+        guard let destinationVC: CastCrewViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.castCrewViewController, fromStoryboard: Constants.StoryboardName.castCrew),
               let dataStore,
               let castCrewDataStore = destinationVC.router?.dataStore else { return }
         
@@ -36,7 +36,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     }
     
     func routeToPhotos() {
-        guard let destinationVC: PhotosViewController = StoryboardHelper.instantiateViewController(withIdentifier: "PhotosViewController", fromStoryboard: "Photos"),
+        guard let destinationVC: PhotosViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.photosViewController, fromStoryboard: Constants.StoryboardName.photos),
               let dataStore,
               let photosDataStore = destinationVC.router?.dataStore else { return }
         
@@ -46,7 +46,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     }
     
     func routeToVideos() {
-        guard let destinationVC: VideosViewController = StoryboardHelper.instantiateViewController(withIdentifier: "VideosViewController", fromStoryboard: "Videos"),
+        guard let destinationVC: VideosViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.videosViewController, fromStoryboard: Constants.StoryboardName.videos),
               let dataStore,
               let videosDataStore = destinationVC.router?.dataStore else { return }
         
@@ -56,7 +56,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     }
     
     func routeToGetTicket() {
-        guard let destinationVC: GetTicketViewController = StoryboardHelper.instantiateViewController(withIdentifier: "GetTicketViewController", fromStoryboard: "GetTicket"),
+        guard let destinationVC: GetTicketViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.getTicketViewController, fromStoryboard: Constants.StoryboardName.getTicket),
               let dataStore,
               let getTicketDataStore = destinationVC.router?.dataStore else { return }
         
@@ -69,7 +69,7 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     }
     
     func routeToWatchList() {
-        guard let destinationVC: WatchlistViewController = StoryboardHelper.instantiateViewController(withIdentifier: "WatchlistViewController", fromStoryboard: "Main") else { return }
+        guard let destinationVC: WatchlistViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.watchlistViewController, fromStoryboard: Constants.StoryboardName.main) else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)

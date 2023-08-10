@@ -161,7 +161,7 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if originViewController == "PaymentViewController" {
+        if originViewController == Constants.StoryboardIdentifier.paymentViewController {
             let selectedBankCard = displayedBankCards[indexPath.item]
             delegate?.getBankCardData(nameCard: selectedBankCard.cardHolder, cardNumber: selectedBankCard.cardNumber, dateExpire: selectedBankCard.cardExpires, cvv: selectedBankCard.cvv)
             router?.routeToSelectBankCardPayment()

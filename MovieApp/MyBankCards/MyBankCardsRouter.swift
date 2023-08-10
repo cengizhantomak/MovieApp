@@ -23,7 +23,7 @@ final class MyBankCardsRouter: MyBankCardsRoutingLogic, MyBankCardsDataPassing {
     var dataStore: MyBankCardsDataStore?
     
     func routeToAddBankCard() {
-        guard let destinationVC: AddBankCardViewController = StoryboardHelper.instantiateViewController(withIdentifier: "AddBankCardViewController", fromStoryboard: "AddBankCard") else { return }
+        guard let destinationVC: AddBankCardViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.addBankCardViewController, fromStoryboard: Constants.StoryboardName.addBankCard) else { return }
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)

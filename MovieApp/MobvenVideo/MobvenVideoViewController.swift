@@ -43,6 +43,7 @@ final class MobvenVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingView()
         setupPlayer()
     }
     
@@ -72,7 +73,7 @@ final class MobvenVideoViewController: UIViewController {
         playerLayer.videoGravity = .resizeAspect
         videoPlayerView.layer.addSublayer(playerLayer)
         interactor?.getVideo(player: player)
-        
+        hideLoadingView()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     

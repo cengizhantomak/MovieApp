@@ -47,7 +47,7 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         if #available(iOS 13.0, *) {
             let darkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
             darkModeSwitch.isOn = darkModeEnabled
@@ -119,14 +119,17 @@ final class ProfileViewController: UIViewController {
 
         let okAction = UIAlertAction(title: "Log Out", style: .destructive) { [weak self] (action) in
             guard let self else { return }
-            self.interactor?.performLogout { result in
+            hideLoadingView()
+            interactor?.performLogout { result in
                 switch result {
                 case .success:
                     KeyChainHelper.shared.delete(service: "movieDB", account: "sessionId")
 //                    UserDefaults.standard.removeObject(forKey: "sessionId")
+                    self.showLoadingView()
                     self.router?.routeToLoginScreen()
                 case .failure(let error):
                     UIAlertHelper.shared.showAlert(title: "Error", message: "An error occurred during the logout process: \(error)", buttonTitle: "OK", on: self)
+                    self.showLoadingView()
                 }
             }
         }
@@ -150,5 +153,7 @@ extension ProfileViewController: ProfileDisplayLogic {
         
         nameLabel.text = displayedProfile.name
         userNameLabel.text = displayedProfile.username
+        
+        hideLoadingView()
     }
 }

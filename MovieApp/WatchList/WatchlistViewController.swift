@@ -43,7 +43,7 @@ final class WatchlistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        showLoadingView()
         interactor?.fetchWatchList()
         setupCollectionView()
     }
@@ -76,6 +76,7 @@ extension WatchlistViewController: WatchlistDisplayLogic {
     func displayFetchedWatchList(viewModel: WatchlistModels.FetchWatchList.ViewModel) {
         displayedWatchList = viewModel.displayedWatchList
         DispatchQueue.main.async {
+            self.hideLoadingView()
             self.collectionView.reloadData()
         }
     }

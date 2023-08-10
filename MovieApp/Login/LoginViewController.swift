@@ -43,12 +43,14 @@ final class LoginViewController: UIViewController {
         if let data = KeyChainHelper.shared.read(service: "movieDB", account: "sessionId"),
            let sessionId = String(data: data, encoding: .utf8) {
             APIConstants.sessionId = sessionId
-            router?.routeToApp()
+            showLoadingView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.router?.routeToApp()
+            }
         }
         
         setupButtonUI()
         setupDismissKeyboardOnTap()
-        
 //        if UserDefaults.standard.string(forKey: "sessionId") != nil {
 //            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
 //            APIConstants.sessionId = sessionId
@@ -79,6 +81,7 @@ final class LoginViewController: UIViewController {
     // MARK: - Action
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        showLoadingView()
         interactor?.login(username: userNameTextField.text, password: passwordTextField.text)
     }
     
@@ -94,11 +97,14 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginDisplayLogic {
     func displayLoginSuccess() {
-        router?.routeToApp()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.router?.routeToApp()
+        }
     }
     
     func displayLoginFailure() {
         DispatchQueue.main.async {
+            self.hideLoadingView()
             UIAlertHelper.shared.showAlert(
                 title: "Error",
                 message: "The username or password is incorrect. Please try again.",

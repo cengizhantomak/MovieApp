@@ -34,6 +34,7 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
             
             window.rootViewController = tabBarController
             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            self.viewController?.hideLoadingView()
         }
     }
     

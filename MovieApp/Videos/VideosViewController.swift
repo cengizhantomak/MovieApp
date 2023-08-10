@@ -38,7 +38,7 @@ final class VideosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         navigationItem.title = "Videos"
         interactor?.fetchmovieImages()
         setupCollectionView()
@@ -100,6 +100,7 @@ extension VideosViewController: VideosDisplayLogic {
         DispatchQueue.main.async {
             self.displayedVideos = viewModel.displayedVideos
             self.collectionView.reloadData()
+            
         }
     }
 }
@@ -116,7 +117,7 @@ extension VideosViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let model = displayedVideos[indexPath.item].key
         cell.loadVideo(videoID: model)
-        
+        hideLoadingView()
         return cell
     }
 }

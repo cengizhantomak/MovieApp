@@ -58,7 +58,7 @@ final class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         interactor?.fetchMovieDetails()
         setupView()
     }
@@ -246,6 +246,8 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         } else {
             addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
         }
+        
+        hideLoadingView()
     }
     
     func displayCast() {

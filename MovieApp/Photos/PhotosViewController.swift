@@ -40,7 +40,7 @@ final class PhotosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         navigationItem.title = "Photos"
         interactor?.getPhotos()
         setupCollectionView()
@@ -107,6 +107,7 @@ extension PhotosViewController: PhotosDisplayLogic {
     func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel) {
         displayedPhotos = viewModel.displayedImages
         collectionView.reloadData()
+        hideLoadingView()
     }
 }
 

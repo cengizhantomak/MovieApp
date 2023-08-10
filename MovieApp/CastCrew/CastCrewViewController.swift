@@ -42,6 +42,7 @@ final class CastCrewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingView()
         navigationItem.title = "Cast & Crew"
         interactor?.getCast()
         setupTableView()
@@ -75,6 +76,7 @@ extension CastCrewViewController: CastCrewDisplayLogic {
     func displayGetCast(viewModel: CastCrewModels.FetchCastCrew.ViewModel) {
         displayedCast = viewModel.displayedCast
         tableView.reloadData()
+        hideLoadingView()
     }
 }
 

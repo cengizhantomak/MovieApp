@@ -41,9 +41,9 @@ final class MoviesViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showLoadingView()
         interactor?.fetchNowPlaying()
         setupCollectionView()
     }
@@ -78,6 +78,7 @@ extension MoviesViewController: MoviesDisplayLogic {
         displayedMovies = viewModel.displayedMovies
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.hideLoadingView()
         }
     }
     

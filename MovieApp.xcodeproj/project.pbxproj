@@ -219,6 +219,7 @@
 		47F2E4572A8103FD00A4CCF0 /* MobvenVideoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E44F2A8103FD00A4CCF0 /* MobvenVideoRouter.swift */; };
 		47F2E4582A8103FD00A4CCF0 /* MobvenVideo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F2E4502A8103FD00A4CCF0 /* MobvenVideo.storyboard */; };
 		47F2E4592A8103FD00A4CCF0 /* MobvenVideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */; };
+		47FB6FF12A8520B5004760EB /* UIViewController+LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB6FF02A8520B5004760EB /* UIViewController+LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,6 +448,7 @@
 		47F2E44F2A8103FD00A4CCF0 /* MobvenVideoRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoRouter.swift; sourceTree = "<group>"; };
 		47F2E4502A8103FD00A4CCF0 /* MobvenVideo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MobvenVideo.storyboard; sourceTree = "<group>"; };
 		47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoInteractor.swift; sourceTree = "<group>"; };
+		47FB6FF02A8520B5004760EB /* UIViewController+LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+LoadingView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -812,6 +814,7 @@
 				47923F072A5206200074CA99 /* UIImage+Extensions.swift */,
 				475935B62A5871A8000C9543 /* NotificationNames.swift */,
 				470B8DF42A682D6600A47C99 /* UIViewController+Keyboard.swift */,
+				47FB6FF02A8520B5004760EB /* UIViewController+LoadingView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1292,6 +1295,7 @@
 				47D8B2F42A496B03003CFE2D /* MoviesViewController.swift in Sources */,
 				47959E392A56174D00CD5701 /* CastCrewTableViewCell.swift in Sources */,
 				477C84CF2A66A59C005EF3BC /* TicketsModels.swift in Sources */,
+				47FB6FF12A8520B5004760EB /* UIViewController+LoadingView.swift in Sources */,
 				47D8B2F72A496B03003CFE2D /* MoviesModels.swift in Sources */,
 				470B8E012A695DCF00A47C99 /* MapInteractor.swift in Sources */,
 				47E6122B2A5556FD00E85A11 /* PhotosModels.swift in Sources */,

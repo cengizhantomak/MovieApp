@@ -59,16 +59,17 @@ final class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableCollectionView()
         interactor?.fetchMovieDetails()
-        setupButtonUI()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddedToWatchlist(_:)), name: .movieAddedToWatchlist, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onMovieDeletedToWatchlist(_:)), name: .movieDeletedToWatchlist, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddToWatchlistFailed(_:)), name: .movieAddDeleteToWatchlistFailed, object: nil)
+        setupView()
     }
     
     // MARK: - Setup
+    
+    private func setupView() {
+        setupButtonUI()
+        setupTableCollectionView()
+        registerNotifications()
+    }
     
     private func setup() {
         let viewController = self
@@ -89,30 +90,42 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     private func setupTableCollectionView() {
-        
-        // TableView'in üst kısmına boşluk ekleyin
+        configureTableViewInsets()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableHeaderView = headerView
+        tableView.tableFooterView = footerView
+        registerCells()
+        configureCollectionView()
+    }
+    
+    private func configureTableViewInsets() {
         tableView.contentInsetAdjustmentBehavior = .never
-        
-        // Yerleşim alanınızın üstündeki statüs çubuğunu dikkate alın
         if #available(iOS 11.0, *) {
             tableView.contentInset = UIEdgeInsets(top: view.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
         } else {
             tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0, bottom: 0, right: 0)
         }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableHeaderView = headerView
-        tableView.tableFooterView = footerView
+    }
+    
+    private func registerCells() {
         tableView.register(UINib(nibName: Constants.CellIdentifiers.castCell, bundle: .main), forCellReuseIdentifier: Constants.CellIdentifiers.castCell)
         tableView.register(UINib(nibName: Constants.CellIdentifiers.synopsisCell, bundle: .main), forCellReuseIdentifier: Constants.CellIdentifiers.synopsisCell)
         tableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: Constants.SectionHeader.movieDetailsSectionHeader)
-        
+    }
+    
+    private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(.init(nibName: Constants.CellIdentifiers.photosSectionCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosSectionCell)
     }
     
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddedToWatchlist(_:)), name: .movieAddedToWatchlist, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieDeletedToWatchlist(_:)), name: .movieDeletedToWatchlist, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onMovieAddToWatchlistFailed(_:)), name: .movieAddDeleteToWatchlistFailed, object: nil)
+    }
+
 //    private func updateWatchlistButtonTitle() {
 //        guard let displayedDetails else { return }
 //
@@ -131,7 +144,7 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     @IBAction func addRemoveWatchlistButtonTapped(_ sender: Any) {
-        guard var displayedDetails else { return }
+        guard let displayedDetails else { return }
         self.displayedDetails = interactor?.toggleWatchlistStatus(displayedDetails)
     }
     

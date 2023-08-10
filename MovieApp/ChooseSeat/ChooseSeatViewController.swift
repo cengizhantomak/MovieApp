@@ -10,7 +10,7 @@ import UIKit
 protocol ChooseSeatDisplayLogic: AnyObject {
     func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel)
-    func updateViewComponents()
+    func displayUpdatedViewComponents(selectedSeats: [String], totalAmount: Double)
     func displaySeatPrice()
 }
 
@@ -50,27 +50,13 @@ final class ChooseSeatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        interactor?.fetchTickets(request: ChooseSeatModels.FetchChooseSeat.Request())
-        interactor?.getMovie()
-        setupCollectionView()
-        continueButton.isEnabled = false
-        continueButton.backgroundColor = .systemGray
+        commonSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if displayedSeatData.unavailableSeats.count >= displayedSeatData.seat.count * displayedSeatData.row.count {
-            UIAlertHelper.shared.showAlert(
-                title: "Dikkat",
-                message: "Tüm koltuklar dolu!",
-                buttonTitle: "Tamam",
-                on: self,
-                buttonAction: {
-                    self.router?.routeToBack()
-                }
-            )
-        }
+        checkSeatsAvailability()
     }
     
     // MARK: - Setup
@@ -88,6 +74,26 @@ final class ChooseSeatViewController: UIViewController {
         router.dataStore = interactor
     }
     
+    private func commonSetup() {
+        fetchTickets()
+        getMovie()
+        setupCollectionView()
+        setupContinueButton()
+    }
+    
+    private func fetchTickets() {
+        interactor?.fetchTickets()
+    }
+    
+    private func getMovie() {
+        interactor?.getMovie()
+    }
+    
+    private func setupContinueButton() {
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = .systemGray
+    }
+    
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -96,9 +102,67 @@ final class ChooseSeatViewController: UIViewController {
         collectionView.allowsMultipleSelection = true
     }
     
-    // MARK: - CompositionalLayout
+    private func checkSeatsAvailability() {
+        if displayedSeatData.unavailableSeats.count >= displayedSeatData.seat.count * displayedSeatData.row.count {
+            UIAlertHelper.shared.showAlert(
+                title: "Dikkat",
+                message: "Tüm koltuklar dolu!",
+                buttonTitle: "Tamam",
+                on: self,
+                buttonAction: {
+                    self.router?.routeToBack()
+                }
+            )
+        }
+    }
     
-    func getCompositionalLayout() -> UICollectionViewLayout {
+    // MARK: - Action
+    
+    @IBAction func continueButtonTapped(_ sender: Any) {
+        interactor?.selectedSeatPrice(seat: displayedSeatData.selectedSeats, price: displayedSeatData.totalAmount)
+    }
+}
+
+// MARK: - DisplayLogic
+
+extension ChooseSeatViewController: ChooseSeatDisplayLogic {
+    func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
+        displayedTickets = viewModel.displayedTickets ?? []
+    }
+    
+    func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
+        let customView = NavigationCustomView(frame: CGRect(x: 0, y: 0, width: 250, height: 38))
+        customView.setupView(viewModel: viewModel)
+        navigationItem.titleView = customView
+        
+        displayedSeatData.unavailableSeats = interactor?.filterUnavailableSeats(seatFilter: displayedTickets) ?? []
+        
+        collectionView.reloadData()
+    }
+    
+    func displayUpdatedViewComponents(selectedSeats: [String], totalAmount: Double) {
+        seatLabel.text = selectedSeats.joined(separator: ", ") + (selectedSeats.isEmpty ? "" : " SELECTED")
+        displayedSeatData.totalAmount = totalAmount
+        priceLabel.text = "$ " + String(format: "%.2f", displayedSeatData.totalAmount)
+        
+        if selectedSeats.isEmpty {
+            continueButton.isEnabled = false
+            continueButton.backgroundColor = .systemGray
+        } else {
+            continueButton.isEnabled = true
+            continueButton.backgroundColor = UIColor(named: "buttonRed")
+        }
+    }
+    
+    func displaySeatPrice() {
+        router?.routeToPayment()
+    }
+}
+
+// MARK: - CompositionalLayout
+
+extension ChooseSeatViewController {
+    private func getCompositionalLayout() -> UICollectionViewLayout {
         
         // Item
         let itemSize = NSCollectionLayoutSize(
@@ -138,54 +202,6 @@ final class ChooseSeatViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
-    @IBAction func continueButtonTapped(_ sender: Any) {
-        interactor?.selectedSeatPrice(seat: displayedSeatData.selectedSeats, price: displayedSeatData.totalAmount)
-    }
-}
-
-// MARK: - DisplayLogic
-
-extension ChooseSeatViewController: ChooseSeatDisplayLogic {
-    func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
-        displayedTickets = viewModel.displayedTickets ?? []
-    }
-    
-    func displayFetchedMovie(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
-        let customView = NavigationCustomView(frame: CGRect(x: 0, y: 0, width: 250, height: 38))
-        customView.setupView(viewModel: viewModel)
-        navigationItem.titleView = customView
-        
-        displayedSeatData.unavailableSeats = displayedTickets
-            .filter {
-                $0.title == viewModel.selectedMovieTitle &&
-                $0.date == viewModel.selectedDate &&
-                $0.time == viewModel.selectedTime &&
-                $0.theatre == viewModel.selectedTheater
-            }
-            .flatMap { $0.seat?.components(separatedBy: ", ") ?? [] }
-        
-        collectionView.reloadData()
-    }
-    
-    func updateViewComponents() {
-        displayedSeatData.selectedSeats.sort()
-        seatLabel.text = displayedSeatData.selectedSeats.joined(separator: ", ") + (displayedSeatData.selectedSeats.isEmpty ? "" : " SELECTED")
-        displayedSeatData.totalAmount = Double(displayedSeatData.selectedSeats.count) * 18.00
-        priceLabel.text = "$ " + String(format: "%.2f", displayedSeatData.totalAmount)
-        
-        if displayedSeatData.selectedSeats.isEmpty {
-            continueButton.isEnabled = false
-            continueButton.backgroundColor = .systemGray
-        } else {
-            continueButton.isEnabled = true
-            continueButton.backgroundColor = UIColor(named: "buttonRed")
-        }
-    }
-    
-    func displaySeatPrice() {
-        router?.routeToPayment()
-    }
 }
 
 // MARK: - UICollectionView
@@ -198,15 +214,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.seatCell, for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
         
-        var combined = [String]()
-        
-        displayedSeatData.row.forEach { letter in
-            displayedSeatData.seat.forEach { number in
-                combined.append("\(letter)\(number)")
-            }
-        }
-        
-        let value = combined[indexPath.row]
+        let value = interactor?.getSeatValue(for: indexPath, row: displayedSeatData.row, seat: displayedSeatData.seat) ?? ""
         cell.textLabel.text = value
         cell.isSelected = cell.isSelected
         
@@ -232,7 +240,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
             guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
             
             displayedSeatData.selectedSeats.append(cell.textLabel.text ?? "")
-            updateViewComponents()
+            interactor?.updateViewComponents(displayedSeatData: displayedSeatData)
         }
     }
     
@@ -241,7 +249,7 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if let index = displayedSeatData.selectedSeats.firstIndex(of: cell.textLabel.text ?? "") {
             displayedSeatData.selectedSeats.remove(at: index)
-            updateViewComponents()
+            interactor?.updateViewComponents(displayedSeatData: displayedSeatData)
         }
     }
 }

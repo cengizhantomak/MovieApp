@@ -11,6 +11,7 @@ protocol ChooseSeatPresentationLogic: AnyObject {
     func presentMovie(seatDetails: ChooseSeatModels.FetchChooseSeat.ViewModel)
     func presentSeatPrice()
     func presentTickets(response: ChooseSeatModels.FetchChooseSeat.Response)
+    func presentUpdatedViewComponents(selectedSeats: [String], totalAmount: Double)
 }
 
 final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
@@ -41,5 +42,9 @@ final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
     
     func presentSeatPrice() {
         viewController?.displaySeatPrice()
+    }
+    
+    func presentUpdatedViewComponents(selectedSeats: [String], totalAmount: Double) {
+        viewController?.displayUpdatedViewComponents(selectedSeats: selectedSeats, totalAmount: totalAmount)
     }
 }

@@ -46,6 +46,11 @@ final class MobvenVideoViewController: UIViewController {
         setupPlayer()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playerLayer?.frame = videoPlayerView.bounds
+    }
+    
     // MARK: - Setup
     
     private func setup() {
@@ -64,8 +69,7 @@ final class MobvenVideoViewController: UIViewController {
     private func setupPlayer() {
         playerLayer = AVPlayerLayer(player: player)
         guard let playerLayer else { return }
-        playerLayer.frame = videoPlayerView.bounds
-        playerLayer.videoGravity = .resize
+        playerLayer.videoGravity = .resizeAspect
         videoPlayerView.layer.addSublayer(playerLayer)
         interactor?.getVideo(player: player)
         

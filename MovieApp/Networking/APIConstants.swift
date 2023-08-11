@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 struct APIConstants {
     static let apiKey = "ee3a8f4fad83f7af9b46376ca2d6104b"
     static var sessionId: String?

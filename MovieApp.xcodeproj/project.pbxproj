@@ -221,6 +221,7 @@
 		47F2E4592A8103FD00A4CCF0 /* MobvenVideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */; };
 		47FB6FF12A8520B5004760EB /* UIViewController+LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB6FF02A8520B5004760EB /* UIViewController+LoadingView.swift */; };
 		47FB6FF32A855336004760EB /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB6FF22A855336004760EB /* StoryboardHelper.swift */; };
+		47FB6FF92A863B0B004760EB /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB6FF82A863B0B004760EB /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -451,6 +452,7 @@
 		47F2E4512A8103FD00A4CCF0 /* MobvenVideoInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobvenVideoInteractor.swift; sourceTree = "<group>"; };
 		47FB6FF02A8520B5004760EB /* UIViewController+LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+LoadingView.swift"; sourceTree = "<group>"; };
 		47FB6FF22A855336004760EB /* StoryboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
+		47FB6FF82A863B0B004760EB /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -963,6 +965,7 @@
 				47D8B2E52A4969E0003CFE2D /* MoviesEndpoint.swift */,
 				47D8B2E42A4969E0003CFE2D /* HTTPClient.swift */,
 				47D8B2FA2A496C8F003CFE2D /* MoviesResponse.swift */,
+				47FB6FF82A863B0B004760EB /* APIConstants.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1264,6 +1267,7 @@
 				476DBC732A57160900539FE3 /* WatchlistPresenter.swift in Sources */,
 				4773F84D2A61934A00CF4C8D /* ChooseSeatRouter.swift in Sources */,
 				472128392A64306D0019DFEC /* AddBankCardModels.swift in Sources */,
+				47FB6FF92A863B0B004760EB /* APIConstants.swift in Sources */,
 				470B8DF52A682D6600A47C99 /* UIViewController+Keyboard.swift in Sources */,
 				476DBC992A575BE100539FE3 /* GetTicketWorker.swift in Sources */,
 				4773F84F2A629ACF00CF4C8D /* NavigationCustomView.swift in Sources */,

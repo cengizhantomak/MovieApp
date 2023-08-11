@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct APIConstants {
-    static let apiKey = "ee3a8f4fad83f7af9b46376ca2d6104b"
-    static var sessionId: String?
-    static let accountId = "0"
-    static var requestToken: String?
-    static var username: String?
-    static var password: String?
-}
-
 public enum MoviesEndpoint {
     case nowPlaying
     case popular
@@ -42,13 +33,15 @@ extension MoviesEndpoint: Endpoint {
         case  .watchList,.addToWatchlist(_), .profile, .removeFromWatchlist(_):
             return [
                 URLQueryItem(name: "api_key", value: APIConstants.apiKey),
-                URLQueryItem(name: "session_id", value: APIConstants.sessionId)]
+                URLQueryItem(name: "session_id", value: APIConstants.sessionId)
+            ]
         case  .validateWithLogin, .createSession:
             return [
                 URLQueryItem(name: "api_key", value: APIConstants.apiKey),
                 URLQueryItem(name: "request_token", value: APIConstants.requestToken),
                 URLQueryItem(name: "username", value: APIConstants.username),
-                URLQueryItem(name: "password", value: APIConstants.password)]
+                URLQueryItem(name: "password", value: APIConstants.password)
+            ]
         }
     }
     
@@ -109,8 +102,6 @@ extension MoviesEndpoint: Endpoint {
     
     public var body: [String: Any]? {
         switch self {
-        case .nowPlaying, .popular, .topRated, .upcoming, .moviesDetail, .credits, .images, .videos, .watchList, .profile, .createRequestToken, .validateWithLogin, .createSession:
-            return nil
         case .addToWatchlist(let movieId):
             return [
                 "media_type": "movie",
@@ -123,6 +114,8 @@ extension MoviesEndpoint: Endpoint {
                 "media_id": "\(movieId)",
                 "watchlist": false
             ]
+        default:
+            return nil
         }
     }
 }

@@ -24,17 +24,14 @@ final class MyBankCardsViewController: UIViewController {
     var router: (MyBankCardsRoutingLogic & MyBankCardsDataPassing)?
     var delegate: selectionBankCardDelegate?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties
-    
     var displayedBankCards: [MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard] = []
     var originViewController: String?
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -46,24 +43,20 @@ final class MyBankCardsViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "My Bank Cards"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBankCardButtonTapped))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+        interactor?.fetchBankCards()
         interactor?.getOriginViewController()
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = MyBankCardsInteractor()
@@ -84,8 +77,64 @@ final class MyBankCardsViewController: UIViewController {
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
     
-    // MARK: - CompositionalLayout
+    // MARK: - Action
+    @objc func addBankCardButtonTapped() {
+        router?.routeToAddBankCard()
+    }
+}
+
+// MARK: - DisplayLogic
+extension MyBankCardsViewController: MyBankCardsDisplayLogic {
+    func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel) {
+        displayedBankCards = viewModel.displayedBankCard ?? []
+        self.collectionView.reloadData()
+    }
     
+    func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel) {
+        if viewModel.success {
+            interactor?.fetchBankCards()
+        } else {
+            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete Bank Card", buttonTitle: "OK", on: self)
+        }
+    }
+    
+//    func displaySelectBankCard() {
+//        router?.routeToSelectBankCardPayment()
+//    }
+    
+    func displayOriginViewController(viewModel: String?) {
+        originViewController = viewModel
+    }
+}
+
+// MARK: - CollectionView
+extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedBankCards.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.myBankCardsCell, for: indexPath) as? MyBankCardsCollectionViewCell else { return UICollectionViewCell() }
+        
+        let model = displayedBankCards[indexPath.item]
+        cell.setCell(viewModel: model)
+        
+        cell.delegate = self
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if originViewController == Constants.StoryboardIdentifier.paymentViewController {
+            let selectedBankCard = displayedBankCards[indexPath.item]
+            delegate?.getBankCardData(nameCard: selectedBankCard.cardHolder, cardNumber: selectedBankCard.cardNumber, dateExpire: selectedBankCard.cardExpires, cvv: selectedBankCard.cvv)
+            router?.routeToSelectBankCardPayment()
+        }
+    }
+}
+
+// MARK: - CompositionalLayout
+extension MyBankCardsViewController {
     func getCompositionalLayout() -> UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(
@@ -109,68 +158,9 @@ final class MyBankCardsViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
-    // MARK: - Actions
-    
-    @objc func addBankCardButtonTapped() {
-        router?.routeToAddBankCard()
-    }
-}
-
-// MARK: - DisplayLogic
-
-extension MyBankCardsViewController: MyBankCardsDisplayLogic {
-    func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel) {
-        displayedBankCards = viewModel.displayedBankCard ?? []
-        self.collectionView.reloadData()
-    }
-    
-    func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel) {
-        if viewModel.success {
-            interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
-        } else {
-            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete Bank Card", buttonTitle: "OK", on: self)
-        }
-    }
-    
-//    func displaySelectBankCard() {
-//        router?.routeToSelectBankCardPayment()
-//    }
-    
-    func displayOriginViewController(viewModel: String?) {
-        originViewController = viewModel
-    }
-}
-
-// MARK: - CollectionView
-
-extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedBankCards.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.myBankCardsCell, for: indexPath) as? MyBankCardsCollectionViewCell else { return UICollectionViewCell() }
-        
-        let model = displayedBankCards[indexPath.item]
-        cell.setCell(viewModel: model)
-        
-        cell.delegate = self
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if originViewController == "PaymentViewController" {
-            let selectedBankCard = displayedBankCards[indexPath.item]
-            delegate?.getBankCardData(nameCard: selectedBankCard.cardHolder, cardNumber: selectedBankCard.cardNumber, dateExpire: selectedBankCard.cardExpires, cvv: selectedBankCard.cvv)
-            router?.routeToSelectBankCardPayment()
-        }
-    }
 }
 
 // MARK: - TicketsCollectionViewCellDelegate
-
 extension MyBankCardsViewController: MyBankCardsCollectionViewCellDelegate {
     func didPressCancel(id: UUID) {
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this Bank Card?", preferredStyle: .alert)

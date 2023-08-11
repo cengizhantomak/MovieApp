@@ -14,13 +14,10 @@ protocol AddBankCardDisplayLogic: AnyObject {
 
 final class AddBankCardViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: AddBankCardBusinessLogic?
     var router: (AddBankCardRoutingLogic & AddBankCardDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var nameCardTextField: UITextField!
     @IBOutlet weak var cardNumberTextField: UITextField!
     @IBOutlet weak var dateExpireTextField: UITextField!
@@ -28,7 +25,6 @@ final class AddBankCardViewController: UIViewController {
     @IBOutlet weak var addCardButton: RedButton!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -40,10 +36,8 @@ final class AddBankCardViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "Add Bank Card"
         setupTextField()
         setupDismissKeyboardOnTap()
@@ -51,7 +45,6 @@ final class AddBankCardViewController: UIViewController {
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = AddBankCardInteractor()
@@ -82,26 +75,26 @@ final class AddBankCardViewController: UIViewController {
         addCardButton.backgroundColor = .systemGray
     }
     
-    // MARK: - Actions
-    
+    // MARK: - Action
     @IBAction func addCardButtonTapped(_ sender: Any) {
         guard let cardName = nameCardTextField.text,
               let cardNumber = cardNumberTextField.text,
               let expiryDate = dateExpireTextField.text,
               let cvv = cvvTextField.text else { return }
-        
-        interactor?.saveBankCard(cardName: cardName, cardNumber: cardNumber, expiryDate: expiryDate, cvv: cvv, viewController: self)
+        interactor?.saveBankCard(cardName: cardName, 
+                                 cardNumber: cardNumber,
+                                 expiryDate: expiryDate,
+                                 cvv: cvv,
+                                 viewController: self)
     }
 }
 
 // MARK: - DisplayLogic
-
 extension AddBankCardViewController: AddBankCardDisplayLogic {
     
 }
 
 // MARK: - UITextFieldDelegate
-
 extension AddBankCardViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return interactor?.shouldChangeCharactersInTextField(textField: textField, range: range, string: string) ?? true
@@ -109,9 +102,9 @@ extension AddBankCardViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         interactor?.textFieldDidChangeSelection(textFields: [nameCardTextField,
-                                                       cardNumberTextField,
-                                                       dateExpireTextField,
-                                                       cvvTextField],
-                                          button: addCardButton)
+                                                             cardNumberTextField,
+                                                             dateExpireTextField,
+                                                             cvvTextField],
+                                                button: addCardButton)
     }
 }

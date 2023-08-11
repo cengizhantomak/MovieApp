@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ResetPasswordBusinessLogic: AnyObject {
-    func fetchResetPassword(request: ResetPasswordModels.FetchResetPassword.Request)
+    func fetchResetPassword()
 }
 
 protocol ResetPasswordDataStore: AnyObject {
@@ -22,7 +22,7 @@ final class ResetPasswordInteractor: ResetPasswordBusinessLogic, ResetPasswordDa
     
     var resetPassword: ResetPasswordModels.ResetPassword?
     
-    func fetchResetPassword(request: ResetPasswordModels.FetchResetPassword.Request) {
+    func fetchResetPassword() {
         worker.fetchResetPassword { resetPassword in
             self.resetPassword = resetPassword
             let response = ResetPasswordModels.FetchResetPassword.Response(resetPassword: resetPassword)

@@ -23,7 +23,6 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func login(username: String?, password: String?) {
         worker.createRequestToken { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let tokenResponse):
                 let token = tokenResponse.requestToken
@@ -41,7 +40,6 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func validateWithLogin() {
         worker.validateWithLogin() { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let validationResponse):
                 if validationResponse.success {
@@ -59,7 +57,6 @@ final class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func createSession() {
         worker.createSession() { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let sessionResponse):
                 APIConstants.sessionId = sessionResponse.sessionId

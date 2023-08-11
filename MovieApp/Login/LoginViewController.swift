@@ -18,15 +18,13 @@ final class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     var router: (LoginRoutingLogic & LoginDataPassing)?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: RedButton!
     @IBOutlet weak var signupButton: RedButton!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -39,16 +37,16 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let data = KeyChainHelper.shared.read(service: "movieDB", account: "sessionId"),
            let sessionId = String(data: data, encoding: .utf8) {
             APIConstants.sessionId = sessionId
-            router?.routeToApp()
+            showLoadingView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.router?.routeToApp()
+            }
         }
-        
         setupButtonUI()
         setupDismissKeyboardOnTap()
-        
 //        if UserDefaults.standard.string(forKey: "sessionId") != nil {
 //            let sessionId = UserDefaults.standard.string(forKey: "sessionId")
 //            APIConstants.sessionId = sessionId
@@ -57,7 +55,6 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = LoginInteractor()
@@ -77,8 +74,8 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: - Action
-    
     @IBAction func loginButtonTapped(_ sender: Any) {
+        showLoadingView()
         interactor?.login(username: userNameTextField.text, password: passwordTextField.text)
     }
     
@@ -91,20 +88,21 @@ final class LoginViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension LoginViewController: LoginDisplayLogic {
     func displayLoginSuccess() {
-        router?.routeToApp()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.router?.routeToApp()
+        }
     }
     
     func displayLoginFailure() {
         DispatchQueue.main.async {
+            self.hideLoadingView()
             UIAlertHelper.shared.showAlert(
                 title: "Error",
                 message: "The username or password is incorrect. Please try again.",
                 buttonTitle: "OK",
-                on: self
-            )
+                on: self)
         }
     }
 }

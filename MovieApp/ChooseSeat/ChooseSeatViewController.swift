@@ -16,25 +16,20 @@ protocol ChooseSeatDisplayLogic: AnyObject {
 
 final class ChooseSeatViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: ChooseSeatBusinessLogic?
     var router: (ChooseSeatRoutingLogic & ChooseSeatDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var seatLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     
     // MARK: - Properties
-    
     var displayedTickets: [ChooseSeatModels.FetchChooseSeat.ViewModel.DisplayedTicket] = []
     var displayedSeatData = ChooseSeatModels.FetchChooseSeat.SeatDataModel.SeatData()
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -46,21 +41,17 @@ final class ChooseSeatViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         commonSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         checkSeatsAvailability()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = ChooseSeatInteractor()
@@ -111,20 +102,17 @@ final class ChooseSeatViewController: UIViewController {
                 on: self,
                 buttonAction: {
                     self.router?.routeToBack()
-                }
-            )
+                })
         }
     }
     
     // MARK: - Action
-    
     @IBAction func continueButtonTapped(_ sender: Any) {
         interactor?.selectedSeatPrice(seat: displayedSeatData.selectedSeats, price: displayedSeatData.totalAmount)
     }
 }
 
 // MARK: - DisplayLogic
-
 extension ChooseSeatViewController: ChooseSeatDisplayLogic {
     func displayTickets(viewModel: ChooseSeatModels.FetchChooseSeat.ViewModel) {
         displayedTickets = viewModel.displayedTickets ?? []
@@ -160,7 +148,6 @@ extension ChooseSeatViewController: ChooseSeatDisplayLogic {
 }
 
 // MARK: - CompositionalLayout
-
 extension ChooseSeatViewController {
     private func getCompositionalLayout() -> UICollectionViewLayout {
         
@@ -205,14 +192,15 @@ extension ChooseSeatViewController {
 }
 
 // MARK: - UICollectionView
-
 extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedSeatData.row.count * displayedSeatData.seat.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.seatCell, for: indexPath) as? SeatCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.seatCell, for: indexPath) as? SeatCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
         let value = interactor?.getSeatValue(for: indexPath, row: displayedSeatData.row, seat: displayedSeatData.seat) ?? ""
         cell.textLabel.text = value
@@ -234,11 +222,9 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
                 title: "Seat Selection Limit Reached",
                 message: "You can select up to 10 seats only.",
                 buttonTitle: "OK",
-                on: self
-            )
+                on: self)
         } else {
             guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
-            
             displayedSeatData.selectedSeats.append(cell.textLabel.text ?? "")
             interactor?.updateViewComponents(displayedSeatData: displayedSeatData)
         }
@@ -246,7 +232,6 @@ extension ChooseSeatViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? SeatCollectionViewCell else { return }
-        
         if let index = displayedSeatData.selectedSeats.firstIndex(of: cell.textLabel.text ?? "") {
             displayedSeatData.selectedSeats.remove(at: index)
             interactor?.updateViewComponents(displayedSeatData: displayedSeatData)

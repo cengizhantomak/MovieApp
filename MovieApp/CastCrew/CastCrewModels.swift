@@ -8,11 +8,8 @@
 import Foundation
 
 enum CastCrewModels {
-    
     enum FetchCastCrew {
-        
         struct Request {
-            
         }
         
         struct Response {

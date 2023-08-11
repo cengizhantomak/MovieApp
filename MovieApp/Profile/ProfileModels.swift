@@ -8,11 +8,8 @@
 import Foundation
 
 enum ProfileModels {
-    
     enum FetchProfile {
-        
         struct Request {
-            
         }
         
         struct Response {

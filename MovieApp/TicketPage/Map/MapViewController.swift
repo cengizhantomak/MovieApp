@@ -19,17 +19,14 @@ final class MapViewController: UIViewController {
     var router: (MapRoutingLogic & MapDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var mapView: MKMapView!
     
-    // MARK: - Property
-    
+    // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var userTrackingButton: MKUserTrackingButton?
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -41,17 +38,14 @@ final class MapViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
         setupUserTrackingButtonAndScaleView()
         interactor?.fetchTheatres()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = MapInteractor()
@@ -76,9 +70,7 @@ final class MapViewController: UIViewController {
     
     private func setupUserTrackingButtonAndScaleView() {
         userTrackingButton = MKUserTrackingButton(mapView: mapView)
-        
         guard let userTrackingButton = userTrackingButton else { return }
-        
         userTrackingButton.layer.backgroundColor = UIColor(white: 1, alpha: 0.8).cgColor
         userTrackingButton.layer.borderColor = UIColor.white.cgColor
         userTrackingButton.layer.borderWidth = 1
@@ -93,7 +85,6 @@ final class MapViewController: UIViewController {
     }
     
     // MARK: - Directions Creation
-    
     func createDirectionTo(destinationCoordinate: CLLocationCoordinate2D) {
         guard let sourceCoordinate = currentLocation?.coordinate else { return }
         
@@ -125,7 +116,6 @@ final class MapViewController: UIViewController {
     }
     
     // MARK: - Removing Existing Routes
-    
     func removeExistingRoutes() {
         mapView.overlays.forEach { overlay in
             mapView.removeOverlay(overlay)
@@ -134,7 +124,6 @@ final class MapViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension MapViewController: MapDisplayLogic {
     func displayTheatres(_ theatres: [MapModels.Theatre]) {
         theatres.forEach { theatre in
@@ -151,7 +140,6 @@ extension MapViewController: MapDisplayLogic {
 }
 
 // MARK: - MKMapViewDelegate - CLLocationManagerDelegate
-
 extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
@@ -172,7 +160,6 @@ extension MapViewController: MKMapViewDelegate, CLLocationManagerDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let destinationCoordinate = view.annotation?.coordinate,
               let annotationTitle = view.annotation?.title else { return }
-        
         self.navigationItem.title = annotationTitle
         interactor?.fetchRouteToLocation(destinationCoordinate: destinationCoordinate)
     }

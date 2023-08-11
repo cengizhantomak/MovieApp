@@ -16,13 +16,10 @@ protocol PaymentDisplayLogic: AnyObject {
 
 final class PaymentViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: PaymentBusinessLogic?
     var router: (PaymentRoutingLogic & PaymentDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -36,7 +33,6 @@ final class PaymentViewController: UIViewController {
     @IBOutlet weak var placeOrderButton: RedButton!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -48,10 +44,8 @@ final class PaymentViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "Payment"
         setupTextField()
         setupDismissKeyboardOnTap()
@@ -62,12 +56,11 @@ final class PaymentViewController: UIViewController {
         super.viewWillAppear(animated)
         interactor?.getMovie()
         interactor?.getbankCardDetails()
-        //        placeOrderButton.isEnabled = false
-        //        placeOrderButton.backgroundColor = .systemGray
+//        placeOrderButton.isEnabled = false
+//        placeOrderButton.backgroundColor = .systemGray
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = PaymentInteractor()
@@ -98,8 +91,7 @@ final class PaymentViewController: UIViewController {
 //        placeOrderButton.backgroundColor = .systemGray
     }
     
-    // MARK: - Actions
-    
+    // MARK: - Action
     @IBAction func placeOrderButtonTapped(_ sender: Any) {
         let request = PaymentModels.FetchPayment.Request(
             nameCard: nameCardTextField.text,
@@ -115,7 +107,6 @@ final class PaymentViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension PaymentViewController: PaymentDisplayLogic {
     func displayFetchedMovie(viewModel: PaymentModels.FetchPayment.ViewModel) {
         if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.selectedMovieImage ?? "") {
@@ -157,7 +148,6 @@ extension PaymentViewController: PaymentDisplayLogic {
 }
 
 // MARK: - UITextFieldDelegate
-
 extension PaymentViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return interactor?.shouldChangeCharactersInTextField(textField: textField, range: range, string: string) ?? true

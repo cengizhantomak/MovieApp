@@ -18,12 +18,10 @@ final class ResetPasswordViewController: UIViewController {
     var router: (ResetPasswordRoutingLogic & ResetPasswordDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -35,16 +33,12 @@ final class ResetPasswordViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let request = ResetPasswordModels.FetchResetPassword.Request()
-        interactor?.fetchResetPassword(request: request)
+        interactor?.fetchResetPassword()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = ResetPasswordInteractor()
@@ -66,7 +60,6 @@ final class ResetPasswordViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension ResetPasswordViewController: ResetPasswordDisplayLogic {
     func displayResetPassword(viewModel: ResetPasswordModels.FetchResetPassword.ViewModel) {
         let url = URL(string: viewModel.url)!

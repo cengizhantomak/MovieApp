@@ -33,7 +33,6 @@ class MovieDetailsInteractorTests: XCTestCase {
     }
     
     // MARK: - Sample Data
-    
     func sampleMovieResponse() -> MoviesResponse.Movie {
         return MoviesResponse.Movie(title: "Title",
                                     releaseDate: "Date",
@@ -54,7 +53,6 @@ class MovieDetailsInteractorTests: XCTestCase {
     }
     
     // MARK: - Test Cases
-    
     func test_fetchMovieDetails() {
         // Given
         
@@ -146,7 +144,6 @@ class MovieDetailsInteractorTests: XCTestCase {
 extension MovieDetailsInteractorTests {
     
     // MARK: - Mock Worker
-    
     final class MockMovieDetailsWorker: MovieDetailsWorkingLogic {
         var getMovieDetailsCalled = false
         var postToAddWatchlistCalled = false
@@ -203,7 +200,6 @@ extension MovieDetailsInteractorTests {
     }
     
     // MARK: - Mock Presenter
-    
     final class MockMovieDetailsPresenter: MovieDetailsPresentationLogic {
         var presentAllCastCalled = false
         var presentAllPhotosCalled = false

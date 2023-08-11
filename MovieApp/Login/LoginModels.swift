@@ -8,19 +8,14 @@
 import Foundation
 
 enum LoginModels {
-    
     enum FetchLogin {
-        
         struct Request {
-            
         }
         
         struct Response {
-            
         }
         
         struct ViewModel {
-            
         }
     }
 }

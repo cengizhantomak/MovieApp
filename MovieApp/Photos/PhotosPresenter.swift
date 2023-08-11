@@ -17,9 +17,7 @@ final class PhotosPresenter: PhotosPresentationLogic {
     
     func presentPhotos(response: PhotosModels.FethcPhotos.Response) {
         let displayedPhotos = response.photos.map {
-            PhotosModels.FethcPhotos.ViewModel.DisplayedImages(
-                images: $0.images
-            )
+            PhotosModels.FethcPhotos.ViewModel.DisplayedImages(images: $0.images)
         }
         
         let viewModel = PhotosModels.FethcPhotos.ViewModel(displayedImages: displayedPhotos)

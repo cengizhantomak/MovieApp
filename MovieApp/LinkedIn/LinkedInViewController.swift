@@ -18,12 +18,10 @@ final class LinkedInViewController: UIViewController {
     var router: (LinkedInRoutingLogic & LinkedInDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -35,23 +33,18 @@ final class LinkedInViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let request = LinkedInModels.FetchLinkedIn.Request()
-        interactor?.fetchLinkedInProfile(request: request)
+        interactor?.fetchLinkedInProfile()
         setupToolBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.isToolbarHidden = false
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = LinkedInInteractor()
@@ -80,7 +73,6 @@ final class LinkedInViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension LinkedInViewController: LinkedInDisplayLogic {
     func displayLinkedInProfile(viewModel: LinkedInModels.FetchLinkedIn.ViewModel) {
         let url = URL(string: viewModel.url)!

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LinkedInBusinessLogic: AnyObject {
-    func fetchLinkedInProfile(request: LinkedInModels.FetchLinkedIn.Request)
+    func fetchLinkedInProfile()
 }
 
 protocol LinkedInDataStore: AnyObject {
@@ -22,7 +22,7 @@ final class LinkedInInteractor: LinkedInBusinessLogic, LinkedInDataStore {
     
     var profile: LinkedInModels.Profile?
     
-    func fetchLinkedInProfile(request: LinkedInModels.FetchLinkedIn.Request) {
+    func fetchLinkedInProfile() {
         worker.fetchLinkedInProfile { profile in
             self.profile = profile
             let response = LinkedInModels.FetchLinkedIn.Response(profile: profile)

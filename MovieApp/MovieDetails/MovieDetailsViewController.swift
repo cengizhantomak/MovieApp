@@ -17,13 +17,10 @@ protocol MovieDetailsDisplayLogic: AnyObject {
 
 final class MovieDetailsViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: MovieDetailsBusinessLogic?
     var router: (MovieDetailsRoutingLogic & MovieDetailsDataPassing)?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var headerView: UIView!
@@ -38,12 +35,10 @@ final class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var getTicketButton: RedButton!
     @IBOutlet weak var addRemoveWatchlistButton: RedButton!
     
-    // MARK: - Properties
-    
+    // MARK: - Property
     var displayedDetails: MovieDetailsModels.FetchMovieDetails.ViewModel?
     
     // MARK: -  Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -55,16 +50,14 @@ final class MovieDetailsViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         interactor?.fetchMovieDetails()
         setupView()
     }
     
     // MARK: - Setup
-    
     private func setupView() {
         setupButtonUI()
         setupTableCollectionView()
@@ -137,7 +130,6 @@ final class MovieDetailsViewController: UIViewController {
 //    }
     
     // MARK: - Action
-    
     @IBAction func getTicketButtonTapped(_ sender: Any) {
         guard let displayedDetails else { return }
         interactor?.selectedMovieGetTicket(movie: displayedDetails.title, image: displayedDetails.posterPhotoPath)
@@ -170,8 +162,7 @@ final class MovieDetailsViewController: UIViewController {
                 title: "Added",
                 message: "The movie has been successfully added to your watchlist.",
                 buttonTitle: "OK",
-                on: self
-            )
+                on: self)
         }
     }
     
@@ -183,8 +174,7 @@ final class MovieDetailsViewController: UIViewController {
                 title: "Removed",
                 message: "The movie has been successfully removed from your watch list.",
                 buttonTitle: "OK",
-                on: self
-            )
+                on: self)
         }
     }
     
@@ -194,14 +184,12 @@ final class MovieDetailsViewController: UIViewController {
                 title: "Error",
                 message: "An error occurred while adding the movie to your watchlist.",
                 buttonTitle: "OK",
-                on: self
-            )
+                on: self)
         }
     }
 }
 
 // MARK: - DisplayLogic
-
 extension MovieDetailsViewController: MovieDetailsDisplayLogic {
     func displayFetchedDetails(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel) {
         displayedDetails = viewModel
@@ -210,9 +198,7 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         navigationItem.title = displayedDetails.title
         
         titleLabel.text = displayedDetails.title
-        
         durationLabel.text = interactor?.formatRuntime(displayedDetails.runtime)
-        
         genreLabel.text = displayedDetails.genres
         
         let vote = displayedDetails.vote / 2
@@ -246,6 +232,8 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
         } else {
             addRemoveWatchlistButton.setTitle("Add Watchlist", for: .normal)
         }
+        
+        hideLoadingView()
     }
     
     func displayCast() {
@@ -262,7 +250,6 @@ extension MovieDetailsViewController: MovieDetailsDisplayLogic {
 }
 
 // MARK: - TableView
-
 extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return MovieDetailsModels.Section.allCases.count
@@ -282,7 +269,9 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = MovieDetailsModels.Section(rawValue: indexPath.section) else { return UITableViewCell() }
+        guard let section = MovieDetailsModels.Section(rawValue: indexPath.section) else {
+            return UITableViewCell()
+        }
         
         switch section {
         case .Synopsis:
@@ -291,7 +280,9 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
             return cell ?? UITableViewCell()
         case .Cast:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.castCell, for: indexPath) as? CastTableViewCell
-            guard let model = displayedDetails?.displayedCast[indexPath.row] else { return UITableViewCell() }
+            guard let model = displayedDetails?.displayedCast[indexPath.row] else {
+                return UITableViewCell()
+            }
             cell?.setCell(viewModel: model)
             return cell ?? UITableViewCell()
         case .Photos:
@@ -304,7 +295,9 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let section = MovieDetailsModels.Section(rawValue: section) else { return UIView() }
+        guard let section = MovieDetailsModels.Section(rawValue: section) else {
+            return UIView()
+        }
 
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constants.SectionHeader.movieDetailsSectionHeader) as? SectionHeader
         sectionHeader?.title.text = section.title
@@ -320,29 +313,29 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
                 sectionHeader?.button.addTarget(self, action: #selector(viewAllPhotosButton), for: .touchUpInside)
             }
         }
-
         return sectionHeader
     }
 }
 
 // MARK: - CollectionView
-
 extension MovieDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedDetails?.displayedImages.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosSectionCell, for: indexPath) as? PhotosSectionCollectionViewCell else { return UICollectionViewCell() }
-        
-        guard let model = displayedDetails?.displayedImages[indexPath.item] else { return cell }
-        cell.setCell(viewModel: model)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosSectionCell, for: indexPath) as? PhotosSectionCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        if let model = displayedDetails?.displayedImages[indexPath.item] {
+            cell.setCell(viewModel: model)
+        }
+
         return cell
     }
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
-
 extension MovieDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width - 50) / 3, height: (collectionView.frame.height))

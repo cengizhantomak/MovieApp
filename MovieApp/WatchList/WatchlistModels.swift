@@ -8,11 +8,8 @@
 import Foundation
 
 enum WatchlistModels {
-    
     enum FetchWatchList {
-        
         struct Request {
-            
         }
         
         struct Response {

@@ -14,7 +14,6 @@ protocol CongratsWorkingLogic: AnyObject {
 }
 
 final class CongratsWorker: CongratsWorkingLogic {
-    
     func fetchLatestTicket() -> MovieTicket? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let context = appDelegate.persistentContainer.viewContext

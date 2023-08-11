@@ -18,17 +18,14 @@ final class MobvenVideoViewController: UIViewController {
     var router: (MobvenVideoRoutingLogic & MobvenVideoDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var videoPlayerView: UIView!
     @IBOutlet weak var playPauseButton: UIButton!
     
     // MARK: - Player Properties
-    
     private var player: AVPlayer? = AVPlayer()
     private var playerLayer: AVPlayerLayer? = AVPlayerLayer()
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -40,9 +37,9 @@ final class MobvenVideoViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingView()
         setupPlayer()
     }
     
@@ -52,7 +49,6 @@ final class MobvenVideoViewController: UIViewController {
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = MobvenVideoInteractor()
@@ -65,19 +61,18 @@ final class MobvenVideoViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    
+
     private func setupPlayer() {
         playerLayer = AVPlayerLayer(player: player)
         guard let playerLayer else { return }
         playerLayer.videoGravity = .resizeAspect
         videoPlayerView.layer.addSublayer(playerLayer)
         interactor?.getVideo(player: player)
-        
+        hideLoadingView()
         NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
-    // MARK: - Actions
-    
+    // MARK: - Action
     @objc func playerDidFinishPlaying(note: NSNotification) {
         player?.seek(to: CMTime.zero)
         interactor?.resetPlayState()
@@ -97,7 +92,6 @@ final class MobvenVideoViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension MobvenVideoViewController: MobvenVideoDisplayLogic {
     func displayVideoState(viewModel: MobvenVideoModels.PlayVideo.ViewModel) {
         playPauseButton.setImage(UIImage(systemName: viewModel.buttonTitle), for: .normal)

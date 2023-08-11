@@ -13,7 +13,7 @@ protocol PaymentBusinessLogic: AnyObject {
     func validateCard(request: PaymentModels.FetchPayment.Request)
     func shouldChangeCharactersInTextField(textField: UITextField, range: NSRange, string: String) -> Bool
     func textFieldDidChangeSelection(textFields: [UITextField], button: UIButton)
-//    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel)
+    //    func updatePaymentDetails(with details: PaymentModels.FetchPayment.ViewModel)
     func getbankCardDetails()
 }
 

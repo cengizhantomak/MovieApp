@@ -14,21 +14,16 @@ protocol MoviesDisplayLogic: AnyObject {
 
 final class MoviesViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: MoviesBusinessLogic?
     var router: (MoviesRoutingLogic & MoviesDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Property
-    
     var displayedMovies: [MoviesModels.FetchMovies.ViewModel.DisplayedMovie] = []
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -40,16 +35,14 @@ final class MoviesViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showLoadingView()
         interactor?.fetchNowPlaying()
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = MoviesInteractor()
@@ -72,12 +65,12 @@ final class MoviesViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension MoviesViewController: MoviesDisplayLogic {
     func displayFetchedMovies(viewModel: MoviesModels.FetchMovies.ViewModel) {
         displayedMovies = viewModel.displayedMovies
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.hideLoadingView()
         }
     }
     
@@ -87,14 +80,15 @@ extension MoviesViewController: MoviesDisplayLogic {
 }
 
 // MARK: - CollecionView
-
 extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.movieCell, for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.movieCell, for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
         let model = displayedMovies[indexPath.item]
         cell.setCell(viewModel: model)
@@ -106,15 +100,15 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.SectionHeader.movieSectionHeader, for: indexPath) as? MovieCollectionReusableView else { return UICollectionReusableView() }
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.SectionHeader.movieSectionHeader, for: indexPath) as? MovieCollectionReusableView else {
+            return UICollectionReusableView()
+        }
         
         return headerView
     }
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
-
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width - 40) / 2, height: (collectionView.frame.height + 5) / 2)

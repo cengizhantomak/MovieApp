@@ -14,5 +14,3 @@ public enum RequestMethod: String {
     case put = "PUT"
     case post = "POST"
 }
-
-

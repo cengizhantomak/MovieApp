@@ -11,13 +11,7 @@ class PhotosSectionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var movieImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func setCell(viewModel: MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages) {
-        
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.images) {
             movieImage.load(url: profileUrl)
         }

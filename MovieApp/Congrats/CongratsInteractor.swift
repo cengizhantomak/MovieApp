@@ -19,6 +19,7 @@ final class CongratsInteractor: CongratsBusinessLogic, CongratsDataStore {
     
     var presenter: CongratsPresentationLogic?
     var worker: CongratsWorkingLogic = CongratsWorker()
+    
     var movieTicket: MovieTicket?
     
     func fetchLatestTicket() {

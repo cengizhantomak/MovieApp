@@ -16,11 +16,10 @@ class TicketPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         delegate = self
         dataSource = self
-        vcList = [ticketsVC, mapVC]
         
+        vcList = [ticketsVC, mapVC]
         if let vc = vcList.first {
             setViewControllers([vc], direction: .forward, animated: true)
         }
@@ -29,7 +28,6 @@ class TicketPageViewController: UIPageViewController {
 
 extension TicketPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
         if viewController == ticketsVC {
             return nil
         } else if viewController == mapVC {
@@ -40,7 +38,6 @@ extension TicketPageViewController: UIPageViewControllerDelegate, UIPageViewCont
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
         if viewController == mapVC {
             return nil
         } else if viewController == ticketsVC {

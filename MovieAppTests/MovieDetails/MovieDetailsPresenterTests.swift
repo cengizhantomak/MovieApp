@@ -28,7 +28,6 @@ class MovieDetailsPresenterTest: XCTestCase {
     }
     
     // MARK: - Sample Data
-    
     func sampleResponse() -> MovieDetailsModels.FetchMovieDetails.Response {
         let cast = MoviesResponse.Cast(
             profilePhoto: "ProfilePhoto",
@@ -49,16 +48,13 @@ class MovieDetailsPresenterTest: XCTestCase {
         
         let image = MoviesResponse.Images(images: "Images")
         
-        return MovieDetailsModels.FetchMovieDetails.Response(
-            cast: [cast],
-            details: movie,
-            images: [image],
-            watchList: [movie]
-        )
+        return MovieDetailsModels.FetchMovieDetails.Response(cast: [cast],
+                                                             details: movie,
+                                                             images: [image],
+                                                             watchList: [movie])
     }
     
     // MARK: - Test Cases
-    
     func test_presentDetails() {
         // Given
         let response = sampleResponse()
@@ -69,7 +65,6 @@ class MovieDetailsPresenterTest: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Present details expectation") // Create an expectation
         DispatchQueue.main.async {
-            
             expectation.fulfill() // Fulfill the expectation since the test has been completed successfully
         }
         
@@ -108,7 +103,6 @@ class MovieDetailsPresenterTest: XCTestCase {
 extension MovieDetailsPresenterTest {
     
     // MARK: - Mock VC
-    
     final class MockMovieDetailsViewController: MovieDetailsDisplayLogic {
         var isFetchedDetailsCalled = false
         var isDisplayCastCalled = false

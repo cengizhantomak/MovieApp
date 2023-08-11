@@ -20,8 +20,7 @@ final class CastCrewPresenter: CastCrewPresentationLogic {
             CastCrewModels.FetchCastCrew.ViewModel.DisplayedCast(
                 name: $0.name,
                 character: $0.character,
-                profilePhotoPath: $0.profilePhotoPath
-            )
+                profilePhotoPath: $0.profilePhotoPath)
         }
         
         let viewModel = CastCrewModels.FetchCastCrew.ViewModel(displayedCast: displayedCast)

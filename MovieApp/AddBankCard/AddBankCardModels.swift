@@ -8,21 +8,14 @@
 import Foundation
 
 enum AddBankCardModels {
-    
     enum FetchAddBankCard {
-        
         struct Request {
-            
         }
         
         struct Response {
-            
         }
         
         struct ViewModel {
-            
         }
-        
     }
-    
 }

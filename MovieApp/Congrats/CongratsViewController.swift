@@ -13,13 +13,10 @@ protocol CongratsDisplayLogic: AnyObject {
 
 final class CongratsViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: CongratsBusinessLogic?
     var router: (CongratsRoutingLogic & CongratsDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var theatreLabel: UILabel!
@@ -27,7 +24,6 @@ final class CongratsViewController: UIViewController {
     
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -39,16 +35,13 @@ final class CongratsViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationItem.setHidesBackButton(true, animated: false)
         interactor?.fetchLatestTicket()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = CongratsInteractor()
@@ -62,15 +55,13 @@ final class CongratsViewController: UIViewController {
         router.dataStore = interactor
     }
     
-    // MARK: - Actions
-    
+    // MARK: - Action
     @IBAction func exitButtonTapped(_ sender: Any) {
         router?.routeTo()
     }
 }
 
 // MARK: - DisplayLogic
-
 extension CongratsViewController: CongratsDisplayLogic {
     func displayLatestTicket(viewModel: CongratsModels.FetchCongrats.ViewModel) {
         dateLabel.text = viewModel.date

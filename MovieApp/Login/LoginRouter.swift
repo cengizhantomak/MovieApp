@@ -25,32 +25,25 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     
     func routeToApp() {
         DispatchQueue.main.async {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            guard let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController,
+            guard let tabBarController: UITabBarController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.tabBarController, fromStoryboard: Constants.StoryboardName.main),
                   let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let delegate = windowScene.delegate as? SceneDelegate,
                   let window = delegate.window else { return }
             
             window.rootViewController = tabBarController
             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            self.viewController?.hideLoadingView()
         }
     }
     
     func routeToSignUp() {
-        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
-        
+        guard let destinationVC: SignUpViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.signUpViewController, fromStoryboard: Constants.StoryboardName.signUp) else { return }
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)
     }
     
     func routeToResetPassword() {
-        let storyboard = UIStoryboard(name: "ResetPassword", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ResetPasswordViewController") as? ResetPasswordViewController else { return }
-        
+        guard let destinationVC: ResetPasswordViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.resetPasswordViewController, fromStoryboard: Constants.StoryboardName.resetPassword) else { return }
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)
     }

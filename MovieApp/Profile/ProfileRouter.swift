@@ -25,40 +25,29 @@ final class ProfileRouter: ProfileRoutingLogic, ProfileDataPassing {
     var dataStore: ProfileDataStore?
     
     func routeToMyBankCards() {
-        let storyboard = UIStoryboard(name: "MyBankCards", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyBankCardsViewController") as? MyBankCardsViewController else { return }
-        
+        guard let destinationVC: MyBankCardsViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.myBankCardsViewController, fromStoryboard: Constants.StoryboardName.myBankCards) else { return }
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToLinkedIn() {
-        let storyboard = UIStoryboard(name: "LinkedIn", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "LinkedInViewController") as? LinkedInViewController else { return }
-        
+        guard let destinationVC: LinkedInViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.linkedInViewController, fromStoryboard: Constants.StoryboardName.linkedIn) else { return }
         destinationVC.hidesBottomBarWhenPushed = true
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToMobvenVideo() {
-        let storyboard = UIStoryboard(name: "MobvenVideo", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MobvenVideoViewController") as? MobvenVideoViewController else { return }
-        
+        guard let destinationVC: MobvenVideoViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.mobvenVideoViewController, fromStoryboard: Constants.StoryboardName.mobvenVideo) else { return }
         destinationVC.hidesBottomBarWhenPushed = true
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToLoginScreen() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
+        guard let loginVC: LoginViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.loginViewController, fromStoryboard: Constants.StoryboardName.main),
               let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
               let window = windowScene.windows.first else { return }
-        
         window.rootViewController = loginVC
         window.makeKeyAndVisible()
     }

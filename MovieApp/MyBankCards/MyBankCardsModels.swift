@@ -8,11 +8,8 @@
 import Foundation
 
 enum MyBankCardsModels {
-    
     enum FetchMyBankCards {
-        
         struct Request {
-            
         }
         
         struct Response {
@@ -42,7 +39,6 @@ enum MyBankCardsModels {
     }
     
     enum DeleteBankCard {
-        
         struct Request {
             let bankCardId: UUID
         }

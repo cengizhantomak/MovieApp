@@ -26,7 +26,6 @@ final class VideosInteractor: VideosBusinessLogic, VideosDataStore {
         guard let id = selectedMovieID else { return }
         worker.getMovieVideos(id: id) { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let videos):
                 let response = VideosModels.FetchVideos.Response(videos: videos.results)

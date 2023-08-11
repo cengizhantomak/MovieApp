@@ -28,8 +28,7 @@ final class ChooseSeatPresenter: ChooseSeatPresentationLogic {
                 theatre: ticket.theatre,
                 seat: ticket.seat,
                 totalAmount: ticket.totalAmount,
-                id: ticket.id
-            )
+                id: ticket.id)
         }
         
         let viewModel = ChooseSeatModels.FetchChooseSeat.ViewModel(displayedTickets: displayedTickets)

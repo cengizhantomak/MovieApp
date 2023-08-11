@@ -17,15 +17,12 @@ final class VideosViewController: UIViewController {
     var router: (VideosRoutingLogic & VideosDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Property
-    
     var displayedVideos: [VideosModels.FetchVideos.ViewModel.DisplayedVideos] = []
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -36,16 +33,16 @@ final class VideosViewController: UIViewController {
         setup()
     }
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showLoadingView()
         navigationItem.title = "Videos"
         interactor?.fetchmovieImages()
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = VideosInteractor()
@@ -65,11 +62,37 @@ final class VideosViewController: UIViewController {
         collectionView.register(.init(nibName: Constants.CellIdentifiers.videosCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.videosCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
+}
+
+// MARK: - DisplayLogic
+extension VideosViewController: VideosDisplayLogic {
+    func displayedFetchedVideos(viewModel: VideosModels.FetchVideos.ViewModel) {
+        DispatchQueue.main.async {
+            self.displayedVideos = viewModel.displayedVideos
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+// MARK: - CollectionView
+extension VideosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedVideos.count
+    }
     
-    // MARK: - CompositionalLayout
-    
-    func getCompositionalLayout() -> UICollectionViewLayout {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.videosCell, for: indexPath) as? VideosCollectionViewCell else { return UICollectionViewCell() }
         
+        let model = displayedVideos[indexPath.item].key
+        cell.loadVideo(videoID: model)
+        hideLoadingView()
+        return cell
+    }
+}
+
+// MARK: - CompositionalLayout
+extension VideosViewController {
+    func getCompositionalLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -92,32 +115,3 @@ final class VideosViewController: UIViewController {
         return layout
     }
 }
-
-// MARK: - DisplayLogic
-
-extension VideosViewController: VideosDisplayLogic {
-    func displayedFetchedVideos(viewModel: VideosModels.FetchVideos.ViewModel) {
-        DispatchQueue.main.async {
-            self.displayedVideos = viewModel.displayedVideos
-            self.collectionView.reloadData()
-        }
-    }
-}
-
-// MARK: - CollectionView
-
-extension VideosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedVideos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.videosCell, for: indexPath) as? VideosCollectionViewCell else { return UICollectionViewCell() }
-        
-        let model = displayedVideos[indexPath.item].key
-        cell.loadVideo(videoID: model)
-        
-        return cell
-    }
-}
-

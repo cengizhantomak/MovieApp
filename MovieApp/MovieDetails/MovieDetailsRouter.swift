@@ -26,65 +26,50 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     var dataStore: MovieDetailsDataStore?
     
     func routeToCastCrew() {
-        let storyboard = UIStoryboard(name: "CastCrew", bundle: nil)
+        guard let destinationVC: CastCrewViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.castCrewViewController, fromStoryboard: Constants.StoryboardName.castCrew),
+              let dataStore,
+              let castCrewDataStore = destinationVC.router?.dataStore else { return }
         
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CastCrewViewController") as? CastCrewViewController,
-              let dataStore else {
-            return
-        }
-        
-        destinationVC.router?.dataStore?.allCast = dataStore.allCast
+        castCrewDataStore.allCast = dataStore.allCast
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToPhotos() {
-        let storyboard = UIStoryboard(name: "Photos", bundle: nil)
+        guard let destinationVC: PhotosViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.photosViewController, fromStoryboard: Constants.StoryboardName.photos),
+              let dataStore,
+              let photosDataStore = destinationVC.router?.dataStore else { return }
         
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController,
-              let dataStore else {
-            return
-        }
-        
-        destinationVC.router?.dataStore?.allPhotos = dataStore.allPhotos
+        photosDataStore.allPhotos = dataStore.allPhotos
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToVideos() {
-        let storyboard = UIStoryboard(name: "Videos", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "VideosViewController") as? VideosViewController,
+        guard let destinationVC: VideosViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.videosViewController, fromStoryboard: Constants.StoryboardName.videos),
               let dataStore,
-              let getTicketDataStore = destinationVC.router?.dataStore else { return }
+              let videosDataStore = destinationVC.router?.dataStore else { return }
         
-        getTicketDataStore.selectedMovieID = dataStore.selectedMovieID
-        
+        videosDataStore.selectedMovieID = dataStore.selectedMovieID
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToGetTicket() {
-        let storyboard = UIStoryboard(name: "GetTicket", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "GetTicketViewController") as? GetTicketViewController,
+        guard let destinationVC: GetTicketViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.getTicketViewController, fromStoryboard: Constants.StoryboardName.getTicket),
               let dataStore,
               let getTicketDataStore = destinationVC.router?.dataStore else { return }
         
         getTicketDataStore.ticketDetails = GetTicketModels.FetchGetTicket.ViewModel(
             selectedMovieTitle: dataStore.selectedMovieTitle,
-            selectedMovieImage: dataStore.selectedMovieImage
-        )
+            selectedMovieImage: dataStore.selectedMovieImage)
         
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
     func routeToWatchList() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "WatchlistViewController") as? WatchlistViewController else { return }
-        
+        guard let destinationVC: WatchlistViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.watchlistViewController, fromStoryboard: Constants.StoryboardName.main) else { return }
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

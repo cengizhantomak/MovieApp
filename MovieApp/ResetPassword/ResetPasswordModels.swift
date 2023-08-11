@@ -8,15 +8,12 @@
 import Foundation
 
 enum ResetPasswordModels {
-    
     struct ResetPassword {
         var url: String
     }
     
     enum FetchResetPassword {
-        
         struct Request {
-            
         }
         
         struct Response {

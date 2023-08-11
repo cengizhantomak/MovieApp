@@ -15,7 +15,6 @@ class MovieDetailsWorkerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
         mockClient = MockHTTPClient()
         sut = MovieDetailsWorker(httpClient: mockClient)
     }
@@ -26,6 +25,7 @@ class MovieDetailsWorkerTests: XCTestCase {
         super.tearDown()
     }
     
+    // MARK: - Test Cases
     func test_getMovieCredits() {
         let expectation = self.expectation(description: "Get Movie Credits")
         
@@ -145,7 +145,6 @@ class MovieDetailsWorkerTests: XCTestCase {
 extension MovieDetailsWorkerTests {
     
     // MARK: - Mock Client
-    
     final class MockHTTPClient: HTTPClient {
         var shouldReturnError = false
         var response: Decodable?

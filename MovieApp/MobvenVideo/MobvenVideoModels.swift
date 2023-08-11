@@ -8,11 +8,8 @@
 import Foundation
 
 enum MobvenVideoModels {
-    
     enum PlayVideo {
-        
         struct Request {
-            
         }
         
         struct Response {

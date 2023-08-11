@@ -23,11 +23,6 @@ class TicketsCollectionViewCell: UICollectionViewCell {
     weak var delegate: TicketsCollectionViewCellDelegate?
     var id: UUID?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func setCell(viewModel: TicketsModels.FetchTickets.ViewModel.DisplayedTicket) {
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.imagePath) {
             posterImage.load(url: profileUrl)

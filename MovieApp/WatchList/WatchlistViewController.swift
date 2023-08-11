@@ -14,21 +14,16 @@ protocol WatchlistDisplayLogic: AnyObject {
 
 final class WatchlistViewController: UIViewController {
     
-    // MARK: - VIP Properties
-    
     var interactor: WatchlistBusinessLogic?
     var router: (WatchlistRoutingLogic & WatchlistDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Property
-    
     var displayedWatchList: [WatchlistModels.FetchWatchList.ViewModel.DisplayedWatchList] = []
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -40,16 +35,14 @@ final class WatchlistViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        showLoadingView()
         interactor?.fetchWatchList()
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = WatchlistInteractor()
@@ -71,12 +64,12 @@ final class WatchlistViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension WatchlistViewController: WatchlistDisplayLogic {
     func displayFetchedWatchList(viewModel: WatchlistModels.FetchWatchList.ViewModel) {
         displayedWatchList = viewModel.displayedWatchList
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.hideLoadingView()
         }
     }
     
@@ -86,14 +79,15 @@ extension WatchlistViewController: WatchlistDisplayLogic {
 }
 
 // MARK: - CollecionView
-
 extension WatchlistViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedWatchList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.watchListCell, for: indexPath) as? WatchListCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.watchListCell, for: indexPath) as? WatchListCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
         let model = displayedWatchList[indexPath.item]
         cell.setCell(viewModel: model)
@@ -106,7 +100,6 @@ extension WatchlistViewController: UICollectionViewDelegate, UICollectionViewDat
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
-
 extension WatchlistViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.frame.width - 40) / 2, height: (collectionView.frame.height + 5) / 2)

@@ -18,16 +18,13 @@ final class MoviesPresenter: MoviesPresentationLogic {
     
     func presentMovies(response: MoviesModels.FetchMovies.Response) {
         var displayedMovies: [MoviesModels.FetchMovies.ViewModel.DisplayedMovie] = []
-        
         response.movies.forEach {
             displayedMovies.append(MoviesModels.FetchMovies.ViewModel.DisplayedMovie(
                 title: $0.title,
                 releaseDate: $0.releaseDate,
                 posterPath: $0.posterPath,
                 vote: $0.vote,
-                id: $0.id
-            )
-            )
+                id: $0.id))
         }
         
         let viewModel = MoviesModels.FetchMovies.ViewModel(displayedMovies: displayedMovies)

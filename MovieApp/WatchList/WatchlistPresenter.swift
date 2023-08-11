@@ -25,9 +25,7 @@ final class WatchlistPresenter: WatchlistPresentationLogic {
                 releaseDate: $0.releaseDate,
                 posterPath: $0.posterPath,
                 vote: $0.vote,
-                id: $0.id
-            )
-            )
+                id: $0.id))
         }
         
         let viewModel = WatchlistModels.FetchWatchList.ViewModel(displayedWatchList: displayedWatchList)

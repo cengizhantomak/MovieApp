@@ -23,13 +23,10 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
     var dataStore: PaymentDataStore?
     
     func routeToMyBankCards() {
-        let storyboard = UIStoryboard(name: "MyBankCards", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "MyBankCardsViewController") as? MyBankCardsViewController,
+        guard let destinationVC: MyBankCardsViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.myBankCardsViewController, fromStoryboard: Constants.StoryboardName.myBankCards),
               let myBankCardDataStore = destinationVC.router?.dataStore else { return }
         
-        myBankCardDataStore.selectedMovie = MyBankCardsModels.FetchMyBankCards.ViewModel(
-            originViewController: "PaymentViewController")
+        myBankCardDataStore.selectedMovie = MyBankCardsModels.FetchMyBankCards.ViewModel(originViewController: Constants.StoryboardIdentifier.paymentViewController)
         
         destinationVC.delegate = self
         destinationVC.loadViewIfNeeded()
@@ -37,10 +34,7 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
     }
     
     func routeToCongrats() {
-        let storyboard = UIStoryboard(name: "Congrats", bundle: nil)
-        
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CongratsViewController") as? CongratsViewController else { return }
-        
+        guard let destinationVC: CongratsViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.congratsViewController, fromStoryboard: Constants.StoryboardName.congrats) else { return }
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

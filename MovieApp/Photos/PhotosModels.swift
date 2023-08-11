@@ -8,11 +8,8 @@
 import Foundation
 
 enum PhotosModels {
-    
     enum FethcPhotos {
-        
         struct Request {
-            
         }
         
         struct Response {

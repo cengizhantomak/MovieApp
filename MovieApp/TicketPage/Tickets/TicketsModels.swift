@@ -8,11 +8,8 @@
 import Foundation
 
 enum TicketsModels {
-    
     enum FetchTickets {
-        
         struct Request {
-            
         }
         
         struct Response {
@@ -36,7 +33,6 @@ enum TicketsModels {
     }
     
     enum DeleteTicket {
-        
         struct Request {
             let ticketId: UUID
         }

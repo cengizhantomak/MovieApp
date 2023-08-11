@@ -17,16 +17,13 @@ final class TicketsViewController: UIViewController {
     var interactor: TicketsBusinessLogic?
     var router: (TicketsRoutingLogic & TicketsDataPassing)?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // MARK: - Properties
-    
+    // MARK: - Property
     var displayedTickets = [TicketsModels.FetchTickets.ViewModel.DisplayedTicket]()
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -37,15 +34,14 @@ final class TicketsViewController: UIViewController {
         setup()
     }
     
+    // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         interactor?.fetchTickets(request: TicketsModels.FetchTickets.Request())
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = TicketsInteractor()
@@ -65,11 +61,51 @@ final class TicketsViewController: UIViewController {
         collectionView.register(.init(nibName: Constants.CellIdentifiers.ticketsCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.ticketsCell)
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
+}
+
+// MARK: - DisplayLogic
+extension TicketsViewController: TicketsDisplayLogic {
+    func displayTickets(viewModel: TicketsModels.FetchTickets.ViewModel) {
+        displayedTickets = viewModel.displayedTickets
+        self.collectionView.reloadData()
+    }
     
-    // MARK: - CompositionalLayout
+    func displayDeleteTicketResult(viewModel: TicketsModels.DeleteTicket.ViewModel) {
+        if viewModel.success {
+            interactor?.fetchTickets(request: TicketsModels.FetchTickets.Request())
+        } else {
+            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete ticket", buttonTitle: "OK", on: self)
+        }
+    }
+}
+
+// MARK: - CollectionView
+extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedTickets.count
+    }
     
-    func getCompositionalLayout() -> UICollectionViewLayout {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.ticketsCell, for: indexPath) as? TicketsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
+        let model = displayedTickets[indexPath.item]
+        cell.setCell(viewModel: model)
+        
+        cell.delegate = self
+        
+        return cell
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        router?.routeToMap()
+//    }
+}
+
+// MARK: - CompositionalLayout
+extension TicketsViewController {
+    func getCompositionalLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -93,48 +129,7 @@ final class TicketsViewController: UIViewController {
     }
 }
 
-// MARK: - DisplayLogic
-
-extension TicketsViewController: TicketsDisplayLogic {
-    func displayTickets(viewModel: TicketsModels.FetchTickets.ViewModel) {
-        displayedTickets = viewModel.displayedTickets
-        self.collectionView.reloadData()
-    }
-    
-    func displayDeleteTicketResult(viewModel: TicketsModels.DeleteTicket.ViewModel) {
-        if viewModel.success {
-            interactor?.fetchTickets(request: TicketsModels.FetchTickets.Request())
-        } else {
-            UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete ticket", buttonTitle: "OK", on: self)
-        }
-    }
-}
-
-// MARK: - CollectionView
-
-extension TicketsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedTickets.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.ticketsCell, for: indexPath) as? TicketsCollectionViewCell else { return UICollectionViewCell() }
-        
-        let model = displayedTickets[indexPath.item]
-        cell.setCell(viewModel: model)
-        
-        cell.delegate = self
-        
-        return cell
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        router?.routeToMap()
-//    }
-}
-
 // MARK: - TicketsCollectionViewCellDelegate
-
 extension TicketsViewController: TicketsCollectionViewCellDelegate {
     func didPressCancel(id: UUID) {
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this ticket?", preferredStyle: .alert)

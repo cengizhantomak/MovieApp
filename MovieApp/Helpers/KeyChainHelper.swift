@@ -13,7 +13,6 @@ final class KeyChainHelper {
     private init() {}
     
     func save(_ data: Data, service: String, account: String) {
-        
         let query: [String: Any] = [
             kSecValueData as String: data,
             kSecClass as String: kSecClassGenericPassword,
@@ -22,7 +21,6 @@ final class KeyChainHelper {
         ]
         
         let status = SecItemAdd(query as CFDictionary, nil)
-        
         if status == errSecDuplicateItem {
             let updateQuery: [String: Any] = [
                 kSecAttrService as String: service,
@@ -50,7 +48,6 @@ final class KeyChainHelper {
         
         var dataTypeRef: AnyObject?
         let status: OSStatus = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
-        
         if status == noErr {
             return dataTypeRef as? Data
         } else {
@@ -59,7 +56,6 @@ final class KeyChainHelper {
     }
     
     func delete(service: String, account: String) {
-        
         let query: [String: Any] = [
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,

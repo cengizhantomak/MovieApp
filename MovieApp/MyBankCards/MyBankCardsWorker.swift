@@ -14,7 +14,6 @@ protocol MyBankCardsWorkingLogic: AnyObject {
 }
 
 final class MyBankCardsWorker: MyBankCardsWorkingLogic {
-    
     func fetchBankCards(using context: NSManagedObjectContext) throws -> [BankCard] {
         let fetchRequest: NSFetchRequest<BankCard> = BankCard.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)

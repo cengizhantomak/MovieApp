@@ -38,14 +38,12 @@ final class LoginRouter: LoginRoutingLogic, LoginDataPassing {
     
     func routeToSignUp() {
         guard let destinationVC: SignUpViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.signUpViewController, fromStoryboard: Constants.StoryboardName.signUp) else { return }
-        
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)
     }
     
     func routeToResetPassword() {
         guard let destinationVC: ResetPasswordViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.resetPasswordViewController, fromStoryboard: Constants.StoryboardName.resetPassword) else { return }
-        
         destinationVC.loadViewIfNeeded()
         viewController?.present(destinationVC, animated: true)
     }

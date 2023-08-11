@@ -20,16 +20,10 @@ class MyBankCardsCollectionViewCell: UICollectionViewCell {
     weak var delegate: MyBankCardsCollectionViewCellDelegate?
     var id: UUID?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func setCell(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard) {
         cardNumberLabel.text = viewModel.cardNumber
         cardHolderLabel.text = viewModel.cardHolder
         expiresLabel.text = viewModel.cardExpires
-        
         id = viewModel.id
     }
     

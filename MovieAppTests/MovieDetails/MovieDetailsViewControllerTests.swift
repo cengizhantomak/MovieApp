@@ -18,8 +18,8 @@ final class MovieDetailsViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let storyboard = UIStoryboard(name: "MovieDetails", bundle: nil)
-        sut = storyboard.instantiateViewController(identifier: "MovieDetailsViewController") as? MovieDetailsViewController
+        let storyboard = UIStoryboard(name: Constants.StoryboardName.movieDetails, bundle: nil)
+        sut = storyboard.instantiateViewController(identifier: Constants.StoryboardIdentifier.movieDetailsViewController) as? MovieDetailsViewController
         sut?.loadViewIfNeeded()
         
         mockInteractor = MockMovieDetailsInteractor()
@@ -38,7 +38,6 @@ final class MovieDetailsViewControllerTests: XCTestCase {
     }
     
     // MARK: - Sample Data
-    
     func sampleViewModel() -> MovieDetailsModels.FetchMovieDetails.ViewModel {
         return MovieDetailsModels.FetchMovieDetails.ViewModel(displayedCast: [],
                                                               displayedImages: [],
@@ -53,7 +52,6 @@ final class MovieDetailsViewControllerTests: XCTestCase {
     }
     
     // MARK: - Test Cases
-    
     func test_viewDidLoad() {
         // Given
         
@@ -306,9 +304,7 @@ final class MovieDetailsViewControllerTests: XCTestCase {
 extension MovieDetailsViewControllerTests {
     
     // MARK: - Mock Interactor
-    
     final class MockMovieDetailsInteractor: MovieDetailsBusinessLogic {
-        
         var fetchMovieDetailsCalled = false
         var viewAllCastCalled = false
         var viewAllPhotosCalled = false
@@ -363,10 +359,8 @@ extension MovieDetailsViewControllerTests {
     }
     
     // MARK: - Mock Router
-    
     final class MockMovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassing {
         var dataStore: MovieApp.MovieDetailsDataStore?
-        
         var routeToPhotosCalled = false
         var routeToCastCrewCalled = false
         var routeToGetTicketCalled = false

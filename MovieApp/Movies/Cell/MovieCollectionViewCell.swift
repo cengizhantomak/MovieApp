@@ -14,11 +14,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func setCell(viewModel: MoviesModels.FetchMovies.ViewModel.DisplayedMovie) {
         if let posterUrl = ImageUrlHelper.imageUrl(for: viewModel.posterPath) {
             posterImage.load(url: posterUrl)

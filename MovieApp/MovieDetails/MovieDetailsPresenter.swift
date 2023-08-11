@@ -20,15 +20,16 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     
     func presentDetails(response: MovieDetailsModels.FetchMovieDetails.Response) {
         let displayedDetails = MovieDetailsModels.FetchMovieDetails.ViewModel(
-            displayedCast: presentCast(names: response.cast), displayedImages: presentImages(images: response.images), displayedWatchList: presentWatchList(watchList: response.watchList),
+            displayedCast: presentCast(names: response.cast), 
+            displayedImages: presentImages(images: response.images),
+            displayedWatchList: presentWatchList(watchList: response.watchList),
             title: response.details.title,
             overview: response.details.overview,
             genres: response.details.genres?.compactMap { $0.name }.joined(separator: ", ") ?? "",
             runtime: response.details.runtime ?? 0,
             vote: response.details.vote,
             posterPhotoPath: response.details.posterPath,
-            id: response.details.id
-        )
+            id: response.details.id)
         
         DispatchQueue.main.async {
             self.viewController?.displayFetchedDetails(viewModel: displayedDetails)
@@ -40,24 +41,19 @@ final class MovieDetailsPresenter: MovieDetailsPresentationLogic {
             MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedCast(
                 name: $0.name ?? "",
                 character: $0.character ?? "",
-                profilePhotoPath: $0.profilePhoto ?? ""
-            )
+                profilePhotoPath: $0.profilePhoto ?? "")
         }
     }
     
     func presentImages(images: [MoviesResponse.Images]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages] {
         return images.map {
-            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages(
-                images: $0.images
-            )
+            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedImages(images: $0.images)
         }
     }
     
     func presentWatchList(watchList: [MoviesResponse.Movie]) -> [MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList] {
         return watchList.map {
-            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(
-                watchListId: $0.id
-            )
+            MovieDetailsModels.FetchMovieDetails.ViewModel.DisplayedWatchList(watchListId: $0.id)
         }
     }
     

@@ -8,11 +8,8 @@
 import Foundation
 
 enum ChooseSeatModels {
-    
     enum FetchChooseSeat {
-        
         struct Request {
-            
         }
         
         struct Response {

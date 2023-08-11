@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MyBankCardsBusinessLogic: AnyObject {
-    func fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request)
+    func fetchBankCards()
     func deleteBankCard(request: MyBankCardsModels.DeleteBankCard.Request)
 //    func selectBankCard(bankCardDetail: MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard?)
     func getOriginViewController()
@@ -30,7 +30,7 @@ final class MyBankCardsInteractor: MyBankCardsBusinessLogic, MyBankCardsDataStor
     var originViewController: String?
     var selectedMovie: MyBankCardsModels.FetchMyBankCards.ViewModel?
     
-    func fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request) {
+    func fetchBankCards() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
@@ -49,7 +49,7 @@ final class MyBankCardsInteractor: MyBankCardsBusinessLogic, MyBankCardsDataStor
         
         do {
             try worker.deleteBankCard(withId: request.bankCardId, using: context)
-            fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+            fetchBankCards()
         } catch {
             print("Failed to delete ticket: \(error)")
         }

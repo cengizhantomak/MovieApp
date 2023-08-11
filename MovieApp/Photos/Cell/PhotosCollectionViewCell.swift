@@ -11,13 +11,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var photosImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func setCell(viewModel: PhotosModels.FethcPhotos.ViewModel.DisplayedImages) {
-        
         if let profileUrl = ImageUrlHelper.imageUrl(for: viewModel.images) {
             photosImage.load(url: profileUrl)
         }

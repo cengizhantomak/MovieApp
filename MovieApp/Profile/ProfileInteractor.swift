@@ -24,7 +24,6 @@ final class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
     func fetchProfile() {
         worker.getProfile { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let profile):
                 let response = ProfileModels.FetchProfile.Response(profile: profile)
@@ -38,7 +37,6 @@ final class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
     func performLogout(completion: @escaping (Result<Void, Error>) -> Void) {
         worker.deleteAllData(entity: "MovieTicket") { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success:
                 worker.deleteAllData(entity: "BankCard", completion: completion)

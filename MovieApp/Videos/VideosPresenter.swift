@@ -17,13 +17,10 @@ final class VideosPresenter: VideosPresentationLogic {
     
     func presentVideos(response: VideosModels.FetchVideos.Response) {
         var displayedVideos: [VideosModels.FetchVideos.ViewModel.DisplayedVideos] = []
-        
         response.videos.forEach {
             displayedVideos.append(VideosModels.FetchVideos.ViewModel.DisplayedVideos(
                 name: $0.name,
-                key: $0.key
-            )
-            )
+                key: $0.key))
         }
         
         let viewModel = VideosModels.FetchVideos.ViewModel(displayedVideos: displayedVideos)

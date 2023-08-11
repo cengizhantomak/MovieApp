@@ -8,11 +8,8 @@
 import Foundation
 
 enum VideosModels {
-    
     enum FetchVideos {
-        
         struct Request {
-            
         }
         
         struct Response {

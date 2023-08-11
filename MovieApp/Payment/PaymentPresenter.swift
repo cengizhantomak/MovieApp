@@ -30,8 +30,7 @@ final class PaymentPresenter: PaymentPresentationLogic {
         let viewModel = PaymentModels.FetchPayment.ViewModel(
             message: "A ticket has already been purchased for this information.",
             title: "Error",
-            buttonTitle: "Cancel"
-        )
+            buttonTitle: "Cancel")
         viewController?.displayCardValidationResult(viewModel: viewModel)
     }
     
@@ -43,8 +42,7 @@ final class PaymentPresenter: PaymentPresentationLogic {
             viewModel = PaymentModels.FetchPayment.ViewModel(
                 message: "Bank card information not found. Please check your details.",
                 title: "Error",
-                buttonTitle: "OK"
-            )
+                buttonTitle: "OK")
         }
         viewController?.displayCardValidationResult(viewModel: viewModel)
     }

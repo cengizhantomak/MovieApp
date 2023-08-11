@@ -8,9 +8,7 @@
 import Foundation
 
 enum PaymentModels {
-    
     enum FetchPayment {
-        
         struct Request {
             var nameCard: String?
             var cardNumber: String?

@@ -16,7 +16,7 @@ final class CongratsPresenter: CongratsPresentationLogic {
     weak var viewController: CongratsDisplayLogic?
     
     func presentLatestTicket(ticket: MovieTicket?) {
-        guard let ticket = ticket else { return }
+        guard let ticket else { return }
         let viewModel = CongratsModels.FetchCongrats.ViewModel(
             title: ticket.title,
             imagePath: ticket.imagePath,
@@ -24,8 +24,7 @@ final class CongratsPresenter: CongratsPresentationLogic {
             time: ticket.time,
             theatre: ticket.theatre,
             seat: ticket.seat,
-            totalAmount: ticket.totalAmount
-        )
+            totalAmount: ticket.totalAmount)
         
         viewController?.displayLatestTicket(viewModel: viewModel)
     }

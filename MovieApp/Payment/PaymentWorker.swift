@@ -16,12 +16,9 @@ protocol PaymentWorkingLogic: AnyObject {
 }
 
 final class PaymentWorker: PaymentWorkingLogic {
-    
     func checkTicketExists(paymentDetails: PaymentModels.FetchPayment.ViewModel?) -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-              let paymentDetails else {
-            return false
-        }
+              let paymentDetails else { return false }
         let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieTicket")
@@ -31,8 +28,7 @@ final class PaymentWorker: PaymentWorkingLogic {
             paymentDetails.selectedDate ?? "",
             paymentDetails.selectedTime ?? "",
             paymentDetails.selectedTheater ?? "",
-            paymentDetails.chooseSeat?.joined(separator: ", ") ?? ""
-        )
+            paymentDetails.chooseSeat?.joined(separator: ", ") ?? "")
         
         do {
             let fetchedResults = try context.fetch(fetchRequest)
@@ -50,8 +46,7 @@ final class PaymentWorker: PaymentWorkingLogic {
             request.nameCard ?? "",
             request.cardNumber ?? "",
             request.dateExpire ?? "",
-            request.cvv ?? ""
-        )
+            request.cvv ?? "")
         
         return fetchRequest
     }

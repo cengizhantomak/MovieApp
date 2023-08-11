@@ -12,9 +12,8 @@ class SeatCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     
     override var isSelected: Bool {
-            didSet {
-                backgroundColor = isSelected ? UIColor(named: "47CFFF") : UIColor.clear
-            }
+        didSet {
+            backgroundColor = isSelected ? UIColor(named: "47CFFF") : UIColor.clear
         }
-
+    }
 }

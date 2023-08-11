@@ -8,7 +8,6 @@
 import Foundation
 
 enum MovieDetailsModels {
-    
     enum Section: Int, CaseIterable {
         case Synopsis
         case Cast
@@ -27,9 +26,7 @@ enum MovieDetailsModels {
     }
     
     enum FetchMovieDetails {
-        
         struct Request {
-            
         }
         
         struct Response {

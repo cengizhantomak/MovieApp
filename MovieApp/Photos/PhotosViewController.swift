@@ -16,16 +16,13 @@ final class PhotosViewController: UIViewController {
     var interactor: PhotosBusinessLogic?
     var router: (PhotosRoutingLogic & PhotosDataPassing)?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // MARK: - Properties
-    
+    // MARK: - Property
     var displayedPhotos: [PhotosModels.FethcPhotos.ViewModel.DisplayedImages] = []
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -37,7 +34,6 @@ final class PhotosViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingView()
@@ -47,7 +43,6 @@ final class PhotosViewController: UIViewController {
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = PhotosInteractor()
@@ -67,9 +62,34 @@ final class PhotosViewController: UIViewController {
         collectionView.register(.init(nibName: Constants.CellIdentifiers.photosCell, bundle: .main), forCellWithReuseIdentifier: Constants.CellIdentifiers.photosCell)
         collectionView.collectionViewLayout = getCompotionalLayout()
     }
+}
+
+// MARK: - DisplayLogic
+extension PhotosViewController: PhotosDisplayLogic {
+    func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel) {
+        displayedPhotos = viewModel.displayedImages
+        collectionView.reloadData()
+        hideLoadingView()
+    }
+}
+
+// MARK: - CollectionView
+extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return displayedPhotos.count
+    }
     
-    // MARK: - CompotionalLayout
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosCell, for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
+        
+        let model = displayedPhotos[indexPath.item]
+        cell.setCell(viewModel: model)
+        return cell
+    }
+}
+
+// MARK: - CompotionalLayout
+extension PhotosViewController {
     func getCompotionalLayout() -> UICollectionViewLayout {
         
         // Item boyutunu tanımla
@@ -98,31 +118,5 @@ final class PhotosViewController: UIViewController {
         // Layout'u oluştur ve döndür
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
-    }
-}
-
-// MARK: - DisplayLogic
-
-extension PhotosViewController: PhotosDisplayLogic {
-    func displayGetPhotos(viewModel: PhotosModels.FethcPhotos.ViewModel) {
-        displayedPhotos = viewModel.displayedImages
-        collectionView.reloadData()
-        hideLoadingView()
-    }
-}
-
-// MARK: - CollectionView
-
-extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return displayedPhotos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifiers.photosCell, for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
-        
-        let model = displayedPhotos[indexPath.item]
-        cell.setCell(viewModel: model)
-        return cell
     }
 }

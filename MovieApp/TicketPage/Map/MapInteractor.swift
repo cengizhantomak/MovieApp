@@ -22,7 +22,6 @@ final class MapInteractor: MapBusinessLogic, MapDataStore {
     var presenter: MapPresentationLogic?
     var worker: MapWorkingLogic = MapWorker()
     
-    
     func fetchTheatres() {
         let theatres = MapModels.TheatreData.theatres
         presenter?.presentTheatres(theatres)

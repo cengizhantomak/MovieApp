@@ -42,7 +42,6 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         guard let id = selectedMovieID else { return }
         worker.getMovieDetails(id: id) { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let details):
                 fetchMovieCast(details: details)
@@ -54,7 +53,6 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     
     func fetchMovieCast(details: MoviesResponse.Movie) {
         guard let id = selectedMovieID else { return }
-        
         worker.getMovieCredits(id: id) { [weak self] result in
             guard let self else { return }
             
@@ -71,7 +69,6 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
         guard let id = selectedMovieID else { return }
         worker.getMovieImages(id: id) { [weak self] result in
             guard let self else { return }
-            
             switch result {
             case .success(let images):
                 fetchWatchList(details: details, cast: cast, images: images.backdrops)
@@ -148,7 +145,6 @@ final class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataS
     
     func toggleWatchlistStatus(_ details: MovieDetailsModels.FetchMovieDetails.ViewModel?) -> MovieDetailsModels.FetchMovieDetails.ViewModel? {
         guard var displayedDetails = details else { return nil }
-
         if displayedDetails.displayedWatchList.contains(where: { $0.watchListId == displayedDetails.id }) {
             postToRemoveWatchlist()
             if let index = displayedDetails.displayedWatchList.firstIndex(where: { $0.watchListId == displayedDetails.id }) {

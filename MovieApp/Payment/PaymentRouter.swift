@@ -35,7 +35,6 @@ final class PaymentRouter: PaymentRoutingLogic, PaymentDataPassing {
     
     func routeToCongrats() {
         guard let destinationVC: CongratsViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.congratsViewController, fromStoryboard: Constants.StoryboardName.congrats) else { return }
-        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

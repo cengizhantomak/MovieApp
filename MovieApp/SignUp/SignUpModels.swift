@@ -8,15 +8,12 @@
 import Foundation
 
 enum SignUpModels {
-    
     struct SignUp {
         var url: String
     }
     
     enum FetchSignUp {
-        
         struct Request {
-            
         }
         
         struct Response {

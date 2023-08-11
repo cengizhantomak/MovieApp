@@ -24,17 +24,14 @@ final class MyBankCardsViewController: UIViewController {
     var router: (MyBankCardsRoutingLogic & MyBankCardsDataPassing)?
     var delegate: selectionBankCardDelegate?
     
-    // MARK: - Outlets
-    
+    // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties
-    
     var displayedBankCards: [MyBankCardsModels.FetchMyBankCards.ViewModel.DisplayedBankCard] = []
     var originViewController: String?
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -46,24 +43,20 @@ final class MyBankCardsViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "My Bank Cards"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBankCardButtonTapped))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+        interactor?.fetchBankCards()
         interactor?.getOriginViewController()
         setupCollectionView()
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = MyBankCardsInteractor()
@@ -84,41 +77,13 @@ final class MyBankCardsViewController: UIViewController {
         collectionView.collectionViewLayout = getCompositionalLayout()
     }
     
-    // MARK: - CompositionalLayout
-    
-    func getCompositionalLayout() -> UICollectionViewLayout {
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing:0)
-        
-        let groupLayout = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0 / 3)
-        )
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayout, subitems: [item])
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-    
-    // MARK: - Actions
-    
+    // MARK: - Action
     @objc func addBankCardButtonTapped() {
         router?.routeToAddBankCard()
     }
 }
 
 // MARK: - DisplayLogic
-
 extension MyBankCardsViewController: MyBankCardsDisplayLogic {
     func displayBankCards(viewModel: MyBankCardsModels.FetchMyBankCards.ViewModel) {
         displayedBankCards = viewModel.displayedBankCard ?? []
@@ -127,7 +92,7 @@ extension MyBankCardsViewController: MyBankCardsDisplayLogic {
     
     func displayDeleteBankCardResult(viewModel: MyBankCardsModels.DeleteBankCard.ViewModel) {
         if viewModel.success {
-            interactor?.fetchBankCards(request: MyBankCardsModels.FetchMyBankCards.Request())
+            interactor?.fetchBankCards()
         } else {
             UIAlertHelper.shared.showAlert(title: "Error", message: "Failed to delete Bank Card", buttonTitle: "OK", on: self)
         }
@@ -143,7 +108,6 @@ extension MyBankCardsViewController: MyBankCardsDisplayLogic {
 }
 
 // MARK: - CollectionView
-
 extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return displayedBankCards.count
@@ -169,8 +133,34 @@ extension MyBankCardsViewController: UICollectionViewDelegate, UICollectionViewD
     }
 }
 
-// MARK: - TicketsCollectionViewCellDelegate
+// MARK: - CompositionalLayout
+extension MyBankCardsViewController {
+    func getCompositionalLayout() -> UICollectionViewLayout {
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing:0)
+        
+        let groupLayout = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0 / 3)
+        )
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayout, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+}
 
+// MARK: - TicketsCollectionViewCellDelegate
 extension MyBankCardsViewController: MyBankCardsCollectionViewCellDelegate {
     func didPressCancel(id: UUID) {
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure you want to cancel this Bank Card?", preferredStyle: .alert)

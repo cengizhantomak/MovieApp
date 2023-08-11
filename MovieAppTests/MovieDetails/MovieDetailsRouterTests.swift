@@ -32,7 +32,6 @@ class MovieDetailsRouterTests: XCTestCase {
     }
     
     // MARK: - Test Cases
-    
     func test_routeToCastCrew() {
         // When
         sut.routeToCastCrew()
@@ -77,7 +76,6 @@ class MovieDetailsRouterTests: XCTestCase {
 extension MovieDetailsRouterTests {
     
     // MARK: - Mock NavigationController
-    
     class MockNavigationController: UINavigationController {
         var pushedViewController: UIViewController?
         override func pushViewController(_ viewController: UIViewController, animated: Bool) {

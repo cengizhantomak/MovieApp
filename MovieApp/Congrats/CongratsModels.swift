@@ -8,15 +8,11 @@
 import Foundation
 
 enum CongratsModels {
-    
     enum FetchCongrats {
-        
         struct Request {
-            
         }
         
         struct Response {
-            
         }
         
         struct ViewModel {

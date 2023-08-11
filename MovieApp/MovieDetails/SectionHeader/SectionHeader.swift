@@ -14,7 +14,6 @@ class SectionHeader: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super .init(reuseIdentifier: reuseIdentifier)
-        
         configureSectionHeader()
     }
     

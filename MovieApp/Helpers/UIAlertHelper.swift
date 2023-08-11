@@ -11,7 +11,6 @@ import UIKit
 class UIAlertHelper {
 
     static let shared = UIAlertHelper()
-
     private init() {}
 
     func showAlert(title: String?, message: String?, buttonTitle: String?, on viewController: UIViewController, buttonAction: (() -> Void)? = nil) {

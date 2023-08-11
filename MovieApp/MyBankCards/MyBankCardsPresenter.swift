@@ -24,8 +24,7 @@ final class MyBankCardsPresenter: MyBankCardsPresentationLogic {
                 cardHolder: bankCard.nameCard,
                 cardExpires: bankCard.dateExpire,
                 cvv: bankCard.cvv,
-                id: bankCard.id
-            )
+                id: bankCard.id)
         }
         
         let viewModel = MyBankCardsModels.FetchMyBankCards.ViewModel(displayedBankCard: displayedBankCards)

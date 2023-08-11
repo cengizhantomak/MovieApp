@@ -18,12 +18,10 @@ final class SignUpViewController: UIViewController {
     var router: (SignUpRoutingLogic & SignUpDataPassing)?
     
     // MARK: - Outlet
-    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     // MARK: - Object lifecycle
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -35,16 +33,13 @@ final class SignUpViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let request = SignUpModels.FetchSignUp.Request()
         interactor?.fetchSignUp(request: request)
     }
     
     // MARK: - Setup
-    
     private func setup() {
         let viewController = self
         let interactor = SignUpInteractor()
@@ -66,7 +61,6 @@ final class SignUpViewController: UIViewController {
 }
 
 // MARK: - DisplayLogic
-
 extension SignUpViewController: SignUpDisplayLogic {
     func displaySignUp(viewModel: SignUpModels.FetchSignUp.ViewModel) {
         let url = URL(string: viewModel.url)!

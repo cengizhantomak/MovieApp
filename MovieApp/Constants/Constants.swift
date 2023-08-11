@@ -21,16 +21,19 @@ public enum Constants {
         static let myBankCardsCell = "MyBankCardsCollectionViewCell"
         static let ticketsCell = "TicketsCollectionViewCell"
     }
+    
     public enum SectionHeader {
         static let movieSectionHeader = "MovieCollectionReusableView"
         static let movieDetailsSectionHeader = "SectionHeader"
     }
+    
     public enum textFieldAccessibilityIdentifier {
         static let nameCardTextField = "nameCardTextField"
         static let cardNumberTextField = "cardNumberTextField"
         static let dateExpireTextField = "dateExpireTextField"
         static let cvvTextField = "cvvTextField"
     }
+    
     public enum StoryboardIdentifier {
         static let tabBarController = "TabBarController"
         static let signUpViewController = "SignUpViewController"
@@ -50,6 +53,7 @@ public enum Constants {
         static let paymentViewController = "PaymentViewController"
         static let congratsViewController = "CongratsViewController"
     }
+    
     public enum StoryboardName {
         static let main = "Main"
         static let signUp = "SignUp"

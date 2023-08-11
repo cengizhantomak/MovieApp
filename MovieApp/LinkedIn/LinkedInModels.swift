@@ -8,15 +8,12 @@
 import Foundation
 
 enum LinkedInModels {
-    
     struct Profile {
         var url: String
     }
 
     enum FetchLinkedIn {
-        
         struct Request {
-            
         }
         
         struct Response {

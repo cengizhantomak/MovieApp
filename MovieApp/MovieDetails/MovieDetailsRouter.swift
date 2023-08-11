@@ -70,7 +70,6 @@ final class MovieDetailsRouter: MovieDetailsRoutingLogic, MovieDetailsDataPassin
     
     func routeToWatchList() {
         guard let destinationVC: WatchlistViewController = StoryboardHelper.instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.watchlistViewController, fromStoryboard: Constants.StoryboardName.main) else { return }
-        
         destinationVC.loadViewIfNeeded()
         viewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }

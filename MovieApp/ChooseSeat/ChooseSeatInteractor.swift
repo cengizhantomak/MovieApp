@@ -76,7 +76,6 @@ final class ChooseSeatInteractor: ChooseSeatBusinessLogic, ChooseSeatDataStore {
                 combined.append("\(letter)\(number)")
             }
         }
-        
         return combined[indexPath.row]
     }
 }

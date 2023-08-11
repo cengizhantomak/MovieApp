@@ -8,7 +8,6 @@
 import Foundation
 
 enum MapModels {
-    
     struct Theatre {
         let name: String
         let latitude: Double
@@ -26,17 +25,13 @@ enum MapModels {
     }
     
     enum FetchMap {
-        
         struct Request {
-            
         }
         
         struct Response {
-            
         }
         
         struct ViewModel {
-            
         }
     }
 }
